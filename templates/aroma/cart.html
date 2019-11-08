@@ -1,0 +1,151 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+  <h1 style="position: relative; left: 200px; margin-top: 30px;">My Cart</h1>
+  <nav aria-label="breadcrumb" class="banner-breadcrumb">
+      <ol class="breadcrumb">
+          <li style="position: relative; left: 200px;" class="breadcrumb-item active" aria-current="page">Review your products or checkout below</li>
+      </ol>
+
+      <button class="button button-coupon" id="scroll-to-checkout" style="position: relative; left: 105%; top: -80px; padding-top: 15px; padding-bottom: 15px; padding-right: 50px; padding-left: 50px; font-size: 15px; pointer-events: auto;">Checkout</button>
+      <!--================Cart Area =================-->
+  <section class="cart_area" style="position: relative; left: 200px; margin-top: -70px;">
+      <div class="container" style="margin-top: -70px;">
+          <div class="cart_inner">
+              <div class="table-responsive" style="max-width: 100%; overflow-x: hidden;">
+                  <table class="table">
+                      <ul>
+                      <thead>
+                          <tr>
+                              <th scope="col" style="width: 40%">Product</th>
+                              <th scope="col">Unit-Price</th>
+                              <th scope="col">Size</th>
+                              <th scope="col">Quantity</th>
+                              <th scope="col">Total</th>
+                          </tr>
+                      </thead>
+                              <tbody id="cart-product-list">
+                                  <tr id="default-element">
+                                      <td>
+                                          <div class="media">
+                                              <div class="d-flex">
+                                                  <img id="product-img" src="{{url_for('static', filename='img/cart/cart1.png')}}" style="width: 150px; margin-top: -20px; margin-bottom: -20px" alt="">
+                                              </div>
+                                              <div class="media-body">
+                                                  <a id="product-link" href="/sample-product-page"><p id="product-name">Minimalistic shop for multipurpose use</p></a>
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td>
+                                          <h5 id="unit-price">$360.00</h5>
+                                      </td>
+                                      <td>
+                                          <h5 id="product-size">Medium</h5>
+                                      </td>
+                                      <td>
+                                          <div class="product_count" style="text-align: left; width: 80px;">
+                                              <input class="quantity-input" type="number" name="qty" min="1" id="quantity" style="position: relative; right: 20px; width: 80px" value="1" title="Quantity:">
+                                          </div>
+                                      </td>
+                                      <td>
+                                          <button type="button" class="close" aria-label="Close" style="position: relative; bottom: 60px; left: 15px;">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                          <h5 id="product-total-price">$720.00</h5>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                      </ul>
+                          <tr style="position: relative;">
+                              <td>
+                                <div class="checkout_btn_inner d-flex align-items-center">
+                                    <a style="height: 40px;" class="gray_btn" href="/">Continue Shopping</a>
+                                    <button class="button gray_btn" style="position: relative; left: 50px;" id="clearCart">Clear Cart</button>
+                                  </div>
+                              </td>
+                              <td style="position: relative; left: 170px;">
+
+                                  <h5 style="position: relative; left: 150px;">Subtotal:</h5>
+                              </td>
+                              <td style="text-align: right; align-self: right; position: relative; left: 190px;">
+                                  <h5 id="subtotal-value" style="position: relative; left: 150px; text-align: center !important;">[Subtotal]</h5>
+                              </td>
+                              <td>
+                              </td>
+                          </tr>
+                          <tr>
+                          </tr>
+                          <tr class="shipping_area">
+
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================End Cart Area =================-->
+<section class="checkout_area section-margin--small" style="margin-top: -100px; position: relative; left: 200px;">
+    <div class="container">
+        <div class="container" id="discount-section" style="position: relative; top: 15px; left: 20px;">
+            <h4>Discounts</h4>
+            <p style="margin-bottom: -10px; font-size: 15px;">Please note: you cannot apply a discount and <br>points at the same time.</p>
+            <div class="cupon_area">
+                <input style="position: relative; right: 30px; width: 30%" type="text" id="discount-code-input" placeholder="Enter coupon code">
+                <button class="button button-coupon" id="apply-discount-button" onclick="applyDiscount({{discountDB}}, {{amountArray}})">Apply Discount</button>
+                <div id="paypal-button-container"></div>
+            </div>
+        </div>
+        <div class="billing_details" style="position: relative; left: 37%; bottom: 220px;">
+            <div class="row">
+                <div class="col-lg-4">
+                        <div class="order_box" style="height: 90%;">
+                             <form id="cart-contents-form" method="post" action="/payment-success" onsubmit="return formatForm()">
+                                <h2>Your Order</h2>
+                                <ul class="list" id="checkout-product-list">
+                                    <li><a href="#"><h4>Product <span>Total</span></h4></a></li>
+                                    <li><a href="#" id="checkout-product-link"><label class="checkout-product-name" id="checkout-product-name" for="product-total-price-total">Fresh Blackberry</label> <span class="checkout-product-price last" id="product-total-price-total">$720.00</span></a></li>
+                                </ul>
+                                <ul class="list list_2" id="important-line-items-list">
+                                    <li><a href="#">Shipping <span>Free! (Included)</span></a></li>
+                                    <li><a href="#">Taxes <span>TBD</span></a></li>
+                                    <li style="display: none;" id="points-list-element"><a href="#">Points Savings<span id="total-points-savings"></span></a></li>
+                                    <li style="display: none;" id="discount-list-element"><a href="#">Discount Savings<span id="discount-savings"></span></a></li>
+                                    <li><a href="#" >Total <span id="total" style="color: black;">$2210.00</span></a></li>
+                                </ul>
+                             </form>
+                            <div>
+                                <p id="terms-and-conditions">
+                                <input style="position: relative; left: 3px;" type="checkbox" id="f-option4" name="selector" >
+                                <label for="f-option4">I’ve read and accept the </label>
+                                <a href="/terms-and-conditions">terms & conditions</a>
+                                <h6 id="terms-warning" style="display: none; margin-top: 0px;">Please Accept The Terms And Conditions</h6>
+                                </p>
+                                <br>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-lg-4" id="payment-header-div" style="padding-left: 40px;">
+                    <h3 id="payment-header">Payment and Shipping</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  <!--================End Checkout Area =================-->
+      {% endblock %}

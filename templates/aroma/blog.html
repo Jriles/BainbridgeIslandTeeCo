@@ -1,0 +1,144 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+
+  <!-- ================ start banner area ================= -->
+  <section class="blog-banner-area" id="blog">
+    <div class="container h-100">
+      <div class="hero-image" id="blog-hero-image" style="position: relative; right: 23.5%;">
+        <div class="hero-text">
+          <h1 style="color: white;">Our Story</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">We like to believe that every small business has a story to tell; here's ours.</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================ end banner area ================= -->
+
+  <!--================Blog Area =================-->
+  <section class="blog_area" style="margin-top: 100px;">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8">
+                  <div class="blog_left_sidebar">
+                      <article class="row blog_item">
+                          <div class="col-md-3">
+                              <div class="blog_info text-right">
+                              </div>
+                          </div>
+                          <div class="col-md-9">
+                              <div class="blog_post">
+                                  <img src="{{url_for('static', filename='img/blog/main-blog/m-blog-1.jpg')}}" alt="">
+                                  <div class="blog_details">
+                                      <a href="single-blog.html">
+                                          <h2>Astronomy Binoculars A Great Alternative</h2>
+                                      </a>
+                                      <p>MCSE boot camps have its supporters and its detractors. Some people do not understand
+                                          why you should have to spend money on boot camp when you can get the MCSE study
+                                          materials yourself at a fraction.</p>
+                                      <span>12/19/2019</span>
+                                      <br>
+                                      <a href="#">By Alex Kasper</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </article>
+
+                      <nav class="blog-pagination justify-content-center d-flex">
+                          <ul class="pagination">
+                              <li class="page-item">
+                                  <a href="#" class="page-link" aria-label="Previous">
+                                      <span aria-hidden="true">
+                                          <span class="lnr lnr-chevron-left"></span>
+                                      </span>
+                                  </a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link">01</a>
+                              </li>
+                              <li class="page-item active">
+                                  <a href="#" class="page-link">02</a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link">03</a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link">04</a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link">09</a>
+                              </li>
+                              <li class="page-item">
+                                  <a href="#" class="page-link" aria-label="Next">
+                                      <span aria-hidden="true">
+                                          <span class="lnr lnr-chevron-right"></span>
+                                      </span>
+                                  </a>
+                              </li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="blog_right_sidebar">
+                      <aside class="single_sidebar_widget search_widget">
+                          <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Search Posts">
+                              <span class="input-group-btn">
+                                  <button class="btn btn-default" type="button">
+                                      <i class="lnr lnr-magnifier"></i>
+                                  </button>
+                              </span>
+                          </div>
+                          <!-- /input-group -->
+                          <div class="br"></div>
+                      </aside>
+                      <aside class="single_sidebar_widget author_widget">
+                          <img class="author_img rounded-circle" src="{{url_for('static', filename='img/blog/author.png')}}" alt="">
+                          <h4>Alex Kasper, CEO</h4>
+                          <div class="social_icon">
+                              <a href="#">
+                                  <i class="fab fa-facebook-f"></i>
+                              </a>
+                              <a href="#">
+                                  <i class="fab fa-twitter"></i>
+                              </a>
+                              <a href="#">
+                                  <i class="fab fa-instagram"></i>
+                              </a>
+                          </div>
+                          <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should
+                              have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits
+                              detractors.
+                          </p>
+                      </aside>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--================Blog Area =================-->
+
+  <!--================Instagram Area =================-->
+  <section class="instagram_area">
+    <div class="container box_1620">
+      <div class="insta_btn">
+        <a class="btn theme_btn" href="#">Follow us on instagram</a>
+      </div>
+      <div class="instagram_image row m0">
+        <a href="#"><img src="{{url_for('static', filename='img/instagram/ins-1.jpg')}}" alt=""></a>
+        <a href="#"><img src="{{url_for('static', filename='img/instagram/ins-2.jpg')}}" alt=""></a>
+        <a href="#"><img src="{{url_for('static', filename='img/instagram/ins-3.jpg')}}" alt=""></a>
+        <a href="#"><img src="{{url_for('static', filename='img/instagram/ins-4.jpg')}}" alt=""></a>
+        <a href="#"><img src="{{url_for('static', filename='img/instagram/ins-5.jpg')}}" alt=""></a>
+        <a href="#"><img src="{{url_for('static', filename='img/instagram/ins-6.jpg')}}" alt=""></a>
+      </div>
+    </div>
+  </section>
+  <!--================End Instagram Area =================-->
+  
+{% endblock %}

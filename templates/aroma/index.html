@@ -1,0 +1,136 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+    <main class="site-main">
+    <!--================ Hero banner start =================-->
+    <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
+      <div class="hero-image">
+        <div class="hero-text">
+            <h1 style="color: white;">Kasper BI Apparel</h1>
+            <p>And sweatshirts</p>
+            <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px;">Browse T-Shirts</button>
+            <button class="button" onclick="browseSweatshirts()" id="landing-button-2" style="margin: 10px;">Browse Sweatshirts</button>
+        </div>
+      </div>
+    </section>
+    <!--================ Hero banner start =================-->
+    <div class="product_image_area">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
+					<div class="owl-carousel owl-theme s_Product_carousel">
+						<div class="single-prd-item">
+							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<div style="float: left;">
+							<h3 id="product-name">Soft BI T-Shirt</h3>
+							<h2 id="product-price">$15.00</h2>
+							<span>Availability: In Stock</span>
+						</div>
+						<div style="float: right; text-align: right;">
+							<div class="product_count">
+								<label for="t-shirt-quantity-count">Quantity:</label>
+								<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+							</div>
+							<div>
+								<select id="t-shirt-size">
+									<option>Small</option>
+									<option>Medium</option>
+									<option>Large</option>
+								</select>
+							</div>
+							<div class="card_area d-flex align-items-right">
+								<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+								<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+							</div>
+							<div>
+								<button class="button button-coupon" id="t-shirt-add-to-cart-button">Add to Cart</button>
+							</div>
+						</div>
+						<br>
+						<br>
+						<br>
+						<div style="margin: 20px;">
+							<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+								something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
+								during the winter.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
+
+    <!--================ Hero banner start =================-->
+    <div class="product_image_area" style="margin-bottom: 170px; margin-top: 50px;">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<h3 id="product-name2">Comfy BI Sweatshirt</h3>
+						<h2 id="product-price2">$40.00</h2>
+						<span>Availability: In Stock</span>
+						<p style="margin-bottom: 25px;">Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
+							during the winter.</p>
+						<div class="product_count">
+              <label for="sweatshirt-quantity-count">Quantity:</label>
+							<input type="number" name="qty" min="1" id="sweatshirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+						</div>
+						<button class="button button-coupon" id="sweatshirt-add-to-cart-button" style="margin-left: 20px;">Add to Cart</button>
+						<div style="float: left; position: relative; margin-right: 20px;">
+							<select id="sweatshirt-size">
+    							<option>Small</option>
+    							<option>Medium</option>
+								<option>Large</option>
+							</select>
+						</div>
+						<div class="card_area d-flex align-items-center" style="margin-top: 0px;">
+							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+						</div>
+					</div>
+				</div>
+                <div class="col-lg-6" id="sweatshirt-images">
+					<div class="owl-carousel owl-theme s_Product_carousel">
+						<div class="single-prd-item">
+							<img id="sweatshirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/category/c2.jpg')}}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
+
+    <!-- ================ Subscribe section start ================= -->
+    <section style="position: relative; bottom: 75px;">
+      <div class="container">
+        <div class="subscribe text-center">
+          <h3 class="subscribe__title">Stay in the loop for great discounts</h3>
+          <p>Bearing Void gathering light light his eavening unto dont afraid</p>
+          <div id="mc_embed_signup">
+            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
+              <div class="form-group ml-sm-auto">
+                <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" >
+                <div class="info"></div>
+              </div>
+              <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
+              <div style="position: absolute; left: -5000px;">
+                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- ================ Subscribe section end ================= -->
+  </main>
+{% endblock %}

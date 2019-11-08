@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kasper Apparel</title>
+	<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/png">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/bootstrap/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/fontawesome/css/all.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/themify-icons/themify-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/nice-select/nice-select.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/owl-carousel/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.min.css') }}">
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <style>
+        html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  height: auto;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  display: inline;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: url('static/img/PicketRange.jpg');
+
+  /* Set a specific height */
+  height: 100%;
+  width: 100vw;
+  right: 20%;
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+    </style>
+	<style>
+.loader {
+  display: none;
+  border: 6px solid #d3d3d3;
+  border-radius: 50%;
+  border-top: 6px solid #20B22B;
+  top: 20px;
+  left: 92%;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  z-index: 1;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  font-size: 50px;
+  height: 15px;
+}
+
+.input-class{
+	margin-top: 50px;
+}
+
+.star-label {
+	margin-top: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  margin-bottom: 0px;
+}
+
+.rating label .fa-star {
+  float: left;
+  color: transparent;
+  margin-bottom: 0px;
+}
+
+.fa-star{
+	font-size: 20px;
+	width: 30px;
+	height: 15px;
+	margin-bottom: 0px;
+	color: #d3d3d3;
+}
+
+.summary-star {
+	color: #d3d3d3;
+    width: 15px;
+    height: 5px;
+    line-height: .5;
+    font-size: 10px;
+    margin-top: 16px;
+}
+
+.rating label:last-child .fa-star {
+  color: #d3d3d3;
+}
+
+.rating:not(:hover) label input:checked ~ .fa-star,
+.rating:hover label:hover input ~ .fa-star {
+  color: #fbd600;
+}
+
+.rating label input:focus:not(:checked) ~ .fa-star:last-child {
+  color: #d3d3d3;
+  text-shadow: 0 0 5px #09f;
+}
+
+.middle {
+    float: right;
+    width: 60%;
+    margin-left: 20px;
+    margin: 10px;
+    margin-top: 5px;
+}
+
+/* The bar container */
+.bar-container {
+  width: 90%;
+  background-color: #f1f1f1;
+  float: right;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 15px; background-color: #20B22B;}
+.bar-4 {width: 30%; height: 15px; background-color: #20B22B;}
+.bar-3 {width: 10%; height: 15px; background-color: #20B22B;}
+.bar-2 {width: 4%; height: 15px; background-color: #20B22B;}
+.bar-1 {width: 15%; height: 15px; background-color: #20B22B;}
+.bar-0 {width: 15%; height: 15px; background-color: #20B22B;}
+
+/*Mobile*/
+@media all and (min-width:200px) and (max-width: 900px) {
+  /* put your css styles in here */
+.hero-banner__content h1 {
+    font-size: 14px;
+}
+
+.hero-banner{
+	position: relative;
+	right: 20%;
+}
+.hero-banner__content {
+    position: relative;
+    right: 20%;
+    width: 70%;
+}
+
+p{
+font-size: 10px;
+}
+
+#blog-hero-image{
+    position: relative;
+    width: 110%;
+    height: 150%;
+    bottom: 90px;
+    right: 5% !important;
+}
+
+.menu_nav{
+	right: 0px !important;
+}
+
+#shopping-cart-list-item{
+	position: relative;
+	top: 23px;
+    left: 20%;
+}
+
+.hero-image{
+	bottom: 18px !important;
+	height: 105% !important;
+}
+
+.hero-text{
+	top: 35% !important;
+}
+}
+</style>
+</head>
+<body style="padding-top: 90px;">
+  <!--================ Start Header Menu Area =================-->
+	<header class="header_area fixed" style="position: fixed;">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="/"><img src="{{url_for('static', filename='img/logo.png')}}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto">
+              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a href="/ourstory" class="nav-link">Our Story</a></li>
+              <li class="nav-item"><a class="nav-link" href="/contact-us">Contact Us</a></li>
+            </ul>
+            <ul class="nav-shop">
+              <a class="nav-item" href="/mycart">
+                <li class="nav-item" id="shopping-cart-list-item"><button><i style="font-size: 25px;" class="ti-shopping-cart"></i><span style="background-color: #20B22B;" id="cart-count" class="nav-shop__circle">0</span></button> </li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+	<div id="account-loading-wheel" class="loader"></div>
+		<div class="nav-item" id="loading-explanation" style="display: none; margin-top: -20px; margin-bottom: -20px; position: fixed; left: 85%; top: 40px;">Your Account<br>Is Loading...</div>
+  </header>
+	<!--================ End Header Menu Area =================-->
+
+  {% block content %}{% endblock %}
+
+  <!--================ Start footer Area  =================-->
+	<footer class="footer" id="footer-section">
+		<div class="footer-area">
+			<div class="container">
+				<div class="row section_gap">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title large_title">Our Mission</h4>
+							<p>
+								So seed seed green that winged cattle in. Gathering thing made fly you're no
+								divided deep moved us lan Gathering thing us land years living.
+							</p>
+							<p>
+								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
+							</p>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Quick Links</h4>
+							<ul class="list">
+								<li><a href="#">Home</a></li>
+								<li><a href="#">Shop</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Product</a></li>
+								<li><a href="#">Brand</a></li>
+								<li><a href="#">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-6 col-sm-6">
+						<div class="single-footer-widget instafeed">
+							<h4 class="footer_title">Gallery</h4>
+							<ul class="list instafeed d-flex flex-wrap">
+								<li><img src="{{url_for('static', filename='img/gallery/r1.jpg')}}" alt=""></li>
+								<li><img src="{{url_for('static', filename='img/gallery/r2.jpg')}}" alt=""></li>
+								<li><img src="{{url_for('static', filename='img/gallery/r3.jpg')}}" alt=""></li>
+								<li><img src="{{url_for('static', filename='img/gallery/r5.jpg')}}" alt=""></li>
+								<li><img src="{{url_for('static', filename='img/gallery/r7.jpg')}}" alt=""></li>
+								<li><img src="{{url_for('static', filename='img/gallery/r8.jpg')}}" alt=""></li>
+							</ul>
+						</div>
+					</div>
+					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+						<div class="single-footer-widget tp_widgets">
+							<h4 class="footer_title">Contact Us</h4>
+							<div class="ml-40">
+								<p class="sm-head">
+									<span class="fa fa-location-arrow"></span>
+									Head Office
+								</p>
+								<p>123, Main Street, Your City</p>
+
+								<p class="sm-head">
+									<span class="fa fa-phone"></span>
+									Phone Number
+								</p>
+								<p>
+									+123 456 7890 <br>
+									+123 456 7890
+								</p>
+
+								<p class="sm-head">
+									<span class="fa fa-envelope"></span>
+									Email
+								</p>
+								<p>
+									free@infoexample.com <br>
+									www.infoexample.com
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+  <script src="{{url_for('static', filename='vendors/jquery/jquery-3.2.1.min.js') }}"></script>
+  <script src="{{url_for('static', filename='vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendors/skrollr.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendors/owl-carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendors/nice-select/jquery.nice-select.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendors/jquery.ajaxchimp.min.js')}}"></script>
+  <script src="{{url_for('static', filename='vendors/mail-script.js')}}"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AanvXDeF8jP8IfZqs3TAe1JxdnMHGjUZyoquzVgveUvMPr7L8SA6UJbFhzjJ0l43SngVcJm97SbjV5hu"></script>
+  <!-- <script src="https://www.paypal.com/sdk/js?client-id=AVkb_CtJu8TWXbo9LPrBp5sU6YJGMxQaYyR1GmPds4dTE9f_Zl0ivyFXA3Mi_4aY_33UYqZ25EjXaQMp"></script> -->
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+        <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Dugxzzdxz6BRL5_5xKV8GTf-sla1TDo">
+    </script>
+  <script>
+ if(String(window.location).includes("cart")){
+      var totalValue = "";
+      var counter = 0;
+  paypal.Buttons({
+     onClick: function(data, actions){
+     console.log(document.getElementById('f-option4').checked);
+     if(document.getElementById('f-option4').checked === false){
+     	//send error message
+     	counter++;
+     	console.log(counter);
+     	if(counter == 1){
+     		document.getElementById("terms-and-conditions").style.color = "red";
+     	} else if(counter > 1){
+     		document.getElementById("terms-warning").style.color = "red";
+     		document.getElementById("terms-warning").style.display = "inline";
+     		document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
+     	}
+     	console.log("thinks we should cancel this click");
+		return actions.reject();
+     }
+	  console.log("thinks we clicked the paypal buttons");
+	  totalValue = document.getElementById("total").innerHTML;
+      totalValue = totalValue.slice(1);
+      //need to check for one in case they selected plant a tree with nothing in their cart
+      if(totalValue <= 1){
+        return actions.reject();
+     }
+  	},
+    createOrder: function(data, actions) {
+      // Set up the transaction
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: totalValue
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // Capture the funds from the transaction
+      return actions.order.capture().then(function(details) {
+      	console.log(details);
+      	console.log(details.payer);
+        alert('Transaction completed by ' + details.payer.name.given_name);
+         $('<input />').attr('type', 'hidden')
+         .attr('name', "Email")
+         .attr('value', details.payer.email_address)
+         .appendTo('#cart-contents-form');
+         $('<input />').attr('type', 'hidden')
+         .attr('name', "PayPalTransactionID")
+         .attr('value', details.id)
+         .appendTo('#cart-contents-form');
+        //clear cart and return to myaccount
+        clearCart();
+        $("#cart-contents-form").submit();
+        //use view payment success or something
+        //window.location.replace("http://127.0.0.1:5000/payment-success");
+      });
+    },
+    onError: function(err){
+		//we want to make sure that we are letting the user know they need a total over $0
+		var message = String(err["message"]);
+		message = message.slice(25);
+		var error = JSON.parse(message);
+		var details = error["details"];
+		var issue = details[0].issue;
+		if(issue === "CANNOT_BE_ZERO_OR_NEGATIVE"){
+			document.getElementById("terms-warning").style.color = "red";
+     		document.getElementById("terms-warning").style.display = "inline";
+     		document.getElementById("terms-warning").innerHTML = "Your total must be greater than zero.";
+		}
+    }
+  }).render('body');
+   var buttons = paypal.Buttons();
+   var paypalmain = paypal;
+
+	function clearCart(){
+		console.log("called clear cart function");
+		var cart = sessionStorage.getItem("Cart");
+		cart = "";
+		sessionStorage.setItem("Cart", cart);
+		location.reload();
+	}
+
+  $('document').ready(function(){
+    var paypal = document.getElementsByClassName("paypal-buttons-context-iframe");
+      if(paypal === null){
+         console.log("couldn't find button");
+      }
+      paypal[0].style.position = "relative";
+      paypal[0].style.top = "-20px";
+      //var paypalCopy = $(paypal).clone();
+      $("#payment-header-div").append($(paypal));
+  	//paypalmain.Buttons().render('.paypal-buttons-context-iframe');
+  });
+  }
+</script>
+<script>
+	//because of flask we have to put this here
+	//determine how to "sign in"
+    //let pages know we are signed in and check header accordingly
+    currentUserName = '{{value}}';
+    if(currentUserName !== null && currentUserName !== ""){
+    	console.log("got this far");
+      //replace 'my account' in header with new element
+      document.getElementById("account-item").setAttribute("class", "nav-item");
+      document.getElementById("accountlink").setAttribute("href", "/myaccount");
+      document.getElementById("accountlink").innerHTML = currentUserName + "'s Account";
+      document.getElementById("accountlink").setAttribute("class", "nav-link");
+      document.getElementById("accountlink").removeAttribute("data-toggle");
+      document.getElementById("accountlink").removeAttribute("role");
+      document.getElementById("accountlink").removeAttribute("aria-haspopup");
+      document.getElementById("accountlink").removeAttribute("aria-expanded");
+      //turn off dropdown
+      document.getElementById("accountdropdown").style.display = "none";
+      console.log("success!");
+    }
+</script>
+<style>
+	.slider-color{
+		-webkit-appearance: none;
+    	width: 50%;
+    	height: 15px;
+    	border-radius: 5px;
+    	background: #d3d3d3;
+    	outline: none;
+    	opacity: 1;
+    	transition: opacity .15s ease-in-out;
+    	margin: 20px;
+    	margin-bottom: 20px;
+	}
+
+	.slider-color::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #20B22B;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+.slider-color::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #20B22B;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#points-to-be-redeemed{
+	margin-bottom: 20px;
+}
+
+#apply-points-button{
+	margin-bottom: 20px;
+}
+
+
+
+video {
+  display: block;
+  /* Make video to at least 100% wide and tall */
+  min-width: 100%;
+  min-height: 100%;
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+}
+/* disable video (e.g. in a media query) by setting .video-container to display: none; as appropriate */
+.video-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.header-content {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+#main-title {
+  margin-top: 5rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#f-option4{
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+#tree-input{
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+.owl-slide-container{
+	overflow: hidden;
+	height: 460px;
+}
+
+.owl-slide-container img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.owl-slide-container:hover img {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.owl-slide-container h3 {
+	-webkit-transition:  visibility 0s, opacity 0.5s linear;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.3s linear;
+}
+.owl-slide-container:hover h3 {
+	visibility: visible;
+	opacity: 1;
+}
+
+body, html {
+    height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../static/img/bainbridgeisland.jpg');
+
+  /* Set a specific height */
+  height: 100%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  color: white;
+}
+
+.owl-carousel.owl-drag .owl-item {
+	-ms-touch-action: pan-y !important;
+	touch-action: pan-y !important;
+}
+</style>
+</body>
+
+</html>
