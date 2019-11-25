@@ -341,6 +341,7 @@ $(function() {
 				document.getElementById("cart-count").innerHTML = 0;
 			}
             if(mobileCheck()){
+                console.log("javascript thinks we are on mobile");
                 //all mobile initializations here
                 //change sweatshirt dom order
                 var sweatshirtImage = $("#sweatshirt-images");
@@ -919,7 +920,7 @@ function browse(){
 }
 
 function browseSweatshirts(){
-    var scrollDistance = 1500;
+    var scrollDistance = 1350;
     if(mobileCheck()){
         console.log("thinks its mobile");
         scrollDistance = 1550;

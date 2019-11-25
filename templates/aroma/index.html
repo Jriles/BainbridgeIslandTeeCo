@@ -6,7 +6,7 @@
     <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
       <div class="hero-image">
         <div class="hero-text">
-            <h1 style="color: white;">Kasper BI Apparel</h1>
+            <h1 style="color:white;">Kasper BI Apparel</h1>
             <p>And sweatshirts</p>
             <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px;">Browse T-Shirts</button>
             <button class="button" onclick="browseSweatshirts()" id="landing-button-2" style="margin: 10px;">Browse Sweatshirts</button>
@@ -26,39 +26,32 @@
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<div style="float: left;">
-							<h3 id="product-name">Soft BI T-Shirt</h3>
-							<h2 id="product-price">$15.00</h2>
-							<span>Availability: In Stock</span>
-						</div>
-						<div style="float: right; text-align: right;">
-							<div class="product_count">
-								<label for="t-shirt-quantity-count">Quantity:</label>
-								<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+						<div class="info-and-options">
+							<div class="product-info">
+								<h3 id="product-name">Soft BI T-Shirt</h3>
+								<h2 id="product-price">$15.00</h2>
+								<h6 class="availability">In Stock</h6>
 							</div>
-							<div>
-								<select id="t-shirt-size">
+							<ul class="product-options-area">
+								<li class="options-menu-item"><select id="t-shirt-size">
 									<option>Small</option>
 									<option>Medium</option>
 									<option>Large</option>
-								</select>
-							</div>
-							<div class="card_area d-flex align-items-right">
-								<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-								<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-							</div>
-							<div>
-								<button class="button button-coupon" id="t-shirt-add-to-cart-button">Add to Cart</button>
-							</div>
+								</select></li>
+								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
+									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+								</div></li>
+								<li class="options-menu-item"><div class="product_count">
+									<label for="t-shirt-quantity-count">Quantity:</label>
+									<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+								</div></li>
+							</ul>
 						</div>
-						<br>
-						<br>
-						<br>
-						<div style="margin: 20px;">
-							<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-								something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-								during the winter.</p>
-						</div>
+						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
+							during the winter.</p>
+						<button class="button button-coupon" id="t-shirt-add-to-cart-button">Add to Cart</button>
 					</div>
 				</div>
 			</div>
@@ -67,33 +60,37 @@
 	<!--================End Single Product Area =================-->
 
     <!--================ Hero banner start =================-->
-    <div class="product_image_area" style="margin-bottom: 170px; margin-top: 50px;">
+    <div class="product_image_area" style="margin-top: 75px;">
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3 id="product-name2">Comfy BI Sweatshirt</h3>
-						<h2 id="product-price2">$40.00</h2>
-						<span>Availability: In Stock</span>
-						<p style="margin-bottom: 25px;">Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+						<div class="info-and-options">
+							<div class="product-info">
+								<h3 id="product-name2">Comfy BI Sweatshirt</h3>
+								<h2 id="product-price2">$40.00</h2>
+								<h6 class="availability">In Stock</h6>
+							</div>
+							<ul class="product-options-area">
+								<li class="options-menu-item"><select id="sweatshirt-size">
+									<option>Small</option>
+									<option>Medium</option>
+									<option>Large</option>
+								</select></li>
+								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
+									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+								</div></li>
+								<li class="options-menu-item"><div class="product_count">
+									<label for="sweatshirt-quantity-count">Quantity:</label>
+									<input type="number" name="qty" min="1" id="sweatshirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+								</div></li>
+							</ul>
+						</div>
+						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
 							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
 							during the winter.</p>
-						<div class="product_count">
-              <label for="sweatshirt-quantity-count">Quantity:</label>
-							<input type="number" name="qty" min="1" id="sweatshirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-						</div>
-						<button class="button button-coupon" id="sweatshirt-add-to-cart-button" style="margin-left: 20px;">Add to Cart</button>
-						<div style="float: left; position: relative; margin-right: 20px;">
-							<select id="sweatshirt-size">
-    							<option>Small</option>
-    							<option>Medium</option>
-								<option>Large</option>
-							</select>
-						</div>
-						<div class="card_area d-flex align-items-center" style="margin-top: 0px;">
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
+						<button class="button button-coupon" id="sweatshirt-add-to-cart-button">Add to Cart</button>
 					</div>
 				</div>
                 <div class="col-lg-6" id="sweatshirt-images">
@@ -109,7 +106,7 @@
 	<!--================End Single Product Area =================-->
 
     <!-- ================ Subscribe section start ================= -->
-    <section style="position: relative; bottom: 75px;">
+    <section style="position: relative; margin-top: 150px;">
       <div class="container">
         <div class="subscribe text-center">
           <h3 class="subscribe__title">Stay in the loop for great discounts</h3>

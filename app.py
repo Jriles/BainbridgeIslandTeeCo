@@ -57,7 +57,7 @@ with open("cityLocations.txt", "r", encoding="utf-8") as f:
 #email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
-print(smtpObj.login(sender, "843134Jr!"))
+print(smtpObj.login(sender, "mlstJ1998!"))
 print("logged in")
 
 
