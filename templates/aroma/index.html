@@ -6,10 +6,8 @@
     <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
       <div class="hero-image">
         <div class="hero-text">
-            <h1 style="color:white;">Kasper BI Apparel</h1>
-            <p>And sweatshirts</p>
-            <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px;">Browse T-Shirts</button>
-            <button class="button" onclick="browseSweatshirts()" id="landing-button-2" style="margin: 10px;">Browse Sweatshirts</button>
+            <h3 style="color:white;" id="call-to-action">We provide the highest quality Bainbridge themed apparel on the Island, let us know what you think!</h3>
+            <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px;">Browse Our Selection</button>
         </div>
       </div>
     </section>
@@ -51,7 +49,10 @@
 						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
 							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
 							during the winter.</p>
-						<button class="button button-coupon" id="t-shirt-add-to-cart-button">Add to Cart</button>
+						<div class="product-cart-buttons">
+							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
+							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -62,8 +63,15 @@
     <!--================ Hero banner start =================-->
     <div class="product_image_area" style="margin-top: 75px;">
 		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-5 offset-lg-1">
+			<div class="row s_product_inner sweatshirt-product">
+				<div class="col-lg-6" id="sweatshirt-images">
+					<div class="owl-carousel owl-theme s_Product_carousel">
+						<div class="single-prd-item">
+							<img id="sweatshirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/category/c2.jpg')}}" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1 sweatshirt-information">
 					<div class="s_product_text">
 						<div class="info-and-options">
 							<div class="product-info">
@@ -90,13 +98,58 @@
 						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
 							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
 							during the winter.</p>
-						<button class="button button-coupon" id="sweatshirt-add-to-cart-button">Add to Cart</button>
+						<div class="product-cart-buttons">
+							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
+							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
+						</div>
 					</div>
 				</div>
-                <div class="col-lg-6" id="sweatshirt-images">
+			</div>
+		</div>
+	</div>
+	<!--================End Single Product Area =================-->
+
+		<!--================ Hero banner start =================-->
+    <div class="product_image_area" style="margin-top: 75px;">
+		<div class="container">
+			<div class="row s_product_inner">
+				<div class="col-lg-6">
 					<div class="owl-carousel owl-theme s_Product_carousel">
 						<div class="single-prd-item">
-							<img id="sweatshirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/category/c2.jpg')}}" alt="">
+							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1">
+					<div class="s_product_text">
+						<div class="info-and-options">
+							<div class="product-info">
+								<h3 id="product-name">Durable Canvas Bag</h3>
+								<h2 id="product-price">$76.00</h2>
+								<h6 class="availability">In Stock</h6>
+							</div>
+							<ul class="product-options-area">
+								<li class="options-menu-item"><select id="t-shirt-size">
+									<option>Small</option>
+									<option>Medium</option>
+									<option>Large</option>
+								</select></li>
+								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
+									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+								</div></li>
+								<li class="options-menu-item"><div class="product_count">
+									<label for="t-shirt-quantity-count">Quantity:</label>
+									<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+								</div></li>
+							</ul>
+						</div>
+						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
+							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
+							during the winter.</p>
+						<div class="product-cart-buttons">
+							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
+							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
 						</div>
 					</div>
 				</div>

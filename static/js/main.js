@@ -121,14 +121,14 @@ $(function() {
     $('#tree-input').prop('checked', false);
   }
   //------- fixed navbar --------//  
-  //$(window).scroll(function(){
-    //console.log("thinks were scrolling");
-    //var sticky = $('.header_area'),
-    //scroll = $(window).scrollTop();
+/*  $(window).scroll(function(){
+    console.log("thinks were scrolling");
+    var sticky = $('.header_area'),
+    scroll = $(window).scrollTop();
 
-    //if (scroll >= 100) sticky.addClass('fixed');
-    //else sticky.removeClass('fixed');
-  //});
+    if (scroll >= 100) sticky.addClass('fixed');
+    else sticky.removeClass('fixed');
+  });*/
 
 
   //------- Price Range slider -------//
@@ -243,7 +243,7 @@ $(function() {
 		});
 
 		//add sweatshirt to cart
-		$("#sweatshirt-add-to-cart-button").on('click', function(){
+/*		$("#sweatshirt-add-to-cart-button").on('click', function(){
 			console.log("called add to cart method");
 			console.log(document.getElementById("product-price").innerHTML);
 			var quantity = parseInt(document.getElementById("sweatshirt-quantity-count").value)
@@ -285,51 +285,12 @@ $(function() {
 			console.log(currentCartJSON);
 			//want to update website with new cart infomation
 			document.getElementById("cart-count").innerHTML = currentCartJSON.length;
-		});
+		});*/
 
 		//add t-shirt to cart
-        $("#t-shirt-add-to-cart-button").on('click', function(){
+        $(".add-to-cat-button").on('click', function(){
 			console.log("called add to cart method");
-			console.log(document.getElementById("product-price").innerHTML);
-			var quantity = parseInt(document.getElementById("t-shirt-quantity-count").value);
-			var sizeElement = document.getElementById("t-shirt-size");
-			var size = sizeElement.options[sizeElement.selectedIndex].text;
-			var newProduct = {"ProductName": "T-Shirt","Size": size,"Price": "$15", "Quantity": String(quantity), "IMGSRC": String(document.getElementById("t-shirt-product-image").src)};
-			var cart = sessionStorage.getItem("Cart");
-			console.log(cart);
-			//if cart is empty we make it an array of json objects, with just one product
 
-			if(cart === ""){
-				console.log("thinks cart is empty");
-				var newCartJson = [newProduct];
-				cart = JSON.stringify(newCartJson);
-				sessionStorage.setItem("Cart", cart);
-			}else{
-				console.log("adding to cart");
-				var refreshCart = JSON.parse(cart);
-				//figure out quantity
-				var foundProductInCart = false;
-				for(i = 0; i < refreshCart.length; i++){
-					if(refreshCart[i].ProductName === newProduct.ProductName && refreshCart[i].Size === newProduct.Size){
-						refreshCart[i].Quantity = parseInt(refreshCart[i].Quantity) + parseInt(document.getElementById("t-shirt-quantity-count").value);
-						foundProductInCart = true;
-					}
-				}
-				if(foundProductInCart == false){
-					refreshCart.push(newProduct);
-				}
-				cart = JSON.stringify(refreshCart);
-				sessionStorage.setItem("Cart", cart);
-			}
-
-			var newCart = sessionStorage.getItem("Cart");
-			console.log(newCart);
-			var type = typeof cart;
-			console.log("new cart obj type: " + type);
-			var currentCartJSON = JSON.parse(newCart);
-			console.log(currentCartJSON);
-			//want to update website with new cart infomation
-			document.getElementById("cart-count").innerHTML = currentCartJSON.length;
 		});
 		//make sure cart value is set once the page loads
 		$('document').ready(function(){
@@ -558,8 +519,10 @@ $(function() {
 		$(".close").click(function removeItem(){
 			console.log("called remove item method");
 			//need this product's name
-			var parent = $( this ).parent().parent();
+			var parent = $( this ).parent().parent().parent();
+			console.log(parent);
 			var nameElement = $( parent ).find('#product-name')
+			console.log(nameElement);
 			var name = $( nameElement ).text();
 			console.log(name);
 			var cart = sessionStorage.getItem("Cart");
@@ -629,7 +592,36 @@ $(function() {
 		}
 	}
 
+	$( window ).scroll(function(){
+        console.log("thinks we are scrolling");
+        if( $('body,html').is(':animated') ){
+            return;
+        }
+        var menu = document.getElementById("navbar-nav");
+        var scrollPos = $(document).scrollTop();
+        console.log(scrollPos);
+        if(scrollPos < 710 && scrollPos > 0){
+            blankNavBar();
+            menu.children[0].children[0].className += " active";
+        }else if(scrollPos > 710 && scrollPos < 1350){
+            blankNavBar();
+            menu.children[1].children[0].className += " active";
+        }else if(scrollPos > 1975 && scrollPos < 2100){
+            blankNavBar();
+            menu.children[2].children[0].className += " active";
+        }
+    });
 });
+
+function blankNavBar(){
+    var menu = document.getElementById("navbar-nav");
+    for(i = 0; i < menu.children.length;i++){
+        menu.children[i].children[0].className = "nav-link";
+    }
+}
+
+
+
 
 function setPoints(element){
 	console.log("called set points");
@@ -638,6 +630,53 @@ function setPoints(element){
     //also want to set total preview:
     var newTotal = Number(String(document.getElementById("subtotal-value").innerHTML).slice(1)) - (Number(element.value) * .50);
     document.getElementById("total-after-points").innerHTML = "Your Total After Points: " + "$" + newTotal.toFixed(2);
+}
+
+function addToCart(button){
+    var thisProductInfo = button.parentElement.parentElement;
+    var productOptions = thisProductInfo.children[0].children[1];
+    var productInfo = thisProductInfo.children[0].children[0];
+    var quantity = parseInt(productOptions.children[2].children[0].children[1].value);
+    var size = productOptions.children[0].children[1].children[0].innerHTML;
+    var productName = String(productInfo.children[0].innerHTML);
+    var productPrice = String(productInfo.children[1].innerHTML);
+    var thisProductImage = thisProductInfo.parentElement.parentElement.children[0].children[0].children[0].children[0].children[2].children[0].children[0].src;
+    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage)};
+    var cart = sessionStorage.getItem("Cart");
+    console.log(cart);
+    //if cart is empty we make it an array of json objects, with just one product
+    button.parentElement.children[1].style.display = "inline";
+    if(cart === ""){
+        console.log("thinks cart is empty");
+        var newCartJson = [newProduct];
+        cart = JSON.stringify(newCartJson);
+        sessionStorage.setItem("Cart", cart);
+    }else{
+        console.log("adding to cart");
+        var refreshCart = JSON.parse(cart);
+        //figure out quantity
+        var foundProductInCart = false;
+        for(i = 0; i < refreshCart.length; i++){
+            if(refreshCart[i].ProductName === newProduct.ProductName && refreshCart[i].Size === newProduct.Size){
+                refreshCart[i].Quantity = parseInt(refreshCart[i].Quantity) + parseInt(document.getElementById("t-shirt-quantity-count").value);
+                foundProductInCart = true;
+            }
+        }
+        if(foundProductInCart == false){
+            refreshCart.push(newProduct);
+        }
+        cart = JSON.stringify(refreshCart);
+        sessionStorage.setItem("Cart", cart);
+    }
+
+    var newCart = sessionStorage.getItem("Cart");
+    console.log(newCart);
+    var type = typeof cart;
+    console.log("new cart obj type: " + type);
+    var currentCartJSON = JSON.parse(newCart);
+    console.log(currentCartJSON);
+    //want to update website with new cart infomation
+    document.getElementById("cart-count").innerHTML = currentCartJSON.length;
 }
 
 
@@ -731,6 +770,11 @@ function applyDiscount(array, amountArray){
         }
     }
 }
+
+$(document).ready(function() {
+    console.log("opened page!");
+
+});
 
 var locations2D = [];
 var orders = [];
@@ -917,6 +961,38 @@ function browse(){
     }, 1000, function() {
         // Animation complete.
     });
+}
+
+function scrollDown(product){
+    var scrollAmount = 0;
+    switch(product) {
+      case "t-shirt":
+        // code block
+        scrollAmount = 710;
+        if(mobileCheck()){
+            scrollAmount = 750;
+        }
+        break;
+      case "sweatshirt":
+        scrollAmount = 1350;
+        if(mobileCheck()){
+            scrollAmount = 1550;
+        }
+        break;
+      case "bag":
+        scrollAmount = 1975;
+        if(mobileCheck()){
+            scrollAmount = 2100;
+        }
+        break;
+    }
+    if(product !== ''){
+        $('body,html').animate({
+            scrollTop: scrollAmount
+        }, 1000, function() {
+            // Animation complete.
+        });
+    }
 }
 
 function browseSweatshirts(){

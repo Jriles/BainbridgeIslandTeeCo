@@ -1,20 +1,20 @@
 from flask import Flask
 from flask import render_template, session
 from flask import url_for
-from flask_pymongo import PyMongo
+#from flask_pymongo import PyMongo
 from pymongo import*
 from pymongo.errors import ConnectionFailure
 from pymongo import MongoClient
 from flask import request
 from flask import Flask,redirect, flash
-from usps import USPSApi
+#from usps import USPSApi
 from flask_user import login_required, UserManager, UserMixin
-from geopy.geocoders import Nominatim
+#from geopy.geocoders import Nominatim
 import hashlib
 import json
-import socketio
-import redis
-from flask_socketio import SocketIO
+#import socketio
+#import redis
+#from flask_socketio import SocketIO
 import socket
 import io
 import re
@@ -25,7 +25,7 @@ from smtpd import SMTPServer
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from ups import UPSConnection
+#from ups import UPSConnection
 import datetime
 from random import randint
 import os
@@ -41,7 +41,7 @@ products = db["products"]
 firstproduct = products.find_one()["Name"], products.find_one()["Price"], products.find_one()["Category"], products.find_one()["imgurl"]
 discounts = db["discounts"]
 homeurl = "http://www.klikattatfootwear.com/"
-geolocator = Nominatim(user_agent="my-application")
+#geolocator = Nominatim(user_agent="my-application")
 
 app.config['SESSION_TYPE'] = 'redis'
 #app.secret_key = 'mysecret'
@@ -66,8 +66,8 @@ def random_with_N_digits(n):
     range_end = (10**n)-1
     return randint(range_start, range_end)
 #print(cityLocationsList)
-import algorithms
-from algorithms.search import linear_search
+#import algorithms
+#from algorithms.search import linear_search
 #takes in city name and returns coordinates
 
 def cityLocationSearch(cityName):
@@ -90,7 +90,7 @@ def cityLocationSearch(cityName):
     if(citiesOfName.__len__() > 1):
         for city in citiesOfName:
             numbers = re.findall(r"[+-]?\d+(?:\.\d+)?", str(city))
-            if (biggest is ""):
+            if biggest == "":
                 biggest = city
             else:
                 curBiggestNumbers = re.findall(r"[+-]?\d+(?:\.\d+)?", str(biggest))
@@ -112,7 +112,7 @@ def checksessionforuser():
         return session["username"]
 
 def checksessionforpoints():
-    if ("username" in session) is True and session["username"] is not "":
+    if ("username" in session) is True and session["username"] != "":
         points = users.find_one({"Username": session["username"]})
         points = points["Points"]
         return float(points)
@@ -298,6 +298,10 @@ def home():
     #socketio.emit("message", "data")
     return render_template('/aroma/index.html', value=checksessionforuser(), firstproduct=firstproduct)
 
+@app.route("/<product>")
+def product_view(product):
+    return render_template('/aroma/index.html', value=checksessionforuser(), firstproduct=firstproduct, scroll_product=product)
+
 @app.route("/login-failure")
 def loginfailure():
     return render_template("/aroma/login.html", value=checksessionforuser())
@@ -350,92 +354,92 @@ def sampleproduct():
 def todayspromotion():
     return render_template('aroma/todayspromotion.html', value=checksessionforuser())
 
-@app.route("/myaccount")
-def myaccount():
-    #get orders associated with this account
-    #only want ones with state "shipping"
-    #socketio.emit('message', {"data": "Passed data using socket"}, broadcast=True)
-    #currentLocations is a 2D array of orders and their associated travel history locations in longitude and latitude
-    username = checksessionforuser()
-    shippingOrders = users.find_one({"Username": username})
-    print(shippingOrders)
-    shippingOrders = shippingOrders["Orders"]
-    currentLocations = [None] * len(shippingOrders)
-    currentEvents = []
-    usps = USPSApi('000KLIKA1245')
-    ups = UPSConnection('AD6BC655AC6D6AB1',
-                        'jriley9000',
-                        '843134Jr!',
-                        debug=True)
-    count = 0
-    for document in shippingOrders:
-        print(document["State"])
-        if(str(document["State"]) == "Yet to ship"):
-            print("appended this event")
-            currentEvents.append("Shipping ASAP")
-            currentLocations[count] = ["47.258728, -122.465973"]
-        else:
-            print("this TrackingID: " + document["TrackingID"])
-            newLocations = []
-            if len(document["TrackingID"]) == 18:
-                print("thinks this is a ups tracking number")
-                thisTrackingID = document["TrackingID"]
-                print(thisTrackingID)
-                tracking = ups.tracking_info(thisTrackingID)
-                activitiesList = tracking.shipment_activities
-                currentEvent = activitiesList[0].get('Status').get('StatusType').get('Description')
-                for activity in activitiesList:
-                    location = activity["ActivityLocation"]
-                    address = location["Address"]
-                    city = address.get('City')
-                    if city is not None:
-                        cityStringArray = city.split()
-                        if cityStringArray.__len__() > 1:
-                            cityStringArray[0] = cityStringArray[0].lower()
-                            cityStringArray[0] = cityStringArray[0].capitalize()
-                            cityStringArray[1] = cityStringArray[1].lower()
-                            cityStringArray[1] = cityStringArray[1].capitalize()
-                            city = cityStringArray[0] + " " + cityStringArray[1]
-                        elif cityStringArray.__len__() == 1:
-                            city = cityStringArray[0]
-                            city = city.lower()
-                            city = city.capitalize()
-                        print("city name after processing: " + city)
-                        location = cityLocationSearch(city)
-                        location = re.findall(r"[+-]?\d+(?:\.\d+)?", str(location))
-                        longitude = location[0]
-                        latitude = location[1]
-                        newLocations.append(str(longitude) + ", " + str(latitude))
-                print(currentEvent)
-                currentEvents.append(str(currentEvent))
-                currentLocations[count] = newLocations
-                continue
-            else:
-                track = usps.track(document["TrackingID"])
-                eventChain = track.result.get("TrackResponse").get("TrackInfo").get("TrackDetail")
-                for event in eventChain:
-                    eventStringArray = str(event["EventCity"]).split()
-                    #check and make sure there is something for the first element, sometimes there isn't
-                    if(eventStringArray[0] != 'None'):
-                        if(eventStringArray.__len__() > 1):
-                            thisCity = eventStringArray[0] + " " + eventStringArray[1]
-                        elif(eventStringArray.__len__() == 1):
-                            thisCity = eventStringArray[0]
+#@app.route("/myaccount")
+#def myaccount():
+#    #get orders associated with this account
+#    #only want ones with state "shipping"
+#    #socketio.emit('message', {"data": "Passed data using socket"}, broadcast=True)
+#    #currentLocations is a 2D array of orders and their associated travel history locations in longitude and latitude
+#    username = checksessionforuser()
+#    shippingOrders = users.find_one({"Username": username})
+#    print(shippingOrders)
+#    shippingOrders = shippingOrders["Orders"]
+#    currentLocations = [None] * len(shippingOrders)
+#    currentEvents = []
+#    usps = USPSApi('000KLIKA1245')
+#    ups = UPSConnection('AD6BC655AC6D6AB1',
+#                        'jriley9000',
+#                        '843134Jr!',
+#                        debug=True)
+##    count = 0
+#    for document in shippingOrders:
+#        print(document["State"])
+#        if(str(document["State"]) == "Yet to ship"):
+#            print("appended this event")
+#            currentEvents.append("Shipping ASAP")
+#            currentLocations[count] = ["47.258728, -122.465973"]
+#        else:
+#            print("this TrackingID: " + document["TrackingID"])
+#            newLocations = []
+#            if len(document["TrackingID"]) == 18:
+#                print("thinks this is a ups tracking number")
+#                thisTrackingID = document["TrackingID"]
+#                print(thisTrackingID)
+#                tracking = ups.tracking_info(thisTrackingID)
+#                activitiesList = tracking.shipment_activities
+#                currentEvent = activitiesList[0].get('Status').get('StatusType').get('Description')
+#                for activity in activitiesList:
+#                    location = activity["ActivityLocation"]
+#                    address = location["Address"]
+#                    city = address.get('City')
+#                    if city is not None:
+#                        cityStringArray = city.split()
+#                        if cityStringArray.__len__() > 1:
+#                            cityStringArray[0] = cityStringArray[0].lower()
+#                            cityStringArray[0] = cityStringArray[0].capitalize()
+#                            cityStringArray[1] = cityStringArray[1].lower()
+#                            cityStringArray[1] = cityStringArray[1].capitalize()
+#                            city = cityStringArray[0] + " " + cityStringArray[1]
+#                        elif cityStringArray.__len__() == 1:
+#                            city = cityStringArray[0]
+#                            city = city.lower()
+#                            city = city.capitalize()
+#                        print("city name after processing: " + city)
+#                        location = cityLocationSearch(city)
+#                        location = re.findall(r"[+-]?\d+(?:\.\d+)?", str(location))
+#                        longitude = location[0]
+#                        latitude = location[1]
+#                        newLocations.append(str(longitude) + ", " + str(latitude))
+#                print(currentEvent)
+#                currentEvents.append(str(currentEvent))
+#                currentLocations[count] = newLocations
+#                continue
+#            else:
+#                track = usps.track(document["TrackingID"])
+#                eventChain = track.result.get("TrackResponse").get("TrackInfo").get("TrackDetail")
+#                for event in eventChain:
+#                    eventStringArray = str(event["EventCity"]).split()
+#                    #check and make sure there is something for the first element, sometimes there isn't
+#                    if(eventStringArray[0] != 'None'):
+#                        if(eventStringArray.__len__() > 1):
+#                            thisCity = eventStringArray[0] + " " + eventStringArray[1]
+#                        elif(eventStringArray.__len__() == 1):
+#                            thisCity = eventStringArray[0]
                         #location = geolocator.geocode(thisCity, timeout=None)
                         #make sure there isn't a state's initials thrown in with the city name (there often is).
-                        if (thisCity.split(" ").__len__() > 1):
-                            if (thisCity.split(" ")[1].__len__() == 2):
-                                thisCity = thisCity.split(" ")[0]
-                        location = cityLocationSearch(thisCity)
-                        location = re.findall(r"[+-]?\d+(?:\.\d+)?", str(location))
-                        longitude = location[0]
-                        latitude = location[1]
-                        newLocations.append(str(longitude) + ", " + str(latitude))
-                currentEvents.append(track.result.get("TrackResponse").get("TrackInfo").get("TrackSummary").get("Event"))
-                currentLocations[count] = newLocations
-        count += 1
-    print(currentEvents)
-    return render_template("aroma/myaccount.html", pointsValue=checksessionforpoints(),value=checksessionforuser(), shippingOrders=shippingOrders, currentLocations=currentLocations, currentEvents=currentEvents)
+#                        if (thisCity.split(" ").__len__() > 1):
+#                            if (thisCity.split(" ")[1].__len__() == 2):
+#                                thisCity = thisCity.split(" ")[0]
+#                        location = cityLocationSearch(thisCity)
+#                        location = re.findall(r"[+-]?\d+(?:\.\d+)?", str(location))
+#                        longitude = location[0]
+#                        latitude = location[1]
+#                        newLocations.append(str(longitude) + ", " + str(latitude))
+#                currentEvents.append(track.result.get("TrackResponse").get("TrackInfo").get("TrackSummary").get("Event"))
+#                currentLocations[count] = newLocations
+#        count += 1
+#    print(currentEvents)
+#    return render_template("aroma/myaccount.html", pointsValue=checksessionforpoints(),value=checksessionforuser(), shippingOrders=shippingOrders, currentLocations=currentLocations, currentEvents=currentEvents)
 
 @app.route("/logout-success")
 def logout():
