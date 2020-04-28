@@ -749,8 +749,20 @@ $(document).ready(function() {
 
 });
 
+//maintain with new images/designs
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log("current: " + event.relatedTarget.current() + ", total item count: " + event.item.count);
+    var owl_active_slide_img = $(event.target).find(".owl-item.active").find(".img-fluid").attr('src');
+    console.log("this slide image: " + owl_active_slide_img);
+    var this_design_name = $(event.target).parent().parent().find(".design-name")
+    switch(owl_active_slide_img){
+        case "/static/img/home/hero-slide1.png":
+            this_design_name.html("Tee Design 2");
+            break;
+        case "/static/img/home/hero-slide2.png":
+            this_design_name.html("Tee Design 1");
+        break;
+    }
 })
 
 var locations2D = [];
