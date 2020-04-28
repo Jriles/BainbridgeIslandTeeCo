@@ -26,6 +26,25 @@ button:focus {
 	box-shadow: none
 }
 
+#scroll-to-checkout{
+    position: relative;
+    left: 80%;
+    top: -90px;
+    padding: 20px 50px;
+    border-radius: 20px;
+}
+
+.cart-container{
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: -70px;
+    max-width: 100%;
+}
+
+.main-cart-bucket{
+    width: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -2799,7 +2818,6 @@ left:0
 	color:#222;
 	border-bottom:1px solid #eee;
 	padding-bottom:10px;
-	margin-bottom:30px
 }
 .billing_details .contact_form .form-group {
 	margin-bottom:20px
@@ -3352,8 +3370,20 @@ left:0
 	}
 }
 .cart_area {
-	padding-top:90px;
-	padding-bottom:55px
+	padding-top:45px;
+	padding-bottom:55px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.subtotal-title{
+    position: relative;
+    left:36%;
+}
+
+.subtotal-value-container{
+    position: relative;
+    left: 39%;
 }
 .cart_inner .table th,
 .cart_inner .table td {
@@ -3644,12 +3674,7 @@ left:0
 		padding-top: 100px
 	}
 }
-.s_Product_carousel .owl-dots {
-	position:absolute;
-	right:20px;
-	top:50%;
-	transform:translateY(-50%)
-}
+
 .s_Product_carousel .owl-dots div {
 	height:5px;
 	width:20px;
@@ -4123,12 +4148,30 @@ left:0
 	padding-bottom:60px !important
 }
 .quantity_title {
-    padding-left: 8% !important;
+    padding-left: 6.5% !important;
+}
+
+#design-title{
+    padding-left: 3%;
+}
+
+#cart-design-section{
+    padding-left: 3%;
+    padding-right: 0%;
+    min-width: 90px;
 }
 .checkout_area{
     margin-top: -50px;
     position: relative;
-    left: 200px;
+    margin-left: 11%;
+}
+
+#first-checkout-item{
+    margin-right: 2%;
+}
+
+#last-checkout-item{
+    margin-left: 2%;
 }
 .product-cart-buttons{
     display: inline-block;
@@ -4142,7 +4185,7 @@ left:0
 }
 .proceed-to-cart{
     border-radius: 30px;
-    padding: 6px 45px;
+    padding: 8px 35px;
     color: white !important;
 }
 
@@ -4161,6 +4204,23 @@ html, body {
     color: white;
     float: right;
     display: none;
+}
+
+#cart-title{
+    position: relative;
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+.cart-subtitle{
+    position: relative;
+    margin-left: 10%;
+}
+
+.cart-area{
+    position: relative;
+    margin-top: -70px;
+    margin-left: 10%;
 }
 
 .go-to-cart-from-product:hover{
@@ -4376,11 +4436,131 @@ html, body {
 .bar-1 {width: 15%; height: 15px; background-color: #20B22B;}
 .bar-0 {width: 15%; height: 15px; background-color: #20B22B;}
 
+
+#payment-container{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    width: 92%;
+}
+
+.order-summary{
+    max-width: 100%;
+}
+
+#payment-header-div{
+
+}
+
+.billing_details{
+    margin-left: 40%;
+    width: 100%;
+    position: relative;
+    bottom: 220px;
+}
+
+.checkout-item{
+    vertical-align: top;
+    width: 30%;
+}
+
+#continue-shopping-btn{
+    border-radius: 20px;
+    padding: 10px 30px;
+}
+
+table {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+li .product_count{
+    right: 62%;
+    margin-left:0px;
+}
+
+.design-selector-btn{
+    border-style: none;
+}
+
+.design-name{
+    margin-top: 20px;
+}
+
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
+#cart-design-section{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.product-cart-buttons{
+    width: 100%;
+}
+
+.hero-text{
+    width: 80%;
+}
+
+#continue-shopping-btn{
+    margin-top: 30px;
+    position: relative;
+    left: 5%;
+}
+
+#design-selection{
+    top: 0px;
+}
+
+.checkout_btn_inner{
+    float: none !important;
+}
+
+#terms-label{
+    float: none;
+}
 .hero-banner__content h1 {
     font-size: 14px;
+}
+
+#terms-and-conditions{
+    margin-bottom: 0px;
+}
+
+#checkout-product-list{
+    margin-bottom: 20px;
+    display: grid;
+}
+
+.checkout-product-item{
+    height: 30px;
+}
+
+#product-img{
+    max-width: 100px;
+    height: 80px;
+}
+
+.cart_area{
+    padding-top: 90px !important;
+}
+
+.checkout_area{
+    margin-right: 11%;
+}
+
+#first-checkout-item{
+    margin-right: 0% !important;
+}
+
+#last-checkout-item{
+    margin-left: 0% !important;
+    margin-top: 25px;
+}
+
+.checkout-item{
+    display: block important!;
+    width: 100%;
 }
 
 .hero-banner{
@@ -4416,8 +4596,8 @@ label{
 
 #shopping-cart-list-item{
 	position: relative;
-	top: 23px;
-    left: 20%;
+	top: 15px;
+	margin-left: 20%;
 }
 
 .hero-image{
@@ -4430,19 +4610,8 @@ label{
 }
 
 #cart-title{
-	left: 5% !important;
 	margin-top: 0px !important;
 	font-size: 30px !important;
-}
-
-.cart_area{
-	left: 0px !important;
-}
-
-.checkout_area{
-	left: 0px !important;
-	width: 100% !important;
-	margin-top: 0px !important;
 }
 
 .billing_details{
@@ -4464,15 +4633,19 @@ label{
 }
 
 #scroll-to-checkout{
-	left: 0px; !important;
+	position: relative;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-right: 50px;
+	padding-left: 50px;
+	font-size: 15px;
+	pointer-events: auto;
 }
 
 #payment-header-div{
-	padding-left: 15px !important;
 }
 
 .breadcrumb-item{
-	left: 15px !important;
 }
 
 #discount-section{
@@ -4480,8 +4653,8 @@ label{
 }
 
 #scroll-to-checkout{
-	left: 62% !important;
-	top: -92px !important;
+	left: 10% !important;
+	top: 0px;
 }
 
 /* Force cart table to not be like table anymore */
@@ -4553,12 +4726,25 @@ Label the data
 }
 
 .close{
-	bottom: 250px !important;
+	bottom: 305px !important;
 	left: 18px !important;
 }
 
-tbody:nth-of-type(2n) {
-  	display: none !important;
+.shipping_area{
+    display: none !important;
+}
+
+.subtotal-title{
+    display: none !important;
+}
+
+.subtotal-value-container{
+    display: none !important;
+}
+
+.post-cart-table{
+    height: 100px;
+    border: 0px !important;
 }
 
 #cart-table td:first-of-type:before {
@@ -4645,10 +4831,9 @@ tbody:nth-of-type(2n) {
 
 .product_count {
     position: relative !important;
-    float: right;
     width: 160px !important;
     margin-bottom: 0px !important;
-    margin-left: 0px !important;
+    margin-left: 33%;
 }
 
 .card_area{
@@ -4691,8 +4876,8 @@ tbody:nth-of-type(2n) {
 }
 
 #product-price{
-	margin-top: 30px !important;
-	margin-bottom: 30px !important;
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
 }
 
 #product-price2{

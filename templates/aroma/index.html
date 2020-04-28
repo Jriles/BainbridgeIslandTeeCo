@@ -20,6 +20,9 @@
 						<div class="single-prd-item">
 							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
 						</div>
+						<div class="single-prd-item">
+							<img id="t-shirt-product-image2" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide2.png')}}" alt="">
+						</div>
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
@@ -28,7 +31,8 @@
 							<div class="product-info">
 								<h3 id="product-name">Soft BI T-Shirt</h3>
 								<h2 id="product-price">$15.00</h2>
-								<h6 class="availability">In Stock</h6>
+								<h5 class="availability">In Stock</h5>
+								<h6 class="design-name">Tee Design 1</h6>
 							</div>
 							<ul class="product-options-area">
 								<li class="options-menu-item"><select id="t-shirt-size">
@@ -36,9 +40,9 @@
 									<option>Medium</option>
 									<option>Large</option>
 								</select></li>
-								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+								<li class="options-menu-item"><div id="design-selection" class="card_area d-flex align-items-center">
+									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
+									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
 								</div></li>
 								<li class="options-menu-item"><div class="product_count">
 									<label for="t-shirt-quantity-count">Quantity:</label>
@@ -61,7 +65,7 @@
 	<!--================End Single Product Area =================-->
 
     <!--================ Hero banner start =================-->
-    <div class="product_image_area" style="margin-top: 75px;">
+    <div class="product_image_area" style="margin-top: 75px; display: none;">
 		<div class="container">
 			<div class="row s_product_inner sweatshirt-product">
 				<div class="col-lg-6" id="sweatshirt-images">
@@ -77,7 +81,8 @@
 							<div class="product-info">
 								<h3 id="product-name2">Comfy BI Sweatshirt</h3>
 								<h2 id="product-price2">$40.00</h2>
-								<h6 class="availability">In Stock</h6>
+								<h5 class="availability">In Stock</h5>
+								<h6 class="design-name">Default</h6>
 							</div>
 							<ul class="product-options-area">
 								<li class="options-menu-item"><select id="sweatshirt-size">
@@ -85,9 +90,9 @@
 									<option>Medium</option>
 									<option>Large</option>
 								</select></li>
-								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+								<li class="options-menu-item"><div id="design-selection" class="card_area d-flex align-items-center">
+									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
+									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
 								</div></li>
 								<li class="options-menu-item"><div class="product_count">
 									<label for="sweatshirt-quantity-count">Quantity:</label>
@@ -116,7 +121,10 @@
 				<div class="col-lg-6">
 					<div class="owl-carousel owl-theme s_Product_carousel">
 						<div class="single-prd-item">
-							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
+							<img id="bag-product-image0" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
+						</div>
+						<div class="single-prd-item">
+							<img id="bag-product-image1" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide2.png')}}" alt="">
 						</div>
 					</div>
 				</div>
@@ -124,9 +132,10 @@
 					<div class="s_product_text">
 						<div class="info-and-options">
 							<div class="product-info">
-								<h3 id="product-name">Durable Canvas Bag</h3>
-								<h2 id="product-price">$76.00</h2>
-								<h6 class="availability">In Stock</h6>
+								<h3 id="product-name">Recycled Carryall</h3>
+								<h2 id="product-price">$25.00</h2>
+								<h5 class="availability">In Stock</h5>
+								<h6 class="design-name">Bag Design 1</h6>
 							</div>
 							<ul class="product-options-area">
 								<li class="options-menu-item"><select id="t-shirt-size">
@@ -134,9 +143,9 @@
 									<option>Medium</option>
 									<option>Large</option>
 								</select></li>
-								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+								<li class="options-menu-item"><div id="design-selection" class="card_area d-flex align-items-center">
+									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
+									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
 								</div></li>
 								<li class="options-menu-item"><div class="product_count">
 									<label for="t-shirt-quantity-count">Quantity:</label>
@@ -159,11 +168,10 @@
 	<!--================End Single Product Area =================-->
 
     <!-- ================ Subscribe section start ================= -->
-    <section style="position: relative; margin-top: 150px;">
+    <section style="position: relative; margin-top: 150px; margin-bottom: 100px;">
       <div class="container">
         <div class="subscribe text-center">
           <h3 class="subscribe__title">Stay in the loop for great discounts</h3>
-          <p>Bearing Void gathering light light his eavening unto dont afraid</p>
           <div id="mc_embed_signup">
             <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
               <div class="form-group ml-sm-auto">

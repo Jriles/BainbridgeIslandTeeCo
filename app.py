@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template, session
 from flask import url_for
 #from flask_pymongo import PyMongo
@@ -29,16 +29,17 @@ from email.mime.text import MIMEText
 import datetime
 from random import randint
 import os
-sender = 'klikattatfootwear@gmail.com'
+import paypalstuff
+sender = 'bainbridgeislandteeco@gmail.com'
 receivers = ['klikattatfootwear@gmail.com']
 
 app = Flask(__name__)
-client = MongoClient("mongodb+srv://jriley98:843134Jr@cluster0-sv54u.mongodb.net/test?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://jriley98:843134Jr!@cluster0-ebsya.azure.mongodb.net/test?retryWrites=true&w=majority")
 db = client["products"]
-invisocks = db["invisible_socks"]
-users = db["users"]
-products = db["products"]
-firstproduct = products.find_one()["Name"], products.find_one()["Price"], products.find_one()["Category"], products.find_one()["imgurl"]
+#invisocks = db["invisible_socks"]
+#users = db["users"]
+#products = db["products"]
+#firstproduct = products.find_one()["Name"], products.find_one()["Price"], products.find_one()["Category"], products.find_one()["imgurl"]
 discounts = db["discounts"]
 homeurl = "http://www.klikattatfootwear.com/"
 #geolocator = Nominatim(user_agent="my-application")
@@ -57,9 +58,8 @@ with open("cityLocations.txt", "r", encoding="utf-8") as f:
 #email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
-print(smtpObj.login(sender, "mlstJ1998!"))
+print(smtpObj.login(sender, "Tygebrahesvej39"))
 print("logged in")
-
 
 def random_with_N_digits(n):
     range_start = 10**(n-1)
@@ -141,35 +141,19 @@ def paymentsuccess():
             idExists = True
         else:
             idExists = False
-    names = []
-    prices = []
-    x = datetime.datetime.now()
-    x = str(x)[0:10]
-    x = x.replace("-", "/")
-    shippingState = "Yet to ship"
-    trackingID = ""
-    newPoints = float(request.form["Points"])
-    for field in request.form:
-        if str(field).__contains__("Name"):
-            names.append(request.form[field])
-        elif str(field).__contains__("Price"):
-            prices.append(request.form[field])
 
-    treeStatus = "No"
-    if str(request.form.get('tree-checkbox')) == "on":
-        treeStatus = "Yes"
-
+    email = request.form['Email']
+    paypalID = request.form['PayPalTransactionID']
+    orderDeets = paypalstuff.GetOrder.get_order(paypalstuff.GetOrder, paypalID)
+    address = orderDeets.result.purchase_units[0].shipping.address
+    print(address)
+    address = address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + ", " + address.country_code
+    cart = json.loads(request.form["CartJSON"])
     order = {
-        "_id": orderID,
-        "Email": request.form["Email"],
-        "OrderDate": x,
-        "ProductNames": names,
-        "ProductPrices": prices,
-        "State": shippingState,
-        "TrackingID": trackingID,
-        "OrderID": orderID,
-        "PayPalTransactionID": request.form["PayPalTransactionID"],
-        "PlantTree": treeStatus
+        "Email": email,
+        "PayPalOrderID": paypalID,
+        "Address": address,
+        "Cart-Contents": cart
     }
     #save order to main/independent orders collection
     db["Orders"].insert_one(order)
@@ -178,37 +162,25 @@ def paymentsuccess():
     #we also want to send an email to the business to let them know there is a new order
     try:
         #send an email to the business
-        body = MIMEText("A store user just ordered something! Paypal ID: " + request.form["PayPalTransactionID"])
+        html_body = render_template('email/new_order_email.html', cart=cart, paypalID=paypalID,email=email,address=address)
+        html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
-        msg["From"] = 'klikattatfootwear@gmail.com'
-        msg["To"] = 'jriley9000@gmail.com'
+        msg["From"] = 'bainbrigeislandteeco@gmail.com'
+        msg["To"] = 'bainbridgeislandteeco@gmail.com'
         msg["Subject"] = "New Order!"
-        msg.attach(body)
-        smtpObj.sendmail(sender, msg["To"], msg.as_string())
+        msg.attach(html)
+        smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
         #send an email to the customer
-        body = MIMEText("Thank you for your order!")
+        body = MIMEText("Thank you for your order!\n Your paypal transaction ID: " + paypalID)
         msg = MIMEMultipart()
-        msg["From"] = 'klikattatfootwear@gmail.com'
+        msg["From"] = 'bainbridgeislandteeco@gmail.com'
         msg["To"] = request.form["Email"]
         msg["Subject"] = "Thank you!"
         msg.attach(body)
-        smtpObj.sendmail(sender, msg["To"], msg.as_string())
+        smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     except SMTPException:
         print("there was a problem sending the confirmation email")
-    if checksessionforuser() != "":
-        #if the user is signed in
-        #get this user's orders and update it to add a new one
-        users.find_one_and_update({"Username": session["username"]}, {'$addToSet': {'Orders': order}})
-        currentPoints = users.find_one({"Username": session["username"]})
-        currentPoints = currentPoints["Points"]
-        currentPoints = float(currentPoints) + newPoints
-        users.find_one_and_update({"Username": session["username"]}, {'$set': {'Points': currentPoints}})
-
-
-    #clear cart values
-    #add purchase to database
-    #show in my account section
-    return render_template("/aroma/index.html", value=checksessionforuser(), firstproduct=firstproduct)
+    return render_template("/aroma/index.html", value=checksessionforuser())
 
 @app.route('/login-enter', methods=['GET', 'POST'])
 def login():
@@ -296,7 +268,7 @@ def loginsuccess():
 @app.route("/")
 def home():
     #socketio.emit("message", "data")
-    return render_template('/aroma/index.html', value=checksessionforuser(), firstproduct=firstproduct)
+    return render_template('/aroma/index.html', value=checksessionforuser())
 
 @app.route("/<product>")
 def product_view(product):

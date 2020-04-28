@@ -106,7 +106,7 @@ $(function() {
     autoplayTimeout: 5000,
     loop:true,
     nav:false,
-    dots:false
+    dots:true
   });
 
   //------- mailchimp --------//  
@@ -305,13 +305,13 @@ $(function() {
                 console.log("javascript thinks we are on mobile");
                 //all mobile initializations here
                 //change sweatshirt dom order
-                var sweatshirtImage = $("#sweatshirt-images");
-                sweatshirtImage.prev().insertAfter(sweatshirtImage);
-                var logo = $(".navbar-brand");
-                var shoppingCart = $(".nav-shop");
-                shoppingCart.insertAfter(logo);
-                document.getElementById("landing-button-1").innerHTML = "T-Shirts";
-                document.getElementById("landing-button-2").innerHTML = "Sweatshirts";
+                //var sweatshirtImage = $("#sweatshirt-images");
+                //sweatshirtImage.prev().insertAfter(sweatshirtImage);
+                //var logo = $(".navbar-brand");
+                //var shoppingCart = $(".nav-shop");
+                //shoppingCart.insertAfter(logo);
+                //document.getElementById("landing-button-1").innerHTML = "T-Shirts";
+                //document.getElementById("landing-button-2").innerHTML = "Sweatshirts";
             }
 
 	        //want to display warning error if user failed to log in correctly
@@ -335,6 +335,10 @@ $(function() {
         var checkoutheight = document.getElementById("discount-section").getBoundingClientRect().top;
         console.log(checkoutheight);
         var offset = 130;
+        console.log(mobileCheck());
+        if (mobileCheck()){
+            offset = 80;
+        }
         checkoutheight = checkoutheight - offset;
         console.log(checkoutheight);
 		$('body,html').animate({
@@ -377,9 +381,9 @@ $(function() {
 		//paypal css, css for paypal
 	    $('document').ready(function(){
             //footer styling
-            document.getElementById("footer-section").style.position = "relative";
+            //document.getElementById("footer-section").style.position = "relative";
             //document.getElementById("footer-section").style.left = "500px";
-            document.getElementById("footer-section").style.width = "150%";
+            //document.getElementById("footer-section").style.width = "150%";
             updateSubtotal();
         });
 		//first we need to clone the default element
@@ -404,6 +408,7 @@ $(function() {
 				console.log(currentCartJSON[i].IMGSRC);
 				$(cloneOfElement).find("#product-img").attr("src", currentCartJSON[i].IMGSRC)
 				$(cloneOfElement).find('#product-link').attr("href", "/");
+				$(cloneOfElement).find('#product-design').html(currentCartJSON[i].Design);
 				//console.log($(cloneOfElement).find('#product-link').attr("href"));
 				$(cloneOfElement).find("#product-size").html(currentCartJSON[i].Size);
 				var price = Number(currentCartJSON[i].Price.replace(/[^0-9.-]+/g,""));
@@ -423,43 +428,44 @@ $(function() {
 			//if there is nothing in the cart we need to clean up the cart page and make everything kosher
 			console.log("here!");
 			document.getElementById("default-element").style.display = "none";
-			var checkoutSampleProduct = $("#checkout-product-list").children()[1];
+			var checkoutSampleProduct = $("#checkout-product-list").children()[0];
 			console.log(checkoutSampleProduct);
 			$(checkoutSampleProduct).hide();
 			$("#total").text("$" + 0);
 			$('#subtotal-value').text("$" + 0);
 		}
 
-		$(".quantity-input").click(function quantityUpdate(){
-			console.log("clicked quantity button");
-			//console.log($( this ).val());
-  			var input = parseFloat($( this ).val());
+        function  quantityUpdate(inputElement) {
+  			console.log("called quantity keyup function");
+  			var input = parseFloat(inputElement.val());
+  			console.log("input: " + input);
   			if(Number.isInteger(input) === true){
-				var parent = $( this ).parent().parent().parent();
+  			    //grab the elements associated with our current quantity input
+				var parent = inputElement.parent().parent().parent();
 				var totalElement = $( parent ).find("#product-total-price");
 				var priceElement = $( parent ).find("#unit-price");
 				var nameElement = $( parent ).find('#product-name');
 				var name = $(nameElement).text();
-				console.log(priceElement);
+				var size = String($(parent).find("#product-size").text());
+				var design = String($(parent).find("#product-design").text());
+				//grab the amount
 				var price = parseFloat( $(priceElement).text().replace(/[^0-9.-]+/g,""));
-				console.log(price);
-				console.log(input);
 				var totalPrice = price * input;
+				//this "totalPrice" refers to this specific products quantity times its specific price
+				//it is NOT the totalPrice for the order
 				//cant have negative quantity
 				if(totalPrice < 0){
 					totalPrice = 0;
 				}
+				//want two decimals
 				totalPrice = totalPrice.toFixed(2);
 				totalPrice = "$" + totalPrice;
-				console.log(totalPrice);
 				totalElement.html(totalPrice);
-				console.log(parent);
-				console.log(priceElement);
 				//need to change the quantity value with the sessionstorage cart object
 				var cart = sessionStorage.getItem("Cart");
 				var cartArray = JSON.parse(cart);
 				for(i = 0; i < cartArray.length; i++){
-					if(cartArray[i].ProductName === name){
+					if(cartArray[i].ProductName === name && cartArray[i].Size === size && cartArray[i].Design === design){
 						cartArray[i].Quantity = input;
 					}
 				}
@@ -467,45 +473,13 @@ $(function() {
 		    	sessionStorage.setItem("Cart", cart);
 				updateSubtotal();
   			}
-		});
+
+  		}
 
 		//change totals in real time if user changes quantity values in cart page
-		$( "input[name='qty']" ).keyup(function() {
-  			console.log($( this ).val());
-  			var input = parseFloat($( this ).val());
-  			if(Number.isInteger(input) === true){
-				var parent = $( this ).parent().parent().parent();
-				var totalElement = $( parent ).find("#product-total-price");
-				var priceElement = $( parent ).find("#unit-price");
-				var nameElement = $( parent ).find('#product-name');
-				var name = $(nameElement).text();
-				console.log(priceElement);
-				var price = parseFloat( $(priceElement).text().replace(/[^0-9.-]+/g,""));
-				console.log(price);
-				console.log(input);
-				var totalPrice = price * input;
-				//cant have negative quantity
-				if(totalPrice < 0){
-					totalPrice = 0;
-				}
-				totalPrice = totalPrice.toFixed(2);
-				totalPrice = "$" + totalPrice;
-				totalElement.html(totalPrice);
-				//need to change the quantity value with the sessionstorage cart object
-				var cart = sessionStorage.getItem("Cart");
-				var cartArray = JSON.parse(cart);
-				for(i = 0; i < cartArray.length; i++){
-					if(cartArray[i].ProductName === name){
-						cartArray[i].Quantity = input;
-					}
-				}
-				cart = JSON.stringify(cartArray);
-		    	sessionStorage.setItem("Cart", cart);
-				updateSubtotal();
-  			}
-		});
+		$( "input[name='qty']" ).on('keyup', function() {quantityUpdate($( this ))});
 
-
+        $(".quantity-input").on('click', function() {quantityUpdate($( this ))});
 
 		//clear cart function
 		$("#clearCart").click(function clearCart(){
@@ -548,7 +522,7 @@ $(function() {
         function updateCheckoutTotal() {
             document.getElementById("discount-list-element").style.display = "none";
             document.getElementById("points-list-element").style.display = "none";
-			var elementToClone = $("#checkout-product-list").children()[1];
+			var elementToClone = $("#checkout-product-list").children()[0];
 			console.log(elementToClone);
 			var listElementClone = elementToClone.cloneNode(true);
 			$( elementToClone ).hide();
@@ -561,7 +535,7 @@ $(function() {
 			if(childrenCount > 1){
 				console.log(childrenCount);
 				console.log("thinks that there are already elements here");
-				for(i = 2; i < childrenCount; i++){
+				for(i = 1; i < childrenCount; i++){
 					var currentListItem = $("#checkout-product-list").children()[i];
 					console.log(currentListItem);
 					$(currentListItem).hide();
@@ -620,9 +594,6 @@ function blankNavBar(){
     }
 }
 
-
-
-
 function setPoints(element){
 	console.log("called set points");
 	console.log(element.value);
@@ -641,7 +612,9 @@ function addToCart(button){
     var productName = String(productInfo.children[0].innerHTML);
     var productPrice = String(productInfo.children[1].innerHTML);
     var thisProductImage = thisProductInfo.parentElement.parentElement.children[0].children[0].children[0].children[0].children[2].children[0].children[0].src;
-    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage)};
+    var thisProductDesign = String(productInfo.children[3].innerHTML);
+    console.log(thisProductDesign);
+    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign};
     var cart = sessionStorage.getItem("Cart");
     console.log(cart);
     //if cart is empty we make it an array of json objects, with just one product
@@ -657,7 +630,7 @@ function addToCart(button){
         //figure out quantity
         var foundProductInCart = false;
         for(i = 0; i < refreshCart.length; i++){
-            if(refreshCart[i].ProductName === newProduct.ProductName && refreshCart[i].Size === newProduct.Size){
+            if(refreshCart[i].ProductName === newProduct.ProductName && refreshCart[i].Size === newProduct.Size && refreshCart[i].Design === newProduct.Design){
                 refreshCart[i].Quantity = parseInt(refreshCart[i].Quantity) + parseInt(document.getElementById("t-shirt-quantity-count").value);
                 foundProductInCart = true;
             }
@@ -775,6 +748,10 @@ $(document).ready(function() {
     console.log("opened page!");
 
 });
+
+$('.owl-carousel').on('changed.owl.carousel', function(event) {
+    console.log("current: " + event.relatedTarget.current() + ", total item count: " + event.item.count);
+})
 
 var locations2D = [];
 var orders = [];
@@ -980,9 +957,9 @@ function scrollDown(product){
         }
         break;
       case "bag":
-        scrollAmount = 1975;
+        scrollAmount = 1350;
         if(mobileCheck()){
-            scrollAmount = 2100;
+            scrollAmount = 1550;
         }
         break;
     }
@@ -1015,4 +992,35 @@ function mobileCheck(){
         return true;
     }
     return false;
+}
+
+function goToSlide(button){
+    var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
+    var nodes = Array.prototype.slice.call( button.parentElement.children );
+    button_index = nodes.indexOf( button );
+    //this will need to be maintained
+    //if we are working with t-shirts or bags
+    //set the design description-use this when we add to cart
+    var product_name = String(button.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML);
+    var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
+    if(product_name === "Soft BI T-Shirt"){
+        switch(button_index){
+            case 0:
+                design_name_display.innerHTML = "Tee Design 1"
+                break;
+            case 1:
+                design_name_display.innerHTML = "Tee Design 2"
+                break;
+        }
+    }else if(product_name === "Recycled Carryall"){
+        switch(button_index){
+            case 0:
+                design_name_display.innerHTML = "Bag Design 1"
+                break;
+            case 1:
+                design_name_display.innerHTML = "Bag Design 2"
+                break;
+        }
+    }
+    $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
 }
