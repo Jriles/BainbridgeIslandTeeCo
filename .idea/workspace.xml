@@ -35,11 +35,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/Aroma Shop-doc/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="jquery.nav.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/Aroma Shop-doc/js/jquery.nav.js">
           <provider selected="true" editor-type-id="text-editor" />
@@ -89,7 +84,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="paypalstuff.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="paypalstuff.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/paypalstuff.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -97,6 +92,15 @@
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="969">
+              <caret line="57" column="16" lean-forward="true" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -252,34 +256,6 @@
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="aroma" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -426,9 +402,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fixed User System and Fixed paypal dynamic positioning" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/aroma/category.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/EtradePythonClient/EtradePythonClient/etrade_python_client/etrade_python_client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -649,6 +622,13 @@
           <folding>
             <element signature="e#0#71#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="57" column="16" lean-forward="true" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
         </state>
       </provider>
     </entry>
