@@ -3675,6 +3675,9 @@ left:0
 	}
 }
 
+.subscribe-form{
+    margin-left: 19%;
+}
 .s_Product_carousel .owl-dots div {
 	height:5px;
 	width:20px;
@@ -4489,6 +4492,16 @@ li .product_count{
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
+
+.options-menu-item .product_count{
+    width: unset !important;
+    right: 0px;
+}
+
+.product_count label{
+    float: unset;
+}
+
 #cart-design-section{
     padding-left: 1.5rem;
     padding-right: 1.5rem;

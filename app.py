@@ -32,7 +32,7 @@ import os
 import paypalstuff
 sender = 'bainbridgeislandteeco@gmail.com'
 receivers = ['klikattatfootwear@gmail.com']
-
+import forms
 app = Flask(__name__)
 client = MongoClient("mongodb+srv://jriley98:843134Jr!@cluster0-ebsya.azure.mongodb.net/test?retryWrites=true&w=majority")
 db = client["products"]
@@ -41,6 +41,7 @@ db = client["products"]
 #products = db["products"]
 #firstproduct = products.find_one()["Name"], products.find_one()["Price"], products.find_one()["Category"], products.find_one()["imgurl"]
 discounts = db["discounts"]
+email_list = db["emails"]
 homeurl = "http://www.klikattatfootwear.com/"
 #geolocator = Nominatim(user_agent="my-application")
 
@@ -265,14 +266,22 @@ def signupsuccess():
 def loginsuccess():
     return redirect(homeurl + "myaccount")
 
-@app.route("/")
+@app.route("/", methods=('GET', 'POST'))
 def home():
     #socketio.emit("message", "data")
-    return render_template('/aroma/index.html', value=checksessionforuser())
+    email_form = forms.EmailForm()
+    if email_form.validate_on_submit():
+        print(email_form.email.data)
+        email_list.insert_one({"Email ": email_form.email.data})
+    return render_template('/aroma/index.html', value=checksessionforuser(), email_form=email_form)
 
-@app.route("/<product>")
+@app.route("/<product>", methods=('GET', 'POST'))
 def product_view(product):
-    return render_template('/aroma/index.html', value=checksessionforuser(), firstproduct=firstproduct, scroll_product=product)
+    email_form = forms.EmailForm()
+    if email_form.validate_on_submit():
+        print(email_form.email.data)
+        email_list.insert_one({"Email ": email_form.email.data})
+    return render_template('/aroma/index.html', value=checksessionforuser(), scroll_product=product, email_form=email_form)
 
 @app.route("/login-failure")
 def loginfailure():

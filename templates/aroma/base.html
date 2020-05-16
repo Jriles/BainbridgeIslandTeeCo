@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto">
+            <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto" id="nav-list">
               	<li {% if 't-shirt' in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/t-shirt">T-Shirts</a></li>
               	<!--<li {% if 'sweatshirt' in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/sweatshirt">Sweatshirts</a></li>-->
 				<li {% if 'bag' in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/bag">Recycled Carryall</a></li>
@@ -58,7 +58,7 @@
 		<div class="footer-area">
 			<div class="container">
 				<div class="row section_gap">
-					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
 							<div>
 								<h6 style="color: white;">Email</h6>
@@ -80,7 +80,6 @@
   <script src="{{url_for('static', filename='vendors/skrollr.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendors/owl-carousel/owl.carousel.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendors/nice-select/jquery.nice-select.min.js')}}"></script>
-  <script src="{{url_for('static', filename='vendors/jquery.ajaxchimp.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendors/mail-script.js')}}"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AXUox9TqClklKrV6WSKs5OvvlkwKaqHE9MJmh9HYHQaoro2SDzZaRH1ioPNwBHbwcO7UJV7JElhawvkc"></script>
   <!-- <script src="https://www.paypal.com/sdk/js?client-id=AVkb_CtJu8TWXbo9LPrBp5sU6YJGMxQaYyR1GmPds4dTE9f_Zl0ivyFXA3Mi_4aY_33UYqZ25EjXaQMp"></script> -->
@@ -92,77 +91,79 @@
 
 <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
-	var totalValue = "";
-    var counter = 0;
-    var noItemsInCart = false;
-	paypal.Buttons({
-	  onClick: function(data, actions){
-	 if(document.getElementById('f-option4').checked === false){
-		//send error message
-		counter++;
-		if(counter == 1){
-			document.getElementById("terms-label").style.color = "red";
-		} else if(counter > 1){
-			document.getElementById("terms-warning").style.color = "red";
-			document.getElementById("terms-warning").style.display = "inline";
-			document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
-		}
-		return actions.reject();
-	 }
-	  console.log("thinks we clicked the paypal buttons");
-	  totalValue = document.getElementById("total").innerHTML;
-	  totalValue = totalValue.slice(1);
-	  //need to check for one in case they selected plant a tree with nothing in their cart
-	  if(totalValue <= 1){
-	  	document.getElementById("terms-warning").style.color = "red";
-		document.getElementById("terms-warning").style.display = "inline";
-	  	document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
-		return actions.reject();
-	  }
-	},
-      style: {
-          shape: 'rect',
-          color: 'gold',
-          layout: 'vertical',
-          label: 'paypal',
+    if(String(window.location).includes("/mycart")){
+        var totalValue = "";
+        var counter = 0;
+        var noItemsInCart = false;
+        paypal.Buttons({
+          onClick: function(data, actions){
+         if(document.getElementById('f-option4').checked === false){
+            //send error message
+            counter++;
+            if(counter == 1){
+                document.getElementById("terms-label").style.color = "red";
+            } else if(counter > 1){
+                document.getElementById("terms-warning").style.color = "red";
+                document.getElementById("terms-warning").style.display = "inline";
+                document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
+            }
+            return actions.reject();
+         }
+          console.log("thinks we clicked the paypal buttons");
+          totalValue = document.getElementById("total").innerHTML;
+          totalValue = totalValue.slice(1);
+          //need to check for one in case they selected plant a tree with nothing in their cart
+          if(totalValue <= 1){
+            document.getElementById("terms-warning").style.color = "red";
+            document.getElementById("terms-warning").style.display = "inline";
+            document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
+            return actions.reject();
+          }
+        },
+          style: {
+              shape: 'rect',
+              color: 'gold',
+              layout: 'vertical',
+              label: 'paypal',
 
-      },
-      createOrder: function(data, actions) {
-          return actions.order.create({
-              purchase_units: [{
-                  amount: {
-                      value: totalValue
-                  }
-              }]
-          });
-      },
-      onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-              alert('Transaction completed by ' + details.payer.name.given_name + '!' + 'at location: ' + Object.keys(details.payer.address));
-              $('<input />').attr('type', 'hidden')
-              .attr('name', "Email")
-              .attr('value', details.payer.email_address)
-              .appendTo('#cart-contents-form');
-              $('<input />').attr('type', 'hidden')
-              .attr('name', "PayPalTransactionID")
-              .attr('value', details.id)
-              .appendTo('#cart-contents-form');
-              $('<input />').attr('type', 'hidden')
-              .attr('name', "CartJSON")
-              .attr('value', sessionStorage.getItem("Cart"))
-              .appendTo('#cart-contents-form');
-              $('<input />').attr('type', 'hidden')
-              .attr('name', "Address")
-              .attr('value', details.payer.address)
-              .appendTo('#cart-contents-form');
-              //clear cart and return to myaccount
-              var cart = sessionStorage.getItem("Cart");
-		      cart = "";
-		      sessionStorage.setItem("Cart", cart);
-              $("#cart-contents-form").submit();
-          });
-      }
-  }).render('#paypal-button-container');
+          },
+          createOrder: function(data, actions) {
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value: totalValue
+                      }
+                  }]
+              });
+          },
+          onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                  alert('Transaction completed by ' + details.payer.name.given_name + '!' + 'at location: ' + Object.keys(details.payer.address));
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "Email")
+                  .attr('value', details.payer.email_address)
+                  .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "PayPalTransactionID")
+                  .attr('value', details.id)
+                  .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "CartJSON")
+                  .attr('value', sessionStorage.getItem("Cart"))
+                  .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "Address")
+                  .attr('value', details.payer.address)
+                  .appendTo('#cart-contents-form');
+                  //clear cart and return to myaccount
+                  var cart = sessionStorage.getItem("Cart");
+                  cart = "";
+                  sessionStorage.setItem("Cart", cart);
+                  $("#cart-contents-form").submit();
+              });
+          }
+      }).render('#paypal-button-container');
+    }
 </script>
   <script>
 	$('document').ready(function(){

@@ -109,11 +109,6 @@ $(function() {
     dots:true
   });
 
-  //------- mailchimp --------//  
-	function mailChimp() {
-		$('#mc_embed_signup').find('form').ajaxChimp();
-	}
-  mailChimp();
 
 
    if (performance.navigation.type == 2) {
@@ -565,32 +560,38 @@ $(function() {
 			$("#total").text("$" + total);
 		}
 	}
-
-	$( window ).scroll(function(){
-        console.log("thinks we are scrolling");
-        if( $('body,html').is(':animated') ){
-            return;
-        }
-        var menu = document.getElementById("navbar-nav");
-        var scrollPos = $(document).scrollTop();
-        console.log(scrollPos);
-        if(scrollPos < 710 && scrollPos > 0){
-            blankNavBar();
-            menu.children[0].children[0].className += " active";
-        }else if(scrollPos > 710 && scrollPos < 1350){
-            blankNavBar();
-            menu.children[1].children[0].className += " active";
-        }else if(scrollPos > 1975 && scrollPos < 2100){
-            blankNavBar();
-            menu.children[2].children[0].className += " active";
-        }
-    });
 });
 
-function blankNavBar(){
-    var menu = document.getElementById("navbar-nav");
-    for(i = 0; i < menu.children.length;i++){
-        menu.children[i].children[0].className = "nav-link";
+$('body, html').on('scroll', function(){
+    console.log("thinks we are scrolling");
+    if( $('body,html').is(':animated') ){
+        return;
+    }
+    var menu = document.getElementById("nav-list");
+    var scrollPos = $('body').scrollTop();
+    console.log(scrollPos);
+    if (mobileCheck()){
+        if(scrollPos < 1650 && scrollPos >= 766){
+            blankNavBar(menu);
+            menu.children[0].className += " active";
+        }else if(scrollPos > 1650){
+            blankNavBar(menu);
+            menu.children[1].className += " active";
+        }
+    }else{
+        if(scrollPos < 1100 && scrollPos >= 710){
+            blankNavBar(menu);
+            menu.children[0].className += " active";
+        }else if(scrollPos > 1100){
+            blankNavBar(menu);
+            menu.children[1].className += " active";
+        }
+    }
+});
+
+function blankNavBar(navbar){
+    for(i = 0; i < navbar.children.length;i++){
+        navbar.children[i].className = "nav-item";
     }
 }
 
@@ -743,11 +744,6 @@ function applyDiscount(array, amountArray){
         }
     }
 }
-
-$(document).ready(function() {
-    console.log("opened page!");
-
-});
 
 //maintain with new images/designs
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
