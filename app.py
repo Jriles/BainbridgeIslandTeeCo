@@ -1,20 +1,21 @@
+import hashlib
+import sqlite3
+from email.mime.base import MIMEBase
+
 from flask import Flask, jsonify
 from flask import render_template, session
 from flask import url_for
 #from flask_pymongo import PyMongo
+from flask_login import logout_user, login_user, current_user
 from pymongo import*
 from pymongo.errors import ConnectionFailure
 from pymongo import MongoClient
 from flask import request
 from flask import Flask,redirect, flash
-#from usps import USPSApi
-from flask_user import login_required, UserManager, UserMixin
-#from geopy.geocoders import Nominatim
-import hashlib
+from flask_mongoengine import MongoEngine
+from datetime import date
 import json
-#import socketio
-#import redis
-#from flask_socketio import SocketIO
+from pathlib import Path
 import socket
 import io
 import re
@@ -22,6 +23,7 @@ import smtplib
 from smtplib import SMTPException
 from smtpd import SMTPServer
 
+from werkzeug.utils import secure_filename
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -31,36 +33,121 @@ from random import randint
 import os
 import paypalstuff
 sender = 'bainbridgeislandteeco@gmail.com'
-receivers = ['klikattatfootwear@gmail.com']
 import forms
+from flask_user import roles_required, UserManager, UserMixin, login_required
+from flask_sqlalchemy import SQLAlchemy
+from flask import g
+from email import encoders
 app = Flask(__name__)
-client = MongoClient("mongodb+srv://jriley98:843134Jr!@cluster0-ebsya.azure.mongodb.net/test?retryWrites=true&w=majority")
-db = client["products"]
-#invisocks = db["invisible_socks"]
-#users = db["users"]
-#products = db["products"]
-#firstproduct = products.find_one()["Name"], products.find_one()["Price"], products.find_one()["Category"], products.find_one()["imgurl"]
-discounts = db["discounts"]
-email_list = db["emails"]
-homeurl = "http://www.klikattatfootwear.com/"
-#geolocator = Nominatim(user_agent="my-application")
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
 app.config['SESSION_TYPE'] = 'redis'
-#app.secret_key = 'mysecret'
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'XYZ')
-#socketio = SocketIO(app)
-with open("cityLocations.txt", "r", encoding="utf-8") as f:
-    cityLocationsList = list(f)
+app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
+app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
+app.config["USER_UNAUTHORIZED_ENDPOINT"] = 'login'
+app.config['USER_APP_NAME'] = 'Alex apparel website'
+app.config['USER_ENABLE_EMAIL'] = True
+app.config['USER_ENABLE_USERNAME'] = False
+app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
+app.config['USER_EMAIL_SENDER_EMAIL'] = sender
+app.config['MAIL_SERVER'] = "smtp.gmail.com"
+app.config['MAIL_PORT'] = 587
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
-#h = hashlib.md5("843134Jr!".encode())
-#hashvalue = h.hexdigest()
-#newValues = {"$set": {"Password": hashvalue}}
-#users.update({"Username": "Jriley9000"}, newValues)
+pathToDB = os.path.abspath("database/database.db")
+admin_code = 12345
 #email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
 print(smtpObj.login(sender, "rkadniupkausbhog"))
 print("logged in")
+
+db = SQLAlchemy(app)
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(pathToDB)
+    return db
+
+
+def query_db(query, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv
+
+class User(db.Model, UserMixin):
+    __tablename__ = 'Users'
+    # User Authentication fields
+    email = db.Column(db.String(255), primary_key=True)
+    id = email
+    email_confirmed_at = datetime.datetime.now()
+    password = db.Column(db.String(255))
+    roles = db.relationship('Role', secondary='User_Roles')
+    active = True
+    name = db.Column(db.String(255))
+
+class Role(db.Model):
+    __tablename__ = 'Roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+
+# Define the UserRoles association table
+class UserRoles(db.Model):
+    __tablename__ = 'User_Roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE'))
+
+class Email(db.Model):
+    __tablename__ = 'CustomerEmail'
+    id = db.Column(db.Integer(), primary_key=True)
+    email = db.Column(db.String(50), unique=True)
+
+class UserOrders(db.Model):
+    __tablename__ = "User_Orders"
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
+    paypal_order_id = db.Column(db.String())
+    address = db.Column(db.String())
+
+class OrderItem(db.Model):
+    __tablename__ = "Order_Item"
+    id = db.Column(db.Integer(), primary_key=True)
+    order_id = db.Column(db.Integer(), db.ForeignKey('User_Orders.id', ondelete='CASCADE'))
+    product_name = db.Column(db.String())
+    product_size = db.Column(db.String())
+    price = db.Column(db.String())
+    quantity = db.Column(db.Integer())
+    product_img_src = db.Column(db.String())
+    design = db.Column(db.String())
+
+class Logo(db.Model):
+    __tablename__ = "LogoImages"
+    id = db.Column(db.Integer(), primary_key=True)
+    file_path = db.Column(db.String())
+
+class Discount(db.Model):
+    __tablename__ = "Discounts"
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String())
+    amount = db.Column(db.Integer())
+    type = db.Column(db.String())
+
+user_manager = UserManager(app, db, User)
+
+
+@app.context_processor
+def inject_logo():
+    descending = Logo.query.order_by(Logo.id.desc())
+    last_item = descending.first()
+    return dict(this_file_path=last_item.file_path)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def random_with_N_digits(n):
     range_start = 10**(n-1)
@@ -71,78 +158,18 @@ def random_with_N_digits(n):
 #from algorithms.search import linear_search
 #takes in city name and returns coordinates
 
-def cityLocationSearch(cityName):
-    citiesOfName = []
-    cityName = cityName.lower()
-    arrayOfStrings = cityName.split(" ")
-    arrayOfStrings[0] = arrayOfStrings[0].capitalize()
-    if arrayOfStrings.__len__() > 1:
-        arrayOfStrings[1] = arrayOfStrings[1].capitalize()
-        cityName = arrayOfStrings[0] + " " + arrayOfStrings[1]
-    elif arrayOfStrings.__len__() < 2:
-        cityName = arrayOfStrings[0]
-    for c in cityLocationsList:
-        if(c.__contains__("'" + cityName + "'")):
-            citiesOfName.append(c)
 
-    #if we have more than one city of the same name
-    #pick the one with the greatest pop
-    biggest = ""
-    if(citiesOfName.__len__() > 1):
-        for city in citiesOfName:
-            numbers = re.findall(r"[+-]?\d+(?:\.\d+)?", str(city))
-            if biggest == "":
-                biggest = city
-            else:
-                curBiggestNumbers = re.findall(r"[+-]?\d+(?:\.\d+)?", str(biggest))
-                curBiggestPop = curBiggestNumbers[2]
-                if int(curBiggestPop) < int(numbers[2]):
-                    biggest = city
-        return biggest
-    return citiesOfName[0]
-
-
-def checksessionforuser():
-    print(("username" in session))
-    if ("username" in session) is False:
-        print("thinks there is no one signed in yet")
-        return "";
-    else:
-        print("thinks there is something in here for username")
-        print(session["username"])
-        return session["username"]
-
-def checksessionforpoints():
-    if ("username" in session) is True and session["username"] != "":
-        points = users.find_one({"Username": session["username"]})
-        points = points["Points"]
-        return float(points)
-    else:
-        return 0.0
 #we want to convert our discount code collection in our db to an array for safe passage
-def discountDBtoArray():
-    array = []
-    for document in discounts.find():
-        array.append(str(document["name"]))
-    return array
-
-def discountAmountDBToArray():
-    array = []
-    for document in discounts.find():
-        array.append(str(document["amount"]))
-    return array
 
 @app.route('/payment-success', methods=['GET', 'POST'])
 def paymentsuccess():
-    idExists = True
-    orderID = ""
-    while idExists:
-        orderID = random_with_N_digits(8)
-        if db["Orders"].find({"OrderID": orderID}).count() > 0:
-            idExists = True
-        else:
-            idExists = False
-
+    email_form = forms.EmailForm()
+    if email_form.validate_on_submit():
+        print(email_form.email.data)
+        this_email = Email()
+        this_email.email = email_form.email.data
+        db.session.add(this_email)
+        db.session.commit()
     email = request.form['Email']
     paypalID = request.form['PayPalTransactionID']
     orderDeets = paypalstuff.GetOrder.get_order(paypalstuff.GetOrder, paypalID)
@@ -150,14 +177,25 @@ def paymentsuccess():
     print(address)
     address = address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + ", " + address.country_code
     cart = json.loads(request.form["CartJSON"])
-    order = {
-        "Email": email,
-        "PayPalOrderID": paypalID,
-        "Address": address,
-        "Cart-Contents": cart
-    }
-    #save order to main/independent orders collection
-    db["Orders"].insert_one(order)
+    new_order = UserOrders()
+    new_order.user_id = email
+    new_order.paypal_order_id = paypalID
+    new_order.address = address
+    db.session.add(new_order)
+    db.session.commit()
+    descending = UserOrders.query.order_by(UserOrders.id.desc())
+    most_recent_order = descending.first()
+    for item in cart:
+        new_item = OrderItem()
+        new_item.order_id = most_recent_order.id
+        new_item.product_name = item["ProductName"]
+        new_item.product_size = item["Size"]
+        new_item.price = item["Price"]
+        new_item.quantity = int(item["Quantity"])
+        new_item.product_img_src = item["IMGSRC"]
+        new_item.design = item["Design"]
+        db.session.add(new_item)
+        db.session.commit()
 
     #want to confirmation to email given by paypal for everyone, including not users.
     #we also want to send an email to the business to let them know there is a new order
@@ -181,90 +219,7 @@ def paymentsuccess():
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     except SMTPException:
         print("there was a problem sending the confirmation email")
-    return render_template("/aroma/index.html", value=checksessionforuser())
-
-@app.route('/login-enter', methods=['GET', 'POST'])
-def login():
-    urlstring = homeurl
-    email = str(request.form['email'])
-    password = str(request.form['password'])
-    h = hashlib.md5(password.encode())
-    passhash = h.hexdigest()
-    potentialusers = users.find({'$and': [{"Email": email}, {"PasswordHash": passhash}]})
-    check = potentialusers.count()
-    print(check)
-    if(check > 0):
-        print("success!")
-        urlstring = urlstring + "login-success"
-        session["username"] = potentialusers[0]["Username"]
-        session["points-value"] = potentialusers[0]["Points"]
-        print(session["username"])
-        return redirect(urlstring)
-    else:
-        print("failure!")
-        urlstring = urlstring + "login-failure"
-        return redirect(urlstring)
-
-@app.route('/signup-enter', methods=['GET', 'POST'])
-def signup(x=None, y=None):
-    if request.method == 'POST':
-        # do something to send email
-        urlstring = homeurl
-        formcontents = request.form
-        #check to make sure nobody is using this email already
-        emailvalue = str(formcontents['email'])
-        emailCheck = users.find({"Email": emailvalue}).count()
-        print(emailCheck)
-        if emailCheck == 0:
-            # do something
-            password = formcontents['password']
-            h = hashlib.md5(password.encode())
-            hashvalue = h.hexdigest()
-            user = {
-                "Email": formcontents['email'],
-                "Username": formcontents['username'],
-                "PasswordHash": hashvalue,
-                "Points": 0,
-                "Orders": []
-            }
-            users.insert_one(user)
-            try:
-                body = MIMEText("Thanks for making an account, we hope it helps you save!")
-                msg = MIMEMultipart()
-                msg['From'] = 'klikattatfootwear@gmail.com'
-                msg['To'] = formcontents['email']
-                msg['Subject'] = 'Congrats on your new account!'
-                msg.attach(body)
-                smtpObj.sendmail(sender, formcontents['email'], msg.as_string())
-                body = MIMEText("A store user just created an account")
-                msg = MIMEMultipart()
-                msg["From"] = 'klikattatfootwear@gmail.com'
-                msg["To"] = 'jriley9000@gmail.com'
-                msg["Subject"] = "New User!"
-                msg.attach(body)
-                smtpObj.sendmail(sender, msg["To"], msg.as_string())
-                print("Successfully sent email")
-            except SMTPException:
-                print("Error: unable to send email")
-            #login on successful signup with new account
-            global currentUserName
-            #print(currentUser["Username"])
-            session["username"] = user["Username"]
-            session["points-value"] = user["Points"]
-            urlstring = urlstring + "signup-success"
-            return redirect(urlstring)
-        else:
-            print("found this email in database")
-            urlstring = urlstring + "signup-failure"
-            return redirect(urlstring)
-
-@app.route("/signup-success")
-def signupsuccess():
-    return redirect(homeurl + "myaccount")
-
-@app.route("/login-success")
-def loginsuccess():
-    return redirect(homeurl + "myaccount")
+    return render_template("/aroma/index.html", email_form=email_form)
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
@@ -272,272 +227,151 @@ def home():
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
         print(email_form.email.data)
-        email_list.insert_one({"Email ": email_form.email.data})
-    return render_template('/aroma/index.html', value=checksessionforuser(), email_form=email_form)
+        this_email = Email()
+        this_email.email = email_form.email.data
+        db.session.add(this_email)
+        db.session.commit()
+    return render_template('/aroma/index.html', email_form=email_form)
+
+@app.route('/admin-register', methods=('GET', 'POST'))
+def register():
+    admin_register_form = forms.AdminRegisterForm()
+    if admin_register_form.admin_code.data == admin_code and admin_register_form.validate():
+        #check that this email doesnt already exist
+        if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
+            #then there are no users who currently have this email
+            #we want to insert this person into our users collection
+            new_user = User()
+            new_user.email = admin_register_form.email.data
+            new_user.id = new_user.email
+            password = admin_register_form.data["password"]
+            h = hashlib.md5(password.encode())
+            passhash = h.hexdigest()
+            new_user.password = passhash
+            new_user.name = admin_register_form.name.data
+            new_user.confirmed_at = date.today()
+            role = Role.query.filter_by(name="Admin").one()
+            new_user.roles.append(role)
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(User.query.filter_by(email=admin_register_form.email.data).first())
+            return redirect('/admin')
+        else:
+            return redirect('/admin-register')
+    return render_template('/aroma/admin_register.html', admin_register_form=admin_register_form)
+
+@app.route('/login', methods=('GET', 'POST'))
+def login():
+    login_form = forms.LoginForm()
+    if login_form.validate_on_submit():
+        #check that this email doesnt already exist
+        print("form email: " + login_form.email.data)
+        print("form password: " + login_form.password.data)
+        h = hashlib.md5(login_form.password.data.encode())
+        password_hash_code = h.hexdigest()
+        user_object = query_db('SELECT * from Users WHERE email="%s" AND password="%s"' % (login_form.email.data, password_hash_code), one=True)
+        if user_object is not None:
+            #print(our_users.first().)
+            user = User.query.filter_by(id=login_form.email.data).one()
+            login_user(user)
+            return redirect('/admin')
+        else:
+            flash("Unable to find user with those details, please try again")
+            return redirect('/login')
+    return render_template('/aroma/login.html', login_form=login_form)
+
+@app.route("/admin", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def admin():
+    #logo form
+    logo_form = forms.LogoForm()
+    new_discount_form = forms.NewDiscount()
+    email_all_customers_form = forms.EmailCustomers()
+    if logo_form.new_logo.data is not None and logo_form.validate():
+        image = request.files["new_logo"]
+        if 'new_logo' not in request.files:
+            return redirect(request.url)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            print(filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            logo = Logo()
+            logo.file_path = "/static/img/" + filename
+            db.session.add(logo)
+            db.session.commit()
+    if new_discount_form.name.data is not None and new_discount_form.validate():
+        new_discount = Discount()
+        new_discount.name = new_discount_form.name.data
+        if new_discount_form.type.data == '0':
+            new_discount.amount = float("." + str(new_discount_form.amount.data))
+            new_discount.type = "percentage"
+        else:
+            new_discount.amount = int(new_discount_form.amount.data)
+            new_discount.type = "cash"
+        db.session.add(new_discount)
+        db.session.commit()
+        flash("Saved New Discount")
+    if email_all_customers_form.subject.data is not None and email_all_customers_form.validate():
+        image = request.files["attachment"]
+        this_file_path = ""
+        if 'attachment' not in request.files:
+            return redirect(request.url)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            this_file_path = img_path
+        for customer in Email.query.all():
+            body = email_all_customers_form.message.data
+            msg = MIMEMultipart()
+            msg["From"] = 'bainbridgeislandteeco@gmail.com'
+            msg["To"] = customer.email
+            msg["Subject"] = email_all_customers_form.subject.data
+            msg.attach(MIMEText(body))
+            part = MIMEBase('application', "octet-stream")
+
+            if this_file_path is not '':
+                part.set_payload(open(this_file_path, 'rb').read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition',
+                                'attachment; filename="{}"'.format(Path(this_file_path).name))
+                msg.attach(part)
+            smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
+    return render_template('/aroma/admin.html', logo_form=logo_form, new_discount_form=new_discount_form, email_all_customers=email_all_customers_form)
 
 @app.route("/<product>", methods=('GET', 'POST'))
 def product_view(product):
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
         print(email_form.email.data)
-        email_list.insert_one({"Email ": email_form.email.data})
-    return render_template('/aroma/index.html', value=checksessionforuser(), scroll_product=product, email_form=email_form)
-
-@app.route("/login-failure")
-def loginfailure():
-    return render_template("/aroma/login.html", value=checksessionforuser())
-
-@app.route("/signup-failure")
-def failedtosignup():
-    return render_template("/aroma/register.html", value=checksessionforuser())
-
-@app.route("/ourstory")
-def blog():
-    return render_template('/aroma/blog.html', value=checksessionforuser())
-
-@app.route("/shop/category1")
-def shopcategory1():
-    return render_template('/aroma/category.html', value=checksessionforuser())
+        this_email = Email()
+        this_email.email = email_form.email.data
+        db.session.add(this_email)
+        db.session.commit()
+    return render_template('/aroma/index.html', scroll_product=product, email_form=email_form)
 
 @app.route("/mycart")
 def thecart():
-    return render_template('/aroma/cart.html', pointsValue=checksessionforpoints(),value=checksessionforuser(), discountDB=discountDBtoArray(), amountArray=discountAmountDBToArray())
-
-@app.route("/websitesearch")
-def search():
-    return render_template('/aroma/search.html', value=checksessionforuser())
-
-@app.route("/contact-us")
-def contact():
-    return render_template('aroma/contact.html', value=checksessionforuser())
-
-@app.route("/login")
-def loginpage():
-    return render_template('aroma/login.html', value=checksessionforuser())
-
-@app.route("/signup")
-def signuppage():
-    return render_template('aroma/register.html', value=checksessionforuser())
-
-@app.route("/track-your-order")
-def shipping():
-    return render_template('aroma/tracking-order.html', value=checksessionforuser())
-
-@app.route("/sample-product-page")
-def sampleproduct():
-    reviews = db["products"].find_one({"PageURL": request.base_url})["Reviews"]
-    comments = db["products"].find_one({"PageURL": request.base_url})["Comments"]
-    print(reviews)
-    print(comments)
-    return render_template('aroma/single-product.html', value=checksessionforuser(), comments=comments, reviews=reviews)
-
-@app.route("/todays-promotion")
-def todayspromotion():
-    return render_template('aroma/todayspromotion.html', value=checksessionforuser())
-
-#@app.route("/myaccount")
-#def myaccount():
-#    #get orders associated with this account
-#    #only want ones with state "shipping"
-#    #socketio.emit('message', {"data": "Passed data using socket"}, broadcast=True)
-#    #currentLocations is a 2D array of orders and their associated travel history locations in longitude and latitude
-#    username = checksessionforuser()
-#    shippingOrders = users.find_one({"Username": username})
-#    print(shippingOrders)
-#    shippingOrders = shippingOrders["Orders"]
-#    currentLocations = [None] * len(shippingOrders)
-#    currentEvents = []
-#    usps = USPSApi('000KLIKA1245')
-#    ups = UPSConnection('AD6BC655AC6D6AB1',
-#                        'jriley9000',
-#                        '843134Jr!',
-#                        debug=True)
-##    count = 0
-#    for document in shippingOrders:
-#        print(document["State"])
-#        if(str(document["State"]) == "Yet to ship"):
-#            print("appended this event")
-#            currentEvents.append("Shipping ASAP")
-#            currentLocations[count] = ["47.258728, -122.465973"]
-#        else:
-#            print("this TrackingID: " + document["TrackingID"])
-#            newLocations = []
-#            if len(document["TrackingID"]) == 18:
-#                print("thinks this is a ups tracking number")
-#                thisTrackingID = document["TrackingID"]
-#                print(thisTrackingID)
-#                tracking = ups.tracking_info(thisTrackingID)
-#                activitiesList = tracking.shipment_activities
-#                currentEvent = activitiesList[0].get('Status').get('StatusType').get('Description')
-#                for activity in activitiesList:
-#                    location = activity["ActivityLocation"]
-#                    address = location["Address"]
-#                    city = address.get('City')
-#                    if city is not None:
-#                        cityStringArray = city.split()
-#                        if cityStringArray.__len__() > 1:
-#                            cityStringArray[0] = cityStringArray[0].lower()
-#                            cityStringArray[0] = cityStringArray[0].capitalize()
-#                            cityStringArray[1] = cityStringArray[1].lower()
-#                            cityStringArray[1] = cityStringArray[1].capitalize()
-#                            city = cityStringArray[0] + " " + cityStringArray[1]
-#                        elif cityStringArray.__len__() == 1:
-#                            city = cityStringArray[0]
-#                            city = city.lower()
-#                            city = city.capitalize()
-#                        print("city name after processing: " + city)
-#                        location = cityLocationSearch(city)
-#                        location = re.findall(r"[+-]?\d+(?:\.\d+)?", str(location))
-#                        longitude = location[0]
-#                        latitude = location[1]
-#                        newLocations.append(str(longitude) + ", " + str(latitude))
-#                print(currentEvent)
-#                currentEvents.append(str(currentEvent))
-#                currentLocations[count] = newLocations
-#                continue
-#            else:
-#                track = usps.track(document["TrackingID"])
-#                eventChain = track.result.get("TrackResponse").get("TrackInfo").get("TrackDetail")
-#                for event in eventChain:
-#                    eventStringArray = str(event["EventCity"]).split()
-#                    #check and make sure there is something for the first element, sometimes there isn't
-#                    if(eventStringArray[0] != 'None'):
-#                        if(eventStringArray.__len__() > 1):
-#                            thisCity = eventStringArray[0] + " " + eventStringArray[1]
-#                        elif(eventStringArray.__len__() == 1):
-#                            thisCity = eventStringArray[0]
-                        #location = geolocator.geocode(thisCity, timeout=None)
-                        #make sure there isn't a state's initials thrown in with the city name (there often is).
-#                        if (thisCity.split(" ").__len__() > 1):
-#                            if (thisCity.split(" ")[1].__len__() == 2):
-#                                thisCity = thisCity.split(" ")[0]
-#                        location = cityLocationSearch(thisCity)
-#                        location = re.findall(r"[+-]?\d+(?:\.\d+)?", str(location))
-#                        longitude = location[0]
-#                        latitude = location[1]
-#                        newLocations.append(str(longitude) + ", " + str(latitude))
-#                currentEvents.append(track.result.get("TrackResponse").get("TrackInfo").get("TrackSummary").get("Event"))
-#                currentLocations[count] = newLocations
-#        count += 1
-#    print(currentEvents)
-#    return render_template("aroma/myaccount.html", pointsValue=checksessionforpoints(),value=checksessionforuser(), shippingOrders=shippingOrders, currentLocations=currentLocations, currentEvents=currentEvents)
-
-@app.route("/logout-success")
-def logout():
-    print("thinks there is something in here for username")
-    session["username"] = ""
-    session["points-value"] = ""
-    return redirect(homeurl)
-
-@app.route("/cart-login", methods=['GET', 'POST'])
-def cartlogin():
-    print("here")
-    print(request)
-    print(login())
-    return render_template('/aroma/cart.html', pointsValue=checksessionforpoints(),value=checksessionforuser(), discountDB=discountDBtoArray(), amountArray=discountAmountDBToArray())
+    discounts_original_structure = query_db("SELECT * FROM Discounts")
+    discount_2d = []
+    for discount in discounts_original_structure:
+        new_inner_array = []
+        new_inner_array.append(discount[0])
+        new_inner_array.append(discount[1])
+        new_inner_array.append(discount[2])
+        new_inner_array.append(discount[3])
+        discount_2d.append(new_inner_array)
+    return render_template('/aroma/cart.html', discounts=discount_2d)
 
 @app.route("/terms-and-conditions")
 def showtermspage():
     return render_template('/aroma/terms.html')
 
-@app.route("/settingsReset", methods=['GET', 'POST'])
-def postSettingsChange():
-    #get user document using session
-    #insert document
-    if request.form['email'] != "":
-        newValues2 = {"$set": {"Email": request.form['email']}}
-        users.update({"Username": session["username"]}, newValues2)
-    if request.form['username'] != "":
-        newValues2 = {"$set": {"Username": request.form['username']}}
-        users.update({"Username": session["username"]}, newValues2)
-        session["username"] = request.form['username']
-    if request.form['password'] != "":
-        password = request.form['password']
-        h = hashlib.md5(password.encode())
-        hashvalue = h.hexdigest()
-        print(hashvalue)
-        newValues2 = {"$set": {"PasswordHash": hashvalue}}
-        users.update({"Username": session["username"]}, newValues2)
-
-    return redirect(homeurl + "myaccount")
-
-@app.route("/contactus-form", methods=['GET', 'POST'])
-def contactusFunct():
-    print("called contact us form funct")
-    name = request.form["name"]
-    email = request.form["email"]
-    subject = request.form["subject"]
-    message = request.form["message"]
-    if(session["username"] != ""):
-        #this way we can record if they have an account
-        message={
-            "Name": name,
-            "Email": email,
-            "Subject": subject,
-            "Message": message,
-            "Has-Account": True
-        }
-    else:
-        message = {
-            "Name": name,
-            "Email": email,
-            "Subject": subject,
-            "Message": message,
-            "Has-Account": False
-        }
-
-
-    try:
-        body = MIMEText("We'll address your concern as quickly as possible!")
-        msg = MIMEMultipart()
-        msg['From'] = 'klikattatfootwear@gmail.com'
-        msg['To'] = email
-        msg['Subject'] = 'Thanks for contacting us!'
-        msg.attach(body)
-        smtpObj.sendmail(sender, email, msg.as_string())
-        print("successfully sent email")
-    except SMTPException:
-        print("failed to send email")
-
-    try:
-        body = MIMEText("A store user just sent a message")
-        msg = MIMEMultipart()
-        msg["From"] = 'klikattatfootwear@gmail.com'
-        msg["To"] = 'jriley9000@gmail.com'
-        msg["Subject"] = "New User Message!"
-        msg.attach(body)
-        smtpObj.sendmail(sender, msg["To"], msg.as_string())
-        print("Successfully sent email")
-    except SMTPException:
-        print("Error: unable to send email")
-    db["contactus-forms"].insert_one(message)
-    return redirect(homeurl + "contact-us")
-
-@app.route("/submit-comment", methods=["GET", "POST"])
-def submitComment():
-    message = request.form["textarea"]
-    print(redirect_url())
-    comment = {
-        "Username": session["username"],
-        "Message": message,
-        "Date-Time": request.form["time-date"]
-    }
-    #need product from url
-    db["products"].update({"PageURL": redirect_url()}, {'$push': {'Comments': comment}})
-    return redirect(redirect_url())
-
-@app.route("/submit-review", methods=["GET", "POST"])
-def submitReview():
-    print(request.form["user-rating"])
-    review = {
-        "Username": session["username"],
-        "Message": request.form["textarea"],
-        "Star-rating": int(request.form["user-rating"]),
-        "Date-Time": request.form["time-date"]
-    }
-    print(review["Star-rating"])
-    db["products"].update({"PageURL": redirect_url()}, {'$push': {'Reviews': review}})
-    return redirect(redirect_url())
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect('/')
 
 def redirect_url(default='index'):
     return request.args.get('next') or \

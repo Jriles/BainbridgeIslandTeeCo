@@ -1,0 +1,50 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+<div class="admin-container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-block alert-error section-error-alert">
+      <a class="close" data-dismiss="alert">&times;</a>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="header-container">
+        <h1 class="admin-title">Welcome {{current_user.username}}</h1>
+        <a class="admin-logout" href="/logout"><button class="btn btn-danger">Logout</button></a>
+    </div>
+    <h5>Here you can edit product details and your company logo.</h5>
+    <h3>Change Logo</h3>
+    <form method="post" class="form admin-form" enctype="multipart/form-data">
+        {{ logo_form.csrf_token }}
+        {{ logo_form.new_logo(class_ = '', placeholder = logo_form.new_logo.label.text) }}
+        <input type="submit" value="Submit New Logo" class="btn btn-primary admin-button">
+    </form>
+    <br>
+    <br>
+    <h3>Make a Discount</h3>
+    <form method="post" class="form admin-form" enctype="multipart/form-data">
+        {{ new_discount_form.csrf_token }}
+        {{ new_discount_form.name(class_ = 'discount-form-element', placeholder = new_discount_form.name.label.text) }}
+        {{ new_discount_form.amount(class_ = 'discount-form-element', placeholder = new_discount_form.amount.label.text) }}
+        {{ new_discount_form.type(class_ = 'discount-form-element', placeholder = new_discount_form.type.label.text) }}
+        <input type="submit" value="Submit New Discount" class="btn btn-primary admin-button">
+    </form>
+    <br>
+    <br>
+    <h3>Email All Customers</h3>
+    <form method="post" class="form admin-form" enctype="multipart/form-data">
+        {{ email_all_customers.csrf_token }}
+        {{ email_all_customers.subject(class_ = 'discount-form-element', placeholder = email_all_customers.subject.label.text) }}
+        {{ email_all_customers.message(class_ = 'discount-form-element', placeholder = email_all_customers.message.label.text) }}
+        {{ email_all_customers.attachment(class_ = 'discount-form-element', placeholder = email_all_customers.attachment.label.text) }}
+        <input type="submit" value="Email All Customers" class="btn btn-warning admin-button">
+    </form>
+    <br>
+    <br>
+    <h2></h2>
+</div>
+{% endblock %}

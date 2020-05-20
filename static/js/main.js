@@ -563,13 +563,11 @@ $(function() {
 });
 
 $('body, html').on('scroll', function(){
-    console.log("thinks we are scrolling");
     if( $('body,html').is(':animated') ){
         return;
     }
     var menu = document.getElementById("nav-list");
     var scrollPos = $('body').scrollTop();
-    console.log(scrollPos);
     if (mobileCheck()){
         if(scrollPos < 1650 && scrollPos >= 766){
             blankNavBar(menu);
@@ -685,17 +683,17 @@ function applyPoints(){
     }
 }
 
-function applyDiscount(array, amountArray){
+function applyDiscount(discounts){
     //updateCheckoutTotal();
     console.log("called apply discount");
+    console.log(discounts);
     var discountCode = String(document.getElementById("discount-code-input").value);
-    //connect to database
-    console.log(array);
     //check given code against all discount codes in DB
     var valid = false;
     var lastI = ""
-    for(i = 0; i < array.length;i++){
-        if(array[i] === discountCode){
+    for(i = 0; i < discounts.length;i++){
+        console.log(discounts[i]);
+        if(discounts[i][1] === discountCode){
             valid = true;
             lastI = i;
             break;
@@ -709,38 +707,20 @@ function applyDiscount(array, amountArray){
         var currentTotal = Number(String(document.getElementById("subtotal-value").innerHTML).slice(1));
         var newTotal = "";
         //could be a percentage discount or a cash amount
-        if(String(amountArray[lastI]).includes("$")){
-            newTotal = currentTotal - Number(String(amountArray[lastI]).slice(1));
-        }else if(String(amountArray[lastI]).includes("%")){
-            console.log(String(amountArray[lastI]).slice(amountArray[lastI].length - 1));
-            newTotal = currentTotal *(1 - Number("." + Number(String(amountArray[lastI]).slice(0,amountArray[lastI].length - 1))));
+        if(discounts[lastI][3] === "cash"){
+            newTotal = currentTotal - Number(discounts[lastI][2]);
+        }else if(discounts[lastI][3] === "percentage"){
+            newTotal = currentTotal * (1 - Number(discounts[lastI][2]));
         }
 
         if(newTotal >= 0){
-            document.getElementById("points-slider").value = 0;
-            document.getElementById("points-list-element").style.display = "none";
             document.getElementById("discount-list-element").style.display = "inline";
-            document.getElementById("discount-savings").innerHTML = amountArray[lastI];
-            document.getElementById("points-earned").innerHTML = (newTotal * .1).toFixed(2);
-            //wait until we have calculated points before displaying total with tree
-            //make sure to check if we are planting a tree!
-            if(document.getElementById("tree-input").checked){
-                //they would like to plant a tree
-                newTotal++;
-            }
+            document.getElementById("discount-savings").innerHTML = "$" + String(currentTotal - newTotal);
             document.getElementById("total").innerHTML = "$" + newTotal.toFixed(2);
         } else {
-            //we want to know where we should show this error, it depends on whether or not user is signed in
-            var warningElement;
-            if($(document.getElementById("cart-login-section")).css("display") === "none"){
-                //logged in
-                warningElement = document.getElementById("points-error-warning");
-            }else{
-                warningElement = document.getElementById("cart-login-warning");
-            }
-            warningElement.innerHTML = "We're sorry, your order total cannot be less than zero";
-            warningElement.style.display = "inline";
-            warningElement.style.color = "red";
+            var warningElement = document.getElementById("discount-warning");
+            warningElement.innerHTML = "We're sorry, your order total cannot be less than zero.";
+            warningElement.style.display = "block";
         }
     }
 }

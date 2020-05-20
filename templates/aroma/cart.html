@@ -110,7 +110,8 @@
                 <p style="margin-bottom: -10px; font-size: 15px;">Please note: you cannot apply a discount and <br>points at the same time.</p>
                 <div class="cupon_area">
                     <input style="position: relative; right: 30px;" type="text" id="discount-code-input" placeholder="Enter coupon code">
-                    <button class="button button-coupon" id="apply-discount-button" onclick="applyDiscount({{discountDB}}, {{amountArray}})">Apply Discount</button>
+                    <button class="button button-coupon" id="apply-discount-button" onclick="applyDiscount({{discounts}})">Apply Discount</button>
+                    <h6 id="discount-warning" style="display: none; color: red; margin-top: 15px;"></h6>
                 </div>
             </div>
         </li>

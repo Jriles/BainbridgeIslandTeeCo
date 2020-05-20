@@ -24,7 +24,7 @@
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="/"><img src="{{url_for('static', filename='img/logo.png')}}" alt=""></a>
+          <a class="navbar-brand logo_h" href="/"><img class="logo_styling" src="{{this_file_path}}" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -138,7 +138,7 @@
           },
           onApprove: function(data, actions) {
               return actions.order.capture().then(function(details) {
-                  alert('Transaction completed by ' + details.payer.name.given_name + '!' + 'at location: ' + Object.keys(details.payer.address));
+                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
                   $('<input />').attr('type', 'hidden')
                   .attr('name', "Email")
                   .attr('value', details.payer.email_address)

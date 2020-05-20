@@ -1,0 +1,13 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+<form method="post" class="form account-form">
+    <h2>Administrator Registration</h2>
+    {{ admin_register_form.csrf_token }}
+    {{ admin_register_form.admin_code(class_ = 'form-control', placeholder = admin_register_form.admin_code.label.text, required = true) }}
+    {{ admin_register_form.email(class_ = 'form-control', placeholder = admin_register_form.email.label.text, required = true) }}
+    {{ admin_register_form.name(class_ = 'form-control', placeholder = admin_register_form.name.label.text) }}
+    {{ admin_register_form.password(class_ = 'form-control', placeholder = admin_register_form.password.label.text, required = true) }}
+    <input type="submit" value="Register" class="btn btn-primary btn-lg btn-block">
+</form>
+{% endblock %}
