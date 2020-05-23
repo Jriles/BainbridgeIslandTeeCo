@@ -7,6 +7,68 @@ body {
 	line-height: 1.667
 }
 
+.form-control{
+    margin-bottom: 10px;
+}
+
+.back-to-admin-link{
+    margin-left: 10%;
+}
+
+.product_button{
+    margin-bottom: 10px;
+}
+
+.term-images-container{
+    width: 100%;
+    text-align: center;
+}
+
+.icon-bucket{
+    display: block;
+}
+
+.edit-design{
+    width: 95%;
+}
+
+.icon-styling{
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+    float: left;
+}
+
+.delete-link{
+    color: white;
+}
+
+.delete-link:hover{
+    color: white;
+}
+
+.back-to-admin{
+    margin-bottom: 20px;
+}
+
+.product_design_icon{
+    height: 40px;
+    width: auto;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.icon-input{
+    float: right;
+    width: 50%;
+}
+
+.card-width-setting{
+    max-width: 20rem;
+    margin-right: 10px;
+}
+
+
 ul {
 	list-style-type: none;
 	margin: 0;
@@ -180,6 +242,115 @@ a {
 	display: inline-block
 }
 
+.design-delete-button{
+    width: 100%;
+}
+
+.close-order-items{
+    float: right;
+    color: #aaaaaa;
+    background-color: Transparent;
+    border: none;
+    color: black;
+    font-size: 40px;
+    margin-top: -25px;
+}
+
+.internal-order-note-form{
+    width: 80%;
+}
+
+.order-row{
+    height: 50px;
+}
+
+.item-list{
+    list-style-position:inside;
+    border: 1px solid black;
+    width:80%;
+    display: none;
+}
+
+.item-column{
+    top: 50%;
+    position: relative;
+}
+
+.order-date{
+    width: 2%;
+}
+
+.order-item-img{
+    height: 40px;
+    width: auto;
+}
+
+.internal-notes-column{
+    width: 2%;
+}
+
+.shipping-status-column{
+    width: 2%;
+}
+
+.customer-notes-column{
+    width: 2%;
+}
+
+.order-table{
+    margin-bottom: 200px;
+}
+
+.order-header{
+    margin-top: 100px;
+}
+
+.customer-note-textarea{
+    margin-bottom: 20px;
+    width: 100%;
+    float: left;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+}
+
+.internal-note-textarea{
+    margin-bottom: 10px;
+    width: 100%;
+    float: left;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.internal-note-submit{
+    float: right;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+.email-column{
+    width: 2%;
+}
+
+.paypal-column{
+    width: 2%;
+}
+
+.address-column{
+    width: 7%;
+}
+
+.items-column{
+    width: 2%;
+}
+
+.notes-column{
+    width: 2%;
+}
+
 .admin-button{
     margin-top: 15px;
     display: block;
@@ -229,6 +400,12 @@ a {
 .admin-container{
     left: 10%;
     position: relative;
+}
+
+.orders-container{
+    left: 5%;
+    position: relative;
+    width: 90%
 }
 
 @media (min-width: 991px) {
@@ -4864,7 +5041,6 @@ Label the data
 .card_area{
 	position: relative;
 	float: right;
-	left: 10px;
 	height: 40px;
 }
 
@@ -4903,7 +5079,6 @@ Label the data
 .card_area{
 	margin-top: 0px;
 	margin-bottom: 0px;
-	left: 10px;
 	position: relative;
 }
 

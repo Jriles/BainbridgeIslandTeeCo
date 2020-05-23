@@ -11,162 +11,74 @@
         </div>
       </div>
     </section>
-    <!--================ Hero banner start =================-->
-    <div class="product_image_area">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img id="t-shirt-product-image2" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide2.png')}}" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<div class="info-and-options">
-							<div class="product-info">
-								<h3 id="product-name">Soft BI T-Shirt</h3>
-								<h2 id="product-price">$15.00</h2>
-								<h5 class="availability">In Stock</h5>
-								<h6 class="design-name">Tee Design 1</h6>
-							</div>
-							<ul class="product-options-area">
-								<li class="options-menu-item"><select id="t-shirt-size">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
-								</select></li>
-								<li class="options-menu-item"><div id="design-selection" class="card_area d-flex align-items-center">
-									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
-									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
-								</div></li>
-								<li class="options-menu-item"><div class="product_count">
-									<label for="t-shirt-quantity-count">Quantity:</label>
-									<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								</div></li>
-							</ul>
-						</div>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product-cart-buttons">
-							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
-							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================End Single Product Area =================-->
 
-    <!--================ Hero banner start =================-->
-    <div class="product_image_area" style="margin-top: 75px; display: none;">
-		<div class="container">
-			<div class="row s_product_inner sweatshirt-product">
-				<div class="col-lg-6" id="sweatshirt-images">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img id="sweatshirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/category/c2.jpg')}}" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1 sweatshirt-information">
-					<div class="s_product_text">
-						<div class="info-and-options">
-							<div class="product-info">
-								<h3 id="product-name2">Comfy BI Sweatshirt</h3>
-								<h2 id="product-price2">$40.00</h2>
-								<h5 class="availability">In Stock</h5>
-								<h6 class="design-name">Default</h6>
-							</div>
-							<ul class="product-options-area">
-								<li class="options-menu-item"><select id="sweatshirt-size">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
-								</select></li>
-								<li class="options-menu-item"><div id="design-selection" class="card_area d-flex align-items-center">
-									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
-									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
-								</div></li>
-								<li class="options-menu-item"><div class="product_count">
-									<label for="sweatshirt-quantity-count">Quantity:</label>
-									<input type="number" name="qty" min="1" id="sweatshirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								</div></li>
-							</ul>
-						</div>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product-cart-buttons">
-							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
-							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================End Single Product Area =================-->
-
+	{% for product in display_products %}
+		{% set product_loop = loop %}
 		<!--================ Hero banner start =================-->
-    <div class="product_image_area" style="margin-top: 75px;">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img id="bag-product-image0" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img id="bag-product-image1" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide2.png')}}" alt="">
+		<div class="product_image_area" style="margin-top: 75px;">
+			<div class="container">
+				<div class="row s_product_inner">
+					<div class="col-lg-6">
+						<div class="owl-carousel owl-theme s_Product_carousel">
+							{% for design in designs[product_loop.index-1] %}
+								<div class="single-prd-item">
+									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design[3]}}" alt="">
+								</div>
+							{% endfor %}
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<div class="info-and-options">
-							<div class="product-info">
-								<h3 id="product-name">Recycled Carryall</h3>
-								<h2 id="product-price">$25.00</h2>
-								<h5 class="availability">In Stock</h5>
-								<h6 class="design-name">Bag Design 1</h6>
+					<div class="col-lg-5 offset-lg-1">
+						<div class="s_product_text">
+							<div class="info-and-options">
+								<div class="product-info">
+									<h3 id="product-name">{{product[1]}}</h3>
+									<h2 id="product-price">${{product[2]}}</h2>
+									{% if product[3] == 0 %}
+										<h5 class="availability">Out of Stock</h5>
+									{% else %}
+										<h5 class="availability">In Stock</h5>
+									{% endif %}
+									<h6 class="design-name">{% if designs[product_loop.index-1]|length > 0 %}{{designs[product_loop.index-1][0][2]}}{% endif %}</h6>
+								</div>
+								<ul class="product-options-area">
+									{% if product_loop.index == 1 %}
+									<li class="options-menu-item"><select id="t-shirt-size">
+										<option>Small</option>
+										<option>Medium</option>
+										<option>Large</option>
+										<option>Extra Large</option>
+									</select></li>
+									{% endif %}
+									<li class="options-menu-item">
+										<div id="design-selection" class="card_area d-flex align-items-center">
+										{% for design in designs[product_loop.index-1] %}
+											<img onclick="goToSlide(this)" src="{{design[4]}}" class="product_design_icon">
+										{% endfor %}
+											<ul class="design_names" style="display: none;">
+												{% for design in designs[product_loop.index-1] %}
+												<li>{{design[2]}}</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</li>
+									<li class="options-menu-item"><div class="product_count">
+										<label for="t-shirt-quantity-count">Quantity:</label>
+										<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+									</div></li>
+								</ul>
 							</div>
-							<ul class="product-options-area">
-								<li class="options-menu-item"><select id="t-shirt-size">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
-								</select></li>
-								<li class="options-menu-item"><div id="design-selection" class="card_area d-flex align-items-center">
-									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
-									<button class="icon_btn design-selector-btn" onclick="goToSlide(this)"><i class="lnr lnr lnr-diamond"></i></button>
-								</div></li>
-								<li class="options-menu-item"><div class="product_count">
-									<label for="t-shirt-quantity-count">Quantity:</label>
-									<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								</div></li>
-							</ul>
-						</div>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product-cart-buttons">
-							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
-							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
+							<p>{{product[4]}}</p>
+							<div class="product-cart-buttons">
+								<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
+								<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!--================End Single Product Area =================-->
-
+		<!--================End Single Product Area =================-->
+	{% endfor %}
     <!-- ================ Subscribe section start ================= -->
     <section style="position: relative; margin-top: 150px; margin-bottom: 100px;">
       <div class="container">

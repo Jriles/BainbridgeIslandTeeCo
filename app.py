@@ -112,6 +112,10 @@ class UserOrders(db.Model):
     user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
     paypal_order_id = db.Column(db.String())
     address = db.Column(db.String())
+    internal_note = db.Column(db.String())
+    customer_note = db.Column(db.String())
+    order_date = db.Column(db.String())
+    status = db.Column(db.Integer())
 
 class OrderItem(db.Model):
     __tablename__ = "Order_Item"
@@ -135,6 +139,22 @@ class Discount(db.Model):
     name = db.Column(db.String())
     amount = db.Column(db.Integer())
     type = db.Column(db.String())
+
+class DisplayProduct(db.Model):
+    __tablename__ = "Display_Products"
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String())
+    price = db.Column(db.Integer())
+    in_stock = db.Column(db.Integer())
+    description = db.Column(db.String())
+
+class ProductDesign(db.Model):
+    __tablename__ = "Product_Designs"
+    id = db.Column(db.Integer(), primary_key=True)
+    product_id = db.Column(db.Integer())
+    design_name = db.Column(db.String())
+    design_image = db.Column(db.String())
+    design_icon = db.Column(db.String())
 
 user_manager = UserManager(app, db, User)
 
@@ -174,13 +194,16 @@ def paymentsuccess():
     paypalID = request.form['PayPalTransactionID']
     orderDeets = paypalstuff.GetOrder.get_order(paypalstuff.GetOrder, paypalID)
     address = orderDeets.result.purchase_units[0].shipping.address
-    print(address)
+    print(orderDeets)
     address = address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + ", " + address.country_code
     cart = json.loads(request.form["CartJSON"])
     new_order = UserOrders()
     new_order.user_id = email
     new_order.paypal_order_id = paypalID
     new_order.address = address
+    new_order.status = 0
+    new_order.customer_note = request.form["CustomerNote"]
+    new_order.order_date = date.today()
     db.session.add(new_order)
     db.session.commit()
     descending = UserOrders.query.order_by(UserOrders.id.desc())
@@ -231,7 +254,11 @@ def home():
         this_email.email = email_form.email.data
         db.session.add(this_email)
         db.session.commit()
-    return render_template('/aroma/index.html', email_form=email_form)
+    display_products = query_db('SELECT * FROM Display_Products')
+    designs = []
+    for product in display_products:
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+    return render_template('/aroma/index.html', email_form=email_form, display_products=display_products, designs=designs)
 
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
@@ -340,6 +367,93 @@ def admin():
             smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     return render_template('/aroma/admin.html', logo_form=logo_form, new_discount_form=new_discount_form, email_all_customers=email_all_customers_form)
 
+@app.route("/new-design/<productID>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def create_design(productID):
+    new_design_form = forms.AddDesign()
+    if new_design_form.design_name.data is not None and new_design_form.validate():
+        image = request.files["design_image"]
+        icon = request.files["design_icon"]
+        if 'design_image' not in request.files or 'design_icon' not in request.files:
+            return redirect(request.url)
+        if (image and allowed_file(image.filename)) and (icon and allowed_file(icon.filename)):
+            image_file_name = secure_filename(image.filename)
+            icon_file_name = secure_filename(icon.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file_name)
+            image.save(img_path)
+            icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
+            icon.save(icon_path)
+            new_design = ProductDesign()
+            new_design.product_id = productID
+            new_design.design_name = new_design_form.design_name.data
+            new_design.design_image = "/static/img/" + image_file_name
+            print(icon_file_name)
+            new_design.design_icon = "/static/img/" + icon_file_name
+            db.session.add(new_design)
+            db.session.commit()
+            flash("Successfully created a new design for product " + productID)
+    return render_template('/aroma/create-design.html', new_design_form=new_design_form)
+
+@app.route("/delete-design/<designID>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def delete_design(designID):
+    design_to_delete = ProductDesign.query.filter_by(id=designID).first()
+    db.session.delete(design_to_delete)
+    db.session.commit()
+    return redirect('/manage-products')
+
+@app.route("/manage-products", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def edit_products():
+    edit_product_form = forms.EditProduct()
+    edit_design_form = forms.EditDesign()
+    if edit_product_form.product_name.data is not None and edit_product_form.validate():
+        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.product_id.data).first()
+        this_display_product.name = edit_product_form.product_name.data
+        this_display_product.price = edit_product_form.product_price.data
+        this_display_product.in_stock = edit_product_form.product_in_stock.data
+        this_display_product.description = edit_design_form.description.data
+        db.session.commit()
+    if (edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
+        this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
+        if this_design is not None:
+            this_design.design_name = edit_design_form.edit_design_name.data
+            image = request.files["edit_design_image"]
+            if image and allowed_file(image.filename):
+                filename = secure_filename(image.filename)
+                print(filename)
+                img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                image.save(img_path)
+                this_design.design_image = "/static/img/" + filename
+            icon = request.files["edit_design_icon"]
+            if icon and allowed_file(icon.filename):
+                icon_file_name = secure_filename(icon.filename)
+                icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
+                icon.save(icon_path)
+                this_design.design_icon = "static/img/" + icon_file_name
+            db.session.commit()
+    # we need to query all of the existing products and render them with the forms
+    display_products = query_db('SELECT * FROM Display_Products')
+    designs = []
+    for product in display_products:
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+    return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form, display_products=display_products, designs=designs, edit_design_form=edit_design_form)
+
+@app.route("/new-product", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def new_product():
+    new_product_form = forms.CreateProduct()
+    if new_product_form.description.data is not None and new_product_form.validate():
+        new_product = DisplayProduct()
+        new_product.name = new_product_form.product_name.data
+        new_product.price = float(new_product_form.product_price.data)
+        new_product.in_stock = int(new_product_form.product_in_stock.data)
+        new_product.description = new_product_form.description.data
+        db.session.add(new_product)
+        db.session.commit()
+        flash("Successfully created new product: " + new_product.name)
+    return render_template('/aroma/new-product.html', new_product_form=new_product_form)
+
 @app.route("/<product>", methods=('GET', 'POST'))
 def product_view(product):
     email_form = forms.EmailForm()
@@ -350,6 +464,29 @@ def product_view(product):
         db.session.add(this_email)
         db.session.commit()
     return render_template('/aroma/index.html', scroll_product=product, email_form=email_form)
+
+@app.route("/manage-orders", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def manage_orders():
+    orders = query_db("SELECT * FROM User_Orders")
+    order_items = []
+    for order in orders:
+        order_items.append(query_db("SELECT * FROM Order_Item WHERE order_id='%s'" % order[0]))
+
+    internal_order_note = forms.InternalOrderNote()
+    order_status_form = forms.OrderStatusForm()
+    if internal_order_note.note.data is not None and internal_order_note.validate():
+        this_order = UserOrders.query.filter_by(id=internal_order_note.orderID.data).first()
+        this_order.internal_note = internal_order_note.note.data
+        db.session.commit()
+        return redirect("/manage-orders")
+    if order_status_form.status.data is not None and order_status_form.validate():
+        this_order = UserOrders.query.filter_by(id=order_status_form.orderID.data).first()
+        print(order_status_form.status.data)
+        this_order.status = int(order_status_form.status.data)
+        db.session.commit()
+        return redirect("/manage-orders")
+    return render_template('/aroma/manage-orders.html', orders=orders, order_items=order_items, internal_order_note=internal_order_note, order_status_form=order_status_form)
 
 @app.route("/mycart")
 def thecart():

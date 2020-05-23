@@ -50,6 +50,10 @@ CREATE TABLE User_Orders(
         user_id        TEXT,
         paypal_order_id  TEXT,
         address        TEXT,
+        internal_note  TEXT,
+        customer_note  TEXT,
+        order_date     TEXT,
+        status         INTEGER,
         FOREIGN KEY (user_id) REFERENCES Users (email)
                 ON UPDATE CASCADE
                 ON DELETE CASCADE
@@ -70,4 +74,23 @@ CREATE TABLE Discounts(
         name        TEXT,
         amount      INTEGER,
         type        TEXT
+);
+
+CREATE TABLE Display_Products(
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        name        TEXT,
+        price       INTEGER,
+        in_stock    INTEGER,
+        description TEXT
+);
+
+CREATE TABLE Product_Designs(
+        id              INTEGER PRIMARY KEY AUTOINCREMENT,
+        product_id      INTEGER,
+        design_name     TEXT,
+        design_image    TEXT,
+        design_icon     TEXT,
+        FOREIGN KEY (product_id) REFERENCES Display_Products (id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 );

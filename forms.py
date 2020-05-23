@@ -31,3 +31,38 @@ class EmailCustomers(FlaskForm):
     subject = StringField('Subject', validators=[validators.Optional()])
     message = TextAreaField('Message', validators=[DataRequired()])
     attachment = FileField('Attach a file')
+
+class EditProduct(FlaskForm):
+    product_name = StringField('Name', validators=[validators.Optional()])
+    product_price = IntegerField('Price',  validators=[validators.Optional()])
+    in_stock_choices = [('0', 'False'), ('1', 'True')]
+    product_in_stock = SelectField(validators=[DataRequired()], choices=in_stock_choices)
+    description = TextAreaField('Product Description', validators=[validators.Optional()])
+    product_id = HiddenField()
+
+class AddDesign(FlaskForm):
+    design_name = StringField('Design Name', validators=[DataRequired()])
+    design_image = FileField('Design Image', validators=[DataRequired()])
+    design_icon = FileField('Design Icon', validators=[DataRequired()])
+
+class EditDesign(FlaskForm):
+    edit_design_name = StringField('Design Name', validators=[validators.Optional()])
+    edit_design_image = FileField('Design Image', validators=[validators.Optional()])
+    edit_design_icon = FileField('Design Icon', validators=[validators.Optional()])
+    design_id = HiddenField()
+
+class CreateProduct(FlaskForm):
+    product_name = StringField('Product Name', validators=[validators.Optional()])
+    product_price = IntegerField('Product Price',  validators=[validators.Optional()])
+    in_stock_choices = [('0', 'False'), ('1', 'True')]
+    product_in_stock = SelectField(validators=[DataRequired()], choices=in_stock_choices)
+    description = TextAreaField('Product Description', validators=[validators.Optional()])
+
+class InternalOrderNote(FlaskForm):
+    note = TextAreaField('A note for yourself about this order', validators=[validators.DataRequired()])
+    orderID = HiddenField()
+
+class OrderStatusForm(FlaskForm):
+    status_choices = [('0', 'Waiting to ship'), ('1', 'Shipping'), ('2', 'Delivered to customer')]
+    status = SelectField(validators=[DataRequired()], choices=status_choices)
+    orderID = HiddenField()

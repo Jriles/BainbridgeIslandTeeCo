@@ -6,7 +6,7 @@ $(function() {
   });
 
   //------- Active Nice Select --------//
-  $('select').niceSelect();
+  //$('select').niceSelect();
 
    //want to expand images when we click on the expand button
   $('.expandImage').on('click', function(){
@@ -315,6 +315,12 @@ $(function() {
 	            console.log("displaying!");
 	            document.getElementById("cart-login-warning").style.display = "inline";
 	        }
+
+	        //reset select fields so that they cooperate in professor section
+            var els = document.getElementsByClassName("reset_me");
+            for (i = 0; i < els.length; i++) {
+                els[i].value = els[i].getAttribute('value');
+            }
 		});
 
     //check if this is the cart page
@@ -605,9 +611,11 @@ function setPoints(element){
 function addToCart(button){
     var thisProductInfo = button.parentElement.parentElement;
     var productOptions = thisProductInfo.children[0].children[1];
+    console.log(productOptions);
     var productInfo = thisProductInfo.children[0].children[0];
     var quantity = parseInt(productOptions.children[2].children[0].children[1].value);
-    var size = productOptions.children[0].children[1].children[0].innerHTML;
+    var size = $(productOptions).find("#t-shirt-size option:selected").text();
+    console.log(size);
     var productName = String(productInfo.children[0].innerHTML);
     var productPrice = String(productInfo.children[1].innerHTML);
     var thisProductImage = thisProductInfo.parentElement.parentElement.children[0].children[0].children[0].children[0].children[2].children[0].children[0].src;
@@ -725,20 +733,17 @@ function applyDiscount(discounts){
     }
 }
 
+
+
 //maintain with new images/designs
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
-    console.log("current: " + event.relatedTarget.current() + ", total item count: " + event.item.count);
-    var owl_active_slide_img = $(event.target).find(".owl-item.active").find(".img-fluid").attr('src');
-    console.log("this slide image: " + owl_active_slide_img);
+    var active_dot_index = document.getElementsByClassName('owl-dot active')
+    var design_names = $(event.target).parent().parent().find(".design_names");
+    console.log(active_dot_index);
+    //console.log("this slide image: " + owl_active_slide_img);
     var this_design_name = $(event.target).parent().parent().find(".design-name")
-    switch(owl_active_slide_img){
-        case "/static/img/home/hero-slide1.png":
-            this_design_name.html("Tee Design 2");
-            break;
-        case "/static/img/home/hero-slide2.png":
-            this_design_name.html("Tee Design 1");
-        break;
-    }
+    console.log(design_names.children[active_dot_index]);
+    this_design_name.innerHTML = design_names.children[active_dot_index];
 })
 
 var locations2D = [];
@@ -991,24 +996,29 @@ function goToSlide(button){
     //set the design description-use this when we add to cart
     var product_name = String(button.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML);
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
-    if(product_name === "Soft BI T-Shirt"){
-        switch(button_index){
-            case 0:
-                design_name_display.innerHTML = "Tee Design 1"
-                break;
-            case 1:
-                design_name_display.innerHTML = "Tee Design 2"
-                break;
-        }
-    }else if(product_name === "Recycled Carryall"){
-        switch(button_index){
-            case 0:
-                design_name_display.innerHTML = "Bag Design 1"
-                break;
-            case 1:
-                design_name_display.innerHTML = "Bag Design 2"
-                break;
-        }
-    }
+    var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
+    design_name_display.innerHTML = design_names[button_index].innerHTML;
     $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
+}
+
+function showThisOrderItems(button){
+    var item_list = $(button).parent().find(".item-list");
+    //console.log(item_list);
+    $(button).hide();
+    item_list.show();
+}
+
+function closeThisItemSection(button){
+    var item_list = $(button).parent().parent().find(".item-list");
+    //console.log(item_list);
+    $(button).parent().parent().find(".show-items-button").show();
+    $(item_list).hide();
+}
+
+function submitOrderNote(button){
+    var note = $(button).parent().find(".customer-note-textarea").val();
+    $('<input />').attr('type', 'hidden')
+    .attr('name', "CustomerNote")
+    .attr('value', note)
+    .appendTo('#cart-contents-form');
 }
