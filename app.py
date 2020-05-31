@@ -163,7 +163,12 @@ class ProductDesign(db.Model):
 def create_tables():
     db.drop_all()
     db.create_all()
-    
+    admin_role = Role()
+    admin_role.id = '1'
+    admin_role.name = 'Admin'
+    db.session.add(admin_role)
+    db.session.commit()
+
 app.cli.add_command(create_tables)
 
 
