@@ -180,7 +180,7 @@ def inject_logo():
     descending = Logo.query.order_by(Logo.id.desc())
     last_item = descending.first()
     path = ""
-    if last_item.file_path is not None:
+    if last_item is not None:
         path = last_item.file_path
     return dict(this_file_path=path)
 
