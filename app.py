@@ -179,7 +179,10 @@ user_manager = UserManager(app, db, User)
 def inject_logo():
     descending = Logo.query.order_by(Logo.id.desc())
     last_item = descending.first()
-    return dict(this_file_path=last_item.file_path)
+    path = ""
+    if last_item.file_path is not None:
+        path = last_item.file_path
+    return dict(this_file_path=path)
 
 def allowed_file(filename):
     return '.' in filename and \
