@@ -6,6 +6,7 @@ from flask import Flask, jsonify
 from flask import render_template, session
 from flask import url_for
 #from flask_pymongo import PyMongo
+from flask.cli import with_appcontext
 from flask_login import logout_user, login_user, current_user
 from pymongo import*
 from pymongo.errors import ConnectionFailure
@@ -82,12 +83,12 @@ class User(db.Model, UserMixin):
     __tablename__ = 'Users'
     # User Authentication fields
     email = db.Column(db.String(255), primary_key=True)
-    id = email
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
     roles = db.relationship('Role', secondary='User_Roles')
     active = True
     name = db.Column(db.String(255))
+    id = db.Column(db.String(255))
 
 class Role(db.Model):
     __tablename__ = 'Roles'
@@ -155,6 +156,16 @@ class ProductDesign(db.Model):
     design_name = db.Column(db.String())
     design_image = db.Column(db.String())
     design_icon = db.Column(db.String())
+
+
+@app.cli.command("create_tables")
+@with_appcontext
+def create_tables():
+    db.drop_all()
+    db.create_all()
+    
+app.cli.add_command(create_tables)
+
 
 user_manager = UserManager(app, db, User)
 
