@@ -274,8 +274,8 @@ def home():
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
-    print("products: " + int(len(display_products)))
-    print("designs: " + int(len(designs)))
+    print("products: " + str(len(display_products)))
+    print("designs: " + str(len(designs)))
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products, designs=designs)
 
 @app.route('/admin-register', methods=('GET', 'POST'))
