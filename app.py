@@ -86,10 +86,13 @@ def github_webhook_endpoint():
   if not hmac.compare_digest(signature, "sha1=" + digest):
     abort(400, "Invalid signature")
 
-
   # The ignature was fine, let's parse the data
   request_data = request.get_json()
 
+  #now we want to run our .sh file in our home page
+  import os
+  os.chdir(os.path.abspath('home')).popen("sh deploy.sh")
+  print("finished running the command")
   return "Okay, thank you, if you still care."
 
 
