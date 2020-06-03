@@ -116,7 +116,7 @@ def github_webhook_endpoint():
 
     # The ignature was fine, let's parse the data
     request_data = request.get_json()
-
+    app.logger.info(request_data)
     # now we want to run our .sh file in our home page
     #import subprocess
     #command_dir = os.path.abspath('home')
