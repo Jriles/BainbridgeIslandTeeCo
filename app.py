@@ -119,7 +119,7 @@ def github_webhook_endpoint():
     app.logger.info(request_data)
     # now we want to run our .sh file in our home page
     import subprocess
-    subprocess.Popen('chmod +x deploy.sh', shell=True)
+    subprocess.Popen('/home/ubuntu/BainbridgeIslandTeeCo/deploy.sh', shell=True)
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
