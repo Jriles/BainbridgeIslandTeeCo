@@ -100,8 +100,6 @@ db = SQLAlchemy(app)
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
 def github_webhook_endpoint():
-    """Endpoint for a GitHub webhook, calling Travis API to trigger a build.
-  """
     app.logger.info("called webhook route")
     # Extract signature header
     signature = request.headers.get("X-Hub-Signature")
@@ -120,12 +118,12 @@ def github_webhook_endpoint():
     request_data = request.get_json()
 
     # now we want to run our .sh file in our home page
-    import subprocess
-    command_dir = os.path.abspath('home')
-    command_file = os.path.join(command_dir, "deploy.sh")
-    app.logger.info("command_file: %s" % command_file)
-    subprocess.call([command_file], cwd=os.path.dirname(os.path.realpath("deploy.sh")))
-    app.logger.info("finished running the command")
+    #import subprocess
+    #command_dir = os.path.abspath('home')
+    #command_file = os.path.join(command_dir, "deploy.sh")
+    #app.logger.info("command_file: %s" % command_file)
+    #subprocess.call([command_file], cwd=os.path.dirname(os.path.realpath("deploy.sh")))
+    #app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
 
