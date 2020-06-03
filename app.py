@@ -44,6 +44,14 @@ import hmac
 import logging
 
 app = Flask(__name__)
+import logging
+from logging.handlers import RotatingFileHandler
+
+file_handler = RotatingFileHandler('app.log', maxBytes=1024 * 1024 * 100, backupCount=20)
+file_handler.setLevel(logging.INFO)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+file_handler.setFormatter(formatter)
+app.logger.addHandler(file_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
 app.config['SESSION_TYPE'] = 'redis'
@@ -69,7 +77,6 @@ print(smtpObj.login(sender, "rkadniupkausbhog"))
 print("logged in")
 
 db = SQLAlchemy(app)
-
 
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
@@ -611,12 +618,4 @@ def redirect_url(default='index'):
 
 if __name__ == "__main__":
     # socketio.run(app)
-    handler = logging.FileHandler('bainbridgeislandteeco.log')  # errors logged to this file
-    import logging
-    from logging.handlers import RotatingFileHandler
-    file_handler = RotatingFileHandler('python.log', maxBytes=1024 * 1024 * 100, backupCount=20)
-    file_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-    file_handler.setFormatter(formatter)
-    app.logger.addHandler(file_handler)
     app.run(host='0.0.0.0', port='5050', debug=True)
