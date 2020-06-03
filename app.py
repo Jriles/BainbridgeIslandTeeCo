@@ -102,6 +102,7 @@ db = SQLAlchemy(app)
 def github_webhook_endpoint():
     """Endpoint for a GitHub webhook, calling Travis API to trigger a build.
   """
+    app.logger.info("called webhook route")
     # Extract signature header
     signature = request.headers.get("X-Hub-Signature")
     if not signature or not signature.startswith("sha1="):
