@@ -5,14 +5,14 @@ from email.mime.base import MIMEBase
 from flask import Flask, jsonify
 from flask import render_template, session
 from flask import url_for
-#from flask_pymongo import PyMongo
+# from flask_pymongo import PyMongo
 from flask.cli import with_appcontext
 from flask_login import logout_user, login_user, current_user
-from pymongo import*
+from pymongo import *
 from pymongo.errors import ConnectionFailure
 from pymongo import MongoClient
 from flask import request
-from flask import Flask,redirect, flash
+from flask import Flask, redirect, flash
 from flask_mongoengine import MongoEngine
 from datetime import date
 import json
@@ -28,11 +28,12 @@ from werkzeug.utils import secure_filename
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-#from ups import UPSConnection
+# from ups import UPSConnection
 import datetime
 from random import randint
 import os
 import paypalstuff
+
 sender = 'bainbridgeislandteeco@gmail.com'
 import forms
 from flask_user import roles_required, UserManager, UserMixin, login_required
@@ -41,6 +42,7 @@ from flask import g, abort
 from email import encoders
 import hmac
 import logging
+
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
@@ -60,47 +62,44 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
 admin_code = 12345
-#email server
+# email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
 print(smtpObj.login(sender, "rkadniupkausbhog"))
 print("logged in")
 
-handler = logging.FileHandler('/home/bainbridgeislandteeco.log')  # errors logged to this file
-app.logger.addHandler(handler)
-
-
 db = SQLAlchemy(app)
+
 
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
 def github_webhook_endpoint():
-  """Endpoint for a GitHub webhook, calling Travis API to trigger a build.
+    """Endpoint for a GitHub webhook, calling Travis API to trigger a build.
   """
-  # Extract signature header
-  signature = request.headers.get("X-Hub-Signature")
-  if not signature or not signature.startswith("sha1="):
-    abort(400, "X-Hub-Signature required")
+    # Extract signature header
+    signature = request.headers.get("X-Hub-Signature")
+    if not signature or not signature.startswith("sha1="):
+        abort(400, "X-Hub-Signature required")
 
-  # Create local hash of payload
-  digest = hmac.new("flask123".encode(),
-      request.data, hashlib.sha1).hexdigest()
+    # Create local hash of payload
+    digest = hmac.new("flask123".encode(),
+                      request.data, hashlib.sha1).hexdigest()
 
-  # Verify signature
-  if not hmac.compare_digest(signature, "sha1=" + digest):
-    abort(400, "Invalid signature")
+    # Verify signature
+    if not hmac.compare_digest(signature, "sha1=" + digest):
+        abort(400, "Invalid signature")
 
-  # The ignature was fine, let's parse the data
-  request_data = request.get_json()
+    # The ignature was fine, let's parse the data
+    request_data = request.get_json()
 
-  #now we want to run our .sh file in our home page
-  import subprocess
-  command_dir = os.path.abspath('home')
-  command_file = os.path.join(command_dir, "deploy.sh")
-  subprocess.call([command_file], cwd=os.path.dirname(os.path.realpath("deploy.sh")))
-  print("finished running the command")
-  return "Okay, thank you, if you still care."
+    # now we want to run our .sh file in our home page
+    import subprocess
+    command_dir = os.path.abspath('home')
+    command_file = os.path.join(command_dir, "deploy.sh")
+    subprocess.call([command_file], cwd=os.path.dirname(os.path.realpath("deploy.sh")))
+    app.logger.info("finished running the command")
+    return "Okay, thank you, if you still care."
 
 
 def get_db():
@@ -116,6 +115,7 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'Users'
     # User Authentication fields
@@ -127,10 +127,12 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(255))
     id = db.Column(db.String(255))
 
+
 class Role(db.Model):
     __tablename__ = 'Roles'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
+
 
 # Define the UserRoles association table
 class UserRoles(db.Model):
@@ -139,10 +141,12 @@ class UserRoles(db.Model):
     user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
     role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE'))
 
+
 class Email(db.Model):
     __tablename__ = 'CustomerEmail'
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(50), unique=True)
+
 
 class UserOrders(db.Model):
     __tablename__ = "User_Orders"
@@ -155,6 +159,7 @@ class UserOrders(db.Model):
     order_date = db.Column(db.String())
     status = db.Column(db.Integer())
 
+
 class OrderItem(db.Model):
     __tablename__ = "Order_Item"
     id = db.Column(db.Integer(), primary_key=True)
@@ -166,10 +171,12 @@ class OrderItem(db.Model):
     product_img_src = db.Column(db.String())
     design = db.Column(db.String())
 
+
 class Logo(db.Model):
     __tablename__ = "LogoImages"
     id = db.Column(db.Integer(), primary_key=True)
     file_path = db.Column(db.String())
+
 
 class Discount(db.Model):
     __tablename__ = "Discounts"
@@ -178,6 +185,7 @@ class Discount(db.Model):
     amount = db.Column(db.Integer())
     type = db.Column(db.String())
 
+
 class DisplayProduct(db.Model):
     __tablename__ = "Display_Products"
     id = db.Column(db.Integer(), primary_key=True)
@@ -185,6 +193,7 @@ class DisplayProduct(db.Model):
     price = db.Column(db.Integer())
     in_stock = db.Column(db.Integer())
     description = db.Column(db.String())
+
 
 class ProductDesign(db.Model):
     __tablename__ = "Product_Designs"
@@ -206,8 +215,8 @@ def create_tables():
     db.session.add(admin_role)
     db.session.commit()
 
-app.cli.add_command(create_tables)
 
+app.cli.add_command(create_tables)
 
 user_manager = UserManager(app, db, User)
 
@@ -221,21 +230,25 @@ def inject_logo():
         path = last_item.file_path
     return dict(this_file_path=path)
 
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 def random_with_N_digits(n):
-    range_start = 10**(n-1)
-    range_end = (10**n)-1
+    range_start = 10 ** (n - 1)
+    range_end = (10 ** n) - 1
     return randint(range_start, range_end)
-#print(cityLocationsList)
-#import algorithms
-#from algorithms.search import linear_search
-#takes in city name and returns coordinates
 
 
-#we want to convert our discount code collection in our db to an array for safe passage
+# print(cityLocationsList)
+# import algorithms
+# from algorithms.search import linear_search
+# takes in city name and returns coordinates
+
+
+# we want to convert our discount code collection in our db to an array for safe passage
 
 @app.route('/payment-success', methods=['GET', 'POST'])
 def paymentsuccess():
@@ -276,11 +289,12 @@ def paymentsuccess():
         db.session.add(new_item)
         db.session.commit()
 
-    #want to confirmation to email given by paypal for everyone, including not users.
-    #we also want to send an email to the business to let them know there is a new order
+    # want to confirmation to email given by paypal for everyone, including not users.
+    # we also want to send an email to the business to let them know there is a new order
     try:
-        #send an email to the business
-        html_body = render_template('email/new_order_email.html', cart=cart, paypalID=paypalID,email=email,address=address)
+        # send an email to the business
+        html_body = render_template('email/new_order_email.html', cart=cart, paypalID=paypalID, email=email,
+                                    address=address)
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
         msg["From"] = 'bainbrigeislandteeco@gmail.com'
@@ -288,7 +302,7 @@ def paymentsuccess():
         msg["Subject"] = "New Order!"
         msg.attach(html)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
-        #send an email to the customer
+        # send an email to the customer
         body = MIMEText("Thank you for your order!\n Your paypal transaction ID: " + paypalID)
         msg = MIMEMultipart()
         msg["From"] = 'bainbridgeislandteeco@gmail.com'
@@ -300,12 +314,13 @@ def paymentsuccess():
         print("there was a problem sending the confirmation email")
     return render_template("/aroma/index.html", email_form=email_form)
 
+
 @app.route("/", methods=('GET', 'POST'))
 def home():
-    #socketio.emit("message", "data")
+    # socketio.emit("message", "data")
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
-        print(email_form.email.data)
+        app.logger.info(email_form.email.data)
         this_email = Email()
         this_email.email = email_form.email.data
         db.session.add(this_email)
@@ -314,18 +329,20 @@ def home():
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
-    print("products: " + str(len(display_products)))
-    print("designs: " + str(len(designs)))
-    return render_template('/aroma/index.html', email_form=email_form, display_products=display_products, designs=designs)
+    app.logger.info("products: " + str(len(display_products)))
+    app.logger.info("designs: " + str(len(designs)))
+    return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
+                           designs=designs)
+
 
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
     admin_register_form = forms.AdminRegisterForm()
     if admin_register_form.admin_code.data == admin_code and admin_register_form.validate():
-        #check that this email doesnt already exist
+        # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
-            #then there are no users who currently have this email
-            #we want to insert this person into our users collection
+            # then there are no users who currently have this email
+            # we want to insert this person into our users collection
             new_user = User()
             new_user.email = admin_register_form.email.data
             new_user.id = new_user.email
@@ -345,18 +362,21 @@ def register():
             return redirect('/admin-register')
     return render_template('/aroma/admin_register.html', admin_register_form=admin_register_form)
 
+
 @app.route('/login', methods=('GET', 'POST'))
 def login():
     login_form = forms.LoginForm()
     if login_form.validate_on_submit():
-        #check that this email doesnt already exist
+        # check that this email doesnt already exist
         print("form email: " + login_form.email.data)
         print("form password: " + login_form.password.data)
         h = hashlib.md5(login_form.password.data.encode())
         password_hash_code = h.hexdigest()
-        user_object = query_db('SELECT * from Users WHERE email="%s" AND password="%s"' % (login_form.email.data, password_hash_code), one=True)
+        user_object = query_db(
+            'SELECT * from Users WHERE email="%s" AND password="%s"' % (login_form.email.data, password_hash_code),
+            one=True)
         if user_object is not None:
-            #print(our_users.first().)
+            # print(our_users.first().)
             user = User.query.filter_by(id=login_form.email.data).one()
             login_user(user)
             return redirect('/admin')
@@ -365,10 +385,11 @@ def login():
             return redirect('/login')
     return render_template('/aroma/login.html', login_form=login_form)
 
+
 @app.route("/admin", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def admin():
-    #logo form
+    # logo form
     logo_form = forms.LogoForm()
     new_discount_form = forms.NewDiscount()
     email_all_customers_form = forms.EmailCustomers()
@@ -423,7 +444,9 @@ def admin():
                                 'attachment; filename="{}"'.format(Path(this_file_path).name))
                 msg.attach(part)
             smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
-    return render_template('/aroma/admin.html', logo_form=logo_form, new_discount_form=new_discount_form, email_all_customers=email_all_customers_form)
+    return render_template('/aroma/admin.html', logo_form=logo_form, new_discount_form=new_discount_form,
+                           email_all_customers=email_all_customers_form)
+
 
 @app.route("/new-design/<productID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -452,6 +475,7 @@ def create_design(productID):
             flash("Successfully created a new design for product " + productID)
     return render_template('/aroma/create-design.html', new_design_form=new_design_form)
 
+
 @app.route("/delete-design/<designID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def delete_design(designID):
@@ -459,6 +483,7 @@ def delete_design(designID):
     db.session.delete(design_to_delete)
     db.session.commit()
     return redirect('/manage-products')
+
 
 @app.route("/manage-products", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -472,7 +497,8 @@ def edit_products():
         this_display_product.in_stock = edit_product_form.product_in_stock.data
         this_display_product.description = edit_design_form.description.data
         db.session.commit()
-    if (edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
+    if (
+            edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
         this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
         if this_design is not None:
             this_design.design_name = edit_design_form.edit_design_name.data
@@ -495,7 +521,9 @@ def edit_products():
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
-    return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form, display_products=display_products, designs=designs, edit_design_form=edit_design_form)
+    return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
+                           display_products=display_products, designs=designs, edit_design_form=edit_design_form)
+
 
 @app.route("/new-product", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -512,6 +540,7 @@ def new_product():
         flash("Successfully created new product: " + new_product.name)
     return render_template('/aroma/new-product.html', new_product_form=new_product_form)
 
+
 @app.route("/<product>", methods=('GET', 'POST'))
 def product_view(product):
     email_form = forms.EmailForm()
@@ -522,6 +551,7 @@ def product_view(product):
         db.session.add(this_email)
         db.session.commit()
     return render_template('/aroma/index.html', scroll_product=product, email_form=email_form)
+
 
 @app.route("/manage-orders", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -544,7 +574,9 @@ def manage_orders():
         this_order.status = int(order_status_form.status.data)
         db.session.commit()
         return redirect("/manage-orders")
-    return render_template('/aroma/manage-orders.html', orders=orders, order_items=order_items, internal_order_note=internal_order_note, order_status_form=order_status_form)
+    return render_template('/aroma/manage-orders.html', orders=orders, order_items=order_items,
+                           internal_order_note=internal_order_note, order_status_form=order_status_form)
+
 
 @app.route("/mycart")
 def thecart():
@@ -559,20 +591,26 @@ def thecart():
         discount_2d.append(new_inner_array)
     return render_template('/aroma/cart.html', discounts=discount_2d)
 
+
 @app.route("/terms-and-conditions")
 def showtermspage():
     return render_template('/aroma/terms.html')
+
 
 @app.route("/logout")
 def logout():
     logout_user()
     return redirect('/')
 
+
 def redirect_url(default='index'):
     return request.args.get('next') or \
            request.referrer or \
            url_for(default)
 
+
 if __name__ == "__main__":
-    #socketio.run(app)
+    # socketio.run(app)
+    handler = logging.FileHandler(os.path.abspath('/home/bainbridgeislandteeco.log'))  # errors logged to this file
+    app.logger.addHandler(handler)
     app.run(host='0.0.0.0', port='5050')
