@@ -48,14 +48,14 @@ import logging
 #configure logging for production
 dictConfig({
     'version': 1,
+    'disable_existing_loggers': 'False',
     'formatters': {'default': {
         'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
     }},
     'handlers': {'wsgi': {
         'class': 'logging.StreamHandler',
         'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default',
-        'filename': 'app.log'
+        'formatter': 'default'
     }},
     'root': {
         'level': 'INFO',
