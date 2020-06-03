@@ -37,8 +37,9 @@ sender = 'bainbridgeislandteeco@gmail.com'
 import forms
 from flask_user import roles_required, UserManager, UserMixin, login_required
 from flask_sqlalchemy import SQLAlchemy
-from flask import g
+from flask import g, abort
 from email import encoders
+import hmac
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
@@ -65,6 +66,32 @@ print(smtpObj.login(sender, "rkadniupkausbhog"))
 print("logged in")
 
 db = SQLAlchemy(app)
+
+# IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
+# GitHub's webhook configuration page as "Payload URL".
+@app.route("/myhook", methods=['POST'])
+def github_webhook_endpoint():
+  """Endpoint for a GitHub webhook, calling Travis API to trigger a build.
+  """
+  # Extract signature header
+  signature = request.headers.get("X-Hub-Signature")
+  if not signature or not signature.startswith("sha1="):
+    abort(400, "X-Hub-Signature required")
+
+  # Create local hash of payload
+  digest = hmac.new("flask123".encode(),
+      request.data, hashlib.sha1).hexdigest()
+
+  # Verify signature
+  if not hmac.compare_digest(signature, "sha1=" + digest):
+    abort(400, "Invalid signature")
+
+
+  # The ignature was fine, let's parse the data
+  request_data = request.get_json()
+
+  return "Okay, thank you, if you still care."
+
 
 def get_db():
     db = getattr(g, '_database', None)
