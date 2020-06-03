@@ -122,6 +122,7 @@ def github_webhook_endpoint():
     import subprocess
     command_dir = os.path.abspath('home')
     command_file = os.path.join(command_dir, "deploy.sh")
+    app.logger.info("command_file: %s" % command_file)
     subprocess.call([command_file], cwd=os.path.dirname(os.path.realpath("deploy.sh")))
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
