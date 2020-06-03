@@ -121,7 +121,7 @@ def github_webhook_endpoint():
     # now we want to run our .sh file in our home page
     import subprocess
     from subprocess import PIPE
-    process = subprocess.Popen('/home/ubuntu/BainbridgeIslandTeeCo/deploy.sh', shell=True, stdout=PIPE, stdin=PIPE, stderr=PIPE)
+    process = subprocess.Popen('chmod a+x /home/ubuntu/BainbridgeIslandTeeCo/deploy.sh', shell=True, stdout=PIPE, stdin=PIPE, stderr=PIPE)
     try:
         outs, errs = process.communicate(timeout=15)
     except TimeoutExpired:
