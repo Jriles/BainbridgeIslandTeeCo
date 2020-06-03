@@ -612,6 +612,6 @@ def redirect_url(default='index'):
 if __name__ == "__main__":
     # socketio.run(app)
     handler = logging.FileHandler('bainbridgeislandteeco.log')  # errors logged to this file
-    app.logger.setLevel(logging.DEBUG)
     app.logger.addHandler(handler)
+    logging.getLogger().setLevel(logging.DEBUG)
     app.run(host='0.0.0.0', port='5050', debug=True)
