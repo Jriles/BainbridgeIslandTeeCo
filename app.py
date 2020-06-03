@@ -40,6 +40,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import g, abort
 from email import encoders
 import hmac
+import logging
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
@@ -64,6 +65,10 @@ smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
 print(smtpObj.login(sender, "rkadniupkausbhog"))
 print("logged in")
+
+handler = logging.FileHandler('/home/bainbridgeislandteeco.log')  # errors logged to this file
+app.logger.addHandler(handler)
+
 
 db = SQLAlchemy(app)
 
@@ -570,4 +575,4 @@ def redirect_url(default='index'):
 
 if __name__ == "__main__":
     #socketio.run(app)
-    app.run(host='0.0.0.0', port='5050', debug=True)
+    app.run(host='0.0.0.0', port='5050')
