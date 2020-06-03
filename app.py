@@ -91,7 +91,7 @@ def github_webhook_endpoint():
 
   #now we want to run our .sh file in our home page
   import os
-  os.chdir(os.path.abspath('home')).popen("sh deploy.sh")
+  os.chdir('home').popen("sh deploy.sh")
   print("finished running the command")
   return "Okay, thank you, if you still care."
 
