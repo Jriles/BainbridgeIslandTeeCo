@@ -41,18 +41,31 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import g, abort
 from email import encoders
 import hmac
+from flask.logging import default_handler
+from logging.config import dictConfig
 import logging
+
+#configure logging for production
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['wsgi']
+    }
+})
 
 app = Flask(__name__)
 import logging
 from logging.handlers import RotatingFileHandler
-
-file_handler = RotatingFileHandler('app.log', maxBytes=1024 * 1024 * 100, backupCount=20)
-file_handler.setLevel(logging.INFO)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-file_handler.setFormatter(formatter)
-app.logger.addHandler(file_handler)
-app.logger.info("logging because!")
+app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
 app.config['SESSION_TYPE'] = 'redis'
