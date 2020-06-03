@@ -52,6 +52,7 @@ file_handler.setLevel(logging.INFO)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(formatter)
 app.logger.addHandler(file_handler)
+app.logger.info("logging because!")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
 app.config['SESSION_TYPE'] = 'redis'
