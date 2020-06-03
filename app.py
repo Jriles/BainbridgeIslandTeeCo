@@ -48,18 +48,21 @@ import logging
 #configure logging for production
 dictConfig({
     'version': 1,
-    'disable_existing_loggers': 'False',
-    'formatters': {'default': {
-        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
-    }},
-    'handlers': {'wsgi': {
-        'class': 'logging.StreamHandler',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
-    }},
+    'formatters': {
+        'f': {'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'}
+    },
+    'handlers': {
+        'ch': {'class': 'logging.StreamHandler',
+               'formatter': 'f',
+               'level': 'DEBUG'},
+        'fh': {'class': 'logging.FileHandler',
+               'formatter': 'f',
+               'filename': 'app.log',
+               'level': 'DEBUG'}
+    },
     'root': {
-        'level': 'INFO',
-        'handlers': ['wsgi']
+        'handlers': ['ch', 'fh'],
+        'level': 'DEBUG',
     }
 })
 
