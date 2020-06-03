@@ -1,6 +1,7 @@
 import hashlib
 import sqlite3
 from email.mime.base import MIMEBase
+from subprocess import TimeoutExpired
 
 from flask import Flask, jsonify
 from flask import render_template, session
@@ -121,7 +122,13 @@ def github_webhook_endpoint():
     import subprocess
     from subprocess import PIPE
     process = subprocess.Popen('/home/ubuntu/BainbridgeIslandTeeCo/deploy.sh', shell=True, stdout=PIPE)
-    app.logger.info(process.communicate()[0])
+    try:
+        outs, errs = process.communicate(timeout=15)
+    except TimeoutExpired:
+        process.kill()
+        outs, errs = process.communicate()
+    app.logger.info("outs % s" % outs)
+    app.logger.info("errs % s" % errs)
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
