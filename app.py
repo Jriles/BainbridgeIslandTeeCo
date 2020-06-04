@@ -118,12 +118,20 @@ def github_webhook_endpoint():
     # The ignature was fine, let's parse the data
     request_data = request.get_json()
     #app.logger.info(request_data)
-    # now we want to pull from git
-    import sh
-
-    g = sh.git.bake(_cwd="/home/ubuntu/BainbridgeIslandTeeCo")
-    g.pull()
-    app.logger.info("finished the webhook route")
+    # now we want to run our .sh file in our home page
+    import subprocess
+    from subprocess import PIPE
+    process = subprocess.Popen('/bin/chmod a+x /home/ubuntu/BainbridgeIslandTeeCo/deploy.sh', shell=True, stdout=subprocess.PIPE, stdin=PIPE, stderr=PIPE, bufsize=1)
+    for line in iter(process.stdout.readline, b''):
+        app.logger.info(line)
+    try:
+        outs, errs = process.communicate(timeout=15)
+    except TimeoutExpired:
+        process.kill()
+        outs, errs = process.communicate()
+    app.logger.info("outs % s" % outs)
+    app.logger.info("errs % s" % errs)
+    app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
 
