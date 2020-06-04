@@ -129,6 +129,8 @@ def github_webhook_endpoint():
         outs, errs = process.communicate()
     app.logger.info("outs % s" % outs)
     app.logger.info("errs % s" % errs)
+    for line in process.stdout:
+        app.logger.info(line + "\n")
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
