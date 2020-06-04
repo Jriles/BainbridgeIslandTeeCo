@@ -119,12 +119,16 @@ def github_webhook_endpoint():
     request_data = request.get_json()
     #app.logger.info(request_data)
     # now we want to run our .sh file in our home page
-    import subprocess
-    from subprocess import PIPE
+    #import subprocess
+    #from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
-    app.logger.info("current dir: " + current_directory)
-    process =subprocess.run(["git", "pull", "origin", "master"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    app.logger.info(process.stdout.read())
+    #app.logger.info("current dir: " + current_directory)
+    #process =subprocess.run(["git", "pull", "origin", "master"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    #app.logger.info(process.stdout.read())
+    import git
+
+    g = git.cmd.Git(current_directory)
+    g.pull()
     #subprocess.check_call()
     #app.logger.info(check_output('/var/log/syslog'))
     app.logger.info("finished running the command")
