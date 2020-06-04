@@ -122,7 +122,7 @@ def github_webhook_endpoint():
     import subprocess
     from subprocess import PIPE
     process = subprocess.Popen('/bin/chmod a+x /home/ubuntu/BainbridgeIslandTeeCo/deploy.sh', shell=True, stdout=subprocess.PIPE, stdin=PIPE, stderr=PIPE, bufsize=1)
-    for line in iter(process.stdout.readline, b''):
+    for line in iter(process.stderr.readline, b''):
         app.logger.info(line)
     try:
         outs, errs = process.communicate(timeout=15)
