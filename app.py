@@ -119,9 +119,9 @@ def github_webhook_endpoint():
     request_data = request.get_json()
     #app.logger.info(request_data)
     # now we want to pull from git
-    import git
+    import sh
 
-    g = git.cmd.Git("/home/ubuntu/BainbridgeIslandTeeCo")
+    g = sh.git.bake(_cwd="/home/ubuntu/BainbridgeIslandTeeCo")
     g.pull()
     app.logger.info("finished the webhook route")
     return "Okay, thank you, if you still care."
