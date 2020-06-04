@@ -122,7 +122,7 @@ def github_webhook_endpoint():
     import subprocess
     from subprocess import PIPE
     proc = subprocess.Popen(['/bin/chmod', 'u+x', '/home/ubuntu/BainbridgeIslandTeeCo/deploy.sh'], stdout=subprocess.PIPE)
-    app.logger.info(check_output('wc --lines /var/log/syslog', encoding='UTF-8'))
+    app.logger.info(check_output('wc --lines /var/log/syslog'))
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
