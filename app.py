@@ -123,7 +123,7 @@ def github_webhook_endpoint():
     from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
     app.logger.info("current dir: " + current_directory)
-    process =subprocess.Popen(["git", "pull", "origin", "master"], cwd=current_directory, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    process =subprocess.run(["git", "pull", "origin", "master"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     app.logger.info(process.stdout.read())
     #subprocess.check_call()
     #app.logger.info(check_output('/var/log/syslog'))
