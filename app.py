@@ -121,7 +121,7 @@ def github_webhook_endpoint():
     # now we want to run our .sh file in our home page
     import subprocess
     from subprocess import PIPE
-    process = subprocess.Popen(['chmod', 'u+x', '/home/ubuntu/BainbridgeIslandTeeCo/deploy.sh'])
+    process = subprocess.check_call(['chmod', 'u+x', '/home/ubuntu/BainbridgeIslandTeeCo/deploy.sh'])
     for line in process.stderr:
         app.logger.info(line)
     for line in process.stdout:
