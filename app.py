@@ -121,7 +121,9 @@ def github_webhook_endpoint():
     # now we want to run our .sh file in our home page
     import subprocess
     from subprocess import PIPE
-    process =subprocess.Popen("/usr/bin/git pull origin master", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    current_directory = os.path.dirname(os.path.realpath(__file__))
+    app.logger.info("current dir: " + current_directory)
+    process =subprocess.Popen("/usr/bin/git pull origin master", cwd=current_directory, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     app.logger.info(process.stdout.read())
     #subprocess.check_call()
     #app.logger.info(check_output('/var/log/syslog'))
