@@ -125,7 +125,7 @@ def github_webhook_endpoint():
     #app.logger.info("current dir: " + current_directory)
     #process =subprocess.run(["git", "pull", "origin", "master"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     #app.logger.info(process.stdout.read())
-    import git
+    from GitPython import git
 
     g = git.cmd.Git(current_directory)
     g.pull()
