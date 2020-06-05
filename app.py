@@ -123,7 +123,7 @@ def github_webhook_endpoint():
     from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
     #app.logger.info("current dir: " + current_directory)
-    process =subprocess.Popen(['git', 'pull'], cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, shell=None, istream=None)
+    process =subprocess.Popen(['git', 'version'], cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, shell=None)
     app.logger.info(process.stdout.read())
     #from git import Repo
     #repo = Repo("/home/ubuntu/BainbridgeIslandTeeCo")
