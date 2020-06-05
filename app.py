@@ -125,10 +125,10 @@ def github_webhook_endpoint():
     #app.logger.info("current dir: " + current_directory)
     #process =subprocess.run(["git", "pull", "origin", "master"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     #app.logger.info(process.stdout.read())
-    import git
-
-    g = git.cmd.Git(current_directory)
-    g.pull()
+    from git import Repo
+    repo = Repo("/home/ubuntu/BainbridgeIslandTeeCo")
+    origin = repo.remotes.origin
+    origin.pull('--rebase')
     #subprocess.check_call()
     #app.logger.info(check_output('/var/log/syslog'))
     app.logger.info("finished running the command")
