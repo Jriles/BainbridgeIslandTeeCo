@@ -117,7 +117,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>thinks we</find>
+      <find />
       <find>payment</find>
       <find>nice</find>
       <find>index</find>
@@ -126,7 +126,7 @@
       <find>product_button</find>
       <find>edit_design_file</find>
       <find>/edit</find>
-      <find>.form-control {</find>
+      <find />
       <find>redirect</find>
       <find>delete</find>
       <find>card_area</find>
@@ -144,9 +144,9 @@
       <find>column</find>
       <find>.owl</find>
       <find>owl</find>
-      <find>var index</find>
+      <find />
       <find>etLe</find>
-      <find>import s</find>
+      <find />
     </findStrings>
     <replaceStrings>
       <replace />
@@ -166,7 +166,7 @@
       <replace>TrackingID</replace>
       <replace>homeurl</replace>
       <replace>http://www.klikattatfootwear.com/</replace>
-      <replace>Julius Sans One</replace>
+      <replace />
     </replaceStrings>
     <dirStrings>
       <dir />
@@ -232,11 +232,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="y" value="5" />
-    <option name="width" value="2067" />
-    <option name="height" value="1120" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="272" />
+    <option name="y" value="330" />
+    <option name="width" value="1620" />
+    <option name="height" value="1103" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
