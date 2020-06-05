@@ -124,7 +124,7 @@ def github_webhook_endpoint():
     current_directory = os.path.dirname(os.path.realpath(__file__))
     #app.logger.info("current dir: " + current_directory)
     process =subprocess.Popen('git version', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, shell=True)
-    app.logger.info(process.stdout.read())
+    #app.logger.info(process.stdout.read())
     #from git import Repo
     #repo = Repo("/home/ubuntu/BainbridgeIslandTeeCo")
     #origin = repo.remotes.origin
