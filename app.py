@@ -129,30 +129,21 @@ def github_webhook_endpoint():
     if not hmac.compare_digest(signature, "sha1=" + digest):
         abort(400, "Invalid signature")
 
-    # The ignature was fine, let's parse the data
+    # The signature was fine, let's parse the data
     request_data = request.get_json()
-    #app.logger.info(request_data)
+
     # now we want to run our .sh file in our home page
     import subprocess
     os.environ['PATH'] = '/home/ubuntu/BainbridgeIslandTeeCo/BainbridgeIslandTeeCoenv/bin:/home/ubuntu/bin:/home/ubuntu/.local/bin:/usr/bin/git:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
     os.environ['GIT_SSH_COMMAND'] = "ssh -o IdentitiesOnly=yes -i /home/ubuntu/.ssh/id_rsa"
     app.logger.info("path: " + str(os.environ['PATH']))
 
-    from subprocess import PIPE
-    current_directory = os.path.dirname(os.path.realpath(__file__))
-    #app.logger.info("current dir: " + current_directory)
     process =subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
     #now we need to restart the server
     restart_process = subprocess.Popen('sudo systemctl restart BainbridgeIslandTeeCo', cwd="/home/ubuntu/BainbridgeIslandTeeCo",
                                universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(restart_process.stdout.read())
-    #from git import Repo
-    #repo = Repo("/home/ubuntu/BainbridgeIslandTeeCo")
-    #origin = repo.remotes.origin
-    #origin.pull('--rebase')
-    #subprocess.check_call()
-    #app.logger.info(check_output('/var/log/syslog'))
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
