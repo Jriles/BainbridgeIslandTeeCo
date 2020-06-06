@@ -102,6 +102,7 @@ db = SQLAlchemy(app)
 def run_git():
     import subprocess
     app.logger.info("called run git method")
+    app.logger.info("path: " + str(os.environ['PATH']))
     # app.logger.info("current dir: " + current_directory)
     git_process = subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
