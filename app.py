@@ -143,6 +143,10 @@ def github_webhook_endpoint():
     #app.logger.info("current dir: " + current_directory)
     process =subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
+    #now we need to restart the server
+    restart_process = subprocess.Popen('sudo systemctl restart BainbridgeIslandTeeCo', cwd="/home/ubuntu/BainbridgeIslandTeeCo",
+                               universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+    app.logger.info(restart_process.stdout.read())
     #from git import Repo
     #repo = Repo("/home/ubuntu/BainbridgeIslandTeeCo")
     #origin = repo.remotes.origin
