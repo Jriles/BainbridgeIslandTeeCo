@@ -139,6 +139,9 @@ def github_webhook_endpoint():
     from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
     #app.logger.info("current dir: " + current_directory)
+    activate_process = subprocess.Popen('. BainbridgeIslandTeeCoenv/bin/activate', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
+                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+    app.logger.info(activate_process.stdout.read())
     process =subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
     #from git import Repo
