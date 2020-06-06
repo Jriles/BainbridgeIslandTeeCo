@@ -135,12 +135,13 @@ def github_webhook_endpoint():
     # now we want to run our .sh file in our home page
     import subprocess
     os.environ['PATH'] = '/usr/bin/git:%s' % os.environ['PATH']
+    os.environ['GIT_SSH_COMMAND'] = "ssh -o IdentitiesOnly=yes -i /home/ubuntu/.ssh/id_rsa"
     app.logger.info("path: " + str(os.environ['PATH']))
 
     from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
     #app.logger.info("current dir: " + current_directory)
-    process =subprocess.Popen('/usr/bin/git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+    process =subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
     #from git import Repo
     #repo = Repo("/home/ubuntu/BainbridgeIslandTeeCo")
