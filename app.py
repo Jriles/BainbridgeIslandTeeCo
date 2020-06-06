@@ -99,7 +99,7 @@ db = SQLAlchemy(app)
 
 @app.cli.command("run_git")
 @with_appcontext
-def run_git_method():
+def run_git():
     import subprocess
     app.logger.info("called run git method")
     # app.logger.info("current dir: " + current_directory)
@@ -107,7 +107,7 @@ def run_git_method():
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
 
-app.cli.add_command(run_git_method)
+app.cli.add_command(run_git)
 
 
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
