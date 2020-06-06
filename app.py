@@ -103,9 +103,6 @@ def run_git():
     import subprocess
     app.logger.info("called run git method")
     # app.logger.info("current dir: " + current_directory)
-    activate_process = subprocess.Popen('. BainbridgeIslandTeeCoenv/bin/activate', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
-                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-    app.logger.info(activate_process.stdout.read())
     git_process = subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(git_process.stdout.read())
@@ -116,7 +113,6 @@ app.cli.add_command(run_git)
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
-@with_appcontext
 def github_webhook_endpoint():
     app.logger.info("called webhook route")
     # Extract signature header
@@ -140,9 +136,6 @@ def github_webhook_endpoint():
     from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
     #app.logger.info("current dir: " + current_directory)
-    activate_process = subprocess.Popen('. BainbridgeIslandTeeCoenv/bin/activate', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
-                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-    app.logger.info(activate_process.stdout.read())
     process =subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
     #from git import Repo
