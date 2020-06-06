@@ -103,7 +103,7 @@ def run_git():
     import subprocess
     app.logger.info("called run git method")
     # app.logger.info("current dir: " + current_directory)
-    activate_process = subprocess.Popen('source BainbridgeIslandTeeCoenv/bin/activate', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
+    activate_process = subprocess.Popen('. BainbridgeIslandTeeCoenv/bin/activate', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(activate_process.stdout.read())
     git_process = subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
