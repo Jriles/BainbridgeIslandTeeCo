@@ -133,6 +133,7 @@ def github_webhook_endpoint():
     #app.logger.info(request_data)
     # now we want to run our .sh file in our home page
     import subprocess
+    app.logger.info("path: " + str(os.environ['PATH']))
     from subprocess import PIPE
     current_directory = os.path.dirname(os.path.realpath(__file__))
     #app.logger.info("current dir: " + current_directory)
