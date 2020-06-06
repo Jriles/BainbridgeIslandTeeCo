@@ -116,6 +116,7 @@ app.cli.add_command(run_git)
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
+@with_appcontext
 def github_webhook_endpoint():
     app.logger.info("called webhook route")
     # Extract signature header
