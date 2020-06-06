@@ -134,7 +134,7 @@ def github_webhook_endpoint():
     #app.logger.info(request_data)
     # now we want to run our .sh file in our home page
     import subprocess
-    os.environ['PATH'] = '%s:/usr/bin/git' % os.environ['PATH']
+    os.environ['PATH'] = '/home/ubuntu/BainbridgeIslandTeeCo/BainbridgeIslandTeeCoenv/bin:/home/ubuntu/bin:/home/ubuntu/.local/bin:/usr/bin/git:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
     os.environ['GIT_SSH_COMMAND'] = "ssh -o IdentitiesOnly=yes -i /home/ubuntu/.ssh/id_rsa"
     app.logger.info("path: " + str(os.environ['PATH']))
 
