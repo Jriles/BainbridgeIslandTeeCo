@@ -103,7 +103,7 @@ def run_git():
     import subprocess
     app.logger.info("called run git method")
     # app.logger.info("current dir: " + current_directory)
-    process = subprocess.Popen('git pull', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
+    process = subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
                                stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     app.logger.info(process.stdout.read())
 
