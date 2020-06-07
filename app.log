@@ -1,0 +1,4 @@
+2020-06-06 22:11:32,905 werkzeug     INFO      * Restarting with stat
+2020-06-06 22:11:36,474 werkzeug     WARNING   * Debugger is active!
+2020-06-06 22:11:36,618 werkzeug     INFO      * Debugger PIN: 211-168-581
+2020-06-06 22:11:37,531 werkzeug     INFO      * Running on http://0.0.0.0:5050/ (Press CTRL+C to quit)
