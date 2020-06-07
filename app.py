@@ -97,19 +97,6 @@ print("logged in")
 
 db = SQLAlchemy(app)
 
-@app.cli.command("run_git")
-@with_appcontext
-def run_git():
-    import subprocess
-    app.logger.info("called run git method")
-    app.logger.info("path: " + str(os.environ['PATH']))
-    # app.logger.info("current dir: " + current_directory)
-    git_process = subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False,
-                               stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-    app.logger.info(git_process.stdout.read())
-
-app.cli.add_command(run_git)
-
 
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
@@ -596,7 +583,12 @@ def product_view(product):
         this_email.email = email_form.email.data
         db.session.add(this_email)
         db.session.commit()
-    return render_template('/aroma/index.html', scroll_product=product, email_form=email_form)
+    display_products = query_db('SELECT * FROM Display_Products')
+    designs = []
+    for product in display_products:
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+    return render_template('/aroma/index.html', scroll_product=product, email_form=email_form, display_products=display_products,
+                           designs=designs)
 
 
 @app.route("/manage-orders", methods=('GET', 'POST'))
