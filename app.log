@@ -2,3 +2,5 @@
 2020-06-06 22:11:36,474 werkzeug     WARNING   * Debugger is active!
 2020-06-06 22:11:36,618 werkzeug     INFO      * Debugger PIN: 211-168-581
 2020-06-06 22:11:37,531 werkzeug     INFO      * Running on http://0.0.0.0:5050/ (Press CTRL+C to quit)
+2020-06-07 21:33:48,720 app          INFO     products: 3
+2020-06-07 21:33:48,721 app          INFO     designs: 3
