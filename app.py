@@ -109,13 +109,11 @@ def github_webhook_endpoint():
         abort(400, "X-Hub-Signature required")
 
     # Create local hash of payload
-    app.logger.info("repository key: " + str(os.environ['REPOSITORY_KEY']))
-    digest = hmac.new(os.environ['REPOSITORY_KEY'].encode(),
+    digest = hmac.new("flask123".encode(),
                       request.data, hashlib.sha1).hexdigest()
 
     # Verify signature
     if not hmac.compare_digest(signature, "sha1=" + digest):
-        app.logger.info("thinks the signature is invalid")
         abort(400, "Invalid signature")
 
     # The signature was fine, let's parse the data
