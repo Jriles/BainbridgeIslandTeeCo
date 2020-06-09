@@ -74,7 +74,7 @@ app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'XYZ')
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
 app.config["USER_UNAUTHORIZED_ENDPOINT"] = 'login'
