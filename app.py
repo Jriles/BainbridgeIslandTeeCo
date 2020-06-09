@@ -115,6 +115,7 @@ def github_webhook_endpoint():
 
     # Verify signature
     if not hmac.compare_digest(signature, "sha1=" + digest):
+        app.logger.info("thinks the signature is invalid")
         abort(400, "Invalid signature")
 
     # The signature was fine, let's parse the data
