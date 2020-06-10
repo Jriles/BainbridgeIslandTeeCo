@@ -26,7 +26,7 @@
             <th>Product Image</th>
             <th>In Stock?</th>
             <th>Product Description</th>
-            <th>Save Product Changes</th>
+            <th>Make Changes</th>
             <th>Product Designs</th>
         </tr>
     {% for product in display_products %}
@@ -60,6 +60,9 @@
                 <td>
                     {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
                     <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                    <div>
+                        <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-product/{{product[0]}}">Delete Product</a></button>
+                    </div>
                 </td>
             </form>
             <td>
