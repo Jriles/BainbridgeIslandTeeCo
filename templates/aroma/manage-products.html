@@ -59,7 +59,9 @@
                 </td>
                 <td>
                     {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
-                    <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                    <div>
+                        <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                    </div>
                     <div>
                         <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-product/{{product[0]}}">Delete Product</a></button>
                     </div>
