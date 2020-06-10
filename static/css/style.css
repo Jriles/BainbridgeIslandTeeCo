@@ -4612,6 +4612,10 @@ html, body {
     margin-bottom: 10px;
 }
 
+.admin-product-img-title{
+    width: 50%;
+}
+
 .rating label:last-child {
   position: static;
 }
