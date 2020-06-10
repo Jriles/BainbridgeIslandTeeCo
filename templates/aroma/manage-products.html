@@ -17,7 +17,7 @@
     </div>
     <h2>Manage Your Products</h2>
     <div>
-        <a href="/new-product"><button class="btn btn-info product_button admin-button">New Product</button></a>
+        <a href="/new-product"><button class="btn btn-primary product_button admin-button">New Product</button></a>
     </div>
     <table id="admin-product-table">
         <tr>
@@ -59,12 +59,12 @@
                 </td>
                 <td>
                     {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
-                    <input type="submit" value="Submit Edits" class="btn btn-primary product_button admin-button">
+                    <input type="submit" value="Submit Edits" class="btn btn-danger product_button admin-button">
                 </td>
             </form>
             <td>
                 <div>
-                    <a href="/new-design/{{product[0]}}"><button class="btn btn-success product_button admin-button">New Design</button></a>
+                    <a href="/new-design/{{product[0]}}"><button class="btn btn-primary product_button admin-button">New Design</button></a>
                 </div>
                 <div>
                     <button class="btn btn-info show-items-button" onclick="showThisProductDesigns(this)">View Product Designs</button>
