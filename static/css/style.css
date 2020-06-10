@@ -403,6 +403,13 @@ a {
     margin-bottom: -22px;
 }
 
+.design-list{
+    list-style-position: inside;
+    border: 1px solid black;
+    width: 100%;
+    display: none;
+}
+
 .admin-product-image{
     width: 100%;
     height: auto;
