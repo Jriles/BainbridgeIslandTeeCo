@@ -20,11 +20,9 @@
 				<div class="row s_product_inner">
 					<div class="col-lg-6">
 						<div class="owl-carousel owl-theme s_Product_carousel">
-							{% if product[5] != '' %}
-								<div class="single-prd-item">
-									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid" src="{{product[5]}}" alt="">
-								</div>
-							{% endif %}
+							<div class="single-prd-item">
+								<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid" src="{{product[5]}}" alt="">
+							</div>
 							{% for design in designs[product_loop.index-1] %}
 								<div class="single-prd-item">
 									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design[3]}}" alt="">
