@@ -4609,6 +4609,7 @@ html, body {
 .admin-product-image-container{
     width: 50%;
     height: auto;
+    margin-bottom: 10px;
 }
 
 .rating label:last-child {
