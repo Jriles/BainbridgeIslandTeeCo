@@ -23,7 +23,7 @@
         <tr>
             <th>Product Name</th>
             <th>Product Price</th>
-            <th>Product Image</th>
+            <th>Primary Image</th>
             <th>In Stock?</th>
             <th>Product Description</th>
             <th>Make Changes</th>
@@ -44,9 +44,6 @@
                 </td>
                 <td>
                     <img src="{{product[5]}}" class="product-primary-image-admin">
-                    <div>
-                        Replace Primary Image:
-                    </div>
                     {{ edit_product_form.primary_product_image(value = product[5]) }}
                 </td>
                 <td>
@@ -55,7 +52,7 @@
                 </td>
                 <td>
                     Product Description:
-                    <textarea name="description" id="description" type="text" >{{product[4]}}</textarea>
+                    <textarea name="description" id="description" type="text" class="admin-product-description">{{product[4]}}</textarea>
                 </td>
                 <td>
                     {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
