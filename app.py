@@ -532,8 +532,8 @@ def edit_products():
         this_display_product.description = edit_product_form.description.data
         image = request.files["primary_product_image"]
         if image and allowed_file(image.filename):
+            app.logger.info("validated image form")
             filename = secure_filename(image.filename)
-            print(filename)
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
             this_display_product.primary_product_image = "/static/img/" + filename
