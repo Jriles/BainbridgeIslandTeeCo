@@ -23,7 +23,9 @@
     {% for product in display_products %}
         {% set product_loop = loop %}
         <li>
-            <img src="{{product[5]}}" class="product-primary-image-admin">
+            <div class="admin-product-image-container">
+                <img src="{{product[5]}}" class="product-primary-image-admin">
+            </div>
             <form method="post" class="form admin-form" enctype="multipart/form-data">
                 {{ edit_product_form.csrf_token }}
                 Product Name:

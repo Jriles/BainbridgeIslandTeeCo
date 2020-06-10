@@ -4575,6 +4575,11 @@ html, body {
 }
 
 .product-primary-image-admin{
+    width: 100%;
+    height: auto;
+}
+
+.admin-product-image-container{
     width: 50%;
     height: auto;
 }
