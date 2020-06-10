@@ -536,7 +536,7 @@ def edit_products():
             filename = secure_filename(image.filename)
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
-            this_display_product.primary_product_image = "static/img/" + filename
+            this_display_product.primary_product_image = "/static/img/" + filename
             app.logger.info("this product image: " + this_display_product.primary_product_image)
         db.session.commit()
     if (edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
