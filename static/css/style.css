@@ -392,6 +392,10 @@ a {
     border-width: 1px;
 }
 
+#admin-product-table td{
+    padding: 0 15px;
+}
+
 .admin-logout{
     float: right;
     margin-top: 10px;
