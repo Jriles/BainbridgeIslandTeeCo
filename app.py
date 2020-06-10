@@ -520,7 +520,7 @@ def delete_design(designID):
 
 @app.route("/delete-product/<productID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
-def delete_design(productID):
+def delete_product(productID):
     product_to_delete = DisplayProduct.query.filter_by(id=productID).first()
     db.session.delete(product_to_delete)
     db.session.commit()
