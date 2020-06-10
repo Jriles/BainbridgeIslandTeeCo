@@ -1016,7 +1016,7 @@ function showThisOrderItems(button){
 }
 
 function showThisProductDesigns(button){
-    var item_list = $(button).parent().find(".item-list");
+    var item_list = $(button).parent().parent().find(".item-list");
     //console.log(item_list);
     $(button).hide();
     item_list.show();
