@@ -19,6 +19,7 @@
     {{ new_product_form.csrf_token }}
     {{ new_product_form.product_name(class_ = 'form-control', placeholder = new_product_form.product_name.label.text, required = true) }}
     {{ new_product_form.product_price(class_ = 'form-control', placeholder = new_product_form.product_price.label.text, required = true) }}
+    Primary/First Image:
     {{ new_product_form.primary_product_image(class = 'form-control', placeholder = new_product_form.primary_product_image.label.text, required = false) }}
     In Stock?
     {{ new_product_form.product_in_stock(class_ = 'form-control', placeholder = new_product_form.product_in_stock.label.text, required = true) }}
