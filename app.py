@@ -530,9 +530,15 @@ def edit_products():
         this_display_product.price = edit_product_form.product_price.data
         this_display_product.in_stock = edit_product_form.product_in_stock.data
         this_display_product.description = edit_design_form.description.data
+        image = request.files["primary_product_image"]
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            print(filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            this_display_product.primary_product_image = "/static/img/" + filename
         db.session.commit()
-    if (
-            edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
+    if (edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
         this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
         if this_design is not None:
             this_design.design_name = edit_design_form.edit_design_name.data
