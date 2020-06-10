@@ -1015,6 +1015,13 @@ function showThisOrderItems(button){
     item_list.show();
 }
 
+function showThisProductDesigns(button){
+    var item_list = $(button).parent().find(".item-list");
+    //console.log(item_list);
+    $(button).hide();
+    item_list.show();
+}
+
 function closeThisItemSection(button){
     var item_list = $(button).parent().parent().find(".item-list");
     //console.log(item_list);
