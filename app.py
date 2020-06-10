@@ -564,6 +564,7 @@ def edit_products():
 def new_product():
     new_product_form = forms.CreateProduct()
     if new_product_form.description.data is not None and new_product_form.validate():
+        app.logger.info("validated product image")
         new_product = DisplayProduct()
         new_product.name = new_product_form.product_name.data
         new_product.price = float(new_product_form.product_price.data)
