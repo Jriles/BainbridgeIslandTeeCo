@@ -23,14 +23,14 @@
     {% for product in display_products %}
         {% set product_loop = loop %}
         <li>
-            <h4>Product {{product_loop.index}}</h4>
+            <img src="{{product[5]}}" class="product-primary-image-admin">
             <form method="post" class="form admin-form" enctype="multipart/form-data">
                 {{ edit_product_form.csrf_token }}
                 Product Name:
                 {{ edit_product_form.product_name(class_ = 'discount-form-element', value = product[1]) }}
                 Product Price:
                 {{ edit_product_form.product_price(class_ = 'discount-form-element', value = product[2]) }}
-                Product Primary Image: {{product[5]}}
+                Replace Primary Image:
                 {{ edit_product_form.primary_product_image(value = product[5], class_ = 'discount-form-element') }}
                 Product In Stock?
                 {{ edit_product_form.product_in_stock(value = product[3], class_ = 'discount-form-element reset_me') }}

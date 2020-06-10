@@ -4574,6 +4574,11 @@ html, body {
   margin-bottom: 0px;
 }
 
+.product-primary-image-admin{
+    width: 50%;
+    height: auto;
+}
+
 .rating label:last-child {
   position: static;
 }
