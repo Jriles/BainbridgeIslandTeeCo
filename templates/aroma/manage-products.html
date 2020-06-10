@@ -30,7 +30,7 @@
                 {{ edit_product_form.product_name(class_ = 'discount-form-element', value = product[1]) }}
                 Product Price:
                 {{ edit_product_form.product_price(class_ = 'discount-form-element', value = product[2]) }}
-                Product Primary Image:
+                Product Primary Image: {{product[5]}}
                 {{ edit_product_form.primary_product_image(value = product[5], class_ = 'discount-form-element') }}
                 Product In Stock?
                 {{ edit_product_form.product_in_stock(value = product[3], class_ = 'discount-form-element reset_me') }}
