@@ -398,9 +398,8 @@ a {
 }
 
 .admin-container{
-    left: 10%;
-    right: 10%;
-    position: relative;
+    margin-right: 5%;
+    margin-left: 5%;
 }
 
 .orders-container{
