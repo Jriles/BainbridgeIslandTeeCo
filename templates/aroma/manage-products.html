@@ -70,11 +70,11 @@
                     <button class="btn btn-info show-items-button" onclick="showThisProductDesigns(this)">View Product Designs</button>
                 </div>
                 <ul class="item-list">
+                    <button type="button" onclick="closeThisDesignSection(this)" class="close-product-designs" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     {% for design in designs[product_loop.index-1] %}
                         <div class="" id="{{design[0]}} Image">
-                            <button type="button" onclick="closeThisDesignSection(this)" class="close-product-designs" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                             {% if design[3]!= None %}
                             <img class="admin-product-image" alt="Picture Unavailable" src="{{ design[3] }}">
                             {% endif %}

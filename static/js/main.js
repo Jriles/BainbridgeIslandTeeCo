@@ -1030,9 +1030,9 @@ function closeThisItemSection(button){
 }
 
 function closeThisDesignSection(button){
-    var item_list = $(button).parent().parent().hide();
+    var item_list = $(button).parent().hide();
     //console.log(item_list);
-    $(button).parent().parent().parent().find(".show-items-button").show();
+    $(button).parent().parent().find(".show-items-button").show();
 }
 
 function submitOrderNote(button){
