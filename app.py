@@ -577,7 +577,7 @@ def new_product():
             image_file_name = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file_name)
             image.save(image_path)
-            new_product.primary_product_image = "static/img" + image_file_name
+            new_product.primary_product_image = "static/img/" + image_file_name
             app.logger.info("finished with image")
         db.session.add(new_product)
         db.session.commit()
