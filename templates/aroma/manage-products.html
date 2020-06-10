@@ -27,6 +27,7 @@
             <th>In Stock?</th>
             <th>Product Description</th>
             <th>Product Designs</th>
+            <th>Save Changes</th>
         </tr>
     {% for product in display_products %}
         {% set product_loop = loop %}
@@ -35,29 +36,31 @@
                 {{ edit_product_form.csrf_token }}
                 <td>
                     Product Name:
-                    {{ edit_product_form.product_name(class_ = 'discount-form-element', value = product[1]) }}
+                    {{ edit_product_form.product_name(value = product[1]) }}
                 </td>
                 <td>
                     Product Price:
-                    {{ edit_product_form.product_price(class_ = 'discount-form-element', value = product[2]) }}
+                    {{ edit_product_form.product_price(value = product[2]) }}
                 </td>
                 <td>
                     <div class="admin-product-image-container">
                         <img src="{{product[5]}}" class="product-primary-image-admin">
                     </div>
                     Replace Primary Image:
-                    {{ edit_product_form.primary_product_image(value = product[5], class_ = 'discount-form-element') }}
+                    {{ edit_product_form.primary_product_image(value = product[5]) }}
                 </td>
                 <td>
                     Product In Stock?
-                    {{ edit_product_form.product_in_stock(value = product[3], class_ = 'discount-form-element reset_me') }}
+                    {{ edit_product_form.product_in_stock(value = product[3]) }}
                 </td>
                 <td>
                     Product Description:
-                    <textarea class="discount-form-element" name="description" id="description" type="text" >{{product[4]}}</textarea>
+                    <textarea name="description" id="description" type="text" >{{product[4]}}</textarea>
                 </td>
-                {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
-                <input type="submit" value="Submit Edits" class="btn btn-primary product_button admin-button">
+                <td>
+                    {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
+                    <input type="submit" value="Submit Edits" class="btn btn-primary product_button admin-button">
+                </td>
             </form>
             <td>
                 <h5>Product Designs</h5>
