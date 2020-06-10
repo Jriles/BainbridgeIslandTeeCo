@@ -393,7 +393,7 @@ a {
 }
 
 #admin-product-table td{
-    padding: 0 15px;
+    padding-right: 15px;
 }
 
 .admin-logout{
