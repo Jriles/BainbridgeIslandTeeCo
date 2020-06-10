@@ -54,6 +54,7 @@ class EditDesign(FlaskForm):
 class CreateProduct(FlaskForm):
     product_name = StringField('Product Name', validators=[validators.Optional()])
     product_price = IntegerField('Product Price',  validators=[validators.Optional()])
+    primary_product_image = FileField('File', validators=[validators.Optional()])
     in_stock_choices = [('0', 'False'), ('1', 'True')]
     product_in_stock = SelectField(validators=[DataRequired()], choices=in_stock_choices)
     description = TextAreaField('Product Description', validators=[validators.Optional()])

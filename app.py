@@ -226,6 +226,7 @@ class DisplayProduct(db.Model):
     price = db.Column(db.Integer())
     in_stock = db.Column(db.Integer())
     description = db.Column(db.String())
+    primary_product_image = db.Column(db.String())
 
 
 class ProductDesign(db.Model):
@@ -568,6 +569,12 @@ def new_product():
         new_product.price = float(new_product_form.product_price.data)
         new_product.in_stock = int(new_product_form.product_in_stock.data)
         new_product.description = new_product_form.description.data
+        image = request.files["primary_product_image"]
+        if image and allowed_file(image.filename):
+            image_file_name = secure_filename(image.filename)
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file_name)
+            image.save(image_path)
+            new_product.primary_product_image = "static/img" + image_file_name
         db.session.add(new_product)
         db.session.commit()
         flash("Successfully created new product: " + new_product.name)
