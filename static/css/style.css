@@ -4602,8 +4602,8 @@ html, body {
 }
 
 .product-primary-image-admin{
-    width: 100%;
-    height: auto;
+    height: 100px;
+    width: auto;
 }
 
 .admin-product-image-container{
