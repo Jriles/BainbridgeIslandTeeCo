@@ -518,6 +518,14 @@ def delete_design(designID):
     db.session.commit()
     return redirect('/manage-products')
 
+@app.route("/delete-product/<productID>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def delete_product(productID):
+    product_to_delete = DisplayProduct.query.filter_by(id=productID).first()
+    db.session.delete(product_to_delete)
+    db.session.commit()
+    return redirect('/manage-products')
+
 
 @app.route("/manage-products", methods=('GET', 'POST'))
 @roles_required(['Admin'])
