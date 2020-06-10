@@ -11,7 +11,7 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<div class="admin-container">
+<div>
     <div>
         <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin Page</button></a>
     </div>
@@ -26,8 +26,8 @@
             <th>Product Image</th>
             <th>In Stock?</th>
             <th>Product Description</th>
+            <th>Save Product Changes</th>
             <th>Product Designs</th>
-            <th>Save Changes</th>
         </tr>
     {% for product in display_products %}
         {% set product_loop = loop %}
