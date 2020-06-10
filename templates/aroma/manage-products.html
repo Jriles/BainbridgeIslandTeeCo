@@ -75,6 +75,9 @@
                             {% if design[3]!= None %}
                             <img class="admin-product-image" alt="Picture Unavailable" src="{{ design[3] }}">
                             {% endif %}
+                            <button type="button" onclick="closeThisDesignSection(this)" class="close-order-items" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                             <div class="">
                                 <form method="post" class="form admin-form" enctype="multipart/form-data">
                                     {{ edit_design_form.csrf_token }}

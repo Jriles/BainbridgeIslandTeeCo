@@ -1029,6 +1029,12 @@ function closeThisItemSection(button){
     $(item_list).hide();
 }
 
+function closeThisDesignSection(button){
+    var item_list = $(button).parent().parent().hide();
+    //console.log(item_list);
+    $(button).parent().parent().parent().find(".show-items-button").show();
+}
+
 function submitOrderNote(button){
     var note = $(button).parent().find(".customer-note-textarea").val();
     $('<input />').attr('type', 'hidden')
