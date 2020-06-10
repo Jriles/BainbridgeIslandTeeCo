@@ -570,11 +570,14 @@ def new_product():
         new_product.in_stock = int(new_product_form.product_in_stock.data)
         new_product.description = new_product_form.description.data
         image = request.files["primary_product_image"]
+        app.logger.info(image.filename)
         if image and allowed_file(image.filename):
+            app.logger.info("decided that we can add the image")
             image_file_name = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file_name)
             image.save(image_path)
             new_product.primary_product_image = "static/img" + image_file_name
+            app.logger.info("finished with image")
         db.session.add(new_product)
         db.session.commit()
         flash("Successfully created new product: " + new_product.name)
