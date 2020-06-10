@@ -392,6 +392,17 @@ a {
     border-width: 1px;
 }
 
+.close-product-designs{
+    float: right;
+    color: #aaaaaa;
+    background-color: Transparent;
+    border: none;
+    color: black;
+    font-size: 40px;
+    margin-top: -25px;
+    margin-bottom: -22px;
+}
+
 .admin-product-image{
     width: 100%;
     height: auto;
