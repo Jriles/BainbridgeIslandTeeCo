@@ -37,8 +37,7 @@ class EditProduct(FlaskForm):
     product_price = IntegerField('Price',  validators=[validators.Optional()])
     primary_product_image = FileField('File', validators=[validators.Optional()])
     show_sizes = BooleanField('Show Product Sizes?', validators=[validators.Optional()])
-    in_stock_choices = [('0', 'False'), ('1', 'True')]
-    product_in_stock = SelectField(validators=[DataRequired()], choices=in_stock_choices)
+    product_in_stock = BooleanField('In Stock?', validators=[validators.Optional()])
     description = TextAreaField('Product Description', validators=[validators.Optional()])
     product_id = HiddenField()
 
@@ -58,8 +57,7 @@ class CreateProduct(FlaskForm):
     product_price = IntegerField('Product Price',  validators=[validators.Optional()])
     primary_product_image = FileField('File', validators=[validators.Optional()])
     show_sizes = BooleanField('Show Sizes?', validators=[validators.Optional()])
-    in_stock_choices = [('0', 'False'), ('1', 'True')]
-    product_in_stock = SelectField(validators=[DataRequired()], choices=in_stock_choices)
+    product_in_stock = BooleanField('In Stock?', validators=[validators.Optional()])
     description = TextAreaField('Product Description', validators=[validators.Optional()])
 
 class InternalOrderNote(FlaskForm):
