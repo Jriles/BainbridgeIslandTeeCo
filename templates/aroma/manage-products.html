@@ -24,6 +24,7 @@
             <th>Product Name</th>
             <th>Product Price</th>
             <th>Primary Image</th>
+            <th>Show Sizes?</th>
             <th>In Stock?</th>
             <th>Product Description</th>
             <th>Make Changes</th>
@@ -45,6 +46,10 @@
                 <td>
                     <img src="{{product[5]}}" class="product-primary-image-admin">
                     {{ edit_product_form.primary_product_image(value = product[5]) }}
+                </td>
+                <td>
+                    Show Product Sizes?
+                    {{ edit_product_form.product_in_stock(value = product[6]) }}
                 </td>
                 <td>
                     Product In Stock?

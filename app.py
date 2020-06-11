@@ -227,6 +227,7 @@ class DisplayProduct(db.Model):
     in_stock = db.Column(db.Integer())
     description = db.Column(db.String())
     primary_product_image = db.Column(db.String())
+    sizes = db.Column(db.Integer())
 
 
 class ProductDesign(db.Model):
@@ -585,6 +586,7 @@ def new_product():
         new_product.price = float(new_product_form.product_price.data)
         new_product.in_stock = int(new_product_form.product_in_stock.data)
         new_product.description = new_product_form.description.data
+        new_product.sizes = int(new_product_form.show_sizes)
         image = request.files["primary_product_image"]
         app.logger.info(image.filename)
         if image and allowed_file(image.filename):
