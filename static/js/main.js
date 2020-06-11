@@ -323,7 +323,7 @@ $(function() {
             }
             //check all checkboxes that need it
             var checkboxes = document.getElementsByClassName("reset_checkbox");
-            for j = 0; j < checkboxes.length; j++) {
+            for(j = 0; j < checkboxes.length; j++) {
                 console.log("in checkbox loop");
                 if(checkboxes[j].getAttribute('value') == '1'){
                     console.log("found a checkbox that needs to be checked");
