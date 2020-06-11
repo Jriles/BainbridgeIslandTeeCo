@@ -328,6 +328,8 @@ $(function() {
                 if(checkboxes[i].getAttribute('value') === '1'){
                     console.log("found a checkbox that needs to be checked");
                     checkboxes[i].checked = true;
+                }else{
+                    checkboxes[i].checked = false;
                 }
             }
 		});
