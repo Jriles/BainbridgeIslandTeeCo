@@ -321,6 +321,13 @@ $(function() {
             for (i = 0; i < els.length; i++) {
                 els[i].value = els[i].getAttribute('value');
             }
+            //check all checkboxes that need it
+            var checkboxes = document.getElementsByClassName("reset_checkbox");
+            for (i = 0; i < checkboxes.length; i++) {
+                if(checkboxes[i].getAttribute('value') == '1'){
+                    checkboxes[i].checked = true;
+                }
+            }
 		});
 
     //check if this is the cart page
