@@ -349,7 +349,12 @@ def paymentsuccess():
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
-    return render_template("/aroma/index.html", email_form=email_form)
+    display_products = query_db('SELECT * FROM Display_Products')
+    designs = []
+    for product in display_products:
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+    return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
+                           designs=designs)
 
 
 @app.route("/", methods=('GET', 'POST'))
