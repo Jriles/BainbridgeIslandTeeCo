@@ -415,6 +415,10 @@ a {
     height: auto;
 }
 
+.admin-product-table{
+    border-spacing: 10px 0rem;
+}
+
 .admin-logout{
     float: right;
     margin-top: 10px;
