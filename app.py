@@ -312,6 +312,7 @@ def paymentsuccess():
     db.session.commit()
     descending = UserOrders.query.order_by(UserOrders.id.desc())
     most_recent_order = descending.first()
+    app.logger.info("got through saving the order to the db")
     for item in cart:
         new_item = OrderItem()
         new_item.order_id = most_recent_order.id
@@ -321,9 +322,10 @@ def paymentsuccess():
         new_item.quantity = int(item["Quantity"])
         new_item.product_img_src = item["IMGSRC"]
         new_item.design = item["Design"]
+        app.logger.info(new_item.__str__())
         db.session.add(new_item)
         db.session.commit()
-
+    app.logger.info("got though saving all the order items to the database")
     # want to confirmation to email given by paypal for everyone, including not users.
     # we also want to send an email to the business to let them know there is a new order
     try:
