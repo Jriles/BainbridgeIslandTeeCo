@@ -415,10 +415,6 @@ a {
     height: auto;
 }
 
-#admin-product-table td{
-    padding-right: 15px;
-}
-
 .admin-logout{
     float: right;
     margin-top: 10px;
