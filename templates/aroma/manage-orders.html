@@ -13,17 +13,19 @@
 {% endwith %}
 <div class="orders-container">
 <h1 class="order-header">Orders</h1>
-<table class="order-table">
-    <tr>
-        <th class="email-column">Email</th>
-        <th class="order-date">Date Placed</th>
-        <th class="paypal-column">PayPal Order ID</th>
-        <th class="address-column">Address</th>
-        <th class="items-column">Order Items</th>
-        <th class="customer-notes-column">Customer Order Notes</th>
-        <th class="internal-notes-column">Internal Order Notes</th>
-        <th class="shipping-status-column">Shipping Status</th>
-    </tr>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th class="email-column">Email</th>
+            <th class="order-date">Date Placed</th>
+            <th class="paypal-column">PayPal Order ID</th>
+            <th class="address-column">Address</th>
+            <th class="items-column">Order Items</th>
+            <th class="customer-notes-column">Customer Order Notes</th>
+            <th class="internal-notes-column">Internal Order Notes</th>
+            <th class="shipping-status-column">Shipping Status</th>
+        </tr>
+    </thead>
     {% for order in orders %}
     {% set order_loop = loop %}
     <tr class="order-row">
