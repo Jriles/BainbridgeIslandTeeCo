@@ -20,16 +20,18 @@
         <a href="/new-product"><button class="btn btn-primary product_button admin-button">New Product</button></a>
     </div>
     <table class="table">
-        <tr>
-            <th>Product Name</th>
-            <th>Product Price</th>
-            <th>Primary Image</th>
-            <th>Show Sizes?</th>
-            <th>In Stock?</th>
-            <th>Product Description</th>
-            <th>Make Changes</th>
-            <th>Product Designs</th>
-        </tr>
+        <thead class="thead-dark">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Primary Image</th>
+                <th>Show Sizes?</th>
+                <th>In Stock?</th>
+                <th>Product Description</th>
+                <th>Make Changes</th>
+                <th>Product Designs</th>
+            </tr>
+        </thead>
     {% for product in display_products %}
         {% set product_loop = loop %}
         <tr>
