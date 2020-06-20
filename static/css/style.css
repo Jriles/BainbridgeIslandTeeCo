@@ -417,6 +417,7 @@ a {
 
 #admin-product-table{
     border-spacing: 10px 0rem;
+    border-collapse: unset !important;
 }
 
 .admin-logout{
