@@ -289,7 +289,7 @@ def random_with_N_digits(n):
 def paymentsuccess():
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
-        print(email_form.email.data)
+        app.logger.info(email_form.email.data)
         this_email = Email()
         this_email.email = email_form.email.data
         db.session.add(this_email)
@@ -298,7 +298,7 @@ def paymentsuccess():
     paypalID = request.form['PayPalTransactionID']
     orderDeets = paypalstuff.GetOrder.get_order(paypalstuff.GetOrder, paypalID)
     address = orderDeets.result.purchase_units[0].shipping.address
-    print(orderDeets)
+    app.logger.info(orderDeets)
     address = address.address_line_1 + ", " + address.admin_area_2 + ", " + address.admin_area_1 + ", " + address.postal_code + ", " + address.country_code
     cart = json.loads(request.form["CartJSON"])
     new_order = UserOrders()
@@ -346,7 +346,7 @@ def paymentsuccess():
         msg.attach(body)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     except SMTPException:
-        print("there was a problem sending the confirmation email")
+        app.logger.info("there was a problem sending the confirmation email")
     return render_template("/aroma/index.html", email_form=email_form)
 
 
