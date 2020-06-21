@@ -432,8 +432,8 @@ a {
 }
 
 .admin-container{
-    margin-right: 5%;
-    margin-left: 5%;
+    width: 80%;
+    left: 10%;
 }
 
 .orders-container{

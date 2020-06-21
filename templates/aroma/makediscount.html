@@ -12,7 +12,7 @@
 {% endif %}
 {% endwith %}
 <h3>Make a Discount</h3>
-<form method="post" class="form admin-form" enctype="multipart/form-data">
+<form method="post" class="form account-form" enctype="multipart/form-data">
     {{ new_discount_form.csrf_token }}
     {{ new_discount_form.name(class_ = 'discount-form-element', placeholder = new_discount_form.name.label.text) }}
     {{ new_discount_form.amount(class_ = 'discount-form-element', placeholder = new_discount_form.amount.label.text) }}
