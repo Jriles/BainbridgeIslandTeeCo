@@ -19,101 +19,99 @@
     <div>
         <a href="/new-product"><button class="btn btn-primary product_button admin-button">New Product</button></a>
     </div>
-    <div style="overflow-x:auto;">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Product Name</th>
-                    <th>Product Price</th>
-                    <th>Primary Image</th>
-                    <th>Show Sizes?</th>
-                    <th>In Stock?</th>
-                    <th>Product Description</th>
-                    <th>Make Changes</th>
-                    <th>Product Designs</th>
-                </tr>
-            </thead>
-        {% for product in display_products %}
-            {% set product_loop = loop %}
+    <table class="table table-responsive">
+        <thead class="thead-dark">
             <tr>
-                <form method="post" class="form admin-form" enctype="multipart/form-data">
-                    {{ edit_product_form.csrf_token }}
-                    <td>
-                        Product Name:
-                        {{ edit_product_form.product_name(value = product[1]) }}
-                    </td>
-                    <td>
-                        Product Price:
-                        {{ edit_product_form.product_price(value = product[2]) }}
-                    </td>
-                    <td>
-                        <img src="{{product[5]}}" class="product-primary-image-admin">
-                        {{ edit_product_form.primary_product_image(value = product[5]) }}
-                    </td>
-                    <td>
-                        Show Product Sizes?
-                        {{ edit_product_form.show_sizes(value = product[6], class_ = 'reset_checkbox') }}
-                    </td>
-                    <td>
-                        Product In Stock?
-                        {{ edit_product_form.product_in_stock(value = product[3], class_ = 'reset_checkbox') }}
-                    </td>
-                    <td>
-                        Product Description:
-                        <textarea name="description" id="description" type="text" class="admin-product-description">{{product[4]}}</textarea>
-                    </td>
-                    <td>
-                        {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
-                        <div>
-                            <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
-                        </div>
-                        <div>
-                            <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-product/{{product[0]}}">Delete Product</a></button>
-                        </div>
-                    </td>
-                </form>
-                <td>
-                    <div>
-                        <button class="btn btn-info admin-button show-items-button" onclick="showThisProductDesigns(this)">View Designs</button>
-                    </div>
-                    <div>
-                        <a href="/new-design/{{product[0]}}"><button class="btn btn-primary product_button admin-button">New Design</button></a>
-                    </div>
-                    <ul class="design-list">
-                        <button type="button" onclick="closeThisDesignSection(this)" class="close-product-designs" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        {% for design in designs[product_loop.index-1] %}
-                            <div class="" id="{{design[0]}} Image">
-                                {% if design[3]!= None %}
-                                <img class="admin-product-image" alt="Picture Unavailable" src="{{ design[3] }}">
-                                {% endif %}
-                                <div class="">
-                                    <form method="post" class="form admin-form" enctype="multipart/form-data">
-                                        {{ edit_design_form.csrf_token }}
-                                        Design Name:
-                                        {{ edit_design_form.edit_design_name(class_ = 'edit-design card-title', value = design[2]) }}
-                                        Change Image:
-                                        {{ edit_design_form.edit_design_image(value = design[3], class_ = 'edit-design card-text') }}
-                                        Change Icon:
-                                        <div class="icon-bucket">
-                                            <img src="{{design[4]}}" class="icon-styling">
-                                            {{ edit_design_form.edit_design_icon(value = design[4], class_ = 'card-text icon-input') }}
-                                        </div>
-                                        {{ edit_design_form.design_id(value = design[0], class_ = 'edit-design card-text') }}
-                                        <input type="submit" value="Edit Design" class="btn btn-primary product_button admin-button">
-                                        <div>
-                                            <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design[0]}}">Delete Design</a></button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </ul>
-                </td>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Primary Image</th>
+                <th>Show Sizes?</th>
+                <th>In Stock?</th>
+                <th>Product Description</th>
+                <th>Make Changes</th>
+                <th>Product Designs</th>
             </tr>
-        {% endfor %}
-        </table>
-    </div>
+        </thead>
+    {% for product in display_products %}
+        {% set product_loop = loop %}
+        <tr>
+            <form method="post" class="form admin-form" enctype="multipart/form-data">
+                {{ edit_product_form.csrf_token }}
+                <td>
+                    Product Name:
+                    {{ edit_product_form.product_name(value = product[1]) }}
+                </td>
+                <td>
+                    Product Price:
+                    {{ edit_product_form.product_price(value = product[2]) }}
+                </td>
+                <td>
+                    <img src="{{product[5]}}" class="product-primary-image-admin">
+                    {{ edit_product_form.primary_product_image(value = product[5]) }}
+                </td>
+                <td>
+                    Show Product Sizes?
+                    {{ edit_product_form.show_sizes(value = product[6], class_ = 'reset_checkbox') }}
+                </td>
+                <td>
+                    Product In Stock?
+                    {{ edit_product_form.product_in_stock(value = product[3], class_ = 'reset_checkbox') }}
+                </td>
+                <td>
+                    Product Description:
+                    <textarea name="description" id="description" type="text" class="admin-product-description">{{product[4]}}</textarea>
+                </td>
+                <td>
+                    {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product[0]) }}
+                    <div>
+                        <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                    </div>
+                    <div>
+                        <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-product/{{product[0]}}">Delete Product</a></button>
+                    </div>
+                </td>
+            </form>
+            <td>
+                <div>
+                    <button class="btn btn-info admin-button show-items-button" onclick="showThisProductDesigns(this)">View Designs</button>
+                </div>
+                <div>
+                    <a href="/new-design/{{product[0]}}"><button class="btn btn-primary product_button admin-button">New Design</button></a>
+                </div>
+                <ul class="design-list">
+                    <button type="button" onclick="closeThisDesignSection(this)" class="close-product-designs" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {% for design in designs[product_loop.index-1] %}
+                        <div class="" id="{{design[0]}} Image">
+                            {% if design[3]!= None %}
+                            <img class="admin-product-image" alt="Picture Unavailable" src="{{ design[3] }}">
+                            {% endif %}
+                            <div class="">
+                                <form method="post" class="form admin-form" enctype="multipart/form-data">
+                                    {{ edit_design_form.csrf_token }}
+                                    Design Name:
+                                    {{ edit_design_form.edit_design_name(class_ = 'edit-design card-title', value = design[2]) }}
+                                    Change Image:
+                                    {{ edit_design_form.edit_design_image(value = design[3], class_ = 'edit-design card-text') }}
+                                    Change Icon:
+                                    <div class="icon-bucket">
+                                        <img src="{{design[4]}}" class="icon-styling">
+                                        {{ edit_design_form.edit_design_icon(value = design[4], class_ = 'card-text icon-input') }}
+                                    </div>
+                                    {{ edit_design_form.design_id(value = design[0], class_ = 'edit-design card-text') }}
+                                    <input type="submit" value="Edit Design" class="btn btn-primary product_button admin-button">
+                                    <div>
+                                        <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design[0]}}">Delete Design</a></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
 </div>
 {% endblock %}
