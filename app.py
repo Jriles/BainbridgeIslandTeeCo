@@ -435,63 +435,7 @@ def login():
 @app.route("/admin", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def admin():
-    # logo form
-    logo_form = forms.LogoForm()
-    new_discount_form = forms.NewDiscount()
-    email_all_customers_form = forms.EmailCustomers()
-    if logo_form.new_logo.data is not None and logo_form.validate():
-        image = request.files["new_logo"]
-        if 'new_logo' not in request.files:
-            return redirect(request.url)
-        if image and allowed_file(image.filename):
-            filename = secure_filename(image.filename)
-            print(filename)
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            image.save(img_path)
-            logo = Logo()
-            logo.file_path = "/static/img/" + filename
-            db.session.add(logo)
-            db.session.commit()
-    if new_discount_form.name.data is not None and new_discount_form.validate():
-        new_discount = Discount()
-        new_discount.name = new_discount_form.name.data
-        if new_discount_form.type.data == '0':
-            new_discount.amount = float("." + str(new_discount_form.amount.data))
-            new_discount.type = "percentage"
-        else:
-            new_discount.amount = int(new_discount_form.amount.data)
-            new_discount.type = "cash"
-        db.session.add(new_discount)
-        db.session.commit()
-        flash("Saved New Discount")
-    if email_all_customers_form.subject.data is not None and email_all_customers_form.validate():
-        image = request.files["attachment"]
-        this_file_path = ""
-        if 'attachment' not in request.files:
-            return redirect(request.url)
-        if image and allowed_file(image.filename):
-            filename = secure_filename(image.filename)
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            image.save(img_path)
-            this_file_path = img_path
-        for customer in Email.query.all():
-            body = email_all_customers_form.message.data
-            msg = MIMEMultipart()
-            msg["From"] = 'bainbridgeislandteeco@gmail.com'
-            msg["To"] = customer.email
-            msg["Subject"] = email_all_customers_form.subject.data
-            msg.attach(MIMEText(body))
-            part = MIMEBase('application', "octet-stream")
-
-            if this_file_path is not '':
-                part.set_payload(open(this_file_path, 'rb').read())
-                encoders.encode_base64(part)
-                part.add_header('Content-Disposition',
-                                'attachment; filename="{}"'.format(Path(this_file_path).name))
-                msg.attach(part)
-            smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
-    return render_template('/aroma/admin.html', logo_form=logo_form, new_discount_form=new_discount_form,
-                           email_all_customers=email_all_customers_form)
+    return render_template('/aroma/admin.html')
 
 
 @app.route("/new-design/<productID>", methods=('GET', 'POST'))
@@ -679,6 +623,72 @@ def showtermspage():
 def logout():
     logout_user()
     return redirect('/')
+
+@app.route("/change-logo")
+def change_logo_view():
+    logo_form = forms.LogoForm()
+    if logo_form.new_logo.data is not None and logo_form.validate():
+        image = request.files["new_logo"]
+        if 'new_logo' not in request.files:
+            return redirect(request.url)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            print(filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            logo = Logo()
+            logo.file_path = "/static/img/" + filename
+            db.session.add(logo)
+            db.session.commit()
+    return render_template('/aroma/changelogo.html', logo_form=logo_form)
+
+@app.route("/discount-form")
+def make_discount():
+    new_discount_form = forms.NewDiscount()
+    if new_discount_form.name.data is not None and new_discount_form.validate():
+        new_discount = Discount()
+        new_discount.name = new_discount_form.name.data
+        if new_discount_form.type.data == '0':
+            new_discount.amount = float("." + str(new_discount_form.amount.data))
+            new_discount.type = "percentage"
+        else:
+            new_discount.amount = int(new_discount_form.amount.data)
+            new_discount.type = "cash"
+        db.session.add(new_discount)
+        db.session.commit()
+        flash("Saved New Discount")
+    return render_template('/aroma/makediscount.html', new_discount_form=new_discount_form)
+
+@app.route('/email-customers')
+def email_all_customers():
+    email_all_customers_form = forms.EmailCustomers()
+    if email_all_customers_form.subject.data is not None and email_all_customers_form.validate():
+        image = request.files["attachment"]
+        this_file_path = ""
+        if 'attachment' not in request.files:
+            return redirect(request.url)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            this_file_path = img_path
+        for customer in Email.query.all():
+            body = email_all_customers_form.message.data
+            msg = MIMEMultipart()
+            msg["From"] = 'bainbridgeislandteeco@gmail.com'
+            msg["To"] = customer.email
+            msg["Subject"] = email_all_customers_form.subject.data
+            msg.attach(MIMEText(body))
+            part = MIMEBase('application', "octet-stream")
+
+            if this_file_path is not '':
+                part.set_payload(open(this_file_path, 'rb').read())
+                encoders.encode_base64(part)
+                part.add_header('Content-Disposition',
+                                'attachment; filename="{}"'.format(Path(this_file_path).name))
+                msg.attach(part)
+            smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
+    return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
 
 
 def redirect_url(default='index'):

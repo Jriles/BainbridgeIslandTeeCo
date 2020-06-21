@@ -1,0 +1,22 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h3>Email All Customers</h3>
+<form method="post" class="form admin-form" enctype="multipart/form-data">
+    {{ email_all_customers.csrf_token }}
+    {{ email_all_customers.subject(class_ = 'discount-form-element', placeholder = email_all_customers.subject.label.text) }}
+    {{ email_all_customers.message(class_ = 'discount-form-element', placeholder = email_all_customers.message.label.text) }}
+    {{ email_all_customers.attachment(class_ = 'discount-form-element', placeholder = email_all_customers.attachment.label.text) }}
+    <input type="submit" value="Email All Customers" class="btn btn-warning admin-button">
+</form>
+{% endblock %}

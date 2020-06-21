@@ -1,0 +1,20 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h3>Change Logo</h3>
+<form method="post" class="form admin-form" enctype="multipart/form-data">
+    {{ logo_form.csrf_token }}
+    {{ logo_form.new_logo(class_ = '', placeholder = logo_form.new_logo.label.text) }}
+    <input type="submit" value="Submit New Logo" class="btn btn-primary admin-button">
+</form>
+{% endblock %}

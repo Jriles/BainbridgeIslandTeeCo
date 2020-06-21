@@ -1,96 +1,60 @@
 {% extends "/aroma/base.html" %}
 
 {% block content %}
-<div class="card-deck admin-position-adjustments">
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><i class="fas fa-shipping-fast"></i></div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Manage Orders</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><i class="fas fa-boxes"></i></div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Manage Products</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><i class="fas fa-file-upload"></i></div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Add or Change Logo</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><i class="fas fa-tags"></i></div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Make a Discount</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><i class="far fa-paper-plane"></i></div>
-      <div class="card-body text-primary">
-        <h5 class="card-title">Email All Customers</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-    </div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
 </div>
-<div class="admin-container">
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-block alert-error section-error-alert">
-      <a class="close" data-dismiss="alert">&times;</a>
-      {{ message }}
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-    <div class="header-container">
-        <h1 class="admin-title">Welcome {{current_user.username}}</h1>
-        <a class="admin-logout" href="/logout"><button class="btn btn-danger">Logout</button></a>
-    </div>
-    <h5>Here you can edit product details and your company logo.</h5>
-    <h3>Change Logo</h3>
-    <form method="post" class="form admin-form" enctype="multipart/form-data">
-        {{ logo_form.csrf_token }}
-        {{ logo_form.new_logo(class_ = '', placeholder = logo_form.new_logo.label.text) }}
-        <input type="submit" value="Submit New Logo" class="btn btn-primary admin-button">
-    </form>
-    <br>
-    <br>
-    <h3>Make a Discount</h3>
-    <form method="post" class="form admin-form" enctype="multipart/form-data">
-        {{ new_discount_form.csrf_token }}
-        {{ new_discount_form.name(class_ = 'discount-form-element', placeholder = new_discount_form.name.label.text) }}
-        {{ new_discount_form.amount(class_ = 'discount-form-element', placeholder = new_discount_form.amount.label.text) }}
-        {{ new_discount_form.type(class_ = 'discount-form-element', placeholder = new_discount_form.type.label.text) }}
-        <input type="submit" value="Submit New Discount" class="btn btn-primary admin-button">
-    </form>
-    <br>
-    <br>
-    <h3>Email All Customers</h3>
-    <form method="post" class="form admin-form" enctype="multipart/form-data">
-        {{ email_all_customers.csrf_token }}
-        {{ email_all_customers.subject(class_ = 'discount-form-element', placeholder = email_all_customers.subject.label.text) }}
-        {{ email_all_customers.message(class_ = 'discount-form-element', placeholder = email_all_customers.message.label.text) }}
-        {{ email_all_customers.attachment(class_ = 'discount-form-element', placeholder = email_all_customers.attachment.label.text) }}
-        <input type="submit" value="Email All Customers" class="btn btn-warning admin-button">
-    </form>
-    <br>
-    <br>
-    <h3>Manage Products</h3>
-    <div>
-        <a href="/manage-products"><button class="btn btn-success admin-button">Manage Products</button></a>
-    </div>
-    <br>
-    <br>
-    <h3>Manage Orders</h3>
-    <div>
-        <a href="/manage-orders"><button class="btn btn-success admin-button">Manage Orders</button></a>
-    </div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="header-container">
+    <h1 class="admin-title">Welcome {{current_user.username}}</h1>
+    <a class="admin-logout" href="/logout"><button class="btn btn-danger">Logout</button></a>
+</div>
+<div class="card-deck admin-position-adjustments">
+    <a href="/manage-orders">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-body text-primary">
+            <h5 class="card-title"><i class="fas fa-shipping-fast"></i>Manage Orders</h5>
+            <p class="card-text">Here you can view order details like date placed, address, shipping status, make internal notes among other things.</p>
+          </div>
+        </div>
+    </a>
+    <a href="/manage-products">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-body text-primary">
+            <h5 class="card-title"><i class="fas fa-boxes"></i>Manage Products</h5>
+            <p class="card-text">Here you can make products and designs, as well as edit product and design details like names, prices images, sizes descriptions, etc. </p>
+          </div>
+        </div>
+    </a>
+    <a href="/change-logo">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-body text-primary">
+            <h5 class="card-title"><i class="fas fa-file-upload"></i>Add or Change Logo</h5>
+            <p class="card-text">Here you can upload a new logo for your website.</p>
+          </div>
+        </div>
+    </a>
+    <a href="/discount-form">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-body text-primary">
+            <h5 class="card-title"><i class="fas fa-tags"></i>Make a Discount</h5>
+            <p class="card-text">Here you can make cash or percentage discount coupons, don't forget to share the codes!</p>
+          </div>
+        </div>
+    </a>
+    <a href="/email-customers">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+          <div class="card-body text-primary">
+            <h5 class="card-title"><i class="far fa-paper-plane"></i>Email All Customers</h5>
+            <p class="card-text">Here you can mass mail customers announcements or other details.</p>
+          </div>
+        </div>
+    </a>
 </div>
 {% endblock %}
