@@ -4778,6 +4778,7 @@ li .product_count{
 
 .account-form{
     width: 90%;
+    left: unset;
 }
 
 .options-menu-item .product_count{
