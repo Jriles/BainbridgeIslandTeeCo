@@ -624,7 +624,7 @@ def logout():
     logout_user()
     return redirect('/')
 
-@app.route("/change-logo")
+@app.route("/change-logo", methods=('GET', 'POST'))
 def change_logo_view():
     logo_form = forms.LogoForm()
     if logo_form.new_logo.data is not None and logo_form.validate():
@@ -642,7 +642,7 @@ def change_logo_view():
             db.session.commit()
     return render_template('/aroma/changelogo.html', logo_form=logo_form)
 
-@app.route("/discount-form")
+@app.route("/discount-form", methods=('GET', 'POST'))
 def make_discount():
     new_discount_form = forms.NewDiscount()
     if new_discount_form.name.data is not None and new_discount_form.validate():
@@ -659,7 +659,7 @@ def make_discount():
         flash("Saved New Discount")
     return render_template('/aroma/makediscount.html', new_discount_form=new_discount_form)
 
-@app.route('/email-customers')
+@app.route('/email-customers', methods=('GET', 'POST'))
 def email_all_customers():
     email_all_customers_form = forms.EmailCustomers()
     if email_all_customers_form.subject.data is not None and email_all_customers_form.validate():
