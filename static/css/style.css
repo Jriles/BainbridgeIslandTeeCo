@@ -434,6 +434,8 @@ a {
     width: 90%;
     left: 5%;
     position: relative;
+    margin-top: 150px;
+    margin-bottom: 250px;
 }
 
 .orders-container{
