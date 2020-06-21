@@ -436,7 +436,10 @@ a {
     position: relative;
     margin-top: 150px;
     margin-bottom: 250px;
-    
+}
+
+.admin-card-width{
+    max-width: 30%;
 }
 
 .orders-container{
@@ -4776,6 +4779,10 @@ li .product_count{
 .options-menu-item .product_count{
     width: unset !important;
     right: 0px;
+}
+
+.admin-card-width{
+    width: 90%;
 }
 
 .product_count label{
