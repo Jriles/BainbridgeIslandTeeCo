@@ -4772,6 +4772,10 @@ li .product_count{
     margin-top: 20px;
 }
 
+.admin-form-back-to-admin{
+    margin-left: 5%;
+}
+
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
