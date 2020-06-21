@@ -11,8 +11,8 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-<h3>Email All Customers</h3>
 <form method="post" class="form account-form" enctype="multipart/form-data">
+    <h3>Email All Customers</h3>
     {{ email_all_customers.csrf_token }}
     {{ email_all_customers.subject(class_ = 'discount-form-element', placeholder = email_all_customers.subject.label.text) }}
     {{ email_all_customers.message(class_ = 'discount-form-element', placeholder = email_all_customers.message.label.text) }}
