@@ -420,6 +420,12 @@ a {
     border-collapse: unset !important;
 }
 
+.admin-position-adjustments{
+    width: 80%;
+    left: 10%;
+    position: relative;
+}
+
 .admin-logout{
     float: right;
     margin-top: 10px;
