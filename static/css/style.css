@@ -439,7 +439,7 @@ a {
 }
 
 .admin-card-width{
-    max-width: 30%;
+    max-width: 16rem;
 }
 
 .orders-container{
@@ -4782,7 +4782,7 @@ li .product_count{
 }
 
 .admin-card-width{
-    width: 90%;
+    max-width: unset;
 }
 
 .product_count label{
