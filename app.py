@@ -307,10 +307,10 @@ def paymentsuccess():
     new_order.address = address
     new_order.status = 0
     #app.logger.info("customer note: " + request.form.=)
-    if request.form["CustomerNote"] is None:
-        new_order.customer_note = ""
-    else:
+    try:
         new_order.customer_note = request.form["CustomerNote"]
+    except KeyError:
+        new_order.customer_note = ""
     new_order.order_date = date.today()
     db.session.add(new_order)
     db.session.commit()
