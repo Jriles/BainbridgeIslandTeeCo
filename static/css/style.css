@@ -433,6 +433,7 @@ a {
 .admin-container{
     width: 80%;
     left: 10%;
+    position: relative;
 }
 
 .orders-container{
