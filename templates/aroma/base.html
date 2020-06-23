@@ -14,8 +14,6 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/owl-carousel/owl.theme.default.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.min.css') }}">
   <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
 </head>
 <body style="padding-top: 90px;" onload="scrollDown('{{scroll_product}}')">
   <!--================ Start Header Menu Area =================-->
@@ -74,6 +72,7 @@
 		</div>
 	</footer>
 	<!--================ End footer Area  =================-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="{{url_for('static', filename='vendors/skrollr.min.js')}}"></script>
@@ -81,6 +80,8 @@
   <script src="{{url_for('static', filename='vendors/mail-script.js')}}"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AXUox9TqClklKrV6WSKs5OvvlkwKaqHE9MJmh9HYHQaoro2SDzZaRH1ioPNwBHbwcO7UJV7JElhawvkc"></script>
   <!-- <script src="https://www.paypal.com/sdk/js?client-id=AVkb_CtJu8TWXbo9LPrBp5sU6YJGMxQaYyR1GmPds4dTE9f_Zl0ivyFXA3Mi_4aY_33UYqZ25EjXaQMp"></script> -->
+
+  <script src="{{url_for('static', filename='js/main.js')}}"></script>
         <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4Dugxzzdxz6BRL5_5xKV8GTf-sla1TDo">
     </script>
