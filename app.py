@@ -304,7 +304,11 @@ def inject_logo():
     if last_item is not None:
         path = last_item.file_path
 
-    return dict(this_file_path=path)
+    product_names = []
+    for product in DisplayProduct.query.all():
+        product_names.append(product.name)
+    return dict(this_file_path=path,
+                product_names=product_names)
 
 
 def allowed_file(filename):
