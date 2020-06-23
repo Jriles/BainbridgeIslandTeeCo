@@ -257,9 +257,21 @@ app.cli.add_command(create_tables)
 user_manager = UserManager(app, db, User)
 
 
+@app.route('/turn-on-maintenance-mode')
+def turn_on_mode():
+    is_maintenance_mode = True
+    flash('turned on maintenance mode')
+    return redirect('/admin')
+
+@app.route('/turn-off-maintenance-mode')
+def turn_off_mode():
+    is_maintenance_mode = False
+    flash('turned off maintenance mode')
+    return redirect('/admin')
+
 @app.before_request
 def check_for_maintenance():
-    if current_user.is_authenticated() is False and is_maintenance_mode and request.path != url_for('maintenance') and request.path != url_for('login'):
+    if current_user.is_authenticated is False and is_maintenance_mode and request.path != url_for('maintenance') and request.path != url_for('login'):
         return redirect(url_for('maintenance'))
         # Or alternatively, dont redirect
         # return 'Sorry, off for maintenance!', 503
@@ -449,7 +461,7 @@ def login():
 @app.route("/admin", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def admin():
-    return render_template('/aroma/admin.html')
+    return render_template('/aroma/admin.html', maintenance_mode=is_maintenance_mode)
 
 
 @app.route("/new-design/<productID>", methods=('GET', 'POST'))

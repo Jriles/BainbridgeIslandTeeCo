@@ -57,6 +57,25 @@
               </div>
             </div>
         </a>
+        {% if maintenance_mode %}
+        <a href="/turn-off-maintenance-mode">
+            <div class="card border-warning mb-3 admin-card-width">
+              <div class="card-body text-warning">
+                <h5 class="card-title"><i class="fas fa-tools"></i> Turn Off Maintenance Mode</h5>
+                <p class="card-text">Make your website visible to customers.</p>
+              </div>
+            </div>
+        </a>
+        {% else %}
+        <a href="/turn-on-maintenance-mode">
+            <div class="card border-danger mb-3 admin-card-width">
+              <div class="card-body text-danger">
+                <h5 class="card-title"><i class="fas fa-tools"></i> Turn On Maintenance Mode</h5>
+                <p class="card-text">Shield your customers from unfinished content.</p>
+              </div>
+            </div>
+        </a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
