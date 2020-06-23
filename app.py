@@ -247,6 +247,9 @@ class MaintenanceMode(db.Model):
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
+def get_designs_for_product(id):
+    return ProductDesign.query.filter_by(product_id=id)
+
 @app.cli.command("create_tables")
 @with_appcontext
 def create_tables():
@@ -406,7 +409,7 @@ def paymentsuccess():
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
+        designs.append(get_designs_for_product(product.id))
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs)
 
@@ -424,7 +427,7 @@ def home():
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
+        designs.append(get_designs_for_product(product.id))
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
                            designs=designs)
 
@@ -579,7 +582,7 @@ def edit_products():
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
+        designs.append(get_designs_for_product(product.id))
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
                            display_products=display_products, designs=designs, edit_design_form=edit_design_form)
 
@@ -623,7 +626,7 @@ def product_view(product):
     display_products = get_display_products_in_order()
     designs = []
     for display_product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % display_product.id))
+        designs.append(get_designs_for_product(display_product.id))
     return render_template('/aroma/index.html', scroll_product=product, email_form=email_form, display_products=display_products,
                            designs=designs)
 
