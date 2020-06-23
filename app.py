@@ -425,8 +425,6 @@ def home():
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
-    app.logger.info("products: " + str(len(display_products)))
-    app.logger.info("designs: " + str(len(designs)))
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
                            designs=designs)
 
