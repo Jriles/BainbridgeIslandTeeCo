@@ -89,6 +89,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
 admin_code = 12345
+is_maintenance_mode = False
 # email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
@@ -256,6 +257,18 @@ app.cli.add_command(create_tables)
 user_manager = UserManager(app, db, User)
 
 
+@app.before_request
+def check_for_maintenance():
+    if current_user.is_authenticated() is False and is_maintenance_mode and request.path != url_for('maintenance') and request.path != url_for('login'):
+        return redirect(url_for('maintenance'))
+        # Or alternatively, dont redirect
+        # return 'Sorry, off for maintenance!', 503
+
+@app.route('/maintenance')
+def maintenance():
+    return 'Sorry, off for maintenance!', 503
+
+
 @app.context_processor
 def inject_logo():
     descending = Logo.query.order_by(Logo.id.desc())
@@ -263,6 +276,7 @@ def inject_logo():
     path = ""
     if last_item is not None:
         path = last_item.file_path
+
     return dict(this_file_path=path)
 
 
