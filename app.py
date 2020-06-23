@@ -286,7 +286,7 @@ def turn_off_mode():
 @app.before_request
 def check_for_maintenance():
     maintenance_status = MaintenanceMode.query.first()
-    if current_user.is_authenticated is False and maintenance_status.status == "On" and request.path != url_for('maintenance') and request.path != url_for('login') and "js" not in request.path and "css" not in request.path:
+    if current_user.is_authenticated is False and maintenance_status.status == "On" and request.path != url_for('maintenance') and request.path != url_for('login') and "js" not in request.path and "css" not in request.path and "myhook" not in request.path:
         return redirect(url_for('maintenance'))
         # Or alternatively, dont redirect
         # return 'Sorry, off for maintenance!', 503
