@@ -310,6 +310,7 @@ def inject_logo():
 
     product_names = []
     for product in get_display_products_in_order():
+        app.logger.info(str(product))
         product_names.append(product.name)
     return dict(this_file_path=path,
                 product_names=product_names)
