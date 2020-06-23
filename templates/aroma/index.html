@@ -20,14 +20,14 @@
 				<div class="row s_product_inner">
 					<div class="col-lg-6">
 						<div class="owl-carousel owl-theme s_Product_carousel">
-							{% if product[5] != '' %}
+							{% if product.primary_product_image != '' %}
 								<div class="single-prd-item">
-									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid" src="{{product[5]}}" alt="">
+									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid" src="{{product.primary_product_image}}" alt="">
 								</div>
 							{% endif %}
 							{% for design in designs[product_loop.index-1] %}
 								<div class="single-prd-item">
-									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design[3]}}" alt="">
+									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design.design_image}}" alt="">
 								</div>
 							{% endfor %}
 						</div>
@@ -36,17 +36,17 @@
 						<div class="s_product_text">
 							<div class="info-and-options">
 								<div class="product-info">
-									<h3 id="product-name">{{product[1]}}</h3>
-									<h2 id="product-price">${{product[2]}}</h2>
-									{% if product[3] == 0 %}
+									<h3 id="product-name">{{product.name}}</h3>
+									<h2 id="product-price">${{product.price}}</h2>
+									{% if product.in_stock == 0 %}
 										<h5 class="availability">Out of Stock</h5>
 									{% else %}
 										<h5 class="availability">In Stock</h5>
 									{% endif %}
-									<h6 class="design-name">{% if designs[product_loop.index-1]|length > 0 %}{{designs[product_loop.index-1][0][2]}}{% endif %}</h6>
+									<h6 class="design-name">{% if designs[product_loop.index-1]|length > 0 %}{{designs[product_loop.index-1][0].design_name}}{% endif %}</h6>
 								</div>
 								<ul class="product-options-area">
-									{% if product[6] == 1 %}
+									{% if product.sizes == 1 %}
 									<li class="options-menu-item"><select id="t-shirt-size">
 										<option>Small</option>
 										<option>Medium</option>
@@ -61,7 +61,7 @@
 										{% endfor %}
 											<ul class="design_names" style="display: none;">
 												{% for design in designs[product_loop.index-1] %}
-												<li>{{design[2]}}</li>
+												<li>{{design.design_name}}</li>
 												{% endfor %}
 											</ul>
 										</div>
@@ -72,7 +72,7 @@
 									</div></li>
 								</ul>
 							</div>
-							<p>{{product[4]}}</p>
+							<p>{{product.description}}</p>
 							<div class="product-cart-buttons">
 								<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
 								<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
