@@ -406,7 +406,7 @@ def paymentsuccess():
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs)
 
@@ -424,7 +424,7 @@ def home():
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
     app.logger.info("products: " + str(len(display_products)))
     app.logger.info("designs: " + str(len(designs)))
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
@@ -581,7 +581,7 @@ def edit_products():
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product.id))
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
                            display_products=display_products, designs=designs, edit_design_form=edit_design_form)
 
@@ -625,7 +625,7 @@ def product_view(product):
     display_products = get_display_products_in_order()
     designs = []
     for display_product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % display_product[0]))
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % display_product.id))
     return render_template('/aroma/index.html', scroll_product=product, email_form=email_form, display_products=display_products,
                            designs=designs)
 
