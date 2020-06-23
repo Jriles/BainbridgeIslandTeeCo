@@ -476,6 +476,11 @@ def login():
 @app.route("/admin", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def admin():
+    maintenance_status = MaintenanceMode.query.first()
+    if maintenance_status.status == "On":
+        is_maintenance_mode = True
+    else:
+        is_maintenance_mode = False
     return render_template('/aroma/admin.html', maintenance_mode=is_maintenance_mode)
 
 
