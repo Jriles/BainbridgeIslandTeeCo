@@ -241,7 +241,7 @@ class ProductDesign(db.Model):
 class MaintenanceMode(db.Model):
     __tablename__ = "Maintenance"
     id = db.Column(db.Integer(), primary_key=True)
-    status = db.Column(db.Column(db.String()))
+    status = db.Column(db.String())
 
 @app.cli.command("create_tables")
 @with_appcontext
