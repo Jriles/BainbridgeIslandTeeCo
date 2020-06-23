@@ -621,6 +621,7 @@ def product_view(product):
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
+    app.logger.info("scroll product: " + product)
     return render_template('/aroma/index.html', scroll_product=product, email_form=email_form, display_products=display_products,
                            designs=designs)
 
