@@ -228,6 +228,7 @@ class DisplayProduct(db.Model):
     description = db.Column(db.String())
     primary_product_image = db.Column(db.String())
     sizes = db.Column(db.Integer())
+    product_order_num = db.Column(db.Integer(), autoincrement=True)
 
 
 class ProductDesign(db.Model):
@@ -398,12 +399,15 @@ def paymentsuccess():
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
-    display_products = query_db('SELECT * FROM Display_Products')
+    display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs)
+
+def get_display_products_in_order():
+    return query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
 
 
 @app.route("/", methods=('GET', 'POST'))
@@ -416,7 +420,7 @@ def home():
         this_email.email = email_form.email.data
         db.session.add(this_email)
         db.session.commit()
-    display_products = query_db('SELECT * FROM Display_Products')
+    display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
