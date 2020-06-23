@@ -259,12 +259,14 @@ user_manager = UserManager(app, db, User)
 
 @app.route('/turn-on-maintenance-mode')
 def turn_on_mode():
+    global is_maintenance_mode
     is_maintenance_mode = True
     flash('turned on maintenance mode')
     return redirect('/admin')
 
 @app.route('/turn-off-maintenance-mode')
 def turn_off_mode():
+    global is_maintenance_mode
     is_maintenance_mode = False
     flash('turned off maintenance mode')
     return redirect('/admin')
