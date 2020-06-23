@@ -306,7 +306,7 @@ def inject_logo():
         path = last_item.file_path
 
     product_names = []
-    for product in DisplayProduct.query.all():
+    for product in get_display_products_in_order():
         product_names.append(product.name)
     return dict(this_file_path=path,
                 product_names=product_names)
@@ -577,7 +577,7 @@ def edit_products():
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
     # we need to query all of the existing products and render them with the forms
-    display_products = query_db('SELECT * FROM Display_Products')
+    display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
@@ -621,7 +621,7 @@ def product_view(product):
         this_email.email = email_form.email.data
         db.session.add(this_email)
         db.session.commit()
-    display_products = query_db('SELECT * FROM Display_Products')
+    display_products = get_display_products_in_order()
     designs = []
     for display_product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % display_product[0]))
