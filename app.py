@@ -89,7 +89,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
 admin_code = 12345
-is_maintenance_mode = False
 # email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
@@ -239,6 +238,10 @@ class ProductDesign(db.Model):
     design_image = db.Column(db.String())
     design_icon = db.Column(db.String())
 
+class MaintenanceMode(db.Model):
+    __tablename__ = "Maintenance"
+    id = db.Column(db.Integer(), primary_key=True)
+    status = db.Column(db.Column(db.String()))
 
 @app.cli.command("create_tables")
 @with_appcontext
@@ -250,6 +253,11 @@ def create_tables():
     admin_role.name = 'Admin'
     db.session.add(admin_role)
     db.session.commit()
+    status = MaintenanceMode()
+    status.id = 0
+    status.status = "Off"
+    db.session.add(status)
+    db.session.commit()
 
 
 app.cli.add_command(create_tables)
@@ -259,21 +267,26 @@ user_manager = UserManager(app, db, User)
 
 @app.route('/turn-on-maintenance-mode')
 def turn_on_mode():
-    global is_maintenance_mode
-    is_maintenance_mode = True
+    maintenance_status = MaintenanceMode.query.first()
+    maintenance_status.status = "On"
+    db.session.add(maintenance_status)
+    db.session.commit()
     flash('turned on maintenance mode')
     return redirect('/admin')
 
 @app.route('/turn-off-maintenance-mode')
 def turn_off_mode():
-    global is_maintenance_mode
-    is_maintenance_mode = False
+    maintenance_status = MaintenanceMode.query.first()
+    maintenance_status.status = "Off"
+    db.session.add(maintenance_status)
+    db.session.commit()
     flash('turned off maintenance mode')
     return redirect('/admin')
 
 @app.before_request
 def check_for_maintenance():
-    if current_user.is_authenticated is False and is_maintenance_mode and request.path != url_for('maintenance') and request.path != url_for('login'):
+    maintenance_status = MaintenanceMode.query.first()
+    if current_user.is_authenticated is False and maintenance_status.status == "On" and request.path != url_for('maintenance') and request.path != url_for('login'):
         return redirect(url_for('maintenance'))
         # Or alternatively, dont redirect
         # return 'Sorry, off for maintenance!', 503
