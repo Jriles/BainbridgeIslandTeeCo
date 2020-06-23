@@ -244,9 +244,6 @@ class MaintenanceMode(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     status = db.Column(db.String())
 
-def get_display_products_in_order():
-    return query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
-
 @app.cli.command("create_tables")
 @with_appcontext
 def create_tables():
@@ -309,7 +306,7 @@ def inject_logo():
         path = last_item.file_path
 
     product_names = []
-    for product in get_display_products_in_order():
+    for product in query_db('SELECT * FROM Display_Products ORDER by "product_order_num"'):
         app.logger.info(str(product))
         product_names.append(product.name)
     return dict(this_file_path=path,
@@ -403,7 +400,7 @@ def paymentsuccess():
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
-    display_products = get_display_products_in_order()
+    display_products = query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
@@ -421,7 +418,7 @@ def home():
         this_email.email = email_form.email.data
         db.session.add(this_email)
         db.session.commit()
-    display_products = get_display_products_in_order()
+    display_products = query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
@@ -578,7 +575,7 @@ def edit_products():
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
     # we need to query all of the existing products and render them with the forms
-    display_products = get_display_products_in_order()
+    display_products = query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
     designs = []
     for product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
@@ -622,7 +619,7 @@ def product_view(product):
         this_email.email = email_form.email.data
         db.session.add(this_email)
         db.session.commit()
-    display_products = get_display_products_in_order()
+    display_products = query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
     designs = []
     for display_product in display_products:
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % display_product[0]))
