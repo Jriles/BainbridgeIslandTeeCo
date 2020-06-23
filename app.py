@@ -244,6 +244,9 @@ class MaintenanceMode(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     status = db.Column(db.String())
 
+def get_display_products_in_order():
+    return query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
+
 @app.cli.command("create_tables")
 @with_appcontext
 def create_tables():
@@ -405,9 +408,6 @@ def paymentsuccess():
         designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs)
-
-def get_display_products_in_order():
-    return query_db('SELECT * FROM Display_Products ORDER by "product_order_num"')
 
 
 @app.route("/", methods=('GET', 'POST'))
