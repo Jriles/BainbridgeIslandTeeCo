@@ -619,9 +619,8 @@ def product_view(product):
         db.session.commit()
     display_products = query_db('SELECT * FROM Display_Products')
     designs = []
-    for product in display_products:
-        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % product[0]))
-    app.logger.info("scroll product: " + product)
+    for display_product in display_products:
+        designs.append(query_db("SELECT * FROM Product_Designs where product_id='%s'" % display_product[0]))
     return render_template('/aroma/index.html', scroll_product=product, email_form=email_form, display_products=display_products,
                            designs=designs)
 
