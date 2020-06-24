@@ -469,13 +469,10 @@ def login():
         print("form password: " + login_form.password.data)
         h = hashlib.md5(login_form.password.data.encode())
         password_hash_code = h.hexdigest()
-        user_object = query_db(
-            'SELECT * from Users WHERE email="%s" AND password="%s"' % (login_form.email.data, password_hash_code),
-            one=True)
-        if user_object is not None:
+        user_object = User.query.filter_by(email=login_form.email.data).one()
+        if user_object is not None and user_object.password == login_form.password.data:
             # print(our_users.first().)
-            user = User.query.filter_by(id=login_form.email.data).one()
-            login_user(user)
+            login_user(user_object)
             return redirect('/admin')
         else:
             flash("Unable to find user with those details, please try again")
