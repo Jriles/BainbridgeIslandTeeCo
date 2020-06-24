@@ -969,16 +969,11 @@ function scrollDown(product){
             }
         }
         console.log(found_product_index);
-        var relevant_product_y_pos = $(document.getElementById("primary-product-image" + String(found_product_index))).scrollTop();
+        var relevant_product_y = document.getElementById("primary-product-image" + String(found_product_index));
         console.log(relevant_product_y_pos);
         //access the product at index and get its y position on the page
         if(i !== -1){
-            //we then multiply that index by the height of a product node
-            $('body,html').animate({
-                scrollTop: relevant_product_y_pos
-            }, 1000, function() {
-                // Animation complete.
-            });
+            relevant_product.scrollIntoView();
         }
     }
 }
