@@ -969,6 +969,7 @@ function scrollDown(product){
             }
         }
         console.log(found_product_index);
+        console.log(product_height);
         if(i !== -1){
             //we then multiply that index by the height of a product node
             $('body,html').animate({
