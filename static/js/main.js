@@ -596,7 +596,7 @@ $('body, html').on('scroll', function(){
     }
 
     var scrollPos = $('body').scrollTop();
-    if(document.getElementsByClassName("hero-image") !== null){
+    if(document.getElementsByClassName("hero-image").length > 0){
         var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
         var menu = document.getElementById("nav-list");
         if(scrollPos > hero_image_height){
