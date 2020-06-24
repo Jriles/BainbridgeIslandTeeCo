@@ -955,21 +955,10 @@ function browse(){
     });
 }
 
-function scrollDown(product){
-    if(product !== ''){
+function scrollDown(product_index){
+    if(product_index !== ''){
         //first we want to get all the navbar product links
-        var nav_links = document.getElementsByClassName("nav-link")
-        var product_height = document.getElementById("primary-product-image0").clientHeight;
-        console.log("product_height: " + product_height);
-        //next we want to take the product and check it against the list of product links and get an index
-        var found_product_index = -1;
-        for(i = 0; i < nav_links.length;i++){
-            if(String(nav_links[i].innerHTML) === product){
-                found_product_index = i;
-            }
-        }
-        console.log(found_product_index);
-        var relevant_product = document.getElementById("primary-product-image" + String(found_product_index));
+        var relevant_product = document.getElementById("primary-product-image" + String(product_index));
         //access the product at index and get its y position on the page
         if(i !== -1){
             relevant_product.scrollIntoView();
