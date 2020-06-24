@@ -333,6 +333,7 @@ $(function() {
                 }
             }
             scrollDown();
+            $("#manage-products-table").tableDnD();
 		});
 
     //check if this is the cart page
@@ -952,19 +953,21 @@ function browse(){
 function scrollDown(){
     //first we want to get all the navbar product links
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
-    var relevant_product_top_dist = document.getElementById("primary-product-image" + String(product_index-1)).getBoundingClientRect().top;
-    //relevant_product.scrollIntoView();
-    var offset = 130;
-    console.log(mobileCheck());
-    if (mobileCheck()){
-        offset = 80;
+    if(document.getElementById("primary-product-image" + String(product_index-1)) !== null){
+        var relevant_product_top_dist = document.getElementById("primary-product-image" + String(product_index-1)).getBoundingClientRect().top;
+        //relevant_product.scrollIntoView();
+        var offset = 130;
+        console.log(mobileCheck());
+        if (mobileCheck()){
+            offset = 80;
+        }
+        relevant_product_top_dist = relevant_product_top_dist - offset;
+        $('body,html').animate({
+            scrollTop: relevant_product_top_dist
+        }, 1000, function() {
+            // Animation complete.
+        });
     }
-    relevant_product_top_dist = relevant_product_top_dist - offset;
-    $('body,html').animate({
-        scrollTop: relevant_product_top_dist
-    }, 1000, function() {
-        // Animation complete.
-    });
 }
 
 function browseSweatshirts(){
