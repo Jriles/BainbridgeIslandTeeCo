@@ -332,6 +332,7 @@ $(function() {
                     checkboxes[i].checked = false;
                 }
             }
+            scrollDown();
 		});
 
     //check if this is the cart page
@@ -955,10 +956,11 @@ function browse(){
     });
 }
 
-function scrollDown(product_index){
+function scrollDown(){
     if(product_index !== ''){
         //first we want to get all the navbar product links
         console.log(product_index);
+        var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
         var relevant_product = document.getElementById("primary-product-image" + String(product_index-1));
         relevant_product.scrollIntoView();
     }
