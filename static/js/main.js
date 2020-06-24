@@ -587,8 +587,8 @@ $('body, html').on('scroll', function(){
 
     var scrollPos = $('body').scrollTop();
     var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
+    var menu = document.getElementById("nav-list");
     if(scrollPos > hero_image_height){
-        var menu = document.getElementById("nav-list");
         console.log("hero image height: " + hero_image_height);
         console.log("scroll_pos: " + scrollPos);
         var total_height = document.body.scrollHeight - hero_image_height;
