@@ -593,7 +593,7 @@ $('body, html').on('scroll', function(){
     var position_ratio = scrollPos / total_height;
     var link_count = menu.children.length;
     var link_to_highlight = Math.floor(link_count * position_ratio);
-    blankNavBar();
+    blankNavBar(menu);
     menu.children[link_to_highlight].className += " active";
 });
 
