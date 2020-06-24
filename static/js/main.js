@@ -961,6 +961,12 @@ function scrollDown(){
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
     var relevant_product_top_dist = document.getElementById("primary-product-image" + String(product_index-1)).getBoundingClientRect().top;
     //relevant_product.scrollIntoView();
+    var offset = 130;
+    console.log(mobileCheck());
+    if (mobileCheck()){
+        offset = 80;
+    }
+    relevant_product_top_dist = relevant_product_top_dist - offset;
     $('body,html').animate({
         scrollTop: relevant_product_top_dist
     }, 1000, function() {
