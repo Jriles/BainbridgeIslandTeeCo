@@ -593,6 +593,8 @@ def new_product():
         new_product.in_stock = int(new_product_form.product_in_stock.data)
         new_product.description = new_product_form.description.data
         new_product.sizes = int(new_product_form.show_sizes.data)
+        rows = session.query(DisplayProduct).count()
+        new_product.product_order_num = rows + 1
         image = request.files["primary_product_image"]
         app.logger.info(image.filename)
         if image and allowed_file(image.filename):
