@@ -952,34 +952,25 @@ function browse(){
 }
 
 function scrollDown(product){
-    var scrollAmount = 0;
-    switch(product) {
-      case "t-shirt":
-        // code block
-        scrollAmount = 710;
-        if(mobileCheck()){
-            scrollAmount = 750;
-        }
-        break;
-      case "sweatshirt":
-        scrollAmount = 1350;
-        if(mobileCheck()){
-            scrollAmount = 1550;
-        }
-        break;
-      case "bag":
-        scrollAmount = 1350;
-        if(mobileCheck()){
-            scrollAmount = 1550;
-        }
-        break;
-    }
     if(product !== ''){
-        $('body,html').animate({
-            scrollTop: scrollAmount
-        }, 1000, function() {
-            // Animation complete.
-        });
+        //first we want to get all the navbar product links
+        var nav_links = document.getElementsByClassName("nav-link")
+        var product_height = document.getElementsByClassName("product_image_area")[0].clientHeight;
+        //next we want to take the product and check it against the list of product links and get an index
+        var found_product_index = -1;
+        for(i = 0; i < nav_links.length;i++){
+            if(String(nav_links[i].innerHTML) === product){
+                found_product_index = i + 1;
+            }
+        }
+        if(i !== -1){
+            //we then multiply that index by the height of a product node
+            $('body,html').animate({
+                scrollTop: (found_product_index * product_height)
+            }, 1000, function() {
+                // Animation complete.
+            });
+        }
     }
 }
 
