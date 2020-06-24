@@ -965,9 +965,10 @@ function scrollDown(product){
         var found_product_index = -1;
         for(i = 0; i < nav_links.length;i++){
             if(String(nav_links[i].innerHTML) === product){
-                found_product_index = i + 2;
+                found_product_index = (i + 1);
             }
         }
+        console.log(found_product_index);
         if(i !== -1){
             //we then multiply that index by the height of a product node
             $('body,html').animate({
