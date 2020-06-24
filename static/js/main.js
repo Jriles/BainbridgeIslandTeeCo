@@ -957,13 +957,15 @@ function browse(){
 }
 
 function scrollDown(){
-    if(product_index !== ''){
-        //first we want to get all the navbar product links
-        console.log(product_index);
-        var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
-        var relevant_product = document.getElementById("primary-product-image" + String(product_index-1));
-        relevant_product.scrollIntoView();
-    }
+    //first we want to get all the navbar product links
+    var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
+    var relevant_product_top_dist = document.getElementById("primary-product-image" + String(product_index-1)).getBoundingClientRect().top;
+    //relevant_product.scrollIntoView();
+    $('body,html').animate({
+        scrollTop: relevant_product_top_dist
+    }, 1000, function() {
+        // Animation complete.
+    });
 }
 
 function browseSweatshirts(){
