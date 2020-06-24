@@ -43,7 +43,7 @@
 									{% else %}
 										<h5 class="availability">In Stock</h5>
 									{% endif %}
-									<h6 class="design-name">{{designs[product_loop.index-1][0].design_name}}</h6>
+									<h6 class="design-name">{{designs[product_loop.index-1].first().design_name}}</h6>
 								</div>
 								<ul class="product-options-area">
 									{% if product.sizes == 1 %}
