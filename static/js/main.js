@@ -965,15 +965,17 @@ function scrollDown(product){
         var found_product_index = -1;
         for(i = 0; i < nav_links.length;i++){
             if(String(nav_links[i].innerHTML) === product){
-                found_product_index = (i + 1);
+                found_product_index = i;
             }
         }
         console.log(found_product_index);
-        console.log(product_height);
+        var relevant_product_y_pos = document.getElementById("primary-product-image" + String(found_product_index)).getBoundingClientRect().top;
+        console.log(relevant_product_y_pos);
+        //access the product at index and get its y position on the page
         if(i !== -1){
             //we then multiply that index by the height of a product node
             $('body,html').animate({
-                scrollTop: (found_product_index * product_height)
+                scrollTop: relevant_product_y_pos
             }, 1000, function() {
                 // Animation complete.
             });
