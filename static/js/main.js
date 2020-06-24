@@ -341,7 +341,7 @@ $(function() {
             scrollDown();
             $("#manage-products-table").tableDnD({
                 onDrop: function(table, row) {
-                    console.log(table.rows)
+                    console.log("thinks we dropped a row");
                 }
             });
 		});
