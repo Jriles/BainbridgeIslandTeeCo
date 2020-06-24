@@ -348,6 +348,7 @@ $(function() {
                         if(i !== table.rows.item(i).id){
                             //if not, we want to change the order
                             $(table.rows.item(i)).find("#order_number").val(i);
+                            console.log("i: " + i);
                             document.getElementById("product_form" + String(i)).submit();
                             //.submit();
                             //this means we change the order attribute on the relevant row's form
