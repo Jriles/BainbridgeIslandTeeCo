@@ -312,7 +312,7 @@ def inject_logo():
         path = last_item.file_path
 
     return dict(this_file_path=path,
-                products=get_display_products_in_order())
+                nav_products=get_display_products_in_order())
 
 
 def allowed_file(filename):
