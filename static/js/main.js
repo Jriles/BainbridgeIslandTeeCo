@@ -969,7 +969,7 @@ function scrollDown(product){
             }
         }
         console.log(found_product_index);
-        var relevant_product_y = document.getElementById("primary-product-image" + String(found_product_index));
+        var relevant_product = document.getElementById("primary-product-image" + String(found_product_index));
         console.log(relevant_product_y_pos);
         //access the product at index and get its y position on the page
         if(i !== -1){
