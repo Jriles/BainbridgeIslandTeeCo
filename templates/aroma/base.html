@@ -31,7 +31,7 @@
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto" id="nav-list">
                 {% for product in nav_products %}
-              	    <li {% if name in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/{{product.id}}">{{product.name}}</a></li>
+              	    <li {% if product.name in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/{{product.id}}">{{product.name}}</a></li>
                 {% endfor %}
             </ul>
             <ul class="nav-shop">
