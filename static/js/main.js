@@ -1,3 +1,9 @@
+function submitNewTableOrder(table, row){
+    console.log(table);
+    console.log(row);
+    console.log(table.rows);
+}
+
 $(function() {
   "use strict";
   //------- Parallax -------//
@@ -333,7 +339,9 @@ $(function() {
                 }
             }
             scrollDown();
-            $("#manage-products-table").tableDnD();
+            $("#manage-products-table").tableDnD({
+                onDrop: submitNewTableOrder(table, row)
+            });
 		});
 
     //check if this is the cart page
