@@ -40,6 +40,7 @@ class EditProduct(FlaskForm):
     product_in_stock = BooleanField('In Stock?', validators=[validators.Optional()])
     description = TextAreaField('Product Description', validators=[validators.Optional()])
     product_id = HiddenField()
+    order_number = HiddenField()
 
 class AddDesign(FlaskForm):
     design_name = StringField('Design Name', validators=[DataRequired()])

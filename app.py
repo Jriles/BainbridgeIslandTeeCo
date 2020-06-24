@@ -546,6 +546,7 @@ def edit_products():
         this_display_product.in_stock = edit_product_form.product_in_stock.data
         this_display_product.description = edit_product_form.description.data
         this_display_product.sizes = int(edit_product_form.show_sizes.data)
+        this_display_product.product_order_num = int(edit_product_form.order_number.data)
         image = request.files["primary_product_image"]
         if image and allowed_file(image.filename):
             app.logger.info("validated image form")

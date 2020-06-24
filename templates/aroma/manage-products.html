@@ -63,6 +63,7 @@
                 </td>
                 <td>
                     {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product.id) }}
+                    {{ edit_product_form.order_number(class_ = 'discount-form-element', value = product.product_order_num) }}
                     <div>
                         <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
                     </div>
