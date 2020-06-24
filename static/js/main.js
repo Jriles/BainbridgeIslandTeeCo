@@ -340,7 +340,7 @@ $(function() {
             }
             scrollDown();
             $("#manage-products-table").tableDnD({
-                onDrop: submitNewTableOrder()
+                onDrop: submitNewTableOrder
             });
 		});
 
