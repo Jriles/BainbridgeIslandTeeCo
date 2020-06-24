@@ -594,6 +594,7 @@ $('body, html').on('scroll', function(){
     var link_count = menu.children.length;
     var link_to_highlight = Math.floor(link_count * position_ratio);
     blankNavBar(menu);
+    console.log("link_index: " + link_to_highlight);
     menu.children[link_to_highlight].className += " active";
 });
 
