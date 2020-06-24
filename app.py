@@ -311,8 +311,12 @@ def inject_logo():
     if last_item is not None:
         path = last_item.file_path
 
+    product_names = []
+    for product in get_display_products_in_order():
+        app.logger.info(str(product))
+        product_names.append(product.name)
     return dict(this_file_path=path,
-                nav_products=get_display_products_in_order())
+                product_names=product_names)
 
 
 def allowed_file(filename):
@@ -621,7 +625,8 @@ def product_view(product):
     designs = []
     for display_product in display_products:
         designs.append(get_designs_for_product(display_product.id))
-    return render_template('/aroma/index.html', scroll_product=product, email_form=email_form, display_products=display_products,
+    product_order_index = DisplayProduct.query.filter_by(name=product).first()
+    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs)
 
 
