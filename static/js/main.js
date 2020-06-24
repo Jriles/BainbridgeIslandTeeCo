@@ -592,6 +592,8 @@ $('body, html').on('scroll', function(){
     var total_height = document.body.scrollHeight;
     var position_ratio = scrollPos / total_height;
     var link_count = menu.children.length;
+    console.log("link_count: " + link_count);
+    console.log("position_ratio: " + position_ratio);
     var link_to_highlight = Math.floor(link_count * position_ratio);
     blankNavBar(menu);
     console.log("link_index: " + link_to_highlight);
