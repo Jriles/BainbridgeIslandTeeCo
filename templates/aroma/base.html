@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Kasper Apparel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d81a0377a2.js" crossorigin="anonymous"></script>
 	<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/png">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/bootstrap/bootstrap.min.css') }}">
+    <script src="https://use.fontawesome.com/2a80598963.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Cormorant&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/themify-icons/themify-icons.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/nice-select/nice-select.css') }}">
+	<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/themify-icons/themify-icons.css') }}">-->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/owl-carousel/owl.theme.default.min.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendors/owl-carousel/owl.carousel.min.css') }}">
   <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
-    <style>
-
-}
-</style>
 </head>
 <body style="padding-top: 90px;" onload="scrollDown('{{scroll_product}}')">
   <!--================ Start Header Menu Area =================-->
@@ -24,7 +21,7 @@
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="/"><img src="{{url_for('static', filename='img/logo.png')}}" alt=""></a>
+          <a class="navbar-brand logo_h" href="/"><img class="logo_styling" src="{{this_file_path}}" alt=""></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -32,14 +29,14 @@
             <span class="icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto">
-              	<li {% if 't-shirt' in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/t-shirt">T-Shirts</a></li>
-              	<li {% if 'sweatshirt' in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/sweatshirt">Sweatshirts</a></li>
-				<li {% if 'bag' in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/bag">Canvas Bags</a></li>
+            <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto" id="nav-list">
+                {% for product in nav_products %}
+              	    <li {% if product.name in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/{{product.id}}">{{product.name}}</a></li>
+                {% endfor %}
             </ul>
             <ul class="nav-shop">
               <a class="nav-item" href="/mycart">
-                <li class="nav-item" id="shopping-cart-list-item"><button><i style="font-size: 25px;" class="ti-shopping-cart"></i><span style="background-color: #20B22B;" id="cart-count" class="nav-shop__circle">0</span></button> </li>
+                <li class="nav-item" id="shopping-cart-list-item"><button><i style="font-size: 25px;" class="fas fa-shopping-cart"></i><span style="background-color: #20B22B;" id="cart-count" class="nav-shop__circle">0</span></button> </li>
               </a>
             </ul>
           </div>
@@ -60,63 +57,13 @@
 				<div class="row section_gap">
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">Our Mission</h4>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no
-								divided deep moved us lan Gathering thing us land years living.
-							</p>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
-							</p>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Quick Links</h4>
-							<ul class="list">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
-							<ul class="list instafeed d-flex flex-wrap">
-								<li><img src="{{url_for('static', filename='img/gallery/r1.jpg')}}" alt=""></li>
-								<li><img src="{{url_for('static', filename='img/gallery/r2.jpg')}}" alt=""></li>
-								<li><img src="{{url_for('static', filename='img/gallery/r3.jpg')}}" alt=""></li>
-								<li><img src="{{url_for('static', filename='img/gallery/r5.jpg')}}" alt=""></li>
-								<li><img src="{{url_for('static', filename='img/gallery/r7.jpg')}}" alt=""></li>
-								<li><img src="{{url_for('static', filename='img/gallery/r8.jpg')}}" alt=""></li>
-							</ul>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title"><a class="nav-link" href="/contact-us">Contact Us</a></h4>
-							<div class="ml-40">
-								<p class="sm-head">
-									<span class="fa fa-phone"></span>
-									Phone Number
-								</p>
+							<div>
+								<h6 style="color: white;">Email</h6>
 								<p>
-									+123 456 7890 <br>
-									+123 456 7890
+									<a href="mailto:bainbridgeislandteeco@gmail.com">bainbridgeislandteeco@gmail.com</a>
 								</p>
-
-								<p class="sm-head">
-									<span class="fa fa-envelope"></span>
-									Email
-								</p>
-								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
-								</p>
+                                <br>
+                                <h6 style="color: white;">Built By QualDevLabs Inc.</h6>
 							</div>
 						</div>
 					</div>
@@ -125,12 +72,12 @@
 		</div>
 	</footer>
 	<!--================ End footer Area  =================-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="{{url_for('static', filename='vendors/bootstrap/bootstrap.bundle.min.js')}}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/TableDnD/0.9.1/jquery.tablednd.js" integrity="sha256-d3rtug+Hg1GZPB7Y/yTcRixO/wlI78+2m08tosoRn7A=" crossorigin="anonymous"></script>
   <script src="{{url_for('static', filename='vendors/skrollr.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendors/owl-carousel/owl.carousel.min.js')}}"></script>
-  <script src="{{url_for('static', filename='vendors/nice-select/jquery.nice-select.min.js')}}"></script>
-  <script src="{{url_for('static', filename='vendors/jquery.ajaxchimp.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendors/mail-script.js')}}"></script>
   <script src="https://www.paypal.com/sdk/js?client-id=AXUox9TqClklKrV6WSKs5OvvlkwKaqHE9MJmh9HYHQaoro2SDzZaRH1ioPNwBHbwcO7UJV7JElhawvkc"></script>
   <!-- <script src="https://www.paypal.com/sdk/js?client-id=AVkb_CtJu8TWXbo9LPrBp5sU6YJGMxQaYyR1GmPds4dTE9f_Zl0ivyFXA3Mi_4aY_33UYqZ25EjXaQMp"></script> -->
@@ -142,56 +89,79 @@
 
 <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
-	var totalValue = "";
-    var counter = 0;
-    var noItemsInCart = false;
-	paypal.Buttons({
-	  onClick: function(data, actions){
-	 if(document.getElementById('f-option4').checked === false){
-		//send error message
-		counter++;
-		if(counter == 1){
-			document.getElementById("terms-and-conditions").style.color = "red";
-		} else if(counter > 1){
-			document.getElementById("terms-warning").style.color = "red";
-			document.getElementById("terms-warning").style.display = "inline";
-			document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
-		}
-		return actions.reject();
-	 }
-	  console.log("thinks we clicked the paypal buttons");
-	  totalValue = document.getElementById("total").innerHTML;
-	  totalValue = totalValue.slice(1);
-	  //need to check for one in case they selected plant a tree with nothing in their cart
-	  if(totalValue <= 1){
-	  	document.getElementById("terms-warning").style.color = "red";
-		document.getElementById("terms-warning").style.display = "inline";
-	  	document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
-		return actions.reject();
-	  }
-	},
-      style: {
-          shape: 'rect',
-          color: 'gold',
-          layout: 'vertical',
-          label: 'paypal',
+    if(String(window.location).includes("/mycart")){
+        var totalValue = "";
+        var counter = 0;
+        var noItemsInCart = false;
+        paypal.Buttons({
+          onClick: function(data, actions){
+         if(document.getElementById('f-option4').checked === false){
+            //send error message
+            counter++;
+            if(counter == 1){
+                document.getElementById("terms-label").style.color = "red";
+            } else if(counter > 1){
+                document.getElementById("terms-warning").style.color = "red";
+                document.getElementById("terms-warning").style.display = "inline";
+                document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
+            }
+            return actions.reject();
+         }
+          console.log("thinks we clicked the paypal buttons");
+          totalValue = document.getElementById("total").innerHTML;
+          totalValue = totalValue.slice(1);
+          //need to check for one in case they selected plant a tree with nothing in their cart
+          if(totalValue <= 1){
+            document.getElementById("terms-warning").style.color = "red";
+            document.getElementById("terms-warning").style.display = "inline";
+            document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
+            return actions.reject();
+          }
+        },
+          style: {
+              shape: 'rect',
+              color: 'gold',
+              layout: 'vertical',
+              label: 'paypal',
 
-      },
-      createOrder: function(data, actions) {
-          return actions.order.create({
-              purchase_units: [{
-                  amount: {
-                      value: totalValue
-                  }
-              }]
-          });
-      },
-      onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-              alert('Transaction completed by ' + details.payer.name.given_name + '!');
-          });
-      }
-  }).render('#paypal-button-container');
+          },
+          createOrder: function(data, actions) {
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value: totalValue
+                      }
+                  }]
+              });
+          },
+          onApprove: function(data, actions) {
+              return actions.order.capture().then(function(details) {
+                  alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "Email")
+                  .attr('value', details.payer.email_address)
+                  .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "PayPalTransactionID")
+                  .attr('value', details.id)
+                  .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "CartJSON")
+                  .attr('value', sessionStorage.getItem("Cart"))
+                  .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "Address")
+                  .attr('value', details.payer.address)
+                  .appendTo('#cart-contents-form');
+                  //clear cart and return to myaccount
+                  var cart = sessionStorage.getItem("Cart");
+                  cart = "";
+                  sessionStorage.setItem("Cart", cart);
+                  $("#cart-contents-form").submit();
+              });
+          }
+      }).render('#paypal-button-container');
+    }
 </script>
   <script>
 	$('document').ready(function(){

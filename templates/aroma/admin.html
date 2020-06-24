@@ -1,0 +1,81 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="admin-container">
+    <div class="header-container">
+        <h1 class="admin-title">Welcome {{current_user.username}}</h1>
+        <a class="admin-logout" href="/logout"><button class="btn btn-danger">Logout</button></a>
+    </div>
+    <div class="card-deck">
+        <a href="/manage-orders">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-shipping-fast"></i> Manage Orders</h5>
+                <p class="card-text">Here you can view order details like date placed, address, shipping status, make internal notes among other things.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/manage-products">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-boxes"></i> Manage Products</h5>
+                <p class="card-text">Here you can make products and designs, as well as edit product and design details like names, prices images, sizes descriptions, etc. </p>
+              </div>
+            </div>
+        </a>
+        <a href="/change-logo">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-file-upload"></i> Add or Change Logo</h5>
+                <p class="card-text">Here you can upload a new logo for your website.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/discount-form">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-tags"></i> Make a Discount</h5>
+                <p class="card-text">Here you can make cash or percentage discount coupons, don't forget to share the codes!</p>
+              </div>
+            </div>
+        </a>
+        <a href="/email-customers">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-paper-plane"></i> Email All Customers</h5>
+                <p class="card-text">Here you can mass mail customers announcements or other details.</p>
+              </div>
+            </div>
+        </a>
+        {% if maintenance_mode == True %}
+        <a href="/turn-off-maintenance-mode">
+            <div class="card border-warning mb-3 admin-card-width">
+              <div class="card-body text-warning">
+                <h5 class="card-title"><i class="fas fa-tools"></i> Turn Off Maintenance Mode</h5>
+                <p class="card-text">Make your website visible to customers.</p>
+              </div>
+            </div>
+        </a>
+        {% else %}
+        <a href="/turn-on-maintenance-mode">
+            <div class="card border-danger mb-3 admin-card-width">
+              <div class="card-body text-danger">
+                <h5 class="card-title"><i class="fas fa-tools"></i> Turn On Maintenance Mode</h5>
+                <p class="card-text">Shield your customers from unfinished content.</p>
+              </div>
+            </div>
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -6,175 +6,94 @@
     <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
       <div class="hero-image">
         <div class="hero-text">
-            <h3 style="color:white;" id="call-to-action">We provide the highest quality Bainbridge themed apparel on the Island, let us know what you think!</h3>
+            <h3 style="color:white;" id="call-to-action">We provide high quality Bainbridge themed apparel on the Island, let us know what you think!</h3>
             <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px;">Browse Our Selection</button>
         </div>
       </div>
     </section>
-    <!--================ Hero banner start =================-->
-    <div class="product_image_area">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<div class="info-and-options">
-							<div class="product-info">
-								<h3 id="product-name">Soft BI T-Shirt</h3>
-								<h2 id="product-price">$15.00</h2>
-								<h6 class="availability">In Stock</h6>
-							</div>
-							<ul class="product-options-area">
-								<li class="options-menu-item"><select id="t-shirt-size">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
-								</select></li>
-								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-								</div></li>
-								<li class="options-menu-item"><div class="product_count">
-									<label for="t-shirt-quantity-count">Quantity:</label>
-									<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								</div></li>
-							</ul>
-						</div>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product-cart-buttons">
-							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
-							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================End Single Product Area =================-->
 
-    <!--================ Hero banner start =================-->
-    <div class="product_image_area" style="margin-top: 75px;">
-		<div class="container">
-			<div class="row s_product_inner sweatshirt-product">
-				<div class="col-lg-6" id="sweatshirt-images">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img id="sweatshirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/category/c2.jpg')}}" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1 sweatshirt-information">
-					<div class="s_product_text">
-						<div class="info-and-options">
-							<div class="product-info">
-								<h3 id="product-name2">Comfy BI Sweatshirt</h3>
-								<h2 id="product-price2">$40.00</h2>
-								<h6 class="availability">In Stock</h6>
-							</div>
-							<ul class="product-options-area">
-								<li class="options-menu-item"><select id="sweatshirt-size">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
-								</select></li>
-								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-								</div></li>
-								<li class="options-menu-item"><div class="product_count">
-									<label for="sweatshirt-quantity-count">Quantity:</label>
-									<input type="number" name="qty" min="1" id="sweatshirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								</div></li>
-							</ul>
-						</div>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product-cart-buttons">
-							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
-							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================End Single Product Area =================-->
-
+	{% for product in display_products %}
+		{% set product_loop = loop %}
 		<!--================ Hero banner start =================-->
-    <div class="product_image_area" style="margin-top: 75px;">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<div class="single-prd-item">
-							<img id="t-shirt-product-image" class="img-fluid" src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="">
+		<div class="product_image_area" style="margin-top: 75px;">
+			<div class="container">
+				<div class="row s_product_inner">
+					<div class="col-lg-6">
+						<div class="owl-carousel owl-theme s_Product_carousel">
+							{% if product.primary_product_image != '' %}
+								<div class="single-prd-item">
+									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid" src="{{product.primary_product_image}}" alt="">
+								</div>
+							{% endif %}
+							{% for design in designs[product_loop.index-1] %}
+								<div class="single-prd-item">
+									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design.design_image}}" alt="">
+								</div>
+							{% endfor %}
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<div class="info-and-options">
-							<div class="product-info">
-								<h3 id="product-name">Durable Canvas Bag</h3>
-								<h2 id="product-price">$76.00</h2>
-								<h6 class="availability">In Stock</h6>
+					<div class="col-lg-5 offset-lg-1">
+						<div class="s_product_text">
+							<div class="info-and-options">
+								<div class="product-info">
+									<h3 id="product-name">{{product.name}}</h3>
+									<h2 id="product-price">${{product.price}}</h2>
+									{% if product.in_stock == 0 %}
+										<h5 class="availability">Out of Stock</h5>
+									{% else %}
+										<h5 class="availability">In Stock</h5>
+									{% endif %}
+									<h6 class="design-name">{{designs[product_loop.index-1].first().design_name}}</h6>
+								</div>
+								<ul class="product-options-area">
+									{% if product.sizes == 1 %}
+									<li class="options-menu-item"><select id="t-shirt-size">
+										<option>Small</option>
+										<option>Medium</option>
+										<option>Large</option>
+										<option>Extra Large</option>
+									</select></li>
+									{% endif %}
+									<li class="options-menu-item">
+										<div id="design-selection" class="card_area d-flex align-items-center">
+										{% for design in designs[product_loop.index-1] %}
+											<img onclick="goToSlide(this)" src="{{design.design_icon}}" class="product_design_icon">
+										{% endfor %}
+											<ul class="design_names" style="display: none;">
+												{% for design in designs[product_loop.index-1] %}
+												<li>{{design.design_name}}</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</li>
+									<li class="options-menu-item"><div class="product_count">
+										<label for="t-shirt-quantity-count">Quantity:</label>
+										<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+									</div></li>
+								</ul>
 							</div>
-							<ul class="product-options-area">
-								<li class="options-menu-item"><select id="t-shirt-size">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
-								</select></li>
-								<li class="options-menu-item"><div class="card_area d-flex align-items-center">
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-									<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-								</div></li>
-								<li class="options-menu-item"><div class="product_count">
-									<label for="t-shirt-quantity-count">Quantity:</label>
-									<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-								</div></li>
-							</ul>
-						</div>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product-cart-buttons">
-							<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
-							<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
+							<p>{{product.description}}</p>
+							<div class="product-cart-buttons">
+								<button class="button button-coupon add-to-cat-button" onclick="addToCart(this)">Add to Cart</button>
+								<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!--================End Single Product Area =================-->
-
+		<!--================End Single Product Area =================-->
+	{% endfor %}
     <!-- ================ Subscribe section start ================= -->
-    <section style="position: relative; margin-top: 150px;">
+    <section style="position: relative; margin-top: 150px; margin-bottom: 100px;">
       <div class="container">
         <div class="subscribe text-center">
           <h3 class="subscribe__title">Stay in the loop for great discounts</h3>
-          <p>Bearing Void gathering light light his eavening unto dont afraid</p>
           <div id="mc_embed_signup">
-            <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
-              <div class="form-group ml-sm-auto">
-                <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '" >
-                <div class="info"></div>
-              </div>
+            <form method="post" class="subscribe-form form-inline mt-5 pt-1">
+				{{ email_form.csrf_token }}
+				{{ email_form.email(class_ = 'form-control first-input', placeholder = email_form.email.label.text, required = true, autofocus = true) }}
               <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
-              <div style="position: absolute; left: -5000px;">
-                <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-              </div>
-
             </form>
           </div>
 

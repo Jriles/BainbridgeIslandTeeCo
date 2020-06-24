@@ -1,0 +1,118 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-block alert-error section-error-alert">
+              <a class="close" data-dismiss="alert">&times;</a>
+              {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="orders-container">
+    <div>
+        <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin Page</button></a>
+    </div>
+    <h2>Manage Your Products</h2>
+    <div>
+        <a href="/new-product"><button class="btn btn-primary product_button admin-button">New Product</button></a>
+    </div>
+    <table class="table table-responsive" id="manage-products-table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Primary Image</th>
+                <th>Show Sizes?</th>
+                <th>In Stock?</th>
+                <th>Product Description</th>
+                <th>Make Changes</th>
+                <th>Product Designs</th>
+            </tr>
+        </thead>
+    {% for product in display_products %}
+        {% set product_loop = loop %}
+        <tr id="{{product_loop.index}}">
+            <form method="post" class="form admin-form" enctype="multipart/form-data">
+                {{ edit_product_form.csrf_token }}
+                <td>
+                    Product Name:
+                    {{ edit_product_form.product_name(value = product.name) }}
+                </td>
+                <td>
+                    Product Price:
+                    {{ edit_product_form.product_price(value = product.price) }}
+                </td>
+                <td>
+                    <img src="{{product.primary_product_image}}" class="product-primary-image-admin">
+                    {{ edit_product_form.primary_product_image(value = product.primary_product_image) }}
+                </td>
+                <td>
+                    Show Product Sizes?
+                    {{ edit_product_form.show_sizes(value = product.sizes, class_ = 'reset_checkbox') }}
+                </td>
+                <td>
+                    Product In Stock?
+                    {{ edit_product_form.product_in_stock(value = product.in_stock, class_ = 'reset_checkbox') }}
+                </td>
+                <td>
+                    Product Description:
+                    <textarea name="description" id="description" type="text" class="admin-product-description">{{product.description}}</textarea>
+                </td>
+                <td>
+                    {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product.id) }}
+                    {{ edit_product_form.order_number(class_ = 'discount-form-element', value = product.product_order_num) }}
+                    <div>
+                        <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                    </div>
+                    <div>
+                        <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-product/{{product.id}}">Delete Product</a></button>
+                    </div>
+                </td>
+            </form>
+            <td>
+                <div>
+                    <button class="btn btn-info admin-button show-items-button" onclick="showThisProductDesigns(this)">View Designs</button>
+                </div>
+                <div>
+                    <a href="/new-design/{{product.id}}"><button class="btn btn-primary product_button admin-button">New Design</button></a>
+                </div>
+                <ul class="design-list">
+                    <button type="button" onclick="closeThisDesignSection(this)" class="close-product-designs" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {% for design in designs[product_loop.index-1] %}
+                        <div class="" id="{{design.id}} Image">
+                            {% if design.design_image!= None %}
+                            <img class="admin-product-image" alt="Picture Unavailable" src="{{ design.design_image }}">
+                            {% endif %}
+                            <div class="">
+                                <form method="post" class="form admin-form" enctype="multipart/form-data">
+                                    {{ edit_design_form.csrf_token }}
+                                    Design Name:
+                                    {{ edit_design_form.edit_design_name(class_ = 'edit-design card-title', value = design.design_name) }}
+                                    Change Image:
+                                    {{ edit_design_form.edit_design_image(value = design.design_image, class_ = 'edit-design card-text') }}
+                                    Change Icon:
+                                    <div class="icon-bucket">
+                                        <img src="{{design.design_icon}}" class="icon-styling">
+                                        {{ edit_design_form.edit_design_icon(value = design.design_icon, class_ = 'card-text icon-input') }}
+                                    </div>
+                                    {{ edit_design_form.design_id(value = design.id, class_ = 'edit-design card-text') }}
+                                    <input type="submit" value="Edit Design" class="btn btn-primary product_button admin-button">
+                                    <div>
+                                        <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design.id}}">Delete Design</a></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}

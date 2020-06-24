@@ -1,0 +1,15 @@
+<p>Hi there Alexandra,<br><br>There is a new order with the following details:</p>
+<h2>Shipping Address: {{address}}</h2>
+<h2>Their Email: {{email}}</h2>
+<h5>Paypal Transaction ID: {{paypalID}}</h5>
+<ul>
+    {% for item in cart %}
+        <li>
+            <h2>{{item.ProductName}}</h2>
+            <h4>Design: {{item.Design}}</h4>
+            <h4>Size: {{item.Size}}</h4>
+            <h4>Quantity: {{item.Quantity}}</h4>
+            <h4>Price: {{item.Price}}</h4>
+        </li>
+    {% endfor %}
+</ul>

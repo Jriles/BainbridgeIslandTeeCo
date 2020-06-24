@@ -1,16 +1,17 @@
 {% extends "/aroma/base.html" %}
 
 {% block content %}
-  <h1 id="cart-title" style="position: relative; left: 200px; margin-top: 30px;">My Cart</h1>
-  <nav aria-label="breadcrumb" class="banner-breadcrumb">
+  <h1 id="cart-title">My Cart</h1>
+  <nav aria-label="breadcrumb" class="banner-breadcrumb main-cart-bucket">
       <ol class="breadcrumb">
-          <li style="position: relative; left: 200px;" class="breadcrumb-item active" aria-current="page">Review your products or checkout below</li>
+          <li class="breadcrumb-item active cart-subtitle" aria-current="page">Review your products or checkout below</li>
       </ol>
 
-      <button class="button button-coupon" id="scroll-to-checkout" style="position: relative; left: 105%; top: -80px; padding-top: 15px; padding-bottom: 15px; padding-right: 50px; padding-left: 50px; font-size: 15px; pointer-events: auto;">Checkout</button>
+      <button class="button button-coupon scroll-to-checkout
+" id="scroll-to-checkout">Checkout</button>
       <!--================Cart Area =================-->
-  <section class="cart_area" style="position: relative; left: 200px; margin-top: -70px;">
-      <div class="container" style="margin-top: -70px;">
+  <section class="cart_area">
+      <div class="cart-container">
           <div class="cart_inner">
               <div class="table-responsive" id="cart-table">
                   <table class="table">
@@ -18,8 +19,9 @@
                       <thead>
                           <tr>
                               <th scope="col" style="width: 40%">Product</th>
-                              <th scope="col">Unit-Price</th>
+                              <th scope="col">Unit Price</th>
                               <th scope="col">Size</th>
+                              <th scope="col" id="design-title">Design</th>
                               <th scope="col" class="quantity_title">Quantity</th>
                               <th scope="col">Total</th>
                           </tr>
@@ -42,6 +44,9 @@
                                       <td data-title="Size">
                                           <div class="product-detail"><h5 id="product-size">Medium</h5></div>
                                       </td>
+                                      <td data-title="Design" id="cart-design-section">
+                                          <div class="product-detail"><h5 id="product-design">Design 1</h5></div>
+                                      </td>
                                       <td data-title="Quantity">
                                           <div class="product_count product-detail" style="text-align: left; width: 80px;">
                                               <input class="quantity-input" type="number" name="qty" min="1" id="quantity" style="position: relative; right: 20px; width: 80px" value="1" title="Quantity:">
@@ -56,26 +61,24 @@
                                   </tr>
                               </tbody>
                       </ul>
-                          <tr style="position: relative;">
+                          <tr style="position: relative;" class="post-cart-table">
                               <td>
-                                <div class="checkout_btn_inner d-flex align-items-center">
-                                    <a style="height: 40px;" class="gray_btn" href="/">Continue Shopping</a>
-                                  </div>
+                                  <a href="/"><button id="continue-shopping-btn" class="btn btn-light">Continue Shopping</button></a>
                               </td>
-                              <td style="position: relative; left: 170px;">
-
-                                  <h5 style="position: relative; left: 150px;">Subtotal:</h5>
+                              <td class="subtotal-title">
+                                  <h5>Subtotal:</h5>
                               </td>
-                              <td style="text-align: right; align-self: right; position: relative; left: 190px;">
-                                  <h5 id="subtotal-value" style="position: relative; left: 190px; text-align: center !important;">[Subtotal]</h5>
+                              <td class="subtotal-value-container">
+                                  <h5 id="subtotal-value">[Subtotal]</h5>
                               </td>
                               <td>
                               </td>
-                          </tr>
-                          <tr>
                           </tr>
                           <tr class="shipping_area">
 
+                              <td>
+
+                              </td>
                               <td>
 
                               </td>
@@ -100,51 +103,56 @@
   </section>
   <!--================End Cart Area =================-->
 <section class="checkout_area section-margin--small">
-    <div class="container" id="payment-container">
-        <div class="container" id="discount-section" style="position: relative; top: 15px; left: 20px;">
-            <h4>Discounts</h4>
-            <p style="margin-bottom: -10px; font-size: 15px;">Please note: you cannot apply a discount and <br>points at the same time.</p>
-            <div class="cupon_area">
-                <input style="position: relative; right: 30px; width: 30%" type="text" id="discount-code-input" placeholder="Enter coupon code">
-                <button class="button button-coupon" id="apply-discount-button" onclick="applyDiscount({{discountDB}}, {{amountArray}})">Apply Discount</button>
-            </div>
-        </div>
-        <div class="billing_details" style="position: relative; left: 37%; bottom: 220px;">
-            <div class="row">
-                <div class="col-lg-4">
-                        <div class="order_box" style="height: 90%;">
-                             <form id="cart-contents-form" method="post" action="/payment-success" onsubmit="return formatForm()">
-                                <h2>Your Order</h2>
-                                <ul class="list" id="checkout-product-list">
-                                    <li><a href="#"><h4>Product <span>Total</span></h4></a></li>
-                                    <li><a href="#" id="checkout-product-link"><label class="checkout-product-name" id="checkout-product-name" for="product-total-price-total">Fresh Blackberry</label> <span class="checkout-product-price last" id="product-total-price-total">$720.00</span></a></li>
-                                </ul>
-                                <ul class="list list_2" id="important-line-items-list">
-                                    <li><a href="#">Shipping <span>Free! (Included)</span></a></li>
-                                    <li><a href="#">Taxes <span>TBD</span></a></li>
-                                    <li style="display: none;" id="points-list-element"><a href="#">Points Savings<span id="total-points-savings"></span></a></li>
-                                    <li style="display: none;" id="discount-list-element"><a href="#">Discount Savings<span id="discount-savings"></span></a></li>
-                                    <li><a href="#" >Total <span id="total" style="color: black;">$2210.00</span></a></li>
-                                </ul>
-                             </form>
-                            <div>
-                                <p id="terms-and-conditions">
-                                <input style="position: relative; left: 3px;" type="checkbox" id="f-option4" name="selector" >
-                                <label for="f-option4">I’ve read and accept the </label>
-                                <a href="/terms-and-conditions">terms & conditions</a>
-                                <h6 id="terms-warning" style="display: none; margin-top: 0px;">Please Accept The Terms And Conditions</h6>
-                                </p>
-                                <br>
-                            </div>
-                        </div>
+    <ul class="list-inline" id="payment-container">
+        <li class="list-inline-item checkout-item" id="first-checkout-item">
+            <div id="discount-section">
+                <h4>Discounts</h4>
+                <p>Receive discount codes when you sign up for our email list!</p>
+                <div class="cupon_area">
+                    <input style="position: relative; right: 30px;" type="text" id="discount-code-input" placeholder="Enter coupon code">
+                    <button class="button button-coupon" id="apply-discount-button" onclick="applyDiscount({{discounts}})">Apply Discount</button>
+                    <h6 id="discount-warning" style="display: none; color: red; margin-top: 15px;"></h6>
                 </div>
-                <div class="col-lg-4" id="payment-header-div" style="padding-left: 40px;">
-                    <h3 id="payment-header">Payment and Shipping</h3>
-                    <div id="paypal-button-container"></div>
+                <h4>Order Notes</h4>
+                <p style="font-size: 15px;">Let us know if there is anything we can do (within reason) to help improve your order or if there is anything we can do to improve the user experience of our website (optional).</p>
+                <div class="cupon_area">
+                    <textarea class="customer-note-textarea" type="text" id="order-note-input" placeholder="Your thoughts"></textarea>
+                    <button class="button button-coupon" onclick="submitOrderNote(this)">Submit Note</button>
                 </div>
             </div>
-        </div>
-    </div>
+        </li>
+        <li class="list-inline-item checkout-item">
+            <div class="order-summary">
+                <div class="order_box" style="height: 90%;">
+                     <form id="cart-contents-form" method="post" action="/payment-success" onsubmit="return formatForm()">
+                        <h2>Your Order</h2>
+                        <ul class="list" id="checkout-product-list">
+                            <li class="checkout-product-item"><a href="#" id="checkout-product-link"><label class="checkout-product-name" id="checkout-product-name" for="product-total-price-total">Fresh Blackberry</label> <span class="checkout-product-price last" id="product-total-price-total">$720.00</span></a></li>
+                        </ul>
+                        <ul class="list list_2" id="important-line-items-list">
+                            <li><a href="#">Shipping <span>Free! (Included)</span></a></li>
+                            <li><a href="#">Taxes <span>TBD</span></a></li>
+                            <li style="display: none;" id="points-list-element"><a href="#">Points Savings<span id="total-points-savings"></span></a></li>
+                            <li style="display: none;" id="discount-list-element"><a href="#">Discount Savings<span id="discount-savings"></span></a></li>
+                            <li><a href="#" >Total <span id="total" style="color: black;">$2210.00</span></a></li>
+                        </ul>
+                     </form>
+                    <div>
+                        <input style="position: relative; left: 3px;" type="checkbox" id="f-option4" name="selector" >
+                        <label id="terms-label" for="f-option4">I’ve read and accept the </label>
+                        <a href="/terms-and-conditions">terms & conditions</a>
+                        <h6 id="terms-warning" style="display: none; margin-top: 0px;">Please Accept The Terms And Conditions</h6>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-inline-item checkout-item" id="last-checkout-item">
+            <div id="payment-header-div">
+                <h6 id="payment-header">Payment and Shipping</h6>
+                <div id="paypal-button-container"></div>
+            </div>
+        </li>
+    </ul>
   </section>
   <!--================End Checkout Area =================-->
       {% endblock %}
