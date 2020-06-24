@@ -340,14 +340,15 @@ $(function() {
             }
             scrollDown();
             $("#manage-products-table").tableDnD({
-                onDrop: submitNewTableOrder
+                onDrop: function(table, row) {
+                    console.log(table.rows)
+                }
             });
 		});
 
     //check if this is the cart page
     if(String(window.location).includes("cart")){
         function displaydifshipping() {
-            console.log("HOLA");
             document.getElementById("differentshippingaddress").style.display = "inline";
             document.getElementById("message").style.display = "none";
             document.getElementById("initialshippingdeets").style.display = "none";
