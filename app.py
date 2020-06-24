@@ -621,7 +621,7 @@ def product_view(product):
     designs = []
     for display_product in display_products:
         designs.append(get_designs_for_product(display_product.id))
-    product_order_index = DisplayProduct.query.filter_by(name=product).first()
+    product_order_index = DisplayProduct.query.filter_by(id=product).first()
     return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs)
 
