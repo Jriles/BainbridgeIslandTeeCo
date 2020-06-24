@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,20 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="967" column="50" selection-start-line="967" selection-start-column="50" selection-end-line="967" selection-end-column="50" />
+            <state relative-caret-position="358">
+              <caret line="969" column="33" lean-forward="true" selection-start-line="969" selection-start-column="33" selection-end-line="969" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="33" column="127" lean-forward="true" selection-start-line="33" selection-start-column="127" selection-end-line="33" selection-end-column="135" />
+            <state relative-caret-position="161">
+              <caret line="74" column="45" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -70,8 +68,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="46" column="38" lean-forward="true" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+            <state relative-caret-position="136">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="38" />
               <folding>
                 <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
               </folding>
@@ -121,7 +119,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>close{</find>
       <find>close</find>
       <find>admin-c</find>
       <find>active</find>
@@ -151,6 +148,7 @@
       <find>edit</find>
       <find>'/login</find>
       <find>scrollDown</find>
+      <find>jquery</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -691,25 +689,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="46" column="38" lean-forward="true" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+        <state relative-caret-position="136">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="38" />
           <folding>
             <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="127" lean-forward="true" selection-start-line="33" selection-start-column="127" selection-end-line="33" selection-end-column="135" />
+        <state relative-caret-position="358">
+          <caret line="969" column="33" lean-forward="true" selection-start-line="969" selection-start-column="33" selection-end-line="969" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+    <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="967" column="50" selection-start-line="967" selection-start-column="50" selection-end-line="967" selection-end-column="50" />
+        <state relative-caret-position="161">
+          <caret line="74" column="45" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="45" />
         </state>
       </provider>
     </entry>
