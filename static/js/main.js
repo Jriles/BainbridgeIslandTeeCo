@@ -587,16 +587,14 @@ $('body, html').on('scroll', function(){
     var menu = document.getElementById("nav-list");
     var scrollPos = $('body').scrollTop();
     var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
-
+    console.log("hero image height: " + hero_image_height);
+    console.log("scroll_pos: " + scrollPos);
     scrollPos = scrollPos - hero_image_height;
     var total_height = document.body.scrollHeight;
     var position_ratio = scrollPos / total_height;
     var link_count = menu.children.length;
-    console.log("link_count: " + link_count);
-    console.log("position_ratio: " + position_ratio);
     var link_to_highlight = Math.floor(link_count * position_ratio);
     blankNavBar(menu);
-    console.log("link_index: " + link_to_highlight);
     menu.children[link_to_highlight].className += " active";
 });
 
