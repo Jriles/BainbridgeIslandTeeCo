@@ -589,24 +589,12 @@ $('body, html').on('scroll', function(){
     var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
 
     scrollPos = scrollPos - hero_image_height;
-
-    if (mobileCheck()){
-        if(scrollPos){
-            blankNavBar(menu);
-            menu.children[0].className += " active";
-        }else if(scrollPos > 1650){
-            blankNavBar(menu);
-            menu.children[1].className += " active";
-        }
-    }else{
-        if(scrollPos < 1100 && scrollPos >= 710){
-            blankNavBar(menu);
-            menu.children[0].className += " active";
-        }else if(scrollPos > 1100){
-            blankNavBar(menu);
-            menu.children[1].className += " active";
-        }
-    }
+    var total_height = document.body.scrollHeight;
+    var position_ratio = scrollPos / total_height;
+    var link_count = menu.children.length;
+    var link_to_highlight = Math.floor(link_count * position_ratio);
+    blankNavBar();
+    menu.children[link_to_highlight].className += " active";
 });
 
 function blankNavBar(navbar){
