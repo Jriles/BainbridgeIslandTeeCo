@@ -540,14 +540,14 @@ def edit_products():
     edit_product_form = forms.EditProduct()
     edit_design_form = forms.EditDesign()
     if edit_product_form.product_name.data is not None and edit_product_form.validate():
-        app.logger.info("id= " + str(edit_product_form["product_id"]))
-        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form["product_id"]).first()
-        this_display_product.name = edit_product_form.product_name.data
-        this_display_product.price = edit_product_form.product_price.data
-        this_display_product.in_stock = edit_product_form.product_in_stock.data
-        this_display_product.description = edit_product_form.description.data
-        this_display_product.sizes = int(edit_product_form.show_sizes.data)
-        this_display_product.product_order_num = int(edit_product_form.order_number.data)
+        app.logger.info("id= " + str(edit_product_form.data["product_id"]))
+        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
+        this_display_product.name = edit_product_form.data["product_name"]
+        this_display_product.price = edit_product_form.data["product_price"]
+        this_display_product.in_stock = edit_product_form.data["product_in_stock"]
+        this_display_product.description = edit_product_form.data["description"]
+        this_display_product.sizes = int(edit_product_form.data["show_sizes"])
+        this_display_product.product_order_num = int(edit_product_form.data["order_number"])
         image = request.files["primary_product_image"]
         if image and allowed_file(image.filename):
             app.logger.info("validated image form")

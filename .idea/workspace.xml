@@ -20,11 +20,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8619">
-              <caret line="542" column="65" selection-start-line="542" selection-start-column="55" selection-end-line="542" selection-end-column="65" />
+            <state relative-caret-position="144">
+              <caret line="542" column="70" lean-forward="true" selection-start-line="542" selection-start-column="70" selection-end-line="542" selection-end-column="70" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -89,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="65" column="125" selection-start-line="65" selection-start-column="125" selection-end-line="65" selection-end-column="125" />
+            <state relative-caret-position="240">
+              <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
               <folding>
                 <element signature="e#287#294#1" expanded="true" />
               </folding>
@@ -232,8 +232,8 @@
         <option value="$PROJECT_DIR$/templates/aroma/base.html" />
         <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -700,16 +700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8619">
-          <caret line="542" column="65" selection-start-line="542" selection-start-column="55" selection-end-line="542" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -719,10 +709,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="65" column="125" selection-start-line="65" selection-start-column="125" selection-end-line="65" selection-end-column="125" />
+        <state relative-caret-position="240">
+          <caret line="51" column="20" lean-forward="true" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
           <folding>
             <element signature="e#287#294#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="542" column="70" lean-forward="true" selection-start-line="542" selection-start-column="70" selection-end-line="542" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
