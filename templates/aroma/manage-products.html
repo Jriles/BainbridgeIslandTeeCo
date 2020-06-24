@@ -34,7 +34,7 @@
         </thead>
     {% for product in display_products %}
         {% set product_loop = loop %}
-        <tr id="{{product_loop.index-1}}">
+        <tr id="{{product_loop.index}}">
             <form method="post" class="form admin-form" enctype="multipart/form-data">
                 {{ edit_product_form.csrf_token }}
                 <td>
