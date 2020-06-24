@@ -611,24 +611,6 @@ def new_product():
     return render_template('/aroma/new-product.html', new_product_form=new_product_form)
 
 
-@app.route("/<product>", methods=('GET', 'POST'))
-def product_view(product):
-    email_form = forms.EmailForm()
-    if email_form.validate_on_submit():
-        print(email_form.email.data)
-        this_email = Email()
-        this_email.email = email_form.email.data
-        db.session.add(this_email)
-        db.session.commit()
-    display_products = get_display_products_in_order()
-    designs = []
-    for display_product in display_products:
-        designs.append(get_designs_for_product(display_product.id))
-    product_order_index = DisplayProduct.query.filter_by(id=product).first()
-    app.logger.info(product_order_index.product_order_num)
-    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
-                           designs=designs)
-
 
 @app.route("/manage-orders", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -745,6 +727,23 @@ def email_all_customers():
             smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
     return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
 
+@app.route("/<product>", methods=('GET', 'POST'))
+def product_view(product):
+    email_form = forms.EmailForm()
+    if email_form.validate_on_submit():
+        print(email_form.email.data)
+        this_email = Email()
+        this_email.email = email_form.email.data
+        db.session.add(this_email)
+        db.session.commit()
+    display_products = get_display_products_in_order()
+    designs = []
+    for display_product in display_products:
+        designs.append(get_designs_for_product(display_product.id))
+    product_order_index = DisplayProduct.query.filter_by(id=product).first()
+    app.logger.info(product_order_index.product_order_num)
+    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
+                           designs=designs)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
