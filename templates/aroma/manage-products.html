@@ -114,5 +114,9 @@
         </tr>
     {% endfor %}
     </table>
+    <form method="post" class="form admin-form" enctype="multipart/form-data" style="display: none;" id="product-reordering-form">
+        {{ edit_product_order.new_order_array(class_ = 'discount-form-element') }}
+        <input type="submit" value="" class="btn btn-primary product_button admin-button">
+    </form>
 </div>
 {% endblock %}

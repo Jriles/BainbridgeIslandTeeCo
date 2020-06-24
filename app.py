@@ -539,6 +539,7 @@ def delete_product(productID):
 def edit_products():
     edit_product_form = forms.EditProduct()
     edit_design_form = forms.EditDesign()
+    edit_product_order = forms.ReOrderProducts()
     if edit_product_form.product_name.data is not None and edit_product_form.validate():
         app.logger.info("id= " + str(edit_product_form.data["product_id"]))
         this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
@@ -575,13 +576,15 @@ def edit_products():
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
+    if edit_product_order.new_order_array.data is not None and edit_product_order.validate():
+        app.logger.info(edit_product_order.new_order_array.data)
     # we need to query all of the existing products and render them with the forms
     display_products = get_display_products_in_order()
     designs = []
     for product in display_products:
         designs.append(get_designs_for_product(product.id))
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
-                           display_products=display_products, designs=designs, edit_design_form=edit_design_form)
+                           display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order)
 
 
 @app.route("/new-product", methods=('GET', 'POST'))

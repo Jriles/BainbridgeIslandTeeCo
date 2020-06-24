@@ -342,20 +342,7 @@ $(function() {
             $("#manage-products-table").tableDnD({
                 onDrop: function(table, row) {
                     console.log(table.rows);
-                    var row_count = table.rows.length;
-                    for(i = 0; i < row_count;i++){
-                        //we want to ask if i == the current row's id
-                        if(i !== table.rows.item(i).id){
-                            //if not, we want to change the order
-                            $(table.rows.item(i)).find("#order_number").val(i);
-                            console.log("i: " + i);
-                            document.getElementById("product_form" + String(i + 1)).submit();
-                            //.submit();
-                            //this means we change the order attribute on the relevant row's form
-                            //submit the form and iterate
-
-                        }
-                    }
+                    document.getElementById("product-reordering-form").submit();
                 }
             });
 		});

@@ -69,3 +69,6 @@ class OrderStatusForm(FlaskForm):
     status_choices = [('0', 'Waiting to ship'), ('1', 'Shipping'), ('2', 'Delivered to customer')]
     status = SelectField(validators=[DataRequired()], choices=status_choices)
     orderID = HiddenField()
+
+class ReOrderProducts(FlaskForm):
+    new_order_array = StringField('Ordering')
