@@ -607,7 +607,7 @@ def new_product():
             app.logger.info("finished with image")
         db.session.add(new_product)
         db.session.commit()
-        flash("Successfully created new product: " + new_product.product_order_num)
+        flash("Successfully created new product: " + str(new_product.product_order_num))
     return render_template('/aroma/new-product.html', new_product_form=new_product_form)
 
 
