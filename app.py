@@ -469,7 +469,7 @@ def login():
         app.logger.info("form password: " + login_form.password.data)
         h = hashlib.md5(login_form.password.data.encode())
         password_hash_code = h.hexdigest()
-        user_object = User.query.filter_by(email=login_form.email.data).all()
+        user_object = User.query.filter_by(id=login_form.email.data).first()
         app.logger.info(user_object)
         if user_object is not None and user_object.password == login_form.password.data:
             # print(our_users.first().)
