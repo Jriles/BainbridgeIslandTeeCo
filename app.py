@@ -469,7 +469,7 @@ def login():
         print("form password: " + login_form.password.data)
         h = hashlib.md5(login_form.password.data.encode())
         password_hash_code = h.hexdigest()
-        user_object = User.query.filter_by(email=login_form.email.data).one()
+        user_object = User.query.filter_by(email=login_form.email.data).first()
         if user_object is not None and user_object.password == login_form.password.data:
             # print(our_users.first().)
             login_user(user_object)
