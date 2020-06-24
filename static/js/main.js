@@ -959,7 +959,7 @@ function scrollDown(product){
     if(product !== ''){
         //first we want to get all the navbar product links
         var nav_links = document.getElementsByClassName("nav-link")
-        var product_height = document.getElementsByClassName("product_image_area")[0].clientHeight;
+        var product_height = document.getElementById("primary-product-image0").clientHeight;
         console.log("product_height: " + product_height);
         //next we want to take the product and check it against the list of product links and get an index
         var found_product_index = -1;

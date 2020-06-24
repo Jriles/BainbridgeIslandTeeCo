@@ -52,8 +52,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="971" column="36" selection-start-line="971" selection-start-column="36" selection-end-line="971" selection-end-column="36" />
+            <state relative-caret-position="203">
+              <caret line="964" column="37" lean-forward="true" selection-start-line="964" selection-start-column="37" selection-end-line="964" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -70,8 +70,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="38" />
+            <state relative-caret-position="306">
+              <caret line="24" column="66" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="66" />
               <folding>
                 <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
               </folding>
@@ -123,7 +123,6 @@
     <findStrings>
       <find>close</find>
       <find>admin-c</find>
-      <find>active</find>
       <find>item-col</find>
       <find>column</find>
       <find>.owl</find>
@@ -151,6 +150,7 @@
       <find>'/login</find>
       <find>scrollDown</find>
       <find>jquery</find>
+      <find>active</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -689,16 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -706,10 +696,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="24" column="66" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="66" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="971" column="36" selection-start-line="971" selection-start-column="36" selection-end-line="971" selection-end-column="36" />
+        <state relative-caret-position="203">
+          <caret line="964" column="37" lean-forward="true" selection-start-line="964" selection-start-column="37" selection-end-line="964" selection-end-column="37" />
         </state>
       </provider>
     </entry>
