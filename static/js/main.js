@@ -965,7 +965,7 @@ function scrollDown(product){
         var found_product_index = -1;
         for(i = 0; i < nav_links.length;i++){
             if(String(nav_links[i].innerHTML) === product){
-                found_product_index = i + 1;
+                found_product_index = i + 2;
             }
         }
         if(i !== -1){
