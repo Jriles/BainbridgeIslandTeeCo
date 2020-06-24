@@ -597,6 +597,8 @@ $('body, html').on('scroll', function(){
         var link_to_highlight = Math.floor(link_count * position_ratio);
         blankNavBar(menu);
         menu.children[link_to_highlight].className += " active";
+    }else{
+        blankNavBar(menu);
     }
 });
 
