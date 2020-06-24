@@ -311,12 +311,8 @@ def inject_logo():
     if last_item is not None:
         path = last_item.file_path
 
-    product_names = []
-    for product in get_display_products_in_order():
-        app.logger.info(str(product))
-        product_names.append(product.name)
     return dict(this_file_path=path,
-                product_names=product_names)
+                products=get_display_products_in_order())
 
 
 def allowed_file(filename):

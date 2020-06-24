@@ -958,6 +958,7 @@ function browse(){
 function scrollDown(product_index){
     if(product_index !== ''){
         //first we want to get all the navbar product links
+        console.log(product_index);
         var relevant_product = document.getElementById("primary-product-image" + String(product_index));
         //access the product at index and get its y position on the page
         if(i !== -1){
