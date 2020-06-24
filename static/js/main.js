@@ -585,8 +585,12 @@ $('body, html').on('scroll', function(){
     }
     var menu = document.getElementById("nav-list");
     var scrollPos = $('body').scrollTop();
+    var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
+
+    scrollPos = scrollPos - hero_image_height;
+
     if (mobileCheck()){
-        if(scrollPos < 1650 && scrollPos >= 766){
+        if(scrollPos){
             blankNavBar(menu);
             menu.children[0].className += " active";
         }else if(scrollPos > 1650){
@@ -956,6 +960,7 @@ function scrollDown(product){
         //first we want to get all the navbar product links
         var nav_links = document.getElementsByClassName("nav-link")
         var product_height = document.getElementsByClassName("product_image_area")[0].clientHeight;
+        console.log("product_height: " + product_height);
         //next we want to take the product and check it against the list of product links and get an index
         var found_product_index = -1;
         for(i = 0; i < nav_links.length;i++){
