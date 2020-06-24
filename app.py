@@ -467,8 +467,9 @@ def login():
         password_hash_code = h.hexdigest()
         user_object = User.query.filter_by(id=login_form.email.data).first()
         app.logger.info(user_object)
-        if user_object is not None and user_object.password == login_form.password.data:
+        if user_object is not None and user_object.password == password_hash_code:
             # print(our_users.first().)
+            app.logger.info("thinks that we're in")
             login_user(user_object)
             return redirect('/admin')
         else:
