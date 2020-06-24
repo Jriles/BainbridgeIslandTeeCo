@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aroma/manage-products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/manage-products.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +25,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="548" column="89" selection-start-line="548" selection-start-column="89" selection-end-line="548" selection-end-column="89" />
+            <state relative-caret-position="220">
+              <caret line="542" column="70" selection-start-line="542" selection-start-column="70" selection-end-line="542" selection-end-column="70" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -714,8 +711,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="548" column="89" selection-start-line="548" selection-start-column="89" selection-end-line="548" selection-end-column="89" />
+        <state relative-caret-position="220">
+          <caret line="542" column="70" selection-start-line="542" selection-start-column="70" selection-end-line="542" selection-end-column="70" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
