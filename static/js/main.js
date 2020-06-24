@@ -596,19 +596,21 @@ $('body, html').on('scroll', function(){
     }
 
     var scrollPos = $('body').scrollTop();
-    var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
-    var menu = document.getElementById("nav-list");
-    if(scrollPos > hero_image_height){
-        console.log("hero image height: " + hero_image_height);
-        console.log("scroll_pos: " + scrollPos);
-        var total_height = document.body.scrollHeight - hero_image_height;
-        var position_ratio = scrollPos / total_height;
-        var link_count = menu.children.length;
-        var link_to_highlight = Math.floor(link_count * position_ratio);
-        blankNavBar(menu);
-        menu.children[link_to_highlight].className += " active";
-    }else{
-        blankNavBar(menu);
+    if(document.getElementsByClassName("hero-image") !== null){
+        var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
+        var menu = document.getElementById("nav-list");
+        if(scrollPos > hero_image_height){
+            console.log("hero image height: " + hero_image_height);
+            console.log("scroll_pos: " + scrollPos);
+            var total_height = document.body.scrollHeight - hero_image_height;
+            var position_ratio = scrollPos / total_height;
+            var link_count = menu.children.length;
+            var link_to_highlight = Math.floor(link_count * position_ratio);
+            blankNavBar(menu);
+            menu.children[link_to_highlight].className += " active";
+        }else{
+            blankNavBar(menu);
+        }
     }
 });
 
