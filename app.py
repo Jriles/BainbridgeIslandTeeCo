@@ -540,8 +540,8 @@ def edit_products():
     edit_product_form = forms.EditProduct()
     edit_design_form = forms.EditDesign()
     if edit_product_form.product_name.data is not None and edit_product_form.validate():
-        app.logger.info("id= " + str(edit_product_form.product_id.data))
-        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.product_id.data).first()
+        app.logger.info("id= " + str(edit_product_form["product_id"]))
+        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form["product_id"]).first()
         this_display_product.name = edit_product_form.product_name.data
         this_display_product.price = edit_product_form.product_price.data
         this_display_product.in_stock = edit_product_form.product_in_stock.data
