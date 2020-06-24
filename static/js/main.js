@@ -581,21 +581,23 @@ $(function() {
 });
 
 $('body, html').on('scroll', function(){
-    if( $('body,html').is(':animated') ){
+    if( $('body,html').is(':animated')){
         return;
     }
-    var menu = document.getElementById("nav-list");
+
     var scrollPos = $('body').scrollTop();
     var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
-    console.log("hero image height: " + hero_image_height);
-    console.log("scroll_pos: " + scrollPos);
-    scrollPos = scrollPos - hero_image_height;
-    var total_height = document.body.scrollHeight;
-    var position_ratio = scrollPos / total_height;
-    var link_count = menu.children.length;
-    var link_to_highlight = Math.floor(link_count * position_ratio);
-    blankNavBar(menu);
-    menu.children[link_to_highlight].className += " active";
+    if(scrollPos > hero_image_height){
+        var menu = document.getElementById("nav-list");
+        console.log("hero image height: " + hero_image_height);
+        console.log("scroll_pos: " + scrollPos);
+        var total_height = document.body.scrollHeight - hero_image_height;
+        var position_ratio = scrollPos / total_height;
+        var link_count = menu.children.length;
+        var link_to_highlight = Math.floor(link_count * position_ratio);
+        blankNavBar(menu);
+        menu.children[link_to_highlight].className += " active";
+    }
 });
 
 function blankNavBar(navbar){
