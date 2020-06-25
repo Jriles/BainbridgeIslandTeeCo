@@ -342,6 +342,8 @@ $(function() {
             $("#manage-products-table").tableDnD({
                 onDrop: function(table, row) {
                     console.log(table.rows);
+                    var arr = [].slice.call(table.rows);
+                    document.getElementById("new_order_array").value = String(arr);
                     document.getElementById("product-reordering-form").submit();
                 }
             });
