@@ -778,6 +778,8 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         console.log(design_names.get(0).children);
         var this_design_name = $(event.target).parent().parent().find(".design-name");
         console.log("design_names.get(0): " + design_names.get(0));
+        console.log("design_names.get(0).children: " + design_names.get(0).children);
+        console.log("index: " + index);
         this_design_name.html(design_names.get(0).children[index].innerHTML);
     }
 })
