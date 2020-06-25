@@ -125,7 +125,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>design_image =</find>
+      <find />
       <find>=</find>
       <find>Mobile</find>
       <find>reset_me</find>
@@ -174,7 +174,7 @@
       <replace>TrackingID</replace>
       <replace>homeurl</replace>
       <replace>http://www.klikattatfootwear.com/</replace>
-      <replace>Julius Sans One</replace>
+      <replace />
     </replaceStrings>
     <dirStrings>
       <dir />
