@@ -25,8 +25,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="586" column="31" lean-forward="true" selection-start-line="586" selection-start-column="31" selection-end-line="586" selection-end-column="31" />
+            <state relative-caret-position="203">
+              <caret line="578" column="86" selection-start-line="578" selection-start-column="86" selection-end-line="578" selection-end-column="86" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -55,8 +55,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="352" column="20" lean-forward="true" selection-start-line="352" selection-start-column="20" selection-end-line="352" selection-end-column="20" />
+            <state relative-caret-position="305">
+              <caret line="350" column="94" selection-start-line="350" selection-start-column="94" selection-end-line="350" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -716,8 +716,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="586" column="31" lean-forward="true" selection-start-line="586" selection-start-column="31" selection-end-line="586" selection-end-column="31" />
+        <state relative-caret-position="203">
+          <caret line="578" column="86" selection-start-line="578" selection-start-column="86" selection-end-line="578" selection-end-column="86" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -726,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="352" column="20" lean-forward="true" selection-start-line="352" selection-start-column="20" selection-end-line="352" selection-end-column="20" />
+        <state relative-caret-position="305">
+          <caret line="350" column="94" selection-start-line="350" selection-start-column="94" selection-end-line="350" selection-end-column="94" />
         </state>
       </provider>
     </entry>
