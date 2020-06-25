@@ -347,7 +347,7 @@ $(function() {
                     for(i = 1; i < arr.length;i++){
                         new_order_id_arr.push($(arr[i]).find("#product_id").val());
                     }
-                    console.log(new_order_id_arr.toString());
+                    console.log(new_order_id_arr);
                     document.getElementById("new_order_array").value = new_order_id_arr.toString();
                     //document.getElementById("product-reordering-form").submit();
                 }
