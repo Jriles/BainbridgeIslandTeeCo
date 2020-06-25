@@ -1011,6 +1011,7 @@ function mobileCheck(){
 }
 
 function goToSlide(button){
+    console.log("button: " + button);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
     button_index = nodes.indexOf( button );
