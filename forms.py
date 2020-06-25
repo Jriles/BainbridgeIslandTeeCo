@@ -71,4 +71,4 @@ class OrderStatusForm(FlaskForm):
     orderID = HiddenField()
 
 class ReOrderProducts(FlaskForm):
-    new_order_array = StringField('Ordering')
+    new_order_array = StringField('Ordering', validators=[validators.Optional()])
