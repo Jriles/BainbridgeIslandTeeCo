@@ -348,7 +348,7 @@ $(function() {
                         new_order_id_arr.push($(arr[i]).find("#product_id").val());
                     }
                     console.log(new_order_id_arr);
-                    document.getElementById("new_order_array").value = "'" + new_order_id_arr + "'";
+                    document.getElementById("new_order_array").value = "Meow";
                     //document.getElementById("product-reordering-form").submit();
                 }
             });
