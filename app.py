@@ -576,6 +576,7 @@ def edit_products():
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
+    app.logger.info("NEW ORDER ARRAY: " + edit_product_order.new_order_array.data)
     if edit_product_order.new_order_array.data is not None and edit_product_order.validate():
         new_order_id_arr = edit_product_order.new_order_array.data.split(',')
         app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
