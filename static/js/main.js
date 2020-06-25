@@ -344,12 +344,12 @@ $(function() {
                     console.log(table.rows);
                     var arr = [].slice.call(table.rows);
                     var new_order_id_arr = [];
-                    for(i = 0; i < arr.length;i++){
+                    for(i = 1; i < arr.length;i++){
                         new_order_id_arr.push($(arr[i]).find("#product_id").val());
                     }
                     console.log(new_order_id_arr);
                     document.getElementById("new_order_array").value = new_order_id_arr.toString();
-                    //document.getElementById("product-reordering-form").submit();
+                    document.getElementById("product-reordering-form").submit();
                 }
             });
 		});

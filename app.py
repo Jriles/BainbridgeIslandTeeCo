@@ -576,7 +576,15 @@ def edit_products():
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
-    app.logger.info("REORDER ARRAY CONTENTS: " + str(edit_product_order.new_order_array.data))
+    if edit_product_order.new_order_array.data is not None and edit_product_order.validate():
+        new_order_id_arr = edit_product_order.new_order_array.data.split(',')
+        app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
+        for idx, this_id in enumerate(new_order_id_arr):
+            #get this particular product using its id
+            current_product = DisplayProduct.query.filter_by(id=int(this_id)).first()
+            current_product.product_order_num = idx
+            db.session.add(current_product)
+            db.session.commit()
     # we need to query all of the existing products and render them with the forms
     display_products = get_display_products_in_order()
     designs = []
