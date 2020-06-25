@@ -609,8 +609,6 @@ $('body, html').on('scroll', function(){
         var hero_image_height = document.getElementsByClassName("hero-image")[0].clientHeight;
         var menu = document.getElementById("nav-list");
         if(scrollPos > hero_image_height){
-            console.log("hero image height: " + hero_image_height);
-            console.log("scroll_pos: " + scrollPos);
             var total_height = document.body.scrollHeight - hero_image_height;
             var position_ratio = scrollPos / total_height;
             var link_count = menu.children.length;
