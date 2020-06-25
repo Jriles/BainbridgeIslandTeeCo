@@ -1022,6 +1022,7 @@ function goToSlide(button){
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
+    console.log("button_index: " + button_index);
     $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
 }
 
