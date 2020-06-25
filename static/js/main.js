@@ -343,6 +343,7 @@ $(function() {
                 onDrop: function(table, row) {
                     console.log(table.rows);
                     var arr = [].slice.call(table.rows);
+                    console.log(arr);
                     document.getElementById("new_order_array").value = String(arr);
                     document.getElementById("product-reordering-form").submit();
                 }
