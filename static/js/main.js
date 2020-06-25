@@ -344,8 +344,8 @@ $(function() {
                     console.log(table.rows);
                     var arr = [].slice.call(table.rows);
                     console.log(arr);
-                    document.getElementById("new_order_array").value = String(arr);
-                    //document.getElementById("product-reordering-form").submit();
+                    document.getElementById("new_order_array").value = arr.toString();
+                    document.getElementById("product-reordering-form").submit();
                 }
             });
 		});
