@@ -345,7 +345,11 @@ $(function() {
                     var arr = [].slice.call(table.rows);
                     console.log(arr);
                     document.getElementById("new_order_array").value = arr.toString();
-                    document.getElementById("product-reordering-form").submit();
+                    //document.getElementById("product-reordering-form").submit();
+                    //var new_order_id_arr = [];
+                    //for(i = 0; i < arr.length;i++){
+                    //    new_order_id_arr.append(arr[i].id)
+                    //}
                 }
             });
 		});
