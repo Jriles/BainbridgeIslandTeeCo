@@ -1023,7 +1023,7 @@ function goToSlide(button){
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
     console.log("button_index: " + button_index);
-    $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
+    $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
 }
 
 function showThisOrderItems(button){
