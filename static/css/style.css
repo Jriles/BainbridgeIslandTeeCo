@@ -4776,6 +4776,16 @@ li .product_count{
     margin-left: 5%;
 }
 
+.owl-stage{
+  display: block !important;
+}
+
+.owl-item{
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
+}
+
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
