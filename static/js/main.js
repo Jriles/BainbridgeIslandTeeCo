@@ -772,8 +772,8 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log("possible current index: " + event.item.index);
     console.log("event.target: " + event.target);
     var index = event.item.index-3;
-    if(index == -1){
-        index += 1;
+    if(index < 0){
+        index = 0;
     }
     var design_names = $(event.target).parent().parent().find(".design_names");
     console.log(design_names.get(0).children);
