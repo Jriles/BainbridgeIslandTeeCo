@@ -56,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
-              <caret line="646" column="63" lean-forward="true" selection-start-line="646" selection-start-column="63" selection-end-line="646" selection-end-column="63" />
+              <caret line="646" column="72" selection-start-line="646" selection-start-column="72" selection-end-line="646" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -727,7 +727,7 @@
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
-          <caret line="646" column="63" lean-forward="true" selection-start-line="646" selection-start-column="63" selection-end-line="646" selection-end-column="63" />
+          <caret line="646" column="72" selection-start-line="646" selection-start-column="72" selection-end-line="646" selection-end-column="72" />
         </state>
       </provider>
     </entry>
