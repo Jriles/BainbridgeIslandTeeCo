@@ -766,13 +766,15 @@ function applyDiscount(discounts){
 //maintain with new images/designs
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
+    var dots_array = Array.from(dots.childNodes);
     //console.log(dots);
     dots = dots.get(0);
     console.log(dots);
     console.log("possible current index: " + event.item.index);
     console.log("event.target: " + event.target);
+
     var index = event.item.index-3;
-    if(index < 0){
+    if(index < 0 || index === dots_array.length){
         index = 0;
     }
     var design_names = $(event.target).parent().parent().find(".design_names");
@@ -782,6 +784,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log("design_names.get(0).children[index]: " + design_names.get(0).children[index]);
     console.log("index: " + index);
     this_design_name.html(design_names.get(0).children[index].innerHTML);
+
 })
 
 var locations2D = [];
