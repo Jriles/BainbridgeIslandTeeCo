@@ -768,10 +768,9 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     //var dots_array = Array.from(dots.childNodes);
     //console.log(dots);
+    console.log("dots.children: " + dots.children);
     dots = dots.get(0);
     console.log(dots);
-    console.log("possible current index: " + event.item.index);
-    console.log("event.target: " + event.target);
 
     var index = event.item.index-3;
     if(index < 0 || index === dots_array.length){
