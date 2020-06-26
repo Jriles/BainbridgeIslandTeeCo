@@ -779,8 +779,9 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log("design_names.get(0): " + design_names.get(0));
     console.log("design_names.get(0).children[index]: " + design_names.get(0).children[index]);
     console.log("index: " + index);
-    this_design_name.html(design_names.get(0).children[index].innerHTML);
-
+    if(design_names.get(0).children[index] !== null){
+        this_design_name.html(design_names.get(0).children[index].innerHTML);
+    }
 })
 
 var locations2D = [];
