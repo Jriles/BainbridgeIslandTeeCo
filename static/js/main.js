@@ -640,7 +640,7 @@ function addToCart(button){
     //
     var thisProductInfo = $(button).closest(".s_product_inner");
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
-    var size = $(productOptions).find("#t-shirt-size option:selected").text();
+    var size = $(thisProductInfo).find("#t-shirt-size option:selected").text();
     console.log(size);
     var productName = String($(thisProductInfo).find("#product-name"));
     var productPrice = String($(thisProductInfo).find("#product-price"));
