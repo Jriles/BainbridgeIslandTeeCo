@@ -771,30 +771,17 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log(dots);
     console.log("possible current index: " + event.item.index);
     console.log("event.target: " + event.target);
-    /*
-    if(dots !== undefined){
-        var dots_array = Array.from(dots.childNodes);
-        console.log(dots_array);
-        var index = -1;
-        for(i =0; i < dots_array.length;i++){
-            if($(dots_array[i]).hasClass('active')){
-                index = i;
-            }
-        }
-        if(index !== -1){
-            console.log(index);
-            var design_names = $(event.target).parent().parent().find(".design_names");
-            console.log(design_names.get(0).children);
-            var this_design_name = $(event.target).parent().parent().find(".design-name");
-            console.log("design_names.get(0): " + design_names.get(0));
-            console.log("design_names.get(0).children[index]: " + design_names.get(0).children[index]);
-            console.log("index: " + index);
-            this_design_name.html(design_names.get(0).children[index].innerHTML);
-        }else{
-            console.log("couldn't find active dot");
-        }
+    var index = event.item.index-3;
+    if(index == -1){
+        index += 1;
     }
-    */
+    var design_names = $(event.target).parent().parent().find(".design_names");
+    console.log(design_names.get(0).children);
+    var this_design_name = $(event.target).parent().parent().find(".design-name");
+    console.log("design_names.get(0): " + design_names.get(0));
+    console.log("design_names.get(0).children[index]: " + design_names.get(0).children[index]);
+    console.log("index: " + index);
+    this_design_name.html(design_names.get(0).children[index].innerHTML);
 })
 
 var locations2D = [];
