@@ -641,7 +641,9 @@ function addToCart(button){
     var thisProductInfo = $(button).closest(".s_product_inner");
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
     var size = $(thisProductInfo).find("#t-shirt-size option:selected").val();
-    console.log(size);
+    if(size === undefined){
+        size = "N/A";
+    }
     var productName = String($(thisProductInfo).find("#product-name").text());
     var productPrice = String($(thisProductInfo).find("#product-price").text());
     var thisProductImage = $(thisProductInfo).find(".primary-image").attr('src');
