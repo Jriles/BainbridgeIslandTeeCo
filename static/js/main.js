@@ -774,6 +774,12 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         index = 0;
     }
 
+    //we also want to reset which design icon we are highlighting
+    var design_buttons = $(event.target).parent().parent().find('design-selection').children;
+    for(i = 0; i < design_buttons.length;i++){
+        design_buttons[i].style.border = "none";
+    }
+
     var design_names = $(event.target).parent().parent().find(".design_names");
     console.log(design_names.get(0).children);
     var this_design_name = $(event.target).parent().parent().find(".design-name");
@@ -782,6 +788,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log("index: " + index);
     if(design_names.get(0).children[index] !== undefined){
         this_design_name.html(design_names.get(0).children[index].innerHTML);
+        design_buttons[index].style.border = "2px solid green";
     }
 })
 
