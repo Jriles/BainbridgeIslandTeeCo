@@ -1016,6 +1016,10 @@ function mobileCheck(){
 
 function goToSlide(button){
     //highlight this icon in green
+    var design_buttons = button.parentElement.children;
+    for(i = 0; i < design_buttons;i++){
+        design_buttons[i].style.border = "unset";
+    }
     button.style.border = "1px solid green";
     console.log("button: " + button);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
