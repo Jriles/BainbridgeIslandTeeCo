@@ -1018,10 +1018,9 @@ function goToSlide(button){
     //highlight this icon in green
     var design_buttons = button.parentElement.children;
     for(i = 0; i < design_buttons;i++){
-        design_buttons[i].style.border = "unset";
+        design_buttons[i].style.border = "none";
     }
     button.style.border = "1px solid green";
-    console.log("button: " + button);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
     button_index = nodes.indexOf( button );
@@ -1032,7 +1031,6 @@ function goToSlide(button){
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
-    console.log("button_index: " + button_index);
     $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
 }
 
