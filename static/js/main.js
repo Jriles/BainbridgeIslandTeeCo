@@ -645,7 +645,7 @@ function addToCart(button){
     var productName = String($(thisProductInfo).find("#product-name").text());
     var productPrice = String($(thisProductInfo).find("#product-price").text());
     var thisProductImage = $(thisProductInfo).find(".primage-image").src;
-    var thisProductDesign = $(thisProductInfo.find('.design-name').text();
+    var thisProductDesign = $(thisProductInfo).find('.design-name').text();
     console.log(thisProductImage);
     var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": thisProductImage, "Design": thisProductDesign};
     var cart = sessionStorage.getItem("Cart");
