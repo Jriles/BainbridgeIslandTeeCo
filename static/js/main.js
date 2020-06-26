@@ -644,10 +644,10 @@ function addToCart(button){
     console.log(size);
     var productName = String($(thisProductInfo).find("#product-name").text());
     var productPrice = String($(thisProductInfo).find("#product-price").text());
-    var thisProductImage = $(thisProductInfo).find(".primage-image img").src;
-    var thisProductDesign = String($(thisProductInfo.find('.design-name').text()));
-    console.log(thisProductDesign);
-    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign};
+    var thisProductImage = $(thisProductInfo).find(".primage-image").src;
+    var thisProductDesign = $(thisProductInfo.find('.design-name').text();
+    console.log(thisProductImage);
+    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": thisProductImage, "Design": thisProductDesign};
     var cart = sessionStorage.getItem("Cart");
     console.log(cart);
     //if cart is empty we make it an array of json objects, with just one product
