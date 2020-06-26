@@ -1015,6 +1015,8 @@ function mobileCheck(){
 }
 
 function goToSlide(button){
+    //highlight this icon in green
+    button.style.border = "1px solid green";
     console.log("button: " + button);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
