@@ -775,7 +775,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     }
 
     //we also want to reset which design icon we are highlighting
-    var design_buttons = $(event.target).parent().parent().find('design-selection').children;
+    var design_buttons = $(event.target).parent().parent().find('#design-selection').children;
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
     }
