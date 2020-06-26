@@ -779,7 +779,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log("design_names.get(0): " + design_names.get(0));
     console.log("design_names.get(0).children[index]: " + design_names.get(0).children[index]);
     console.log("index: " + index);
-    if(design_names.get(0).children[index] !== null){
+    if(design_names.get(0).children[index] !== undefined){
         this_design_name.html(design_names.get(0).children[index].innerHTML);
     }
 })
