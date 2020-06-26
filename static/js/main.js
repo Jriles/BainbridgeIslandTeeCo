@@ -766,7 +766,7 @@ function applyDiscount(discounts){
 //maintain with new images/designs
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
-    var dots_array = Array.from(dots.childNodes);
+    //var dots_array = Array.from(dots.childNodes);
     //console.log(dots);
     dots = dots.get(0);
     console.log(dots);
