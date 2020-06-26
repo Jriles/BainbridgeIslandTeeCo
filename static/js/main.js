@@ -1017,7 +1017,7 @@ function mobileCheck(){
 function goToSlide(button){
     //highlight this icon in green
     var design_buttons = button.parentElement.children;
-    for(i = 0; i < design_buttons;i++){
+    for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
     }
     button.style.border = "1px solid green";
