@@ -771,6 +771,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     console.log(dots);
     console.log("possible current index: " + event.item.index);
     console.log("event.target: " + event.target);
+    /*
     if(dots !== undefined){
         var dots_array = Array.from(dots.childNodes);
         console.log(dots_array);
@@ -793,6 +794,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
             console.log("couldn't find active dot");
         }
     }
+    */
 })
 
 var locations2D = [];
