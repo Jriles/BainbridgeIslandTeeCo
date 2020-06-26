@@ -642,8 +642,8 @@ function addToCart(button){
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
     var size = $(thisProductInfo).find("#t-shirt-size option:selected").val();
     console.log(size);
-    var productName = String($(thisProductInfo).find("#product-name").val());
-    var productPrice = String($(thisProductInfo).find("#product-price").val());
+    var productName = String($(thisProductInfo).find("#product-name").text());
+    var productPrice = String($(thisProductInfo).find("#product-price").text());
     var thisProductImage = $(thisProductInfo).find(".primage-image").attr( 'src' );
     var thisProductDesign = String($(thisProductInfo.find('.design-name').val()));
     console.log(thisProductDesign);
