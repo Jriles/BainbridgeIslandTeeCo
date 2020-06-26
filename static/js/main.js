@@ -768,7 +768,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     //var dots_array = Array.from(dots.childNodes);
     //console.log(dots);
-    console.log("dots.children: " + dots.children);
+    console.log("dots.children count: " + $(dots).children().length);
     dots = dots.get(0);
     console.log(dots);
 
