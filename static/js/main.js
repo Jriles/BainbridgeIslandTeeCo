@@ -644,7 +644,7 @@ function addToCart(button){
     console.log(size);
     var productName = String($(thisProductInfo).find("#product-name").text());
     var productPrice = String($(thisProductInfo).find("#product-price").text());
-    var thisProductImage = $(thisProductInfo).find("img.img-fluid.primage-image");
+    var thisProductImage = $(thisProductInfo).find(".primage-image");
     console.log(thisProductImage);
     var thisProductDesign = $(thisProductInfo).find('.design-name').text();
     console.log(thisProductImage);
