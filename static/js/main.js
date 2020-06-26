@@ -640,12 +640,12 @@ function addToCart(button){
     //
     var thisProductInfo = $(button).closest(".s_product_inner");
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
-    var size = $(thisProductInfo).find("#t-shirt-size option:selected").text();
+    var size = $(thisProductInfo).find("#t-shirt-size option:selected").val();
     console.log(size);
-    var productName = String($(thisProductInfo).find("#product-name"));
-    var productPrice = String($(thisProductInfo).find("#product-price"));
+    var productName = String($(thisProductInfo).find("#product-name").val());
+    var productPrice = String($(thisProductInfo).find("#product-price").val());
     var thisProductImage = $(thisProductInfo).find(".primage-image").attr( 'src' );
-    var thisProductDesign = String($(thisProductInfo.find('.design-name')));
+    var thisProductDesign = String($(thisProductInfo.find('.design-name').val()));
     console.log(thisProductDesign);
     var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign};
     var cart = sessionStorage.getItem("Cart");
