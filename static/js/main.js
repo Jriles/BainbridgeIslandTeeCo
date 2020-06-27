@@ -630,7 +630,7 @@ $('body, html').on('scroll', function(){
 
 function blankNavBar(navbar){
     for(i = 0; i < navbar.children.length;i++){
-        navbar.children[i].className = "nav-item";
+        navbar.children[i].children[0].style.color = "black";
     }
 }
 
