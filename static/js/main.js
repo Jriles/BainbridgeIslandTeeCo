@@ -1028,6 +1028,7 @@ function goToSlide(button){
     //highlight this icon in green
     console.log("called go to slide");
     var design_buttons = button.parentElement.children;
+    console.log("design_buttons.length: " + design_buttons.length);
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
     }
