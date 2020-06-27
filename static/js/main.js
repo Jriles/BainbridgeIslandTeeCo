@@ -1049,6 +1049,7 @@ function goToSlide(button){
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
     $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
+    console.log("finished executing go to slide");
 }
 
 function showThisOrderItems(button){
