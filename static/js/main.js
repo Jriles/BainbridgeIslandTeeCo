@@ -1031,7 +1031,7 @@ function goToSlide(button){
     console.log("design_buttons.length: " + design_buttons.length);
     for(i = 0; i < design_buttons.length;i++){
         console.log(design_buttons[i]);
-        design_buttons[i].style.border = "none !important";
+        design_buttons[i].style.borderStyle  = "none";
         console.log(design_buttons[i]);
     }
     console.log("blanked design buttons");
