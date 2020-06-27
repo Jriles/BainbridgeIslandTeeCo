@@ -1030,7 +1030,7 @@ function goToSlide(button){
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
     }
-    button.style.border = "2px solid green";
+    button.style.border = ("2px solid " + primary_color);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
     button_index = nodes.indexOf( button );
