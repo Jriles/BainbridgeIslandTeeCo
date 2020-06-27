@@ -1,3 +1,10 @@
+var primary_color = "";
+
+function setPrimaryColor(color_value){
+    primary_color = color_value;
+    console.log("primary_color: " + primary_color);
+}
+
 function submitNewTableOrder(table, row){
     console.log(table);
     console.log(row);
@@ -614,7 +621,7 @@ $('body, html').on('scroll', function(){
             var link_count = menu.children.length;
             var link_to_highlight = Math.floor(link_count * position_ratio);
             blankNavBar(menu);
-            menu.children[link_to_highlight].className += " active";
+            menu.children[link_to_highlight].style.color = primary_color;
         }else{
             blankNavBar(menu);
         }
@@ -784,7 +791,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var this_design_name = $(event.target).parent().parent().find(".design-name");
     if(design_names.get(0).children[index] !== undefined){
         this_design_name.html(design_names.get(0).children[index].innerHTML);
-        design_buttons[index].style.border = "2px solid green";
+        design_buttons[index].style.border = ("2px solid " + primary_color);
     }
 })
 
