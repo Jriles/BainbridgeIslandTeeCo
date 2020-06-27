@@ -1030,9 +1030,9 @@ function goToSlide(button){
     var design_buttons = button.parentElement.children;
     console.log("design_buttons.length: " + design_buttons.length);
     for(i = 0; i < design_buttons.length;i++){
-        console.log(design_buttons[i]);
+        console.log(design_buttons[i].borderStyle);
         design_buttons[i].style.borderStyle  = "none";
-        console.log(design_buttons[i]);
+        console.log(design_buttons[i].borderStyle);
     }
     console.log("blanked design buttons");
     button.style.border = ("2px solid " + primary_color);
