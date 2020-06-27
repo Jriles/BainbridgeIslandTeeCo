@@ -778,6 +778,7 @@ def change_color():
         color.color = color_form.new_color.data
         db.session.add(color)
         db.session.commit()
+        flash("Successfully changed primary color.")
     return render_template("/aroma/changecolor.html", color_form=color_form)
 
 def redirect_url(default='index'):
