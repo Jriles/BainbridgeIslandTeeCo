@@ -74,7 +74,7 @@
 							</div>
 							<p>{{product.description}}</p>
 							<div class="product-cart-buttons">
-								<button class="button button-coupon add-to-cat-button" style="background-color: {{primary_color}};" onclick="addToCart(this)">Add to Cart</button>
+								<button class="button button-coupon add-to-cat-button" style="background-color: {{primary_color}}; border-color: {{primary_color}};" onclick="addToCart(this)">Add to Cart</button>
 								<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout</button></a>
 							</div>
 						</div>
@@ -93,7 +93,7 @@
             <form method="post" class="subscribe-form form-inline mt-5 pt-1">
 				{{ email_form.csrf_token }}
 				{{ email_form.email(class_ = 'form-control first-input', placeholder = email_form.email.label.text, required = true, autofocus = true) }}
-              <button class="button button-subscribe mr-auto mb-1" type="submit" style="background-color: {{primary_color}};">Subscribe Now</button>
+              <button class="button button-subscribe mr-auto mb-1" type="submit" style="background-color: {{primary_color}}; border-color: {{primary_color}};">Subscribe Now</button>
             </form>
           </div>
 
