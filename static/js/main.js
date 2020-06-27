@@ -621,7 +621,7 @@ $('body, html').on('scroll', function(){
             var link_count = menu.children.length;
             var link_to_highlight = Math.floor(link_count * position_ratio);
             blankNavBar(menu);
-            menu.children[link_to_highlight].style.color = primary_color;
+            menu.children[link_to_highlight].children[0].style.color = primary_color;
         }else{
             blankNavBar(menu);
         }
