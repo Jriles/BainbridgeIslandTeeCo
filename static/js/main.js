@@ -1026,14 +1026,18 @@ function mobileCheck(){
 
 function goToSlide(button){
     //highlight this icon in green
+    console.log("called go to slide");
     var design_buttons = button.parentElement.children;
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
     }
+    console.log("blanked design buttons");
     button.style.border = ("2px solid " + primary_color);
+    console.log("this buttons new border style: " + button.style.border);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
     button_index = nodes.indexOf( button );
+    console.log(button_index);
     //this will need to be maintained
     //if we are working with t-shirts or bags
     //set the design description-use this when we add to cart
