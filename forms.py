@@ -72,3 +72,6 @@ class OrderStatusForm(FlaskForm):
 
 class ReOrderProducts(FlaskForm):
     new_order_array = StringField('Ordering', validators=[validators.Optional()])
+
+class ChangePrimaryColor(FlaskForm):
+    new_color = HiddenField()

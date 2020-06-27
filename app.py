@@ -244,6 +244,10 @@ class MaintenanceMode(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     status = db.Column(db.String())
 
+class SitePrimaryColor(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    color = db.Column(db.String())
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -264,6 +268,11 @@ def create_tables():
     status.id = 0
     status.status = "Off"
     db.session.add(status)
+    db.session.commit()
+    default_color = SitePrimaryColor()
+    default_color.id = 0
+    default_color.color = "#20B22B"
+    db.session.add(default_color)
     db.session.commit()
 
 
@@ -310,9 +319,11 @@ def inject_logo():
     path = ""
     if last_item is not None:
         path = last_item.file_path
-
+    primary_color = SitePrimaryColor.query.first()
+    primary_color = primary_color.color
     return dict(this_file_path=path,
-                nav_products=get_display_products_in_order())
+                nav_products=get_display_products_in_order(),
+                primary_color=primary_color)
 
 
 def allowed_file(filename):
@@ -757,6 +768,16 @@ def product_view(product):
     app.logger.info(product_order_index.product_order_num)
     return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs)
+
+@app.route("/change-color", methods=('GET', 'POST'))
+def change_color():
+    color_form = forms.ChangePrimaryColor()
+    if color_form.validate_on_submit():
+        color = SitePrimaryColor.query.first()
+        color.color = color_form.new_color.data
+        db.session.add(color)
+        db.session.commit()
+    return render_template("/aroma/changecolor.html", color_form=color_form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
