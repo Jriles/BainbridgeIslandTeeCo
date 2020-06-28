@@ -107,7 +107,6 @@ def github_webhook_endpoint():
         abort(400, "X-Hub-Signature required")
 
     # Create local hash of payload
-    app.logger.info("REPOSITORY KEY: " + str(os.environ['REPOSITORY_KEY']))
     digest = hmac.new(str(os.environ['REPOSITORY_KEY']).encode(),
                       request.data, hashlib.sha1).hexdigest()
 
@@ -257,13 +256,6 @@ def get_display_products_in_order():
 
 def get_designs_for_product(id):
     return ProductDesign.query.filter_by(product_id=id)
-
-#get environment vars in production
-@app.cli.command("get_envs")
-def get_envs():
-    app.config['ADMIN_CODE'] = str(os.environ['ADMIN_CODE'])
-
-app.cli.add_command(get_envs)
 
 @app.cli.command("create_tables")
 @with_appcontext
@@ -447,7 +439,6 @@ def paymentsuccess():
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
-    app.logger.info("ADMIN_CODE: " + str(os.environ['ADMIN_CODE']))
     # socketio.emit("message", "data")
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
@@ -467,7 +458,7 @@ def home():
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
     admin_register_form = forms.AdminRegisterForm()
-    if admin_register_form.admin_code.data == app.config['ADMIN_CODE'] and admin_register_form.validate():
+    if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
