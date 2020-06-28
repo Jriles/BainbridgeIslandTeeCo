@@ -780,6 +780,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     }else{
         var index = event.item.index-2;
     }
+    console.log("index: " + index);
     if(index < 0 || index === (dot_count-1)){
         index = 0;
     }
