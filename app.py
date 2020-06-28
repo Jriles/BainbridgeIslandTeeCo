@@ -281,7 +281,7 @@ def create_tables():
     db.session.commit()
     landing_image = LandingImage()
     landing_image.id = 0
-    landing_image.file_path = 'static/img/PicketRange.jpg'
+    landing_image.file_path = '/static/img/PicketRange.jpg'
     db.session.add(landing_image)
     db.session.commit()
 
