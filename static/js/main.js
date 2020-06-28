@@ -775,7 +775,7 @@ function applyDiscount(discounts){
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     var dot_count = $(dots).children().length;
-    if($(event.target).closest(".product_image_area").find(".primary-image") !== null){
+    if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
         var index = event.item.index-3;
     }else{
         var index = event.item.index-2;
