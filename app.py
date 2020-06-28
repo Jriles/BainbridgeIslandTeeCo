@@ -88,7 +88,7 @@ app.config['MAIL_PORT'] = 587
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
-admin_code = 12345
+admin_code = os.environ['ADMIN_CODE']
 # email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
