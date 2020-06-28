@@ -12,7 +12,7 @@ class LogoForm(FlaskForm):
     new_logo = FileField('Your New Logo')
 
 class AdminRegisterForm(FlaskForm):
-    admin_code = IntegerField('Admin Code', validators=[DataRequired()])
+    admin_code = StringField('Admin Code', validators=[DataRequired()])
     email = EmailField('Your Email', validators=[DataRequired()])
     name = StringField('Your Name, This is Optional', validators=[validators.Optional()])
     password = PasswordField('Your Password', validators=[DataRequired()])
