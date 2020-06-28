@@ -986,7 +986,7 @@ function scrollDown(){
     //first we want to get all the navbar product links
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
     if(document.getElementById("product" + String(product_index)) !== null){
-        var relevant_product_top_dist = document.getElementById("primary-product-image" + String(product_index-1)).getBoundingClientRect().top;
+        var relevant_product_top_dist = document.getElementById("product" + String(product_index)).getBoundingClientRect().top;
         //relevant_product.scrollIntoView();
         var offset = 130;
         console.log(mobileCheck());
