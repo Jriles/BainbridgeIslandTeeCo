@@ -1025,6 +1025,10 @@ function mobileCheck(){
 }
 
 function goToSlide(button){
+    var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
+    var nodes = Array.prototype.slice.call( button.parentElement.children );
+    var button_index = nodes.indexOf( button );
+    $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
     //highlight this icon in green
     //console.log("called go to slide");
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
@@ -1037,9 +1041,6 @@ function goToSlide(button){
     button.style.border = ("2px solid " + primary_color);
     //console.log(button);
     //console.log("this buttons new border style: " + button.style.border);
-    //var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
-    //var nodes = Array.prototype.slice.call( button.parentElement.children );
-    //var button_index = nodes.indexOf( button );
     //console.log(button_index);
     //this will need to be maintained
     //if we are working with t-shirts or bags
@@ -1048,7 +1049,7 @@ function goToSlide(button){
     //var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
     //var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     //design_name_display.innerHTML = design_names[button_index].innerHTML;
-    //$(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
+    //
     //console.log("finished executing go to slide");
 }
 
