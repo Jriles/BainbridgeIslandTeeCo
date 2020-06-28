@@ -1035,6 +1035,7 @@ function goToSlide(button){
         console.log(design_buttons[i].style.borderStyle);
     }
     console.log("button border style before setting: " + button.style.border);
+    console.log("primary color: " + primary_color);
     button.style.border = ("2px solid " + primary_color);
     console.log("this buttons new border style: " + button.style.border);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
