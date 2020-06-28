@@ -72,9 +72,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
-
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
 app.config["USER_UNAUTHORIZED_ENDPOINT"] = 'login'
@@ -88,7 +86,6 @@ app.config['MAIL_PORT'] = 587
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
-admin_code = str(os.environ['ADMIN_CODE'])
 # email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
@@ -260,6 +257,14 @@ def get_display_products_in_order():
 def get_designs_for_product(id):
     return ProductDesign.query.filter_by(product_id=id)
 
+#get environment vars in production
+@app.cli.command("create_envs")
+def get_envs():
+    app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
+    app.config['ADMIN_CODE'] = str(os.environ['ADMIN_CODE'])
+
+app.cli.add_command(get_envs)
+
 @app.cli.command("create_tables")
 @with_appcontext
 def create_tables():
@@ -285,6 +290,8 @@ def create_tables():
     landing_image.file_path = '/static/img/PicketRange.jpg'
     db.session.add(landing_image)
     db.session.commit()
+    #get env variables
+    get_envs()
 
 
 app.cli.add_command(create_tables)
@@ -459,7 +466,7 @@ def home():
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
     admin_register_form = forms.AdminRegisterForm()
-    if admin_register_form.admin_code.data == admin_code and admin_register_form.validate():
+    if admin_register_form.admin_code.data == app.config['ADMIN_CODE'] and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
