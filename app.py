@@ -459,6 +459,7 @@ def home():
 def register():
     app.logger.info(str(os.environ['ADMIN_CODE']))
     admin_register_form = forms.AdminRegisterForm()
+    app.looger.info(admin_register_form.admin_code.data)
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
