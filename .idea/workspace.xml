@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/aroma/changelandingimage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +18,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10590">
-              <caret line="768" column="58" lean-forward="true" selection-start-line="768" selection-start-column="58" selection-end-line="768" selection-end-column="58" />
+            <state relative-caret-position="322">
+              <caret line="804" column="35" selection-start-line="804" selection-start-column="35" selection-end-line="804" selection-end-column="58" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -23,20 +27,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/blog.html">
+      <file leaf-file-name="changelandingimage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/aroma/changelandingimage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="3" />
+            <state relative-caret-position="340">
+              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changecolor.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/changecolor.html">
+      <file leaf-file-name="changelogo.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/aroma/changelogo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+            <state>
+              <caret selection-end-line="22" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="79" column="21" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -50,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="171" column="29" lean-forward="true" selection-start-line="171" selection-start-column="29" selection-end-line="171" selection-end-column="29" />
+            <state relative-caret-position="2788">
+              <caret line="170" column="32" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#button#0;n#li#0;n#a#0;n#ul#1;n#div#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -110,15 +123,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/css/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-278">
-              <caret line="2" column="44966" selection-start-line="2" selection-start-column="44964" selection-end-line="2" selection-end-column="44966" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -131,9 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>order_num</find>
-      <find>.ready</find>
-      <find>edit</find>
       <find>onDr</find>
       <find>scrollDow</find>
       <find>goToSlide</find>
@@ -150,7 +151,6 @@
       <find>landing-button</find>
       <find>nav-link:hover</find>
       <find>nav-item:hover</find>
-      <find>button</find>
       <find>button:h</find>
       <find>Mobi</find>
       <find>.getA</find>
@@ -161,6 +161,10 @@
       <find>goTo</find>
       <find>changed</find>
       <find>&quot;/&lt;</find>
+      <find>button</find>
+      <find>&quot;/logo</find>
+      <find>/logo</find>
+      <find>/change</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -192,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/aroma/confirmation.html" />
         <option value="$PROJECT_DIR$/templates/aroma/bla.js" />
         <option value="$PROJECT_DIR$/templates/aroma/accountpage.html" />
         <option value="$PROJECT_DIR$/templates/aroma/signupfailiure.html" />
@@ -234,15 +237,16 @@
         <option value="$PROJECT_DIR$/templates/aroma/manage-orders.html" />
         <option value="$PROJECT_DIR$/templates/aroma/new-product.html" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
-        <option value="$PROJECT_DIR$/forms.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/cart.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changecolor.html" />
-        <option value="$PROJECT_DIR$/templates/aroma/base.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/templates/aroma/admin.html" />
+        <option value="$PROJECT_DIR$/templates/aroma/base.html" />
+        <option value="$PROJECT_DIR$/forms.py" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/aroma/changelandingimage.html" />
       </list>
     </option>
   </component>
@@ -460,9 +464,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/img/r4.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/img/r8.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -655,20 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/changelogo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="76" column="13" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/blog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -730,16 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10590">
-          <caret line="768" column="58" lean-forward="true" selection-start-line="768" selection-start-column="58" selection-end-line="768" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -749,11 +726,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="171" column="29" lean-forward="true" selection-start-line="171" selection-start-column="29" selection-end-line="171" selection-end-column="29" />
+        <state relative-caret-position="2788">
+          <caret line="170" column="32" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#span#0;n#button#0;n#li#0;n#a#0;n#ul#1;n#div#0;n#div#0;n#nav#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="804" column="35" selection-start-line="804" selection-start-column="35" selection-end-line="804" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/changelogo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="22" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="79" column="21" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/changelandingimage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
         </state>
       </provider>
     </entry>

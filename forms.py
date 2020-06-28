@@ -75,3 +75,6 @@ class ReOrderProducts(FlaskForm):
 
 class ChangePrimaryColor(FlaskForm):
     new_color = HiddenField()
+
+class ChangeLandingImage(FlaskForm):
+    new_landing_image = FileField('New Landing Image')

@@ -1,0 +1,23 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="admin-form-back-to-admin">
+    <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin Page</button></a>
+</div>
+<form method="post" class="form account-form" enctype="multipart/form-data">
+    <h3>Change Landing Image</h3>
+    {{ landing_image_form.csrf_token }}
+    {{ landing_image_form.new_landing_image(class_ = 'form-control', placeholder = landing_image_form.new_landing_image.label.text) }}
+    <input type="submit" value="Submit New Image" class="btn btn-primary admin-button">
+</form>
+{% endblock %}
