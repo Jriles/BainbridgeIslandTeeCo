@@ -327,7 +327,10 @@ def inject_logo():
     primary_color = SitePrimaryColor.query.first()
     primary_color = primary_color.color
     landing_image = LandingImage.query.first()
-    landing_image = landing_image.file_path
+    if landing_image is None:
+        landing_image = 'None'
+    else:
+        landing_image = landing_image.file_path
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
