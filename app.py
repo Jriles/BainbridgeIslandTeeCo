@@ -259,7 +259,7 @@ def get_designs_for_product(id):
     return ProductDesign.query.filter_by(product_id=id)
 
 #get environment vars in production
-@app.cli.command("create_envs")
+@app.cli.command("get_envs")
 def get_envs():
     app.config['ADMIN_CODE'] = str(os.environ['ADMIN_CODE'])
 
