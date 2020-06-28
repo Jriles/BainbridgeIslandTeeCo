@@ -74,7 +74,7 @@ app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
 
 app.config['SESSION_TYPE'] = 'redis'
-app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
 app.config["USER_UNAUTHORIZED_ENDPOINT"] = 'login'
@@ -88,7 +88,7 @@ app.config['MAIL_PORT'] = 587
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
-admin_code = os.environ['ADMIN_CODE']
+admin_code = str(os.environ['ADMIN_CODE'])
 # email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
