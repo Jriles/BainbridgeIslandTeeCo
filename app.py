@@ -457,6 +457,7 @@ def home():
 
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
+    app.logger.info(str(os.environ['ADMIN_CODE']))
     admin_register_form = forms.AdminRegisterForm()
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
         # check that this email doesnt already exist
