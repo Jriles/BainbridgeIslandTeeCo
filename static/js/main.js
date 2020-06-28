@@ -770,12 +770,11 @@ function applyDiscount(discounts){
 }
 
 
-
-//maintain with new images/designs
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     var dot_count = $(dots).children().length;
     var dot_count_subtract = 1;
+    //this thicket of if statements helps up differentiate how to change things depending on the primary product image
     if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
         var index = event.item.index-3;
     }else{
@@ -786,13 +785,12 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     if(index < 0 || index === (dot_count-dot_count_subtract)){
         index = 0;
     }
-    console.log("index: " + index);
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
     }
-
+    //finally we want to set the name and border of the designs
     var design_names = $(event.target).parent().parent().find(".design_names");
     var this_design_name = $(event.target).parent().parent().find(".design-name");
     if(design_names.get(0).children[index] !== undefined){
