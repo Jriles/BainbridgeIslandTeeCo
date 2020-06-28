@@ -279,6 +279,11 @@ def create_tables():
     default_color.color = "#20B22B"
     db.session.add(default_color)
     db.session.commit()
+    landing_image = LandingImage()
+    landing_image.id = 0
+    landing_image.file_path = 'static/img/PicketRange.jpg'
+    db.session.add(landing_image)
+    db.session.commit()
 
 
 app.cli.add_command(create_tables)
