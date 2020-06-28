@@ -46,8 +46,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="1035" column="54" lean-forward="true" selection-start-line="1035" selection-start-column="54" selection-end-line="1035" selection-end-column="54" />
+            <state relative-caret-position="169">
+              <caret line="984" column="19" selection-start-line="984" selection-start-column="9" selection-end-line="984" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -133,7 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ready</find>
       <find>order_num</find>
       <find>.ready</find>
       <find>edit</find>
@@ -149,7 +148,6 @@
       <find>landing-button-1</find>
       <find>maint</find>
       <find>context_po</find>
-      <find>scroll</find>
       <find>+ &quot;</find>
       <find>+ primar</find>
       <find>landing-button</find>
@@ -163,6 +161,8 @@
       <find>.getA</find>
       <find>Array</find>
       <find>button_index</find>
+      <find>scroll</find>
+      <find>scrollDown</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -754,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="1035" column="54" lean-forward="true" selection-start-line="1035" selection-start-column="54" selection-end-line="1035" selection-end-column="54" />
+        <state relative-caret-position="169">
+          <caret line="984" column="19" selection-start-line="984" selection-start-column="9" selection-end-line="984" selection-end-column="19" />
         </state>
       </provider>
     </entry>

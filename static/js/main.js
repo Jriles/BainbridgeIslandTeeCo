@@ -985,7 +985,7 @@ function browse(){
 function scrollDown(){
     //first we want to get all the navbar product links
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
-    if(document.getElementById("primary-product-image" + String(product_index-1)) !== null){
+    if(document.getElementById("product" + String(product_index-1)) !== null){
         var relevant_product_top_dist = document.getElementById("primary-product-image" + String(product_index-1)).getBoundingClientRect().top;
         //relevant_product.scrollIntoView();
         var offset = 130;
@@ -1030,18 +1030,11 @@ function goToSlide(button){
     var button_index = nodes.indexOf( button );
     $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
     //highlight this icon in green
-    //console.log("called go to slide");
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
     design_buttons.forEach(function(design_icon_button) {
         design_icon_button.style.borderStyle = "none";
     });
-    //console.log("button border style before setting: " + button.style.border);
-    //console.log("primary color: " + primary_color);
-    //console.log(button);
     button.style.border = ("2px solid " + primary_color);
-    //console.log(button);
-    //console.log("this buttons new border style: " + button.style.border);
-    //console.log(button_index);
     //this will need to be maintained
     //if we are working with t-shirts or bags
     //set the design description-use this when we add to cart
@@ -1049,8 +1042,6 @@ function goToSlide(button){
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
-    //
-    //console.log("finished executing go to slide");
 }
 
 function showThisOrderItems(button){
