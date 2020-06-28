@@ -326,10 +326,12 @@ def inject_logo():
         path = last_item.file_path
     primary_color = SitePrimaryColor.query.first()
     primary_color = primary_color.color
-    app.logger.info(primary_color)
+    landing_image = LandingImage.query.first()
+    landing_image = landing_image.file_path
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
-                primary_color=primary_color)
+                primary_color=primary_color,
+                landing_image=landing_image)
 
 
 def allowed_file(filename):
