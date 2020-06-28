@@ -1028,7 +1028,7 @@ function goToSlide(button){
     //highlight this icon in green
     console.log("called go to slide");
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
-    design_buttons.forEach(function(arrayElement) {
+    design_buttons.forEach(function(design_icon_button) {
         design_icon_button.style.borderStyle = "none";
     });
     console.log("button border style before setting: " + button.style.border);
