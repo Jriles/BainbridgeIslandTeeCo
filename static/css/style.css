@@ -458,11 +458,6 @@ a {
 	display: none
 }
 
-.header_area .navbar .nav .nav-link,
-.header_area .navbar .nav .nav-item.active .nav-link {
-	color: #20B22B !important;
-}
-
 .header_area .navbar .nav .nav-item.submenu {
 	position: relative
 }
@@ -530,7 +525,7 @@ a {
 	border-bottom: none
 }
 
-.header_area .navbar .nav .nav-item.submenu ul .nav-link {
+.header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
 	background: #20B22B;
 	color: #fff
 }
