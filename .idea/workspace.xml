@@ -46,8 +46,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="988" column="86" selection-start-line="988" selection-start-column="86" selection-end-line="988" selection-end-column="86" />
+            <state relative-caret-position="169">
+              <caret line="780" column="38" selection-start-line="780" selection-start-column="38" selection-end-line="780" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -154,7 +154,6 @@
       <find>nav-link:hover</find>
       <find>nav-item:hover</find>
       <find>button</find>
-      <find>goTo</find>
       <find>button:h</find>
       <find>Mobi</find>
       <find>&quot;/&lt;</find>
@@ -163,6 +162,7 @@
       <find>button_index</find>
       <find>scroll</find>
       <find>scrollDown</find>
+      <find>goTo</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -678,18 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/cart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#nav#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#section#1;n#nav#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#section#1;n#nav#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -738,6 +726,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#li#0;n#ul#0;n#section#1;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#section#1;n#nav#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -754,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="988" column="86" selection-start-line="988" selection-start-column="86" selection-end-line="988" selection-end-column="86" />
+        <state relative-caret-position="169">
+          <caret line="780" column="38" selection-start-line="780" selection-start-column="38" selection-end-line="780" selection-end-column="38" />
         </state>
       </provider>
     </entry>

@@ -775,8 +775,11 @@ function applyDiscount(discounts){
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     var dot_count = $(dots).children().length;
-    var index = event.item.index-3;
-
+    if($(event.target).closest(".product_image_area").find(".primary-image") !== null){
+        var index = event.item.index-3;
+    }else{
+        var index = event.item.index-2;
+    }
     if(index < 0 || index === (dot_count-1)){
         index = 0;
     }
@@ -1028,7 +1031,12 @@ function goToSlide(button){
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
     var button_index = nodes.indexOf( button );
-    $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
+    var primary_image_exists = false;
+    if($(button).closest(".product_image_area").find(".primary-image") !== null){
+        $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
+    }else{
+        $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
+    }
     //highlight this icon in green
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
     design_buttons.forEach(function(design_icon_button) {
