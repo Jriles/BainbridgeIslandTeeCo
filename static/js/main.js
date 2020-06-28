@@ -1027,18 +1027,15 @@ function mobileCheck(){
 function goToSlide(button){
     //highlight this icon in green
     console.log("called go to slide");
-    var design_buttons = button.parentElement.children;
-    console.log("design_buttons.length: " + design_buttons.length);
-    for(i = 0; i < design_buttons.length;i++){
-        console.log(design_buttons[i].style.borderStyle);
-        design_buttons[i].style.borderStyle  = "none";
-        console.log(design_buttons[i].style.borderStyle);
-    }
+    var design_buttons = Array.prototype.slice.call(button.parentElement.children);
+    design_buttons.forEach(function(arrayElement) {
+        design_icon_button.style.borderStyle = "none";
+    });
     console.log("button border style before setting: " + button.style.border);
     console.log("primary color: " + primary_color);
     console.log(button);
     button.style.border = ("2px solid " + primary_color);
-    console.log(button);
+    console.log(button)
     console.log("this buttons new border style: " + button.style.border);
     var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
     var nodes = Array.prototype.slice.call( button.parentElement.children );
