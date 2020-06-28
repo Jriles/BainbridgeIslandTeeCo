@@ -1138,7 +1138,7 @@ left:0
 	color:#fff;
 	vertical-align:middle
 }
-.card-product__imgOverlay li button:hover {
+.card-product__imgOverlay li {
 	background:#20B22B
 }
 .card-product__imgOverlay li:not(:last-child) {
@@ -1420,14 +1420,7 @@ left:0
 	pointer-events: auto;
 }
 
-.button-coupon:hover{
-    color: #20B22B !important;
-}
 
-#landing-button-1:hover{
-    color: #20B22B !important;
-    background-color: white;
-}
 .button-paypal {
 	width:100%;
 	padding:8px 30px
@@ -1462,11 +1455,7 @@ left:0
 	padding:12px 40px;
 	border-radius:30px
 }
-.button:hover {
-	border-color:#20B22B;
-	background:transparent;
-	color:#222
-}
+
 .button-register {
 	font-size:14px;
 	border:0;
@@ -3480,7 +3469,7 @@ left:0
 .login_box_area .login_box_img .hover .primary-btn:hover:before {
 	left:260px
 }
-.login_box_area .login_box_img .button:hover {
+.login_box_area .login_box_img {
 	background:#c5322d !important;
 	color:#fff !important;
 	border-color:#20B22B !important
@@ -4093,7 +4082,7 @@ left:0
 	-o-transition:all 0.3s ease 0s;
 	transition:all 0.3s ease 0s
 }
-.product_count button:hover {
+.product_count {
 	color:#222
 }
 .product_count .increase {
