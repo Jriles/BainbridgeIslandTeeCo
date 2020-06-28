@@ -72,6 +72,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
+app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
@@ -260,7 +261,6 @@ def get_designs_for_product(id):
 #get environment vars in production
 @app.cli.command("create_envs")
 def get_envs():
-    app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
     app.config['ADMIN_CODE'] = str(os.environ['ADMIN_CODE'])
 
 app.cli.add_command(get_envs)
