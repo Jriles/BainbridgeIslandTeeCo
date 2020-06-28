@@ -1032,7 +1032,8 @@ function goToSlide(button){
     var nodes = Array.prototype.slice.call( button.parentElement.children );
     var button_index = nodes.indexOf( button );
     var primary_image_exists = false;
-    if($(button).closest(".product_image_area").find(".primary-image") !== null){
+    console.log($(button).closest(".product_image_area").find(".primary-image"));
+    if($(button).closest(".product_image_area").find(".primary-image") !== undefined){
         $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
     }else{
         $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
