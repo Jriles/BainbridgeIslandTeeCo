@@ -799,7 +799,7 @@ def change_landing_image():
             filename = secure_filename(image.filename)
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
-            image = LandingImage()
+            image = LandingImage.query.first()
             image.file_path = "/static/img/" + filename
             db.session.add(image)
             db.session.commit()
