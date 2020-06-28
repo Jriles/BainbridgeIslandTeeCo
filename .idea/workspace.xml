@@ -41,20 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="1036" column="76" selection-start-line="1036" selection-start-column="76" selection-end-line="1036" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="76" column="13" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="13" />
+            <state relative-caret-position="185">
+              <caret line="1037" column="51" lean-forward="true" selection-start-line="1037" selection-start-column="51" selection-end-line="1037" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -110,11 +101,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="459" lean-forward="true" selection-start-line="459" selection-end-line="459" />
+            <state relative-caret-position="17">
+              <caret line="414" column="1" selection-start-line="414" selection-start-column="1" selection-end-line="414" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-278">
+              <caret line="2" column="44966" selection-start-line="2" selection-start-column="44964" selection-end-line="2" selection-end-column="44966" />
             </state>
           </provider>
         </entry>
@@ -154,13 +154,13 @@
       <find>scroll</find>
       <find>+ &quot;</find>
       <find>+ primar</find>
-      <find>goTo</find>
       <find>landing-button</find>
       <find>nav-link:hover</find>
       <find>nav-item:hover</find>
-      <find>button:h</find>
       <find>button</find>
       <find>&quot;/&lt;</find>
+      <find>goTo</find>
+      <find>button:h</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -236,13 +236,13 @@
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
         <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/templates/aroma/cart.html" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/aroma/admin.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changecolor.html" />
         <option value="$PROJECT_DIR$/templates/aroma/base.html" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
       </list>
     </option>
   </component>
@@ -630,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="2" column="44966" selection-start-line="2" selection-start-column="44964" selection-end-line="2" selection-end-column="44966" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-orders.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -709,13 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="459" lean-forward="true" selection-start-line="459" selection-end-line="459" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
@@ -752,8 +738,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="1036" column="76" selection-start-line="1036" selection-start-column="76" selection-end-line="1036" selection-end-column="76" />
+        <state relative-caret-position="185">
+          <caret line="1037" column="51" lean-forward="true" selection-start-line="1037" selection-start-column="51" selection-end-line="1037" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-278">
+          <caret line="2" column="44966" selection-start-line="2" selection-start-column="44964" selection-end-line="2" selection-end-column="44966" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="414" column="1" selection-start-line="414" selection-start-column="1" selection-end-line="414" selection-end-column="1" />
         </state>
       </provider>
     </entry>
