@@ -786,23 +786,7 @@ def change_color():
         flash("Successfully changed primary color.")
     return render_template("/aroma/changecolor.html", color_form=color_form)
 
-@app.route("/change-landing-image", methods=('GET', 'POST'))
-def change_logo_view():
-    landing_form = forms.ChangeLandingImage()
-    if landing_form.new_landing_image.data is not None and landing_form.validate():
-        image = request.files["new_landing_image"]
-        if 'new_landing_image' not in request.files:
-            return redirect(request.url)
-        if image and allowed_file(image.filename):
-            filename = secure_filename(image.filename)
-            print(filename)
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            image.save(img_path)
-            image = LandingImage()
-            image.file_path = "/static/img/" + filename
-            db.session.add(image)
-            db.session.commit()
-    return render_template('/aroma/changelandingimage.html', landing_image_form=landing_form)
+
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
