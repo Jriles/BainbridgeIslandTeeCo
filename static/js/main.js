@@ -775,19 +775,17 @@ function applyDiscount(discounts){
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     var dot_count = $(dots).children().length;
+    var dot_count_subtract = 1;
     if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
         var index = event.item.index-3;
-            if(index === (dot_count-1)){
-                index = 0;
-            }
     }else{
         var index = event.item.index-2;
-    }
-
-    if(index < 0){
-        index = 0;
+        dot_count_subtract = 0;
     }
     console.log("index: " + index);
+    if(index < 0 || index === (dot_count-dot_count_subtract)){
+        index = 0;
+    }
     console.log("index: " + index);
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
