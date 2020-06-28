@@ -447,6 +447,7 @@ def paymentsuccess():
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
+    app.logger.info("ADMIN_CODE: " + str(os.environ['ADMIN_CODE']))
     # socketio.emit("message", "data")
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
