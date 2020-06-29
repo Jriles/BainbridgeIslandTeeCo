@@ -899,7 +899,7 @@ def change_site_favicon():
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
             image = TabIcon.query.first()
-            image.file_path = "/static/img/" + filename
+            image.icon_path = "/static/img/" + filename
             db.session.add(image)
             db.session.commit()
             flash("Successfully uploaded new tab icon.")
