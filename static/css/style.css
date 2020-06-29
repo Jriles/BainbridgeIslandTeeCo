@@ -4785,7 +4785,7 @@ li .product_count{
 }
 
 .admin-card-width{
-    max-width: unset;
+    width: 100%;
 }
 
 .product_count label{
