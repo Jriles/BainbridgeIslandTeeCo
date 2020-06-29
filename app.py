@@ -264,7 +264,7 @@ class TabTitle(db.Model):
 class TabIcon(db.Model):
     __tablename__ = "Favicons"
     id = db.Column(db.Integer(), primary_key=True)
-    icon_path = db.Column(db.String())
+    icon = db.Column(db.String())
 
 class TermsAndConditions(db.Model):
     __tablename__ = "Terms"
@@ -309,7 +309,7 @@ def create_tables():
     db.session.commit()
     site_icon = TabIcon()
     site_icon.id = 0
-    site_icon.icon_path = "/static/img/favicon.ico"
+    site_icon.icon = "/static/img/favicon.ico"
     db.session.add(site_icon)
     db.session.commit()
     site_title = TabTitle()
@@ -379,7 +379,7 @@ def inject_logo():
     site_title = TabTitle.query.first()
     site_title = site_title.title_text
     site_icon = TabIcon.query.first()
-    site_icon = site_icon.icon_path
+    site_icon = site_icon.icon
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
@@ -899,7 +899,7 @@ def change_site_favicon():
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
             image = TabIcon.query.first()
-            image.icon_path = "/static/img/" + filename
+            image.icon = filename
             db.session.add(image)
             db.session.commit()
             flash("Successfully uploaded new tab icon.")
@@ -924,6 +924,15 @@ def landing_details_area():
 @app.route("/change-site-title-details", methods=('GET', 'POST'))
 def tab_title_details_view():
     return render_template("/aroma/titlesummary.html")
+
+from flask import send_from_directory
+
+@app.route('/favicon.ico')
+def favicon():
+    favicon_file_name = TabIcon.query.first()
+    favicon_file_name = favicon_file_name.icon_name
+    app.logger.info("favicon file name: " + str(favicon_file_name))
+    return send_from_directory(os.path.join(app.root_path, 'static'), favicon_file_name)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
