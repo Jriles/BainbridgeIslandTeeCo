@@ -376,7 +376,7 @@ def inject_logo():
         landing_image = landing_image.file_path
     landing_text = LandingText.query.first()
     landing_text = landing_text.text
-    site_title = TabTitle.query.firsy()
+    site_title = TabTitle.query.first()
     site_title = site_title.title_text
     site_icon = TabIcon.query.first()
     site_icon = site_icon.icon_path
