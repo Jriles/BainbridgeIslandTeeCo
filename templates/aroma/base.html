@@ -34,7 +34,7 @@
               	    <li {% if product.name in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/{{product.product_order_num}}">{{product.name}}</a></li>
                 {% endfor %}
                 {% if current_user.is_authenticated == True %}
-                    <li class="nav-item">
+                    <li class="nav-link">
                         <a class="nav-item" href="/logout"><button class="btn btn-danger">Logout</button></a>
                     </li>
                 {% endif %}
