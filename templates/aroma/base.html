@@ -38,6 +38,11 @@
               <a class="nav-item" href="/mycart">
                 <li class="nav-item" id="shopping-cart-list-item"><button><i style="font-size: 25px;" class="fas fa-shopping-cart"></i><span style="background-color: {{primary_color}};" id="cart-count" class="nav-shop__circle">0</span></button> </li>
               </a>
+                {% if current_user is not None %}
+                <a class="nav-item" href="/logout">
+                    <button class="btn btn-danger">Logout</button>
+                </a>
+                {% endif %}
             </ul>
           </div>
         </div>
