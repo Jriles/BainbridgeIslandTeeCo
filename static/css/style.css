@@ -366,7 +366,7 @@ a {
 
 .header-container{
     display: block;
-    height: 150px;
+    height: 70px;
 }
 
 .admin-title{
@@ -4777,6 +4777,10 @@ li .product_count{
 .account-form{
     width: 90%;
     left: 5%;
+}
+
+.header-container{
+    height: 150px;
 }
 
 .options-menu-item .product_count{
