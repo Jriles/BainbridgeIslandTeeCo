@@ -813,6 +813,7 @@ def change_landing_image():
             image.file_path = "/static/img/" + filename
             db.session.add(image)
             db.session.commit()
+            flash("Successfully uploaded new landing image.")
     return render_template('/aroma/changelandingimage.html', landing_image_form=landing_form)
 
 def redirect_url(default='index'):
