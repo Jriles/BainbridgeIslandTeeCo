@@ -4775,7 +4775,7 @@ li .product_count{
   /* put your css styles in here */
 
 ..product-options-area{
-    width: 50%;
+    width: 50% !important;
 }
 .account-form{
     width: 90%;
