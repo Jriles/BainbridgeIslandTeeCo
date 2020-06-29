@@ -379,7 +379,7 @@ def inject_logo():
     site_title = TabTitle.query.first()
     site_title = site_title.title_text
     site_icon = TabIcon.query.first()
-    site_icon = site_icon.icon
+    site_icon = "/static/img/" + str(site_icon.icon)
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
