@@ -880,7 +880,7 @@ def change_landing_text():
 def change_site_title():
     title_form = forms.ChangeSiteTitle()
     if title_form.validate_on_submit():
-        title = LandingText.query.first()
+        title = TabTitle.query.first()
         title.title_text = title_form.new_site_title.data
         db.session.add(title)
         db.session.commit()
