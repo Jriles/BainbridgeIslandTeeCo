@@ -317,6 +317,11 @@ def create_tables():
     site_title.title_text = "Bainbridge Island Tee Co"
     db.session.add(site_title)
     db.session.commit()
+    terms = TermsAndConditions()
+    terms.id = 0
+    terms.terms = "Terms and conditions here."
+    db.session.add(terms)
+    db.session.commit()
 
 
 app.cli.add_command(create_tables)
@@ -737,7 +742,9 @@ def thecart():
 
 @app.route("/terms-and-conditions")
 def showtermspage():
-    return render_template('/aroma/terms.html')
+    terms_and_conds = TermsAndConditions.query.first()
+    terms_and_conds = terms_and_conds.terms
+    return render_template('/aroma/terms.html', terms=terms_and_conds)
 
 
 @app.route("/logout")
