@@ -821,7 +821,7 @@ def change_landing_image():
     return render_template('/aroma/changelandingimage.html', landing_image_form=landing_form)
 
 @app.route("/change-landing-text", methods=('GET', 'POST'))
-def change_color():
+def change_landing_text():
     text_form = forms.ChangeLandingText()
     if text_form.validate_on_submit():
         text = LandingText.query.first()
