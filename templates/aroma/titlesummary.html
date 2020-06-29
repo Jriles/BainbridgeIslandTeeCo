@@ -1,0 +1,37 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="admin-container">
+    <h1 class="admin-title">Tab Title Details</h1>
+    <div class="card-deck">
+        <a href="/change-tab-title">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-image"></i> Change Website/Tab Title</h5>
+                <p class="card-text">Here you can change the tab title of your website.</p>
+              </div>
+            </div>
+        </a>
+    </div>
+    <div class="card-deck">
+        <a href="/change-tab-icon">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-image"></i> Change Website/Tab Icon</h5>
+                <p class="card-text">Here you can change the site tab/title icon.</p>
+              </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

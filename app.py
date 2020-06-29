@@ -251,6 +251,11 @@ class LandingImage(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     file_path = db.Column(db.String())
 
+class LandingText(db.Model):
+    __tablename__ = "LandingTexts"
+    id = db.Column(db.Integer(), primary_key=True)
+    text = db.Column(db.String())
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -283,7 +288,6 @@ def create_tables():
     db.session.add(landing_image)
     db.session.commit()
     #get env variables
-    get_envs()
 
 
 app.cli.add_command(create_tables)
@@ -815,6 +819,27 @@ def change_landing_image():
             db.session.commit()
             flash("Successfully uploaded new landing image.")
     return render_template('/aroma/changelandingimage.html', landing_image_form=landing_form)
+
+@app.route("/change-landing-text", methods=('GET', 'POST'))
+def change_color():
+    text_form = forms.ChangeLandingText()
+    if text_form.validate_on_submit():
+        text = LandingText.query.first()
+        text.text = text_form.new_landing_text.data
+        db.session.add(text)
+        db.session.commit()
+        flash("Successfully changed landing text.")
+    return render_template("/aroma/changelandingtext.html", text_form=text_form)
+
+
+
+@app.route("/change-landing-details", methods=('GET', 'POST'))
+def landing_details_area():
+    return render_template("/aroma/landingsummary.html")
+
+@app.route("/change-site-title-details", methods=('GET', 'POST'))
+def tab_title_details_view():
+    return render_template("/aroma/titlesummary.html")
 
 def redirect_url(default='index'):
     return request.args.get('next') or \

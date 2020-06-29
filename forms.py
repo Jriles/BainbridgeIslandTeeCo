@@ -78,3 +78,15 @@ class ChangePrimaryColor(FlaskForm):
 
 class ChangeLandingImage(FlaskForm):
     new_landing_image = FileField('New Landing Image')
+
+class ChangeSiteFavicon(FlaskForm):
+    new_favicon = FileField('New Favicon')
+
+class ChangeSiteTitle(FlaskForm):
+    new_site_title = StringField('New Website Title', validators=[validators.DataRequired()])
+
+class ChangeLandingText(FlaskForm):
+    new_landing_text = StringField('New Landing Text', validators=[validators.DataRequired()])
+
+class ChangeTermsConditions(FlaskForm):
+    new_terms = StringField('New Terms and Conditions', validators=[validators.DataRequired()])
