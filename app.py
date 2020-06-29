@@ -287,7 +287,11 @@ def create_tables():
     landing_image.file_path = '/static/img/PicketRange.jpg'
     db.session.add(landing_image)
     db.session.commit()
-    #get env variables
+    landing_text = LandingText()
+    landing_text.id = 0
+    landing_text.text = "Welcome to the store, feel free to check out our selection!"
+    db.session.add(landing_text)
+    db.session.commit()
 
 
 app.cli.add_command(create_tables)
@@ -340,10 +344,13 @@ def inject_logo():
         landing_image = 'None'
     else:
         landing_image = landing_image.file_path
+    landing_text = LandingText.query.first()
+    landing_text = landing_text.text
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
-                landing_image=landing_image)
+                landing_image=landing_image,
+                landing_text=landing_text)
 
 
 def allowed_file(filename):
