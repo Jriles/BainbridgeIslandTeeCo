@@ -4,7 +4,7 @@
     <main class="site-main">
     <!--================ Hero banner start =================-->
     <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
-      <div class="hero-image" {% if landing_image != 'None' %} style="background-image: url({{landing_image}});"{% endif %}>
+      <div class="hero-image" {% if landing_image != 'None' %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{landing_image}});"{% endif %}>
         <div class="hero-text">
             <h3 style="color:white;" id="call-to-action">We provide high quality Bainbridge themed apparel on the Island, let us know what you think!</h3>
             <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px; background-color: {{primary_color}}; border-color: {{primary_color}};">Browse Our Selection</button>
