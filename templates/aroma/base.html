@@ -29,11 +29,14 @@
             <span class="icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul style="position: relative; right: 30px;" class="nav navbar-nav menu_nav ml-auto mr-auto" id="nav-list">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto" id="nav-list">
                 {% for product in nav_products %}
               	    <li {% if product.name in request.url %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a class="nav-link" href="/{{product.product_order_num}}">{{product.name}}</a></li>
                 {% endfor %}
                 {% if current_user.is_authenticated == True %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin"><button class="btn btn-danger">Admin</button></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout"><button class="btn btn-danger">Logout</button></a>
                     </li>
