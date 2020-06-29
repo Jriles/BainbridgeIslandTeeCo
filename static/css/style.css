@@ -4774,6 +4774,9 @@ li .product_count{
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
 
+..product-options-area{
+    width: 50%;
+}
 .account-form{
     width: 90%;
     left: 5%;
