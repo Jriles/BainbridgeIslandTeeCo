@@ -71,7 +71,7 @@ app = Flask(__name__)
 import logging
 from logging.handlers import RotatingFileHandler
 app.logger.removeHandler(default_handler)
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
 app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
@@ -256,6 +256,21 @@ class LandingText(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     text = db.Column(db.String())
 
+class TabTitle(db.Model):
+    __tablename__ = "TabTitles"
+    id = db.Column(db.Integer(), primary_key=True)
+    title_text = db.Column(db.String())
+
+class TabIcon(db.Model):
+    __tablename__ = "Favicons"
+    id = db.Column(db.Integer(), primary_key=True)
+    icon_path = db.Column(db.String())
+
+class TermsAndConditions(db.Model):
+    __tablename__ = "Terms"
+    id = db.Column(db.Integer(), primary_key=True)
+    terms = db.Column(db.String())
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -291,6 +306,16 @@ def create_tables():
     landing_text.id = 0
     landing_text.text = "Welcome to the store, feel free to check out our selection!"
     db.session.add(landing_text)
+    db.session.commit()
+    site_icon = TabIcon()
+    site_icon.id = 0
+    site_icon.icon_path = "img/favicon.ico"
+    db.session.add(site_icon)
+    db.session.commit()
+    site_title = TabTitle()
+    site_title.id = 0
+    site_title.title_text = "Bainbridge Island Tee Co"
+    db.session.add(site_title)
     db.session.commit()
 
 
@@ -346,11 +371,17 @@ def inject_logo():
         landing_image = landing_image.file_path
     landing_text = LandingText.query.first()
     landing_text = landing_text.text
+    site_title = TabTitle.query.firsy()
+    site_title = site_title.title_text
+    site_icon = TabIcon.query.first()
+    site_icon = site_icon.icon_path
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
                 landing_image=landing_image,
-                landing_text=landing_text)
+                landing_text=landing_text,
+                site_title=site_title,
+                site_icon=site_icon)
 
 
 def allowed_file(filename):
@@ -838,7 +869,46 @@ def change_landing_text():
         flash("Successfully changed landing text.")
     return render_template("/aroma/changelandingtext.html", text_form=text_form)
 
+@app.route("/change-tab-title", methods=('GET', 'POST'))
+def change_site_title():
+    title_form = forms.ChangeSiteTitle()
+    if title_form.validate_on_submit():
+        title = LandingText.query.first()
+        title.title_text = title_form.new_site_title.data
+        db.session.add(title)
+        db.session.commit()
+        flash("Successfully changed landing site title.")
+    return render_template("/aroma/changesitetitle.html", title_form=title_form)
 
+@app.route("/change-tab-icon", methods=('GET', 'POST'))
+def change_site_favicon():
+    favicon_form = forms.ChangeSiteFavicon()
+    if favicon_form.validate_on_submit():
+        image = request.files["new_favicon"]
+        if 'new_favicon' not in request.files:
+            return redirect(request.url)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            image = TabIcon.query.first()
+            image.file_path = "/static/img/" + filename
+            db.session.add(image)
+            db.session.commit()
+            flash("Successfully uploaded new tab icon.")
+    return render_template('/aroma/changesitefavicon.html', favicon_form=favicon_form)
+
+
+@app.route("/change-terms-and-conditions", methods=('GET', 'POST'))
+def change_terms():
+    terms_form = forms.ChangeTermsConditions()
+    if terms_form.validate_on_submit():
+        terms = TermsAndConditions.query.first()
+        terms.terms = terms_form.new_terms.data
+        db.session.add(terms)
+        db.session.commit()
+        flash("Successfully changed landing terms and conditions.")
+    return render_template("/aroma/changetermsandconditions.html", terms_form=terms_form)
 
 @app.route("/change-landing-details", methods=('GET', 'POST'))
 def landing_details_area():
