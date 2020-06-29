@@ -930,7 +930,7 @@ from flask import send_from_directory
 @app.route('/favicon.ico')
 def favicon():
     favicon_file_name = TabIcon.query.first()
-    favicon_file_name = favicon_file_name.icon_name
+    favicon_file_name = favicon_file_name.icon
     app.logger.info("favicon file name: " + str(favicon_file_name))
     return send_from_directory(os.path.join(app.root_path, 'static'), favicon_file_name)
 
