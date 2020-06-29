@@ -309,7 +309,7 @@ def create_tables():
     db.session.commit()
     site_icon = TabIcon()
     site_icon.id = 0
-    site_icon.icon_path = "img/favicon.ico"
+    site_icon.icon_path = "/static/img/favicon.ico"
     db.session.add(site_icon)
     db.session.commit()
     site_title = TabTitle()
