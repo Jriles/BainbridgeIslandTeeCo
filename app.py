@@ -472,12 +472,25 @@ def paymentsuccess():
         msg.attach(html)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
         # send an email to the customer
-        body = MIMEText("Thank you for your order!\n Your paypal transaction ID: " + paypalID)
+        logo = Logo.query.first()
+        if logo is None:
+            logo = "None"
+        else:
+            logo = logo.file_path
+        primary_color = SitePrimaryColor.query.first()
+        primary_color = primary_color.color
+        landing_image = LandingImage.query.first()
+        if landing_image is None:
+            landing_image = 'None'
+        else:
+            landing_image = landing_image.file_path
+        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, landing_image=landing_image)
+        html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
         msg["From"] = 'bainbridgeislandteeco@gmail.com'
         msg["To"] = request.form["Email"]
         msg["Subject"] = "Thank you!"
-        msg.attach(body)
+        msg.attach(html)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
         smtpObj.quit()
     except SMTPException:

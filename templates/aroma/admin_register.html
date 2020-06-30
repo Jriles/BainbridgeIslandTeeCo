@@ -3,6 +3,7 @@
 {% block content %}
 <form method="post" class="form account-form">
     <h2>Administrator Registration</h2>
+    <h5><a href="/login">Login</a></h5>
     {{ admin_register_form.csrf_token }}
     {{ admin_register_form.admin_code(class_ = 'form-control', placeholder = admin_register_form.admin_code.label.text, required = true) }}
     {{ admin_register_form.email(class_ = 'form-control', placeholder = admin_register_form.email.label.text, required = true) }}
