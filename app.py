@@ -475,6 +475,7 @@ def paymentsuccess():
         msg["Subject"] = "Thank you!"
         msg.attach(body)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
+        smtpObj.quit()
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
     display_products = get_display_products_in_order()
@@ -818,6 +819,7 @@ def email_all_customers():
                                 'attachment; filename="{}"'.format(Path(this_file_path).name))
                 msg.attach(part)
             smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
+            smtpObj.quit()
     return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
 
 @app.route("/<product>", methods=('GET', 'POST'))
