@@ -296,7 +296,7 @@ def create_tables():
     db.session.commit()
     landing_image = LandingImage()
     landing_image.id = 0
-    landing_image.file_path = '/static/img/PicketRange.jpg'
+    landing_image.file_path = "/static/img/PicketRange.jpg"
     db.session.add(landing_image)
     db.session.commit()
     landing_text = LandingText()
@@ -318,6 +318,11 @@ def create_tables():
     terms.id = 0
     terms.terms = "Terms and conditions here."
     db.session.add(terms)
+    db.session.commit()
+    default_logo = Logo()
+    default_logo.id = 0
+    default_logo.file_path = "/static/img/cart.jpg"
+    db.session.add(default_logo)
     db.session.commit()
 
 
@@ -784,7 +789,7 @@ def change_logo_view():
             print(filename)
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
-            logo = Logo()
+            logo = Logo.query.first()
             logo.file_path = "/static/img/" + filename
             db.session.add(logo)
             db.session.commit()
