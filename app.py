@@ -802,6 +802,7 @@ def email_all_customers():
         smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
         smtpObj.starttls()
         smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
+        app.logger.info("logged in")
         for customer in Email.query.all():
             body = email_all_customers_form.message.data
             msg = MIMEMultipart()
@@ -818,7 +819,7 @@ def email_all_customers():
                                 'attachment; filename="{}"'.format(Path(this_file_path).name))
                 msg.attach(part)
             smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
-            smtpObj.quit()
+        smtpObj.quit()
     return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
 
 @app.route("/<product>", methods=('GET', 'POST'))
