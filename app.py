@@ -757,6 +757,7 @@ def logout():
     return redirect('/')
 
 @app.route("/change-logo", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_logo_view():
     logo_form = forms.LogoForm()
     if logo_form.new_logo.data is not None and logo_form.validate():
@@ -775,6 +776,7 @@ def change_logo_view():
     return render_template('/aroma/changelogo.html', logo_form=logo_form)
 
 @app.route("/discount-form", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def make_discount():
     new_discount_form = forms.NewDiscount()
     if new_discount_form.name.data is not None and new_discount_form.validate():
@@ -792,6 +794,7 @@ def make_discount():
     return render_template('/aroma/makediscount.html', new_discount_form=new_discount_form)
 
 @app.route('/email-customers', methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def email_all_customers():
     email_all_customers_form = forms.EmailCustomers()
     if email_all_customers_form.subject.data is not None and email_all_customers_form.validate():
@@ -847,6 +850,7 @@ def product_view(product):
                            designs=designs)
 
 @app.route("/change-color", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_color():
     color_form = forms.ChangePrimaryColor()
     if color_form.validate_on_submit():
@@ -858,6 +862,7 @@ def change_color():
     return render_template("/aroma/changecolor.html", color_form=color_form)
 
 @app.route("/change-landing-image", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_landing_image():
     landing_form = forms.ChangeLandingImage()
     if landing_form.new_landing_image.data is not None and landing_form.validate():
@@ -876,6 +881,7 @@ def change_landing_image():
     return render_template('/aroma/changelandingimage.html', landing_image_form=landing_form)
 
 @app.route("/change-landing-text", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_landing_text():
     text_form = forms.ChangeLandingText()
     if text_form.validate_on_submit():
@@ -887,6 +893,7 @@ def change_landing_text():
     return render_template("/aroma/changelandingtext.html", text_form=text_form)
 
 @app.route("/change-tab-title", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_site_title():
     title_form = forms.ChangeSiteTitle()
     if title_form.validate_on_submit():
@@ -898,6 +905,7 @@ def change_site_title():
     return render_template("/aroma/changesitetitle.html", title_form=title_form)
 
 @app.route("/change-tab-icon", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_site_favicon():
     favicon_form = forms.ChangeSiteFavicon()
     if favicon_form.validate_on_submit():
@@ -917,6 +925,7 @@ def change_site_favicon():
 
 
 @app.route("/change-terms-and-conditions", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def change_terms():
     terms_form = forms.ChangeTermsConditions()
     if terms_form.validate_on_submit():
@@ -928,12 +937,16 @@ def change_terms():
     return render_template("/aroma/changetermsandconditions.html", terms_form=terms_form)
 
 @app.route("/change-landing-details", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def landing_details_area():
     return render_template("/aroma/landingsummary.html")
 
 @app.route("/change-site-title-details", methods=('GET', 'POST'))
+@roles_required(['Admin'])
 def tab_title_details_view():
     return render_template("/aroma/titlesummary.html")
+
+
 
 from flask import send_from_directory
 
