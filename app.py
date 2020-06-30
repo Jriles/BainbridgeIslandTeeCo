@@ -413,6 +413,11 @@ def paymentsuccess():
         db.session.add(this_email)
         db.session.commit()
     email = request.form['Email']
+    #add this email to our customer email pool
+    this_email = Email()
+    this_email.email = email
+    db.session.add(this_email)
+    db.session.commit()
     paypalID = request.form['PayPalTransactionID']
     orderDeets = paypalstuff.GetOrder.get_order(paypalstuff.GetOrder, paypalID)
     address = orderDeets.result.purchase_units[0].shipping.address
