@@ -168,6 +168,10 @@
                   .attr('name', "Address")
                   .attr('value', details.payer.address)
                   .appendTo('#cart-contents-form');
+                  $('<input />').attr('type', 'hidden')
+                  .attr('name', "Customer_Name")
+                  .attr('value', details.payer.name.given_name)
+                  .appendTo('#cart-contents-form');
                   //clear cart and return to myaccount
                   var cart = sessionStorage.getItem("Cart");
                   cart = "";

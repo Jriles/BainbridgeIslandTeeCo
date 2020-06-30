@@ -296,7 +296,7 @@ def create_tables():
     db.session.commit()
     landing_image = LandingImage()
     landing_image.id = 0
-    landing_image.file_path = "/static/img/PicketRange.jpg"
+    landing_image.file_path = "/static/img/colorado.jpg"
     db.session.add(landing_image)
     db.session.commit()
     landing_text = LandingText()
@@ -447,6 +447,7 @@ def paymentsuccess():
     descending = UserOrders.query.order_by(UserOrders.id.desc())
     most_recent_order = descending.first()
     app.logger.info("got through saving the order to the db")
+    order_total = 0
     for item in cart:
         new_item = OrderItem()
         new_item.order_id = most_recent_order.id
@@ -454,6 +455,7 @@ def paymentsuccess():
         new_item.product_size = item["Size"]
         new_item.price = item["Price"]
         new_item.quantity = int(item["Quantity"])
+        order_total += (float(new_item.price) * new_item.quantity)
         new_item.product_img_src = item["IMGSRC"]
         new_item.design = item["Design"]
         app.logger.info(new_item.__str__())
@@ -478,23 +480,15 @@ def paymentsuccess():
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
         # send an email to the customer
         logo = Logo.query.first()
-        if logo is None:
-            logo = "None"
-        else:
-            logo = logo.file_path
+        logo = logo.file_path
         primary_color = SitePrimaryColor.query.first()
         primary_color = primary_color.color
-        landing_image = LandingImage.query.first()
-        if landing_image is None:
-            landing_image = 'None'
-        else:
-            landing_image = landing_image.file_path
-        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, landing_image=landing_image)
+        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Name"], order_total=order_total)
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
         msg["From"] = 'bainbridgeislandteeco@gmail.com'
         msg["To"] = request.form["Email"]
-        msg["Subject"] = "Thank you!"
+        msg["Subject"] = "Thank you for your order!"
         msg.attach(html)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
         smtpObj.quit()
