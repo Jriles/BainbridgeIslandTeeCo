@@ -818,6 +818,7 @@ def email_all_customers():
                 part.add_header('Content-Disposition',
                                 'attachment; filename="{}"'.format(Path(this_file_path).name))
                 msg.attach(part)
+            app.logger.info("about to try to send email")
             app.logger.info(smtpObj.sendmail(msg["From"], msg["To"], msg.as_string()))
         smtpObj.quit()
     return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
