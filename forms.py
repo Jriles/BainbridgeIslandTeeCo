@@ -90,3 +90,12 @@ class ChangeLandingText(FlaskForm):
 
 class ChangeTermsConditions(FlaskForm):
     new_terms = StringField('New Terms and Conditions', validators=[validators.DataRequired()])
+
+class ForgotForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Submit New Password')

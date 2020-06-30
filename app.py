@@ -44,6 +44,8 @@ from email import encoders
 import hmac
 from flask.logging import default_handler
 from logging.config import dictConfig
+import jwt
+from time import time
 import logging
 
 #configure logging for production
@@ -956,6 +958,68 @@ def favicon():
     favicon_file_name = favicon_file_name.icon
     app.logger.info("favicon file name: " + str(favicon_file_name))
     return send_from_directory(os.path.join(app.root_path, 'static'), favicon_file_name)
+
+def get_user_token(email):
+    # we want to use our database to get an id for this user from their email, we then use this id to generate a token that is unique to that user.
+    return jwt.encode({'reset_password': email, 'exp': time() + 600}, app.config['SECRET_KEY'],
+                      algorithm='HS256').decode('utf-8')
+
+
+def verify_reset_password_token(token):
+    try:
+        id = jwt.decode(token, app.config['SECRET_KEY'],
+                        algorithms=['HS256'])['reset_password']
+    except:
+        return -1
+    return id
+
+@app.route('/forgot', methods=('GET', 'POST'))
+def forgot():
+    forgot_form = forms.ForgotForm()
+    if forgot_form.validate_on_submit():
+        email = str(forgot_form.email.data)
+        user_object = User.query.filter_by(id=forgot_form.email.email.data).first()
+        app.logger.info(user_object)
+        if user_object is None:
+            flash("Unable to find user with those details, please try again")
+            # return render_template('forms/login.html', form=form)
+            return redirect("/login")
+        else:
+            token = get_user_token(email)
+            smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
+            smtpObj.starttls()
+            smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
+            html_body = render_template('email/reset_password.html', token=token)
+            html = MIMEText(html_body, 'html')
+            msg = MIMEMultipart()
+            msg["From"] = sender
+            msg["To"] = email
+            msg["Subject"] = "Reset Password"
+            msg.attach(html)
+            smtpObj.sendmail(sender, msg["To"], msg.as_string())
+            smtpObj.quit()
+            flash("Successfully sent reset email to: " + str(email) + ".")
+            # except :
+    return render_template('/aroma/forgot.html', forgot_form=forgot_form)
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    user = verify_reset_password_token(token)
+    if user == -1:
+        return redirect("/")
+    else:
+        reset_form = forms.ResetPasswordForm()
+        if reset_form.validate_on_submit():
+            password = reset_form.password.data
+            h = hashlib.md5(password.encode())
+            hashvalue = h.hexdigest()
+            user_object = User.query.filter_by(email=user).first()
+            user_object.password = hashvalue
+            db.session.add(user_object)
+            db.session.commit()
+            login_user(User.query.filter_by(email=user).first())
+            return redirect("/admin")
+        return render_template('/aroma/reset_password.html', reset_form=reset_form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \

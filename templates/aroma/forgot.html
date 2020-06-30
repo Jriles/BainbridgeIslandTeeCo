@@ -12,13 +12,11 @@
 {% endif %}
 {% endwith %}
 <form method="post" class="form account-form">
-    <h2>Login</h2>
+    <h2>Reset Password</h2>
     <br>
-    <h5><a href="/admin-register">Admin Register</a></h5>
-    <h5><a href="/forgot">Forgot Password?</a></h5>
-    {{ login_form.csrf_token }}
-    {{ login_form.email(class_ = 'form-control', placeholder = login_form.email.label.text, required = true) }}
-    {{ login_form.password(class_ = 'form-control', placeholder = login_form.password.label.text, required = true) }}
+    <h5><a href="/login">Login</a></h5>
+    {{ forgot_form.csrf_token }}
+    {{ forgot_form.email(class_ = 'form-control', placeholder = forgot_form.email.label.text, required = true) }}
     <input type="submit" value="Login" class="btn btn-primary btn-lg btn-block">
 </form>
 {% endblock %}
