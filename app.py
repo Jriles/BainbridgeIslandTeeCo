@@ -455,7 +455,7 @@ def paymentsuccess():
         new_item.product_size = item["Size"]
         new_item.price = item["Price"]
         new_item.quantity = int(item["Quantity"])
-        order_total += (float(new_item.price) * new_item.quantity)
+        order_total += (float(new_item.price[1:]) * new_item.quantity)
         new_item.product_img_src = item["IMGSRC"]
         new_item.design = item["Design"]
         app.logger.info(new_item.__str__())
