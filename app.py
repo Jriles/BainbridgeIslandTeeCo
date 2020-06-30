@@ -1019,7 +1019,7 @@ def reset_password(token):
             db.session.commit()
             login_user(User.query.filter_by(email=user).first())
             return redirect("/admin")
-        return render_template('/aroma/reset_password.html', reset_form=reset_form)
+    return render_template('/aroma/reset_password.html', reset_form=reset_form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
