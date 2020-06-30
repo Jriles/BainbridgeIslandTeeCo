@@ -90,7 +90,7 @@ pathToDB = os.path.abspath("database/database.db")
 # email server
 smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
 smtpObj.starttls()
-print(smtpObj.login(sender, "rkadniupkausbhog"))
+print()
 print("logged in")
 
 db = SQLAlchemy(app)
@@ -456,6 +456,7 @@ def paymentsuccess():
     # want to confirmation to email given by paypal for everyone, including not users.
     # we also want to send an email to the business to let them know there is a new order
     try:
+        smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
         # send an email to the business
         html_body = render_template('email/new_order_email.html', cart=cart, paypalID=paypalID, email=email,
                                     address=address)
@@ -474,6 +475,7 @@ def paymentsuccess():
         msg["Subject"] = "Thank you!"
         msg.attach(body)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
+        smtpObj.close()
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
     display_products = get_display_products_in_order()
@@ -800,6 +802,7 @@ def email_all_customers():
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
             this_file_path = img_path
+        smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
         for customer in Email.query.all():
             body = email_all_customers_form.message.data
             msg = MIMEMultipart()
