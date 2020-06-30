@@ -87,11 +87,6 @@ app.config['MAIL_PORT'] = 587
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
-# email server
-smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
-smtpObj.starttls()
-print()
-print("logged in")
 
 db = SQLAlchemy(app)
 
@@ -456,6 +451,8 @@ def paymentsuccess():
     # want to confirmation to email given by paypal for everyone, including not users.
     # we also want to send an email to the business to let them know there is a new order
     try:
+        smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
+        smtpObj.starttls()
         smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
         # send an email to the business
         html_body = render_template('email/new_order_email.html', cart=cart, paypalID=paypalID, email=email,
@@ -802,6 +799,8 @@ def email_all_customers():
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(img_path)
             this_file_path = img_path
+        smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
+        smtpObj.starttls()
         smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
         for customer in Email.query.all():
             body = email_all_customers_form.message.data
