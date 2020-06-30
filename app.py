@@ -475,7 +475,6 @@ def paymentsuccess():
         msg["Subject"] = "Thank you!"
         msg.attach(body)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
-        smtpObj.close()
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
     display_products = get_display_products_in_order()

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +14,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="458" column="53" selection-start-line="458" selection-start-column="53" selection-end-line="458" selection-end-column="53" />
+            <state relative-caret-position="152">
+              <caret line="804" column="59" lean-forward="true" selection-start-line="804" selection-start-column="59" selection-end-line="804" selection-end-column="59" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -124,8 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;/&lt;</find>
-      <find>button</find>
       <find>&quot;/logo</find>
       <find>/logo</find>
       <find>/change</find>
@@ -154,6 +150,8 @@
       <find>smtpObj.login</find>
       <find>smtpObj</find>
       <find>smtpObj.send</find>
+      <find>.login</find>
+      <find>.send</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -390,7 +388,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15680292" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -777,8 +774,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="458" column="53" selection-start-line="458" selection-start-column="53" selection-end-line="458" selection-end-column="53" />
+        <state relative-caret-position="152">
+          <caret line="804" column="59" lean-forward="true" selection-start-line="804" selection-start-column="59" selection-end-line="804" selection-end-column="59" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
