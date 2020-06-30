@@ -978,7 +978,7 @@ def forgot():
     forgot_form = forms.ForgotForm()
     if forgot_form.validate_on_submit():
         email = str(forgot_form.email.data)
-        user_object = User.query.filter_by(id=forgot_form.email.email.data).first()
+        user_object = User.query.filter_by(id=forgot_form.email.data).first()
         app.logger.info(user_object)
         if user_object is None:
             flash("Unable to find user with those details, please try again")
