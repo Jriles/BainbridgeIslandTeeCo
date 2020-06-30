@@ -1,6 +1,7 @@
 import hashlib
 import sqlite3
 from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
 from subprocess import TimeoutExpired, check_output
 
 from flask import Flask, jsonify
@@ -484,10 +485,6 @@ def paymentsuccess():
         logo = logo.file_path
         primary_color = SitePrimaryColor.query.first()
         primary_color = primary_color.color
-        app.logger.info("logo: " + logo)
-        app.logger.info("primary_color: " + primary_color)
-        app.logger.info("customer name: " + request.form["Customer Name"])
-        app.logger.info("order_total: " + order_total)
         html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Name"], order_total=order_total)
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
@@ -495,6 +492,11 @@ def paymentsuccess():
         msg["To"] = request.form["Email"]
         msg["Subject"] = "Thank you for your order!"
         msg.attach(html)
+        image_stream = open('/static/img/' + logo)
+        msgImage = MIMEImage(image_stream.read())
+        image_stream.close()
+        msgImage.add_header('Content-ID', '<logo>')
+        msg.attach(msgImage)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
         smtpObj.quit()
     except SMTPException:
