@@ -7,18 +7,17 @@
     <h3>Shipping Address: {{address}}</h3>
     <h3>Paypal Transaction ID: {{paypalID}}</h3>
     <h3>Receipt</h3>
-    <ul>
+    <ul style="list-style-type: none;">
         {% for item in cart %}
             <li>
-                <h2>{{item.ProductName}}</h2>
-                <h4>Design: {{item.Design}}</h4>
-                <h4>Size: {{item.Size}}</h4>
-                <h4>Quantity: {{item.Quantity}}</h4>
-                <h4>Price: {{item.Price}}</h4>
+                <h6>{{item.ProductName}}</h6>
+                <p>Design: {{item.Design}}</p>
+                <p>Size: {{item.Size}}</p>
+                <p>Quantity: {{item.Quantity}}</p>
+                <p>Price: {{item.Price}}</p>
             </li>
         {% endfor %}
     </ul>
     <h3>Order Total: {{order_total}}</h3>
     <br>
-    <
 </div>
