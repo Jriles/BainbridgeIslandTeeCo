@@ -492,7 +492,7 @@ def paymentsuccess():
         msg["To"] = request.form["Email"]
         msg["Subject"] = "Thank you for your order!"
         msg.attach(html)
-        image_stream = open('/static/img/' + logo)
+        image_stream = open(logo)
         msgImage = MIMEImage(image_stream.read())
         image_stream.close()
         msgImage.add_header('Content-ID', '<logo>')
