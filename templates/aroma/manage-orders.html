@@ -29,7 +29,7 @@
                 <th class="customer-notes-column">Customer Order Notes</th>
                 <th class="internal-notes-column">Internal Order Notes</th>
                 <th class="shipping-status-column">Order Status</th>
-                <th class="">Delete Order</th>
+                <th class="shipping-status-column">Delete Order</th>
             </tr>
         </thead>
         {% for order in orders %}
@@ -80,7 +80,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="/delete-order"><button class="btn btn-danger">Delete</button></a>
+                        <a href="/delete-order/{{order[0]}}"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
             {% endif %}
@@ -98,6 +98,7 @@
                 <th class="customer-notes-column">Customer Order Notes</th>
                 <th class="internal-notes-column">Internal Order Notes</th>
                 <th class="shipping-status-column">Order Status</th>
+                <th class="shipping-status-column">Delete Order</th>
             </tr>
         </thead>
         {% for order in orders %}
@@ -148,7 +149,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="/delete-order"><button class="btn btn-danger">Delete</button></a>
+                        <a href="/delete-order/{{order[0]}}"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
             {% endif %}
@@ -166,6 +167,7 @@
                 <th class="customer-notes-column">Customer Order Notes</th>
                 <th class="internal-notes-column">Internal Order Notes</th>
                 <th class="shipping-status-column">Order Status</th>
+                <th class="shipping-status-column">Delete Order</th>
             </tr>
         </thead>
         {% for order in orders %}
@@ -216,7 +218,7 @@
                         </form>
                     </td>
                     <td>
-                        <a href="/delete-order"><button class="btn btn-danger">Delete</button></a>
+                        <a href="/delete-order/{{order[0]}}"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
             {% endif %}

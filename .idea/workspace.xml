@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/aroma/manage-orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/manage-orders.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="manage-orders.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-orders.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3689">
-              <caret line="217" column="20" selection-start-line="217" selection-start-column="20" selection-end-line="217" selection-end-column="20" />
+            <state relative-caret-position="1394">
+              <caret line="82" column="57" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -26,7 +25,7 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
+            <state relative-caret-position="308">
               <caret line="1058" column="40" lean-forward="true" selection-start-line="1058" selection-start-column="40" selection-end-line="1058" selection-end-column="40" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -142,8 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>admin-</find>
-      <find>header-container</find>
       <find>Landing Details</find>
       <find>Unit Price</find>
       <find>My Cart</find>
@@ -171,7 +168,9 @@
       <find>font-f</find>
       <find>MIMEI</find>
       <find>.order-header</find>
+      <find>product_order_index</find>
       <find>delete</find>
+      <find>shipping-status-column</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -825,7 +824,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
+        <state relative-caret-position="308">
           <caret line="1058" column="40" lean-forward="true" selection-start-line="1058" selection-start-column="40" selection-end-line="1058" selection-end-column="40" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
@@ -835,8 +834,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-orders.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3689">
-          <caret line="217" column="20" selection-start-line="217" selection-start-column="20" selection-end-line="217" selection-end-column="20" />
+        <state relative-caret-position="1394">
+          <caret line="82" column="57" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
         </state>
       </provider>
     </entry>
