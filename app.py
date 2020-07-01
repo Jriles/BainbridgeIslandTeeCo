@@ -498,7 +498,7 @@ def paymentsuccess():
         app.logger.info("logo dir: " + logo)
         full_path = os.path.join(local_dir, str(logo))
         app.logger.info(full_path)
-        image_stream = open(full_path, encoding="utf-8")
+        image_stream = open(full_path, mode='rb')
         msgImage = MIMEImage(image_stream.read())
         image_stream.close()
         msgImage.add_header('Content-ID', '<logo>')
