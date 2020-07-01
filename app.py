@@ -485,7 +485,7 @@ def paymentsuccess():
         logo = logo.file_path
         primary_color = SitePrimaryColor.query.first()
         primary_color = primary_color.color
-        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Name"], order_total=order_total)
+        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Name"], order_total="{:.2f}".format(order_total))
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
         msg["From"] = 'bainbridgeislandteeco@gmail.com'
