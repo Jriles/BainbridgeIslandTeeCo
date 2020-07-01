@@ -16,7 +16,8 @@
         <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin Page</button></a>
     </div>
     <h1 class="order-header">Orders</h1>
-    <h2>Waiting To Ship</h2>
+    <br>
+    <h3>Waiting To Ship</h3>
     <table class="table table-responsive">
         <thead class="thead-dark">
             <tr>
@@ -27,7 +28,8 @@
                 <th class="items-column">Order Items</th>
                 <th class="customer-notes-column">Customer Order Notes</th>
                 <th class="internal-notes-column">Internal Order Notes</th>
-                <th class="shipping-status-column">Shipping Status</th>
+                <th class="shipping-status-column">Order Status</th>
+                <th class="">Delete Order</th>
             </tr>
         </thead>
         {% for order in orders %}
@@ -77,11 +79,14 @@
                             <input type="submit" value="Submit Change" class="btn btn-primary internal-note-submit">
                         </form>
                     </td>
+                    <td>
+                        <a href="/delete-order"><button class="btn btn-danger">Delete</button></a>
+                    </td>
                 </tr>
             {% endif %}
         {% endfor %}
     </table>
-    <h2 class="order-header">Shipping</h2>
+    <h3 class="order-header">Shipping</h3>
     <table class="table table-responsive">
         <thead class="thead-dark">
             <tr>
@@ -92,7 +97,7 @@
                 <th class="items-column">Order Items</th>
                 <th class="customer-notes-column">Customer Order Notes</th>
                 <th class="internal-notes-column">Internal Order Notes</th>
-                <th class="shipping-status-column">Shipping Status</th>
+                <th class="shipping-status-column">Order Status</th>
             </tr>
         </thead>
         {% for order in orders %}
@@ -142,11 +147,14 @@
                             <input type="submit" value="Submit Change" class="btn btn-primary internal-note-submit">
                         </form>
                     </td>
+                    <td>
+                        <a href="/delete-order"><button class="btn btn-danger">Delete</button></a>
+                    </td>
                 </tr>
             {% endif %}
         {% endfor %}
     </table>
-    <h1 class="order-header">Delivered</h1>
+    <h3 class="order-header">Delivered</h3>
     <table class="table table-responsive">
         <thead class="thead-dark">
             <tr>
@@ -157,7 +165,7 @@
                 <th class="items-column">Order Items</th>
                 <th class="customer-notes-column">Customer Order Notes</th>
                 <th class="internal-notes-column">Internal Order Notes</th>
-                <th class="shipping-status-column">Shipping Status</th>
+                <th class="shipping-status-column">Order Status</th>
             </tr>
         </thead>
         {% for order in orders %}
@@ -206,6 +214,9 @@
                             {{ order_status_form.orderID(class_ = 'form-control', value = order[0]) }}
                             <input type="submit" value="Submit Change" class="btn btn-primary internal-note-submit">
                         </form>
+                    </td>
+                    <td>
+                        <a href="/delete-order"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
             {% endif %}

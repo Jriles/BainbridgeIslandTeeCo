@@ -1046,6 +1046,15 @@ def reset_password(token):
             return redirect("/admin")
     return render_template('/aroma/reset_password.html', reset_form=reset_form)
 
+@app.route("/delete-order/<order_id>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def delete_order(order_id):
+    order_to_delete = UserOrders.query.filter_by(id=order_id).first()
+    db.session.delete(order_to_delete)
+    db.session.commit()
+    flash("Deleted order successfully.")
+    return redirect('/manage-orders')
+
 def redirect_url(default='index'):
     return request.args.get('next') or \
            request.referrer or \
