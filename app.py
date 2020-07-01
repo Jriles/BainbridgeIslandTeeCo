@@ -493,6 +493,8 @@ def paymentsuccess():
         msg["Subject"] = "Thank you for your order!"
         msg.attach(html)
         local_dir = os.path.dirname(__file__)
+        app.logger.info("local dir: " + local_dir)
+        app.logger.info(logo.rsplit('/', 1)[-1])
         app.logger.info(os.path.join(local_dir, logo.rsplit('/', 1)[-1]))
         image_stream = open(os.path.join(local_dir, logo.rsplit('/', 1)[-1]))
         msgImage = MIMEImage(image_stream.read())
