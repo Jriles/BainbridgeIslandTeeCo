@@ -1,23 +1,26 @@
 <div style="font-family: georgia;">
     <img src="cid:logo" style="max-height: 50px; width: auto; margin-bottom: 50px; position: relative; left: 90%;">
     <h1>Thank you so much {{customer_name}}!</h1>
-    <p>We appreciate your business and your time! Below are some details pertaining to your order: </p>
+    <p>We appreciate your business and your time! Below are some details pertaining to your order.<br> Your order should be with you in less than a week.</p>
     <br>
     <h3>Order Details</h3>
     <p>Shipping Address: {{address}}</p>
     <p>Paypal Transaction ID: {{paypalID}}</p>
     <h3>Receipt</h3>
-    <ul style="list-style-type: none; padding-left: 0px;">
+    <ul style="list-style-type: none;">
         {% for item in cart %}
-            <li style="border: solid 1px black;">
+            <li style="padding-left: 0px;">
+                <hr style="background-color: {{primary_color}};">
                 <p>Name: {{item.ProductName}}</p>
                 <p>Design: {{item.Design}}</p>
                 <p>Size: {{item.Size}}</p>
                 <p>Quantity: {{item.Quantity}}</p>
                 <p>Price: {{item.Price}}</p>
+                <hr style="background-color: {{primary_color}};">
             </li>
         {% endfor %}
     </ul>
-    <h3>Order Total: {{order_total}}</h3>
+    <h3>Order Total: ${{order_total}}</h3>
     <br>
+    <p>Have a great rest of your day and thanks again!</p>
 </div>
