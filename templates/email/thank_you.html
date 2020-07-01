@@ -9,8 +9,11 @@
     <h3>Receipt</h3>
     <ul style="list-style-type: none; padding-left: 0px;">
         {% for item in cart %}
+        {% set item_loop = loop %}
             <li style="padding-left: 0px;">
+                {% if item_loop.index-1 == 0 %}
                 <hr style="background-color: {{primary_color}}; height: 1px; border: none;">
+                {% endif %}
                 <p>Name: {{item.ProductName}}</p>
                 <p>Design: {{item.Design}}</p>
                 <p>Size: {{item.Size}}</p>
