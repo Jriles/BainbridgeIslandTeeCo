@@ -494,6 +494,7 @@ def paymentsuccess():
         msg.attach(html)
         local_dir = os.path.dirname(os.path.realpath('__file__'))
         app.logger.info("local dir: " + local_dir)
+        logo = logo[1:]
         app.logger.info("logo dir: " + logo)
         full_path = os.path.join(local_dir, str(logo))
         app.logger.info(full_path)
