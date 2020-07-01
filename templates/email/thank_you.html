@@ -1,16 +1,16 @@
-<div style="font-family: perpetua;">
-    <img src="cid:logo" style="max-height: 50px; width: auto; margin-bottom: 100px; position: relative; left: 90%;">
-    <h1>Thank you so much {{customer_name}}!!!</h1>
+<div style="font-family: georgia;">
+    <img src="cid:logo" style="max-height: 50px; width: auto; margin-bottom: 50px; position: relative; left: 90%;">
+    <h1>Thank you so much {{customer_name}}!</h1>
     <p>We appreciate your business and your time! Below are some details pertaining to your order: </p>
     <br>
-    <h2>Order Details</h2>
-    <h3>Shipping Address: {{address}}</h3>
-    <h3>Paypal Transaction ID: {{paypalID}}</h3>
+    <h3>Order Details</h3>
+    <p>Shipping Address: {{address}}</p>
+    <p>Paypal Transaction ID: {{paypalID}}</p>
     <h3>Receipt</h3>
-    <ul style="list-style-type: none;">
+    <ul style="list-style-type: none; padding-left: 0px;">
         {% for item in cart %}
-            <li>
-                <h6>{{item.ProductName}}</h6>
+            <li style="border: solid 1px black;">
+                <p>Name: {{item.ProductName}}</p>
                 <p>Design: {{item.Design}}</p>
                 <p>Size: {{item.Size}}</p>
                 <p>Quantity: {{item.Quantity}}</p>
