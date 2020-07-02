@@ -45,12 +45,19 @@
                 {% endfor %}
                 {% if current_user.is_authenticated == True %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin</a>
+
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
                     </li>
                 {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{current_user.name}}'s Account</a>
+                    <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                        <a class="dropdown-item" href="/admin">Admin</a>
+                        <a class="dropdown-item" href="/admin-settings">Admin Settings</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
             </ul>
             <ul class="nav-shop">
               <a class="nav-item" href="/mycart">
