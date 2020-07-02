@@ -144,24 +144,23 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-# Define the UserRoles association table
-class UserRoles(db.Model):
-    __tablename__ = 'User_Roles'
-    id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email'))
-    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id'))
-
 class User(db.Model, UserMixin):
     __tablename__ = 'Users'
     # User Authentication fields
     email = db.Column(db.String(255), primary_key=True)
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
-    roles = db.relationship('Role', backref='Users')
+    roles = db.relationship('Role', backref='Users', passive_updates=True)
     active = True
     name = db.Column(db.String(255))
     id = db.Column(db.String(255))
 
+# Define the UserRoles association table
+class UserRoles(db.Model):
+    __tablename__ = 'User_Roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email', onupdate='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id'))
 
 class Role(db.Model):
     __tablename__ = 'Roles'
