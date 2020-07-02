@@ -154,7 +154,7 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', backref='Users', passive_updates=True, secondary='User_Roles')
     active = True
     name = db.Column(db.String(255))
-    id = db.Column(db.String(255), onupdate='CASCADE')
+    id = db.Column(db.String(255))
 
 
 class Role(db.Model):
