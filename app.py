@@ -151,7 +151,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), primary_key=True)
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
-    roles = db.relationship('Role', secondary='User_Roles')
+    roles = db.relationship('Role', cascade='all,update', backref='Users', secondary='User_Roles')
     active = True
     name = db.Column(db.String(255))
     id = db.Column(db.String(255))
@@ -167,8 +167,8 @@ class Role(db.Model):
 class UserRoles(db.Model):
     __tablename__ = 'User_Roles'
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE', onupdate='CASCADE'))
-    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE', onupdate='CASCADE'))
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE'))
 
 
 class Email(db.Model):
