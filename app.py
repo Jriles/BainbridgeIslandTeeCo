@@ -1118,6 +1118,32 @@ def delete_order(order_id):
     flash("Deleted order successfully.")
     return redirect('/manage-orders')
 
+@app.route("/admin-account-details", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def edit_admin_account_details():
+    edit_admin_settings = forms.EditAccountDetails()
+    if edit_admin_settings.validate_on_submit():
+        current_user_id = current_user.id
+        if edit_admin_settings.name.data != '':
+            current_user.name = edit_admin_settings.name.data
+            flash("Successfully changed name to " + current_user.name + ".")
+        if edit_admin_settings.email.data != '' and User.query.filter_by(id=edit_admin_settings.email.data).first() is None:
+            current_user.id = edit_admin_settings.email.data
+            current_user.email = edit_admin_settings.email.data
+            current_user_id = edit_admin_settings.email.data
+            flash("Successfully changed email to " + current_user.id + ".")
+        if edit_admin_settings.confirm_password.data != '':
+            h = hashlib.md5(edit_admin_settings.confirm_password.data.encode())
+            hashvalue = h.hexdigest()
+            current_user.password = hashvalue
+            flash("Successfully changed password.")
+        db.session.commit()
+        logout()
+        user = User.query.filter_by(id=current_user_id).first()
+        login_user(user)
+    return render_template("/aroma/admin-account-settings.html", form=edit_admin_settings)
+
+
 def redirect_url(default='index'):
     return request.args.get('next') or \
            request.referrer or \

@@ -102,3 +102,10 @@ class ResetPasswordForm(FlaskForm):
     confirm = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Submit New Password')
+
+class EditAccountDetails(FlaskForm):
+    name = StringField('Change Name', validators=[validators.Optional()])
+    email = EmailField('Change Email', validators=[validators.Optional()])
+    password = PasswordField('Change Password', validators=[validators.Optional()])
+    confirm = PasswordField(
+        'Repeat New Password', validators=[validators.Optional(), EqualTo('password')])

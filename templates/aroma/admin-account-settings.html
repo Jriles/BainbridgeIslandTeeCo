@@ -1,0 +1,24 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form method="post" class="form account-form">
+    <h2>Edit Your Account Details</h2>
+    <p>*All fields are optional, no need to fill out the whole form.</p>
+    {{ form.csrf_token }}
+    {{ form.email(class_ = 'form-control', placeholder = form.email.label.text, required = true) }}
+    {{ form.name(class_ = 'form-control', placeholder = form.name.label.text) }}
+    {{ form.password(class_ = 'form-control', placeholder = form.password.label.text, required = true) }}
+    {{ form.confirm(class_ = 'form-control', placeholder = form.confirm.label.text, required = true) }}
+    <input type="submit" value="Submit New Details" class="btn btn-primary btn-lg btn-block">
+</form>
+{% endblock %}
