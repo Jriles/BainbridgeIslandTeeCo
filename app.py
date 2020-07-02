@@ -148,13 +148,13 @@ def query_db(query, args=(), one=False):
 class User(db.Model, UserMixin):
     __tablename__ = 'Users'
     # User Authentication fields
-    email = db.Column(db.String(255), primary_key=True)
+    email = db.Column(db.String(255), primary_key=True, onupdate='CASCADE', ondelete='CASCADE')
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
     roles = db.relationship('Role', secondary='User_Roles')
     active = True
     name = db.Column(db.String(255))
-    id = db.Column(db.String(255))
+    id = db.Column(db.String(255), onupdate='CASCADE')
 
 
 class Role(db.Model):
