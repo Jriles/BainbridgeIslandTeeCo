@@ -1117,14 +1117,17 @@ def edit_admin_account_details():
     if edit_admin_settings.validate_on_submit():
         current_user_id = current_user.id
         if edit_admin_settings.name.data != '':
+            app.logger.info("thinks it should change name")
             current_user.name = edit_admin_settings.name.data
             flash("Successfully changed name to " + current_user.name + ".")
         if edit_admin_settings.email.data != '' and User.query.filter_by(id=edit_admin_settings.email.data).first() is None:
+            app.logger.info("thinks it should change email")
             current_user.id = edit_admin_settings.email.data
             current_user.email = edit_admin_settings.email.data
             current_user_id = edit_admin_settings.email.data
             flash("Successfully changed email to " + current_user.id + ".")
         if edit_admin_settings.confirm.data != '':
+            app.logger.info("thinks it should change password")
             h = hashlib.md5(edit_admin_settings.confirm.data.encode())
             hashvalue = h.hexdigest()
             current_user.password = hashvalue

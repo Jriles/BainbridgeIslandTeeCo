@@ -16,8 +16,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="170" column="83" lean-forward="true" selection-start-line="170" selection-start-column="83" selection-end-line="170" selection-end-column="83" />
+            <state relative-caret-position="393">
+              <caret line="1129" column="61" selection-start-line="1129" selection-start-column="61" selection-end-line="1129" selection-end-column="61" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -122,7 +122,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>My Cart</find>
       <find>Mobile</find>
       <find>icon_path</find>
       <find>smtpObj.login</find>
@@ -152,6 +151,7 @@
       <find>delete</find>
       <find>payment</find>
       <find>register</find>
+      <find>app.logger.info(&quot;new</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -814,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="170" column="83" lean-forward="true" selection-start-line="170" selection-start-column="83" selection-end-line="170" selection-end-column="83" />
+        <state relative-caret-position="393">
+          <caret line="1129" column="61" selection-start-line="1129" selection-start-column="61" selection-end-line="1129" selection-end-column="61" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
