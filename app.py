@@ -578,6 +578,7 @@ def register():
     app.logger.info("FORM var: " + str(admin_register_form.admin_code.data))
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
         # check that this email doesnt already exist
+        app.logger.info("validated form!")
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
             # we want to insert this person into our users collection
@@ -591,7 +592,7 @@ def register():
             passhash = h.hexdigest()
             new_user.password = passhash
             new_user.name = admin_register_form.name.data
-            app.logger.info("new user name: " + new_user.name)
+            app.logger.info("new user name: " + new_user)
             new_user.confirmed_at = date.today()
             role = Role.query.filter_by(name="Admin").one()
             new_user.roles.append(role)
