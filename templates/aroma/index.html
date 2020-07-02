@@ -7,7 +7,7 @@
       <div class="hero-image" {% if landing_image != 'None' %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{landing_image}});"{% endif %}>
         <div class="hero-text">
             <h3 style="color:white;" id="call-to-action">{{landing_text}}</h3>
-            <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px; background-color: {{primary_color}}; border-color: {{primary_color}};">Browse Our Selection</button>
+            <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px; background-color: {{primary_color}}; border-color: {{primary_color}};">{{call_to_action}}</button>
         </div>
       </div>
     </section>
@@ -88,12 +88,12 @@
     <section style="position: relative; margin-top: 150px; margin-bottom: 100px;">
       <div class="container">
         <div class="subscribe text-center">
-          <h3 class="subscribe__title">Stay in the loop for great discounts</h3>
+          <h3 class="subscribe__title">{{email_text}}</h3>
           <div id="mc_embed_signup">
             <form method="post" class="subscribe-form form-inline mt-5 pt-1">
 				{{ email_form.csrf_token }}
 				{{ email_form.email(class_ = 'form-control first-input', placeholder = email_form.email.label.text, required = true, autofocus = true) }}
-              <button class="button button-subscribe mr-auto mb-1" type="submit" style="background-color: {{primary_color}}; border-color: {{primary_color}};">Subscribe Now</button>
+              <button class="button button-subscribe mr-auto mb-1" type="submit" style="background-color: {{primary_color}}; border-color: {{primary_color}};">{{email_cta}}</button>
             </form>
           </div>
 
