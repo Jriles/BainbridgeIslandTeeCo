@@ -86,7 +86,10 @@ class ChangeSiteTitle(FlaskForm):
     new_site_title = StringField('New Website Title', validators=[validators.DataRequired()])
 
 class ChangeLandingText(FlaskForm):
-    new_landing_text = StringField('New Landing Text', validators=[validators.DataRequired()])
+    new_landing_text = StringField('New Landing Text', validators=[validators.Optional()])
+    new_call_to_action = StringField('New Call To Action', validators=[validators.Optional()])
+    new_email_text = StringField('New Email Text', validators=[validators.Optional()])
+    new_email_call_to_action = StringField('New Email Call To Action', validators=[validators.Optional()])
 
 class ChangeTermsConditions(FlaskForm):
     new_terms = StringField('New Terms and Conditions', validators=[validators.DataRequired()])

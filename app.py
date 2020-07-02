@@ -269,6 +269,21 @@ class TermsAndConditions(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     terms = db.Column(db.String())
 
+class CallToAction(db.Model):
+    __tablename__ = "CTA"
+    id = db.Column(db.Integer(), primary_key=True)
+    call_text = db.Column(db.String())
+
+class EmailText(db.Model):
+    __tablename__ = "EmailText"
+    id = db.Column(db.Integer(), primary_key=True)
+    email_text = db.Column(db.String())
+
+class EmailCallToAction(db.Model):
+    __tablename__ = "EmailCTA"
+    id = db.Column(db.Integer(), primary_key=True)
+    email_cta = db.Column(db.String())
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -485,7 +500,7 @@ def paymentsuccess():
         logo = logo.file_path
         primary_color = SitePrimaryColor.query.first()
         primary_color = primary_color.color
-        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Last_Name"], order_total="{:.2f}".format(order_total))
+        html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Name"], order_total="{:.2f}".format(order_total))
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
         msg["From"] = 'bainbridgeislandteeco@gmail.com'
@@ -912,10 +927,26 @@ def change_landing_image():
 def change_landing_text():
     text_form = forms.ChangeLandingText()
     if text_form.validate_on_submit():
-        text = LandingText.query.first()
-        text.text = text_form.new_landing_text.data
-        db.session.add(text)
-        db.session.commit()
+        if text_form.new_landing_text.data != '':
+            text = LandingText.query.first()
+            text.text = text_form.new_landing_text.data
+            db.session.add(text)
+            db.session.commit()
+        if text_form.new_call_to_action.data != '':
+            call_to_action = CallToAction.query.first()
+            call_to_action.call_text = text_form.new_call_to_action.data
+            db.session.add(call_to_action)
+            db.session.commit()
+        if text_form.new_email_text.data != '':
+            email_text = EmailText.query.first()
+            email_text.email_text = text_form.new_email_text.data
+            db.session.add(email_text)
+            db.session.commit()
+        if text_form.new_email_call_to_action.data != '':
+            email_cta = EmailCallToAction.query.first()
+            email_cta.email_cta = text_form.new_email_call_to_action.data
+            db.session.add(email_cta)
+            db.session.commit()
         flash("Successfully changed landing text.")
     return render_template("/aroma/changelandingtext.html", text_form=text_form)
 
