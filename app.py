@@ -573,33 +573,25 @@ def home():
 
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
-    app.logger.info("ENV var: " + str(os.environ['ADMIN_CODE']))
     admin_register_form = forms.AdminRegisterForm()
-    app.logger.info("FORM var: " + str(admin_register_form.admin_code.data))
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
         # check that this email doesnt already exist
-        app.logger.info("validated form!")
-        app.logger.info("user query count: " + str(User.query.filter_by(email=admin_register_form.email.data).count()))
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
             # we want to insert this person into our users collection
             new_user = User()
             new_user.email = admin_register_form.email.data
-            app.logger.info("new user email: " + new_user.email)
             new_user.id = new_user.email
             password = admin_register_form.data["password"]
-            app.logger.info("new password: " + password)
             h = hashlib.md5(password.encode())
             passhash = h.hexdigest()
             new_user.password = passhash
             new_user.name = admin_register_form.name.data
-            app.logger.info("new user name: " + new_user)
             new_user.confirmed_at = date.today()
             role = Role.query.filter_by(name="Admin").one()
             new_user.roles.append(role)
             db.session.add(new_user)
             db.session.commit()
-            app.logger.info("finished committing new user to db")
             login_user(User.query.filter_by(email=admin_register_form.email.data).first())
             return redirect('/admin')
         else:
