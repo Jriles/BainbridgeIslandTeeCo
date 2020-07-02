@@ -340,7 +340,20 @@ def create_tables():
     default_logo.file_path = "/static/img/cart.jpg"
     db.session.add(default_logo)
     db.session.commit()
-
+    landing_cta = CallToAction()
+    landing_cta.id = 0
+    landing_cta.call_text = "Browse Our Selection"
+    db.session.add(landing_cta)
+    db.session.commit()
+    landing_email_text = EmailText()
+    landing_email_text.email_text = "Stay in the loop for great discounts"
+    db.session.add(landing_email_text)
+    db.session.commit()
+    landing_email_cta = EmailCallToAction()
+    landing_email_cta.id = 0
+    landing_email_cta.email_cta = "Subscribe Now"
+    db.session.add(landing_email_cta)
+    db.session.commit()
 
 app.cli.add_command(create_tables)
 
@@ -398,13 +411,23 @@ def inject_logo():
     site_title = site_title.title_text
     site_icon = TabIcon.query.first()
     site_icon = "/static/img/" + str(site_icon.icon)
+    call_to_action = CallToAction.query.first()
+    call_to_action = call_to_action.call_text
+    email_text = EmailText.query.first()
+    email_text = email_text.email_text
+    email_cta = EmailCallToAction.query.first()
+    email_cta = email_cta
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
                 landing_image=landing_image,
                 landing_text=landing_text,
                 site_title=site_title,
-                site_icon=site_icon)
+                site_icon=site_icon,
+                call_to_action=call_to_action,
+                email_text=email_text,
+                email_cta=email_cta
+                )
 
 
 def allowed_file(filename):
