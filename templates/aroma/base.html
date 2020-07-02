@@ -174,7 +174,7 @@
                   .appendTo('#cart-contents-form');
                   $('<input />').attr('type', 'hidden')
                   .attr('name', "Customer_Last_Name")
-                  .attr('value', details.payer.name.family_name)
+                  .attr('value', details.payer.name)
                   .appendTo('#cart-contents-form');
                   //clear cart and return to myaccount
                   var cart = sessionStorage.getItem("Cart");
