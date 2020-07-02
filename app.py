@@ -151,7 +151,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), primary_key=True)
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
-    roles = db.relationship('Role', backref='Users', passive_updates=True, secondary='User_Roles')
+    roles = db.relationship('Role', secondary='User_Roles')
     active = True
     name = db.Column(db.String(255))
     id = db.Column(db.String(255))
@@ -167,8 +167,8 @@ class Role(db.Model):
 class UserRoles(db.Model):
     __tablename__ = 'User_Roles'
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email', onupdate='CASCADE'))
-    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id'))
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE', onupdate='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE', onupdate='CASCADE'))
 
 
 class Email(db.Model):
@@ -1117,24 +1117,20 @@ def edit_admin_account_details():
     if edit_admin_settings.validate_on_submit():
         current_user_id = current_user.id
         if edit_admin_settings.name.data != '':
-            app.logger.info("thinks it should change name")
             current_user.name = edit_admin_settings.name.data
             flash("Successfully changed name to " + current_user.name + ".")
         if edit_admin_settings.email.data != '' and User.query.filter_by(id=edit_admin_settings.email.data).first() is None:
-            app.logger.info("thinks it should change email")
             current_user.id = edit_admin_settings.email.data
             current_user.email = edit_admin_settings.email.data
             current_user_id = edit_admin_settings.email.data
             flash("Successfully changed email to " + current_user.id + ".")
         if edit_admin_settings.confirm.data != '':
-            app.logger.info("thinks it should change password")
             h = hashlib.md5(edit_admin_settings.confirm.data.encode())
             hashvalue = h.hexdigest()
             current_user.password = hashvalue
             flash("Successfully changed password.")
         db.session.commit()
         logout()
-        app.logger.info("current user id: " + current_user_id)
         user = User.query.filter_by(id=current_user_id).first()
         login_user(user)
     return render_template("/aroma/admin-account-settings.html", form=edit_admin_settings)
