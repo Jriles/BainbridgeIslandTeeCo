@@ -597,7 +597,10 @@ def register():
             login_user(User.query.filter_by(email=admin_register_form.email.data).first())
             return redirect('/admin')
         else:
+            flash("There is already an account in our system with that email. Please try again.")
             return redirect('/admin-register')
+    elif request.method == 'POST':
+        flash("Unable to validate form.")
     return render_template('/aroma/admin_register.html', admin_register_form=admin_register_form)
 
 
