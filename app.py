@@ -583,12 +583,15 @@ def register():
             # we want to insert this person into our users collection
             new_user = User()
             new_user.email = admin_register_form.email.data
+            app.logger.info("new user email: " + new_user.email)
             new_user.id = new_user.email
             password = admin_register_form.data["password"]
+            app.logger.info("new password: " + password)
             h = hashlib.md5(password.encode())
             passhash = h.hexdigest()
             new_user.password = passhash
             new_user.name = admin_register_form.name.data
+            app.logger.info("new user name: " + new_user.name)
             new_user.confirmed_at = date.today()
             role = Role.query.filter_by(name="Admin").one()
             new_user.roles.append(role)
