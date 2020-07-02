@@ -144,6 +144,12 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
+# Define the UserRoles association table
+class UserRoles(db.Model):
+    __tablename__ = 'User_Roles'
+    id = db.Column(db.Integer(), primary_key=True)
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id'))
 
 class User(db.Model, UserMixin):
     __tablename__ = 'Users'
@@ -161,15 +167,6 @@ class Role(db.Model):
     __tablename__ = 'Roles'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
-
-
-# Define the UserRoles association table
-class UserRoles(db.Model):
-    __tablename__ = 'User_Roles'
-    id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email'))
-    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id'))
-
 
 class Email(db.Model):
     __tablename__ = 'CustomerEmail'
