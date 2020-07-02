@@ -1134,6 +1134,7 @@ def edit_admin_account_details():
             flash("Successfully changed password.")
         db.session.commit()
         logout()
+        app.logger.info("current user id: " + current_user_id)
         user = User.query.filter_by(id=current_user_id).first()
         login_user(user)
     return render_template("/aroma/admin-account-settings.html", form=edit_admin_settings)
