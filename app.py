@@ -167,8 +167,8 @@ class Role(db.Model):
 class UserRoles(db.Model):
     __tablename__ = 'User_Roles'
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
-    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE'))
+    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE', onupdate='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id', ondelete='CASCADE', onupdate='CASCADE'))
 
 
 class Email(db.Model):
