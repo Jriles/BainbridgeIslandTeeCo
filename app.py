@@ -1118,7 +1118,7 @@ def delete_order(order_id):
     flash("Deleted order successfully.")
     return redirect('/manage-orders')
 
-@app.route("/admin-account-details", methods=('GET', 'POST'))
+@app.route("/admin-account-settings", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def edit_admin_account_details():
     edit_admin_settings = forms.EditAccountDetails()
