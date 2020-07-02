@@ -594,6 +594,7 @@ def register():
             new_user.roles.append(role)
             db.session.add(new_user)
             db.session.commit()
+            app.logger.info("finished committing new user to db")
             login_user(User.query.filter_by(email=admin_register_form.email.data).first())
             return redirect('/admin')
         else:
