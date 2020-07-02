@@ -579,6 +579,7 @@ def register():
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
         # check that this email doesnt already exist
         app.logger.info("validated form!")
+        app.logger.info("user query count: " + str(User.query.filter_by(email=admin_register_form.email.data).count()))
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
             # we want to insert this person into our users collection
