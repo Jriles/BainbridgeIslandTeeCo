@@ -1132,8 +1132,8 @@ def edit_admin_account_details():
             current_user.email = edit_admin_settings.email.data
             current_user_id = edit_admin_settings.email.data
             flash("Successfully changed email to " + current_user.id + ".")
-        if edit_admin_settings.confirm_password.data != '':
-            h = hashlib.md5(edit_admin_settings.confirm_password.data.encode())
+        if edit_admin_settings.confirm.data != '':
+            h = hashlib.md5(edit_admin_settings.confirm.data.encode())
             hashvalue = h.hexdigest()
             current_user.password = hashvalue
             flash("Successfully changed password.")
