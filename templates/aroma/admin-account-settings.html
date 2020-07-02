@@ -15,10 +15,10 @@
     <h2>Edit Your Account Details</h2>
     <p>*All fields are optional, no need to fill out the whole form.</p>
     {{ form.csrf_token }}
-    {{ form.email(class_ = 'form-control', placeholder = form.email.label.text, required = true) }}
+    {{ form.email(class_ = 'form-control', placeholder = form.email.label.text) }}
     {{ form.name(class_ = 'form-control', placeholder = form.name.label.text) }}
-    {{ form.password(class_ = 'form-control', placeholder = form.password.label.text, required = true) }}
-    {{ form.confirm(class_ = 'form-control', placeholder = form.confirm.label.text, required = true) }}
+    {{ form.password(class_ = 'form-control', placeholder = form.password.label.text) }}
+    {{ form.confirm(class_ = 'form-control', placeholder = form.confirm.label.text) }}
     <input type="submit" value="Submit New Details" class="btn btn-primary btn-lg btn-block">
 </form>
 {% endblock %}
