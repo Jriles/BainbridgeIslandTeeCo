@@ -416,7 +416,7 @@ def inject_logo():
     email_text = EmailText.query.first()
     email_text = email_text.email_text
     email_cta = EmailCallToAction.query.first()
-    email_cta = email_cta
+    email_cta = email_cta.email_cta
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
