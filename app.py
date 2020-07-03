@@ -92,8 +92,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 pathToDB = os.path.abspath("database/database.db")
 
 db = SQLAlchemy(app)
-db.session.execute('pragma foreign_keys=on')
-db.session.commit()
 
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
@@ -291,6 +289,8 @@ def get_designs_for_product(id):
 @with_appcontext
 def create_tables():
     db.drop_all()
+    db.session.execute('pragma foreign_keys=on')
+    db.session.commit()
     db.create_all()
     admin_role = Role()
     admin_role.id = '1'
