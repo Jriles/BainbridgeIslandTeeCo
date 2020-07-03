@@ -91,15 +91,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
 
-from sqlalchemy import create_engine
-db_engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
-def _fk_pragma_on_connect(dbapi_con, con_record):
-    dbapi_con.execute('pragma foreign_keys=ON')
-
-from sqlalchemy import event
-event.listen(db_engine, 'connect', _fk_pragma_on_connect)
 db = SQLAlchemy(app)
-
+db.session.execute('pragma foreign_keys=on')
+db.session.commit()
 
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
