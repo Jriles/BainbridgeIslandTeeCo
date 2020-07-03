@@ -162,7 +162,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), primary_key=True)
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
-    roles = db.relationship('Role', back_populates='Users', secondary='User_Roles')
+    roles = db.relationship('Role', backref='Users', secondary='User_Roles')
     active = True
     name = db.Column(db.String(255))
     id = db.Column(db.String(255))
