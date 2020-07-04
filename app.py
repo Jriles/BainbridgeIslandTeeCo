@@ -129,6 +129,17 @@ def github_webhook_endpoint():
     app.logger.info("finished running the command")
     return "Okay, thank you, if you still care."
 
+from sqlalchemy import event
+from sqlalchemy.engine import Engine
+from sqlite3 import Connection as SQLite3Connection
+
+@event.listens_for(Engine, "connect")
+def _set_sqlite_pragma(dbapi_connection, connection_record):
+    if isinstance(dbapi_connection, SQLite3Connection):
+        cursor = dbapi_connection.cursor()
+        cursor.execute("PRAGMA foreign_keys=ON;")
+        app.logger.info("called foreign key enforcement event")
+        cursor.close()
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -289,8 +300,6 @@ def get_designs_for_product(id):
 @with_appcontext
 def create_tables():
     db.drop_all()
-    db.session.execute('pragma foreign_keys=on')
-    db.session.commit()
     db.create_all()
     admin_role = Role()
     admin_role.id = '1'
