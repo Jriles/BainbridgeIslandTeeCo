@@ -1145,7 +1145,7 @@ def edit_admin_account_details():
 @roles_required(['Admin'])
 def delete_admin_account():
     current_user_id = current_user.id
-    logout_user(current_user)
+    logout_user()
     previously_authed_user = User.query.filter_by(id=current_user_id).first()
     db.session.delete(previously_authed_user)
     db.session.commit()
