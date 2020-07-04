@@ -1151,6 +1151,16 @@ def delete_admin_account():
     db.session.commit()
     return redirect('/')
 
+@app.route('/privacy-policy')
+@roles_required(['Admin'])
+def privacy_policy_view():
+    return render_template("/aroma/privacy-policy.html")
+
+@app.route('/user-agreement')
+@roles_required(['Admin'])
+def user_agreement_view():
+    return render_template("/aroma/user-agreement.html")
+
 def redirect_url(default='index'):
     return request.args.get('next') or \
            request.referrer or \
