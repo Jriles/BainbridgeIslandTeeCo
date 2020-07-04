@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "/aroma/base.html" %}
 
-</body>
-</html>
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<section class="tracking_box_area section-margin--small">
+  <div class="container">
+      <div class="tracking_box_inner">
+          <h1>Bainbridge Island Tee Co Privacy Policy</h1>
+          <p>This user agreement is a contract between you and Bainbridge Island Tee Co, Inc. governing your use of bainbridgeislandteeco.com and associated services. You agree to comply with all of the terms and conditions in this user agreement. We may revise this user agreement and any of the policies listed above from time to time. The revised version will be effective at the time we post it, unless otherwise noted. If our changes reduce your rights or increase your responsibilities we will provide notice to you of at least 21 days. We reserve the right to amend this agreement at any time without notice, subject to applicable law. By continuing to use our services after any changes to this user agreement become effective, you agree to abide and be bound by those changes. If you do not agree with any changes to this user agreement, you may close your account.</p>
+      </div>
+  </div>
+</section>
+{% endblock %}
