@@ -1141,6 +1141,15 @@ def edit_admin_account_details():
         login_user(user)
     return render_template("/aroma/admin-account-settings.html", form=edit_admin_settings)
 
+@app.route("/delete-account")
+@roles_required(['Admin'])
+def delete_admin_account():
+    current_user_id = current_user.id
+    logout_user(current_user)
+    previously_authed_user = User.query.filter_by(id=current_user_id).first()
+    db.session.delete(previously_authed_user)
+    db.session.commit()
+    return redirect('/')
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
