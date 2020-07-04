@@ -1152,12 +1152,10 @@ def delete_admin_account():
     return redirect('/')
 
 @app.route('/privacy-policy')
-@roles_required(['Admin'])
 def privacy_policy_view():
     return render_template("/aroma/privacy-policy.html")
 
 @app.route('/user-agreement')
-@roles_required(['Admin'])
 def user_agreement_view():
     return render_template("/aroma/user-agreement.html")
 
