@@ -7,6 +7,10 @@ body {
 	line-height: 1.667
 }
 
+.delete-account-button{
+    width: 100%;
+}
+
 .form-control{
     margin-bottom: 10px;
 }
