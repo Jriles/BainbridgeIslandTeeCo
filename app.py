@@ -1177,11 +1177,13 @@ def delete_admin_account():
 @app.route('/privacy-policy')
 def privacy_policy_view():
     policy = PrivacyPolicy.query.first()
+    policy = policy.privacy_policy
     return render_template("/aroma/privacy-policy.html", privacy_policy=policy)
 
 @app.route('/user-agreement')
 def user_agreement_view():
     agreement = UserAgreement.query.first()
+    agreement = agreement.user_agreement
     return render_template("/aroma/user-agreement.html", user_agreement=agreement)
 
 @app.route('/legal')
