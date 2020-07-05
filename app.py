@@ -1201,7 +1201,7 @@ def change_privacy_policy():
         db.session.add(policy)
         db.session.commit()
         flash("Successfully changed privacy policy.")
-    return render_template("/aroma/change-privacy-policy.html.html", form=form)
+    return render_template("/aroma/change-privacy-policy.html", form=form)
 
 @app.route("/change-user-agreement", methods=('GET', 'POST'))
 @roles_required(['Admin'])
