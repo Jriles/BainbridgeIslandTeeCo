@@ -1191,7 +1191,7 @@ def admin_legal_view():
 
 @app.route("/change-privacy-policy", methods=('GET', 'POST'))
 @roles_required(['Admin'])
-def change_terms():
+def change_privacy_policy():
     form = forms.ChangePrivacyPolicy()
     if form.validate_on_submit():
         policy = PrivacyPolicy.query.first()
@@ -1203,7 +1203,7 @@ def change_terms():
 
 @app.route("/change-user-agreement", methods=('GET', 'POST'))
 @roles_required(['Admin'])
-def change_terms():
+def change_user_agreement():
     form = forms.ChangeUserAgreement()
     if form.validate_on_submit():
         agreement = UserAgreement.query.first()
