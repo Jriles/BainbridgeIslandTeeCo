@@ -270,11 +270,6 @@ class TabIcon(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     icon = db.Column(db.String())
 
-class TermsAndConditions(db.Model):
-    __tablename__ = "Terms"
-    id = db.Column(db.Integer(), primary_key=True)
-    terms = db.Column(db.String())
-
 class CallToAction(db.Model):
     __tablename__ = "CTA"
     id = db.Column(db.Integer(), primary_key=True)
@@ -289,6 +284,22 @@ class EmailCallToAction(db.Model):
     __tablename__ = "EmailCTA"
     id = db.Column(db.Integer(), primary_key=True)
     email_cta = db.Column(db.String())
+
+#legal stuff
+class TermsAndConditions(db.Model):
+    __tablename__ = "Terms"
+    id = db.Column(db.Integer(), primary_key=True)
+    terms = db.Column(db.String())
+
+class PrivacyPolicy(db.Model):
+    __tablename__ = "privacy_policy"
+    id = db.Column(db.Integer(), primary_key=True)
+    privacy_policy = db.Column(db.String())
+
+class UserAgreement(db.Model):
+    __tablename__ = "user_agreement"
+    id = db.Column(db.Integer(), primary_key=True)
+    user_agreement = db.Column(db.String())
 
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
@@ -1153,11 +1164,42 @@ def delete_admin_account():
 
 @app.route('/privacy-policy')
 def privacy_policy_view():
-    return render_template("/aroma/privacy-policy.html")
+    policy = PrivacyPolicy.query.first()
+    return render_template("/aroma/privacy-policy.html", privacy_policy=policy)
 
 @app.route('/user-agreement')
 def user_agreement_view():
-    return render_template("/aroma/user-agreement.html")
+    agreement = UserAgreement.query.first()
+    return render_template("/aroma/user-agreement.html", user_agreement=agreement)
+
+@app.route('/legal')
+@roles_required(['Admin'])
+def admin_legal_view():
+    return render_template('/aroma/legal-summary.html')
+
+@app.route("/change-privacy-policy", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def change_terms():
+    form = forms.ChangePrivacyPolicy()
+    if form.validate_on_submit():
+        policy = PrivacyPolicy.query.first()
+        policy.privacy_policy = form.new_policy.data
+        db.session.add(policy)
+        db.session.commit()
+        flash("Successfully changed privacy policy.")
+    return render_template("/aroma/change-privacy-policy.html.html", form=form)
+
+@app.route("/change-user-agreement", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def change_terms():
+    form = forms.ChangeUserAgreement()
+    if form.validate_on_submit():
+        agreement = UserAgreement.query.first()
+        agreement.user_agreement = form.new_agreement.data
+        db.session.add(agreement)
+        db.session.commit()
+        flash("Successfully changed user agreement.")
+    return render_template("/aroma/change-user-agreement.html", form=form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \

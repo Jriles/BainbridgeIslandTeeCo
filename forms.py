@@ -91,9 +91,6 @@ class ChangeLandingText(FlaskForm):
     new_email_text = StringField('New Email Text', validators=[validators.Optional()])
     new_email_call_to_action = StringField('New Email Call To Action', validators=[validators.Optional()])
 
-class ChangeTermsConditions(FlaskForm):
-    new_terms = StringField('New Terms and Conditions', validators=[validators.DataRequired()])
-
 class ForgotForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
 
@@ -109,3 +106,13 @@ class EditAccountDetails(FlaskForm):
     password = PasswordField('Change Password', validators=[validators.Optional()])
     confirm = PasswordField(
         'Repeat New Password', validators=[validators.Optional(), EqualTo('password')])
+
+#legal
+class ChangeTermsConditions(FlaskForm):
+    new_terms = TextAreaField('New Terms and Conditions', validators=[validators.DataRequired()])
+
+class ChangePrivacyPolicy(FlaskForm):
+    new_policy = TextAreaField('New Privacy Policy', validators=[validators.DataRequired()])
+
+class ChangeUserAgreement(FlaskForm):
+    new_agreement = TextAreaField('New User Agreement', validators=[validators.DataRequired()])

@@ -1,0 +1,48 @@
+{% extends "/aroma/base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="admin-container">
+    <div>
+        <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin Page</button></a>
+    </div>
+    <div class="header-container">
+        <h1 class="admin-title">Legal Information</h1>
+    </div>
+    <div class="card-deck">
+        <a href="/change-privacy-policy">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-image"></i> Change Privacy Policy</h5>
+                <p class="card-text">Here you can edit the privacy policy of your website; how you collect information, how you you use it, how you share that information, among a variety of other topics.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/change-user-agreement">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-edit"></i> Change User Agreement</h5>
+                  <p class="card-text">Here you can edit the user agreement of your website; what you the user can and (vastly) cannot do with your website and associated materials.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/change-terms-and-conditions">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-edit"></i> Change Terms and Conditions</h5>
+                <p class="card-text">Here you can change the terms and conditions of sale.</p>
+              </div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
