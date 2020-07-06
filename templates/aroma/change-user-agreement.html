@@ -12,12 +12,12 @@
 {% endif %}
 {% endwith %}
 <div class="admin-form-back-to-admin">
-    <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin</button></a>
+    <a href="/legal"><button class="btn btn-success admin-button back-to-admin">Back To Legal</button></a>
 </div>
 <form method="post" class="form account-form" enctype="multipart/form-data">
     <h3>Change User Agreement</h3>
     {{ form.csrf_token }}
     {{ form.new_agreement(class_ = 'form-control', placeholder = form.new_agreement.label.text) }}
-    <input type="submit" value="Submit New Terms" class="btn btn-primary admin-button">
+    <input type="submit" value="Submit New Agreement" class="btn btn-primary admin-button">
 </form>
 {% endblock %}
