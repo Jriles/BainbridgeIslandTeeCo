@@ -711,7 +711,13 @@ def edit_products():
     edit_design_form = forms.EditDesign()
     edit_product_order = forms.ReOrderProducts()
     edit_size_form = forms.EditSize()
-    if edit_product_form.product_name.data is not None and edit_product_form.validate():
+    if (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
+        this_size = ProductSize.query.filter_by(id=edit_size_form.size_id.data).first()
+        if this_size is not None:
+            this_size.size_name = edit_size_form.size_name.data
+            this_size.inventory = int(edit_size_form.inventory.data)
+            db.session.commit()
+    elif edit_product_form.product_name.data is not None and edit_product_form.validate():
         app.logger.info("id= " + str(edit_product_form.data["product_id"]))
         this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
         this_display_product.name = edit_product_form.data["product_name"]
@@ -746,12 +752,6 @@ def edit_products():
                 icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
-            db.session.commit()
-    elif (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
-        this_size = ProductSize.query.filter_by(id=edit_size_form.size_id.data).first()
-        if this_size is not None:
-            this_size.size_name = edit_size_form.size_name.data
-            this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
     elif edit_product_order.new_order_array.data is not None:
         new_order_id_arr = edit_product_order.new_order_array.data.split(',')
