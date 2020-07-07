@@ -785,7 +785,6 @@ def new_product():
         new_product.name = new_product_form.product_name.data
         new_product.price = float(new_product_form.product_price.data)
         new_product.description = new_product_form.description.data
-        new_product.sizes = int(new_product_form.show_sizes.data)
         rows = len(DisplayProduct.query.all())
         app.logger.info("rows: " + str(rows))
         new_product.product_order_num = rows + 1
