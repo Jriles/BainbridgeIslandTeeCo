@@ -597,7 +597,7 @@ def paymentsuccess():
     #we also need sizes too
     sizes = []
     for product in display_products:
-        sizes.append(get_sizes_for_product(product.id))
+        sizes.append(get_sizes_for_product_in_order(product.id))
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
@@ -770,7 +770,7 @@ def edit_products():
     #we also need sizes too
     sizes = []
     for product in display_products:
-        sizes.append(get_sizes_for_product(product.id))
+        sizes.append(get_sizes_for_product_in_order(product.id))
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
                            display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes)
 
@@ -946,7 +946,7 @@ def product_view(product):
     #we also need sizes too
     sizes = []
     for product in display_products:
-        sizes.append(get_sizes_for_product(product.id))
+        sizes.append(get_sizes_for_product_in_order(product.id))
     product_order_index = DisplayProduct.query.filter_by(id=product).first()
     return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
