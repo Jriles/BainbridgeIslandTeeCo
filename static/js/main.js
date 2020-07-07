@@ -1101,7 +1101,7 @@ function submitOrderNote(button){
 function checkDesignSizeInventory(product_element_id){
     //if there are designs, we want our current design inventory count
     var current_product = document.getElementById(product_element_id);
-    console.log($(current_product).find(".design_names").children.length);
+    console.log(current_product);
     var in_stock = false;
     if ($(current_product).find(".design_names").children.length > 0){
         //we have designs
