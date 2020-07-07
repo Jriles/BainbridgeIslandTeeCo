@@ -38,7 +38,7 @@
 								<div class="product-info">
 									<h3 id="product-name">{{product.name}}</h3>
 									<h2 id="product-price" style="color: {{primary_color}};">${{product.price}}</h2>
-									<h5 class="design-name">{% if designs[product_loop.index-1].first().inventory > 0 %}In Stock{% else %}Out of Stock{% endif %}</h5>
+									<h5 class="design-name">{% if designs[product_loop.index-1].inventory > 0 %}In Stock{% else %}Out of Stock{% endif %}</h5>
 									<h6 class="design-name">{{designs[product_loop.index-1].first().design_name}}</h6>
 								</div>
 								<ul class="product-options-area">
