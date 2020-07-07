@@ -796,6 +796,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     if(design_names.get(0).children[index] !== undefined){
         this_design_name.html(design_names.get(0).children[index].innerHTML);
         design_buttons[index].style.border = ("2px solid " + primary_color);
+        design_buttons[index].addClass("active");
     }
     //change the in stock value for this permutation of sizes/designs
     checkDesignSizeInventory($(event.target).closest(".product_image_area").id);
@@ -1102,6 +1103,7 @@ function checkDesignSizeInventory(product_element_id){
     var in_stock = false;
     if ($(current_product).find(".design_names").children.length > 0){
         //we have designs
+        var current_design = $(".product-design-icon.active")
         var current_design_index = $(".product-design-icon.active").index();
         console.log("current index: " + current_design_index);
         console.log("design: inventories children: " + $(current_product).find("design_inventories").children);

@@ -41,7 +41,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="371">
@@ -83,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="1106" column="39" selection-start-line="1106" selection-start-column="39" selection-end-line="1106" selection-end-column="39" />
+            <state relative-caret-position="183">
+              <caret line="1103" column="25" lean-forward="true" selection-start-line="1103" selection-start-column="25" selection-end-line="1103" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -180,9 +180,9 @@
       <find>product.id</find>
       <find>'/p</find>
       <find>new_product</find>
-      <find>changed</find>
       <find>get_sizes_for_product</find>
       <find>manage</find>
+      <find>changed</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -262,10 +262,10 @@
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/aroma/new-product.html" />
         <option value="$PROJECT_DIR$/forms.py" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
       </list>
     </option>
   </component>
@@ -825,13 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="1106" column="39" selection-start-line="1106" selection-start-column="39" selection-end-line="1106" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-731">
@@ -868,6 +861,13 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="1103" column="25" lean-forward="true" selection-start-line="1103" selection-start-column="25" selection-end-line="1103" selection-end-column="25" />
         </state>
       </provider>
     </entry>
