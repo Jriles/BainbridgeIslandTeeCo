@@ -226,20 +226,27 @@ class DisplayProduct(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String())
     price = db.Column(db.Integer())
-    in_stock = db.Column(db.Integer())
     description = db.Column(db.String())
     primary_product_image = db.Column(db.String())
     sizes = db.Column(db.Integer())
     product_order_num = db.Column(db.Integer(), autoincrement=True)
 
-
 class ProductDesign(db.Model):
     __tablename__ = "Product_Designs"
     id = db.Column(db.Integer(), primary_key=True)
+    inventory = db.Column(db.Integer())
     product_id = db.Column(db.Integer())
     design_name = db.Column(db.String())
     design_image = db.Column(db.String())
     design_icon = db.Column(db.String())
+
+class ProductSize(db.Model):
+    __tablename__ = "product_designs"
+    id = db.Column(db.Integer(), primary_key=True)
+    inventory = db.Column(db.Integer())
+    product_id = db.Column(db.Integer())
+    product_size = db.Column(db.String())
+    order_number = db.Column(db.Integer(), autoincrement=True)
 
 class MaintenanceMode(db.Model):
     __tablename__ = "Maintenance"
@@ -306,6 +313,15 @@ def get_display_products_in_order():
 
 def get_designs_for_product(id):
     return ProductDesign.query.filter_by(product_id=id)
+
+def get_sizes_for_product(id):
+    return ProductSize.query.filter_by(product_id=id)
+
+def get_product_inventory(id):
+    total_inventory_count = 0
+    designs = ProductDesign.query.filter_by(product_id=id).all()
+    for design in designs:
+        total_inventory_count += design.inventory
 
 @app.cli.command("create_tables")
 @with_appcontext
@@ -578,8 +594,12 @@ def paymentsuccess():
     designs = []
     for product in display_products:
         designs.append(get_designs_for_product(product.id))
+    #we also need sizes too
+    sizes = []
+    for product in display_products:
+        sizes.append(get_sizes_for_product(product.id))
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
-                           designs=designs)
+                           designs=designs, sizes=sizes)
 
 
 @app.route("/", methods=('GET', 'POST'))
@@ -596,8 +616,12 @@ def home():
     designs = []
     for product in display_products:
         designs.append(get_designs_for_product(product.id))
+    #we also need sizes too
+    sizes = []
+    for product in display_products:
+        sizes.append(get_sizes_for_product_in_order(product.id))
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
-                           designs=designs)
+                           designs=designs, sizes=sizes)
 
 
 @app.route('/admin-register', methods=('GET', 'POST'))
@@ -663,35 +687,6 @@ def admin():
         is_maintenance_mode = False
     return render_template('/aroma/admin.html', maintenance_mode=is_maintenance_mode)
 
-
-@app.route("/new-design/<productID>", methods=('GET', 'POST'))
-@roles_required(['Admin'])
-def create_design(productID):
-    new_design_form = forms.AddDesign()
-    if new_design_form.design_name.data is not None and new_design_form.validate():
-        image = request.files["design_image"]
-        icon = request.files["design_icon"]
-        if 'design_image' not in request.files or 'design_icon' not in request.files:
-            return redirect(request.url)
-        if (image and allowed_file(image.filename)) and (icon and allowed_file(icon.filename)):
-            image_file_name = secure_filename(image.filename)
-            icon_file_name = secure_filename(icon.filename)
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file_name)
-            image.save(img_path)
-            icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
-            icon.save(icon_path)
-            new_design = ProductDesign()
-            new_design.product_id = productID
-            new_design.design_name = new_design_form.design_name.data
-            new_design.design_image = "/static/img/" + image_file_name
-            print(icon_file_name)
-            new_design.design_icon = "/static/img/" + icon_file_name
-            db.session.add(new_design)
-            db.session.commit()
-            flash("Successfully created a new design for product " + productID)
-    return render_template('/aroma/create-design.html', new_design_form=new_design_form)
-
-
 @app.route("/delete-design/<designID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def delete_design(designID):
@@ -715,12 +710,12 @@ def edit_products():
     edit_product_form = forms.EditProduct()
     edit_design_form = forms.EditDesign()
     edit_product_order = forms.ReOrderProducts()
+    edit_size_form = forms.EditSize()
     if edit_product_form.product_name.data is not None and edit_product_form.validate():
         app.logger.info("id= " + str(edit_product_form.data["product_id"]))
         this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
         this_display_product.name = edit_product_form.data["product_name"]
         this_display_product.price = edit_product_form.data["product_price"]
-        this_display_product.in_stock = edit_product_form.data["product_in_stock"]
         this_display_product.description = edit_product_form.data["description"]
         this_display_product.sizes = int(edit_product_form.data["show_sizes"])
         this_display_product.product_order_num = int(edit_product_form.data["order_number"])
@@ -737,6 +732,7 @@ def edit_products():
         this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
         if this_design is not None:
             this_design.design_name = edit_design_form.edit_design_name.data
+            this_design.inventory = int(edit_design_form.edit_design_inventory.data)
             image = request.files["edit_design_image"]
             if image and allowed_file(image.filename):
                 filename = secure_filename(image.filename)
@@ -750,6 +746,12 @@ def edit_products():
                 icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
+            db.session.commit()
+    elif (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
+        this_size = ProductSize.query.filter_by(id=edit_size_form.size_id.data).first()
+        if this_size is not None:
+            this_size.size_name = edit_size_form.size_name.data
+            this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
     elif edit_product_order.new_order_array.data is not None:
         new_order_id_arr = edit_product_order.new_order_array.data.split(',')
@@ -765,8 +767,12 @@ def edit_products():
     designs = []
     for product in display_products:
         designs.append(get_designs_for_product(product.id))
+    #we also need sizes too
+    sizes = []
+    for product in display_products:
+        sizes.append(get_sizes_for_product(product.id))
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
-                           display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order)
+                           display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes)
 
 
 @app.route("/new-product", methods=('GET', 'POST'))
@@ -778,7 +784,6 @@ def new_product():
         new_product = DisplayProduct()
         new_product.name = new_product_form.product_name.data
         new_product.price = float(new_product_form.product_price.data)
-        new_product.in_stock = int(new_product_form.product_in_stock.data)
         new_product.description = new_product_form.description.data
         new_product.sizes = int(new_product_form.show_sizes.data)
         rows = len(DisplayProduct.query.all())
@@ -939,10 +944,13 @@ def product_view(product):
     designs = []
     for display_product in display_products:
         designs.append(get_designs_for_product(display_product.id))
+    #we also need sizes too
+    sizes = []
+    for product in display_products:
+        sizes.append(get_sizes_for_product(product.id))
     product_order_index = DisplayProduct.query.filter_by(id=product).first()
-    app.logger.info(product_order_index.product_order_num)
     return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
-                           designs=designs)
+                           designs=designs, sizes=sizes)
 
 @app.route("/change-color", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1214,6 +1222,55 @@ def change_user_agreement():
         db.session.commit()
         flash("Successfully changed user agreement.")
     return render_template("/aroma/change-user-agreement.html", form=form)
+
+@app.route("/new-design/<productID>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def create_design(productID):
+    new_design_form = forms.AddDesign()
+    if new_design_form.design_name.data is not None and new_design_form.validate():
+        image = request.files["design_image"]
+        icon = request.files["design_icon"]
+        if 'design_image' not in request.files or 'design_icon' not in request.files:
+            return redirect(request.url)
+        if (image and allowed_file(image.filename)) and (icon and allowed_file(icon.filename)):
+            image_file_name = secure_filename(image.filename)
+            icon_file_name = secure_filename(icon.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file_name)
+            image.save(img_path)
+            icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
+            icon.save(icon_path)
+            new_design = ProductDesign()
+            new_design.product_id = productID
+            new_design.design_name = new_design_form.design_name.data
+            new_design.design_image = "/static/img/" + image_file_name
+            print(icon_file_name)
+            new_design.design_icon = "/static/img/" + icon_file_name
+            db.session.add(new_design)
+            db.session.commit()
+            flash("Successfully created a new design for product " + productID)
+    return render_template('/aroma/create-design.html', new_design_form=new_design_form)
+
+@app.route("/new-size/<productID>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def create_size(productID):
+    new_size_form = forms.CreateSize()
+    if new_size_form.size_name.data is not None and new_size_form.validate():
+        new_size = ProductSize()
+        new_size.size_name = new_size_form.size_name.data
+        new_size.inventory = new_size_form.inventory.data
+        new_size.product_id = productID
+        db.session.add(new_size)
+        db.session.commit()
+        flash("Successfully created a new size for product " + productID)
+    return render_template('/aroma/create-product-size.html', new_size_form=new_size_form)
+
+@app.route("/delete-size/<sizeID>", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def delete_size(sizeID):
+    size_to_delete = ProductSize.query.filter_by(id=sizeID).first()
+    db.session.delete(size_to_delete)
+    db.session.commit()
+    return redirect('/manage-products')
 
 def redirect_url(default='index'):
     return request.args.get('next') or \

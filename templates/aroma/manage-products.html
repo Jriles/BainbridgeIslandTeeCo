@@ -25,10 +25,9 @@
                 <th>Product Name</th>
                 <th>Product Price</th>
                 <th>Primary Image</th>
-                <th>Show Sizes?</th>
-                <th>In Stock?</th>
                 <th>Product Description</th>
                 <th>Make Changes</th>
+                <th>Product Sizes</th>
                 <th>Product Designs</th>
             </tr>
         </thead>
@@ -50,14 +49,6 @@
                     {{ edit_product_form.primary_product_image(value = product.primary_product_image) }}
                 </td>
                 <td>
-                    Show Product Sizes?
-                    {{ edit_product_form.show_sizes(value = product.sizes, class_ = 'reset_checkbox') }}
-                </td>
-                <td>
-                    Product In Stock?
-                    {{ edit_product_form.product_in_stock(value = product.in_stock, class_ = 'reset_checkbox') }}
-                </td>
-                <td>
                     Product Description:
                     <textarea name="description" id="description" type="text" class="admin-product-description">{{product.description}}</textarea>
                 </td>
@@ -72,6 +63,45 @@
                     </div>
                 </td>
             </form>
+            <td>
+                <div>
+                    <a href="/new-size/{{product.id}}"><button class="btn btn-primary product_button admin-button">New Size</button></a>
+                </div>
+                <h5>Product Sizes</h5>
+                <table class="table table-responsive" id="sizes-table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Size Name</th>
+                            <th>Size Inventory Count</th>
+                            <th>Submit Changes</th>
+                        </tr>
+                    </thead>
+                    {% for size in sizes[product_loop.index-1] %}
+                    <tr>
+                        <form method="post" class="form admin-form" enctype="multipart/form-data">
+                            {{ edit_size_form.csrf_token }}
+                            <td>
+                                Name:
+                                {{ edit_size_form.size_name(value = size.name) }}
+                            </td>
+                            <td>
+                                Inventory:
+                                {{ edit_size_form.inventory(value = size.inventory) }}
+                            <td>
+                                {{ edit_size_form.size_id(class_ = 'discount-form-element', value = size.id) }}
+                                {{ edit_size_form.order_number(class_ = 'discount-form-element', value = size.order_number) }}
+                                <div>
+                                    <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                                </div>
+                                <div>
+                                    <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-size/{{size.id}}">Delete Size</a></button>
+                                </div>
+                            </td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
             <td>
                 <div>
                     <button class="btn btn-info admin-button show-items-button" onclick="showThisProductDesigns(this)">View Designs</button>
@@ -100,6 +130,8 @@
                                         <img src="{{design.design_icon}}" class="icon-styling">
                                         {{ edit_design_form.edit_design_icon(value = design.design_icon, class_ = 'card-text icon-input') }}
                                     </div>
+                                    Change Design Inventory:
+                                    {{ edit_design_form.edit_design_inventory(value = design.inventory, class_ = 'card-text icon-input')}}
                                     {{ edit_design_form.design_id(value = design.id, class_ = 'edit-design card-text') }}
                                     <input type="submit" value="Edit Design" class="btn btn-primary product_button admin-button">
                                     <div>

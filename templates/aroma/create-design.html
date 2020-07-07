@@ -18,10 +18,12 @@
     <h2>Create Design</h2>
     {{ new_design_form.csrf_token }}
     {{ new_design_form.design_name(class_ = 'form-control', placeholder = new_design_form.design_name.label.text, required = true) }}
-    Design Image:
+    Main Image:
     {{ new_design_form.design_image(class_ = 'form-control', placeholder = new_design_form.design_image.label.text, required = true) }}
-    Design Icon:
+    Icon:
     {{ new_design_form.design_icon(class_ = 'form-control', placeholder = new_design_form.design_icon.label.text, required = true) }}
+    Inventory Count:
+    {{ new_design_form.design_inventory(class_ = 'form-control', placeholder = new_design_form.design_inventory.label.text, required = true) }}
     <input type="submit" value="Create Design" class="btn btn-primary btn-lg btn-block">
 </form>
 

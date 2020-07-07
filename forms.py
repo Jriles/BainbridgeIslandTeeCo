@@ -36,8 +36,6 @@ class EditProduct(FlaskForm):
     product_name = StringField('Name', validators=[validators.Optional()])
     product_price = IntegerField('Price',  validators=[validators.Optional()])
     primary_product_image = FileField('File', validators=[validators.Optional()])
-    show_sizes = BooleanField('Show Product Sizes?', validators=[validators.Optional()])
-    product_in_stock = BooleanField('In Stock?', validators=[validators.Optional()])
     description = TextAreaField('Product Description', validators=[validators.Optional()])
     product_id = HiddenField()
     order_number = HiddenField()
@@ -46,11 +44,13 @@ class AddDesign(FlaskForm):
     design_name = StringField('Design Name', validators=[DataRequired()])
     design_image = FileField('Design Image', validators=[DataRequired()])
     design_icon = FileField('Design Icon', validators=[DataRequired()])
+    design_inventory = IntegerField('Inventory Count', validators=[validators.Optional()])
 
 class EditDesign(FlaskForm):
     edit_design_name = StringField('Design Name', validators=[validators.Optional()])
     edit_design_image = FileField('Design Image', validators=[validators.Optional()])
     edit_design_icon = FileField('Design Icon', validators=[validators.Optional()])
+    edit_design_inventory = IntegerField('Inventory Count', validators=[validators.Optional()])
     design_id = HiddenField()
 
 class CreateProduct(FlaskForm):
@@ -58,7 +58,6 @@ class CreateProduct(FlaskForm):
     product_price = IntegerField('Product Price',  validators=[validators.Optional()])
     primary_product_image = FileField('File', validators=[validators.Optional()])
     show_sizes = BooleanField('Show Sizes?', validators=[validators.Optional()])
-    product_in_stock = BooleanField('In Stock?', validators=[validators.Optional()])
     description = TextAreaField('Product Description', validators=[validators.Optional()])
 
 class InternalOrderNote(FlaskForm):
@@ -116,3 +115,13 @@ class ChangePrivacyPolicy(FlaskForm):
 
 class ChangeUserAgreement(FlaskForm):
     new_agreement = TextAreaField('New User Agreement', validators=[validators.DataRequired()])
+
+class CreateSize(FlaskForm):
+    size_name = StringField('Size Name', validators=[DataRequired()])
+    inventory = IntegerField('Inventory Count', validators=[DataRequired()])
+
+class EditSize(FlaskForm):
+    size_name = StringField('Size Name', validators=[validators.DataRequired()])
+    inventory = IntegerField('Inventory Count', validators=[validators.DataRequired()])
+    size_id = HiddenField()
+    order_number = HiddenField()

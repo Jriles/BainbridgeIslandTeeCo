@@ -1043,7 +1043,9 @@ function goToSlide(button){
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
     design_buttons.forEach(function(design_icon_button) {
         design_icon_button.style.borderStyle = "none";
+        $(design_icon_button).removeClass("active");
     });
+    $(button).addClass("active");
     button.style.border = ("2px solid " + primary_color);
     //this will need to be maintained
     //if we are working with t-shirts or bags
@@ -1052,6 +1054,8 @@ function goToSlide(button){
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
+    $(button).closest
+    checkDesignSizeInventory();
 }
 
 function showThisOrderItems(button){
@@ -1087,4 +1091,28 @@ function submitOrderNote(button){
     .attr('name', "CustomerNote")
     .attr('value', note)
     .appendTo('#cart-contents-form');
+}
+
+//we want to call this function whenever we change designs or sizes
+function checkDesignSizeInventory(product_element_id){
+    //if there are designs, we want our current design inventory count
+    var current_product = document.getElementById(product_element_id);
+    var in_stock = false;
+    if ($(current_product).find(".design_names").children.length > 0){
+        //we have designs
+        var current_design_index = $(".product-design-icon.active").index();
+        var current_design_inventory_count = Number($(current_product).find("design_inventories").children[current_design_index].innerHTML);
+        if(current_design_inventory_count > 0){
+            in_stock = true;
+        }
+    }
+
+    //if there are sizes, we want our current size inventory count
+    if($(current_product).find(".size_inventories").children.length > 0){
+        var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
+        var current_size_inventory_count = Number($(current_product).find("size_inventories").children[current_size_index].innerHTML);
+        if(current_size_inventory_count > 0){
+            in_stock = true;
+        }
+    }
 }

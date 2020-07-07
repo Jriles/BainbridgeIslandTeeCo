@@ -38,22 +38,17 @@
 								<div class="product-info">
 									<h3 id="product-name">{{product.name}}</h3>
 									<h2 id="product-price" style="color: {{primary_color}};">${{product.price}}</h2>
-									{% if product.in_stock == 0 %}
-										<h5 class="availability">Out of Stock</h5>
-									{% else %}
-										<h5 class="availability">In Stock</h5>
-									{% endif %}
+									<h5 class="design-name">{% if designs[product_loop.index-1].first().inventory > 0}In Stock{% elif %}Out of Stock{% endif %}</h5>
 									<h6 class="design-name">{{designs[product_loop.index-1].first().design_name}}</h6>
 								</div>
 								<ul class="product-options-area">
-									{% if product.sizes == 1 %}
-									<li class="options-menu-item"><select id="t-shirt-size">
-										<option>Small</option>
-										<option>Medium</option>
-										<option>Large</option>
-										<option>Extra Large</option>
-									</select></li>
-									{% endif %}
+									<li class="options-menu-item">
+										<select id="t-shirt-size">
+										{% for size in sizes[product_loop.index-1] %}
+											<option>size.product_size</option>
+										{% endfor %}
+										</select>
+									</li>
 									<li class="options-menu-item">
 										<div id="design-selection" class="card_area d-flex align-items-center">
 										{% for design in designs[product_loop.index-1] %}
@@ -62,6 +57,16 @@
 											<ul class="design_names" style="display: none;">
 												{% for design in designs[product_loop.index-1] %}
 												<li>{{design.design_name}}</li>
+												{% endfor %}
+											</ul>
+											<ul class="design_inventories" style="display: none;">
+												{% for design in designs[product_loop.index-1] %}
+												<li>{{design.inventory}}</li>
+												{% endfor %}
+											</ul>
+											<ul class="size_inventories" style="display: none;">
+												{% for size in sizes[product_loop.index-1] %}
+												<li>{{size.inventory}}</li>
 												{% endfor %}
 											</ul>
 										</div>

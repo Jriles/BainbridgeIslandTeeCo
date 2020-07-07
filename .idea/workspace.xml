@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/aroma/create-product-size.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aroma/create-design.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/create-design.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aroma/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aroma/manage-products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/manage-products.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -9,105 +18,177 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="277">
+                    <caret line="17" column="63" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="63" />
+                    <folding>
+                      <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#ul#1;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#ul#2;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                      <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="1203" column="61" selection-start-line="1203" selection-start-column="61" selection-end-line="1203" selection-end-column="61" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changetermsandconditions.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/changetermsandconditions.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="117" column="95" lean-forward="true" selection-start-line="117" selection-start-column="95" selection-end-line="117" selection-end-column="95" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change-privacy-policy.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/change-privacy-policy.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="93" selection-start-line="14" selection-start-column="93" selection-end-line="14" selection-end-column="93" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="change-user-agreement.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/change-user-agreement.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="legal-summary.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/legal-summary.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="privacy-policy.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/privacy-policy.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/admin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="91" column="76" selection-start-line="91" selection-start-column="76" selection-end-line="91" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user-agreement.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/user-agreement.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="terms.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/terms.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.44503817">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-36">
+                  <caret line="316" column="25" selection-start-line="316" selection-start-column="4" selection-end-line="316" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#0#14#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="changetermsandconditions.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/changetermsandconditions.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="357">
+                  <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="change-privacy-policy.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/change-privacy-policy.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="238">
+                  <caret line="14" column="93" selection-start-line="14" selection-start-column="93" selection-end-line="14" selection-end-column="93" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/static/js/main.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="438">
+                  <caret line="1056" column="21" selection-start-line="1056" selection-start-column="21" selection-end-line="1056" selection-end-column="21" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="change-user-agreement.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/change-user-agreement.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="legal-summary.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/legal-summary.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="24" column="66" selection-start-line="24" selection-start-column="66" selection-end-line="24" selection-end-column="66" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-493">
+                  <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+                  <folding>
+                    <element signature="e#287#294#1" expanded="true" />
+                    <element signature="n#style#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="create-design.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/create-design.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/admin.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="362">
+                  <caret line="91" column="76" selection-start-line="91" selection-start-column="76" selection-end-line="91" selection-end-column="76" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/static/css/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="321">
+                  <caret line="601" column="34" lean-forward="true" selection-start-line="601" selection-start-column="34" selection-end-line="601" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#0#14#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/forms.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="228">
+                  <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
+                  <folding>
+                    <element signature="e#0#31#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="create-product-size.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/templates/aroma/create-product-size.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="374">
+                  <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -119,20 +200,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>reset_password</find>
-      <find>forgot()</find>
-      <find>get_user_token(</find>
-      <find>verify_reset_password_token</find>
-      <find>reset_password(</find>
-      <find>/payment-success</find>
-      <find>/payment su</find>
-      <find>/payment</find>
-      <find>MIME</find>
-      <find>font-f</find>
-      <find>MIMEI</find>
-      <find>.order-header</find>
-      <find>product_order_index</find>
-      <find>shipping-status-column</find>
       <find>delete</find>
       <find>payment</find>
       <find>register</find>
@@ -149,6 +216,20 @@
       <find>.delete</find>
       <find>Nordstrom</find>
       <find>Design</find>
+      <find>new_pro</find>
+      <find>create_design</find>
+      <find>edit_design</find>
+      <find>edit_size</find>
+      <find>products</find>
+      <find>get_designs_for_product</find>
+      <find>ProductSize</find>
+      <find>get_sizes</find>
+      <find>get_designs</find>
+      <find>In Stock</find>
+      <find>delete_design</find>
+      <find>get_sizes_for_product</find>
+      <find>changed</find>
+      <find>product.id</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -181,7 +262,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/cityCoordinateMaker/CityCoordMaker.py" />
         <option value="$PROJECT_DIR$/templates/aroma/myaccount.html" />
         <option value="$PROJECT_DIR$/templates/aroma/single-product.html" />
         <option value="$PROJECT_DIR$/venv/Lib/site-packages/dict2xml.py" />
@@ -198,12 +278,9 @@
         <option value="$PROJECT_DIR$/paypalstuff.py" />
         <option value="$PROJECT_DIR$/templates/email/new_order_email.html" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/templates/aroma/create-design.html" />
         <option value="$PROJECT_DIR$/database/database.sql" />
         <option value="$PROJECT_DIR$/templates/aroma/new-product.html" />
-        <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changecolor.html" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/templates/aroma/changelandingimage.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changesitefavicon.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changesitetitle.html" />
@@ -214,24 +291,28 @@
         <option value="$PROJECT_DIR$/templates/aroma/reset_password.html" />
         <option value="$PROJECT_DIR$/templates/email/thank_you.html" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-orders.html" />
-        <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changelandingtext.html" />
         <option value="$PROJECT_DIR$/templates/aroma/landingsummary.html" />
         <option value="$PROJECT_DIR$/templates/aroma/login.html" />
         <option value="$PROJECT_DIR$/templates/aroma/admin_register.html" />
         <option value="$PROJECT_DIR$/templates/aroma/admin-account-settings.html" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/aroma/base.html" />
-        <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/templates/aroma/privacy-policy.html" />
         <option value="$PROJECT_DIR$/templates/aroma/user-agreement.html" />
         <option value="$PROJECT_DIR$/templates/aroma/terms.html" />
         <option value="$PROJECT_DIR$/templates/aroma/legal-summary.html" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/admin.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changetermsandconditions.html" />
         <option value="$PROJECT_DIR$/templates/aroma/change-privacy-policy.html" />
         <option value="$PROJECT_DIR$/templates/aroma/change-user-agreement.html" />
+        <option value="$PROJECT_DIR$/templates/aroma/create-design.html" />
+        <option value="$PROJECT_DIR$/templates/aroma/create-product-size.html" />
+        <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
+        <option value="$PROJECT_DIR$/forms.py" />
+        <option value="$PROJECT_DIR$/templates/aroma/index.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
       </list>
     </option>
   </component>
@@ -275,13 +356,13 @@
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
@@ -401,9 +482,9 @@
     <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20073216" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20073216" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" visible="true" weight="0.25159642" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" visible="true" weight="0.22605364" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32950193" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.91397196" weight="0.27203065" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -462,9 +543,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/paypalstuff.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
@@ -529,24 +607,6 @@
     <entry file="file://$PROJECT_DIR$/BainbridgeIslandTeeCo.ini">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/create-design.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="68" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="118" column="49" lean-forward="true" selection-start-line="118" selection-start-column="49" selection-end-line="118" selection-end-column="49" />
-          <folding>
-            <element signature="e#287#294#1" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/blog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -558,13 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-278">
           <caret line="2" column="44966" selection-start-line="2" selection-start-column="44964" selection-end-line="2" selection-end-column="44966" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="448" column="74" lean-forward="true" selection-start-line="448" selection-start-column="74" selection-end-line="448" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -653,22 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="95" column="170" selection-start-line="95" selection-start-column="170" selection-end-line="95" selection-end-column="170" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/changelandingtext.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -692,13 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -755,16 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="117" column="95" lean-forward="true" selection-start-line="117" selection-start-column="95" selection-end-line="117" selection-end-column="95" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/user-agreement.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -793,16 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="1203" column="61" selection-start-line="1203" selection-start-column="61" selection-end-line="1203" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/admin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
@@ -828,6 +838,83 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/create-design.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/create-product-size.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding>
+            <element signature="e#287#294#1" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="37" column="81" selection-start-line="37" selection-start-column="81" selection-end-line="37" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="316" column="25" selection-start-line="316" selection-start-column="4" selection-end-line="316" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="17" column="63" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="63" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#1;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#2;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="1056" column="21" selection-start-line="1056" selection-start-column="21" selection-end-line="1056" selection-end-column="21" />
         </state>
       </provider>
     </entry>
