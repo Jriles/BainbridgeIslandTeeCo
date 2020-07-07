@@ -1124,7 +1124,7 @@ function checkDesignSizeInventory(product_element_id){
             in_stock = true;
         }
     }
-
+    console.log("this permutation in stock? " + in_stock);
     if(in_stock){
         $(current_product).find(".product-in-stock").html("In Stock");
     }else{
