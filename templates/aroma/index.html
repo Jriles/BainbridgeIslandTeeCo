@@ -59,12 +59,12 @@
 												<li>{{design.design_name}}</li>
 												{% endfor %}
 											</ul>
-											<ul class="design_inventories" style="display: none;">
+											<ul id="design_inventories" style="display: none;">
 												{% for design in designs[product_loop.index-1] %}
 												<li>{{design.inventory}}</li>
 												{% endfor %}
 											</ul>
-											<ul class="size_inventories" style="display: none;">
+											<ul id="size_inventories" style="display: none;">
 												{% for size in sizes[product_loop.index-1] %}
 												<li>{{size.inventory}}</li>
 												{% endfor %}
