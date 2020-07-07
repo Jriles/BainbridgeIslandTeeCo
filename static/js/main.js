@@ -1100,6 +1100,7 @@ function submitOrderNote(button){
 //we want to call this function whenever we change designs or sizes
 function checkDesignSizeInventory(product_element_id){
     //if there are designs, we want our current design inventory count
+    console.log(product_element_id);
     var current_product = document.getElementById(product_element_id);
     console.log(current_product);
     var in_stock = false;
