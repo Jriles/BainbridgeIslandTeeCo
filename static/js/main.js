@@ -1118,7 +1118,8 @@ function checkDesignSizeInventory(product_element_id){
     //if there are sizes, we want our current size inventory count
     if($(current_product).find(".size_inventories").children.length > 0){
         var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
-        var current_size_inventory_count = Number($(current_product).find("size_inventories").children[current_size_index].innerHTML);
+        console.log("current size index: " + current_size_index);
+        var current_size_inventory_count = Number($(current_product).find("size_inventories").children(current_size_index).innerHTML);
         if(current_size_inventory_count > 0){
             in_stock = true;
         }
