@@ -1106,8 +1106,8 @@ function checkDesignSizeInventory(product_element_id){
         //we have designs
         var current_design = $(".product-design-icon.active")
         var current_design_index = $(".product_design_icon.active").index();
-        var current_design_inventory_count = Number($(current_product).find(".design_inventories").children(current_design_index).html());
-        console.log($(current_product).find(".design_inventories"));
+        var current_design_inventory_count = Number($(current_product).find(".design_inventories:hidden").children(current_design_index).html());
+        console.log($(current_product).find(".design_inventories:hidden"));
         console.log("current design inventory count: " + current_design_inventory_count);
         if(current_design_inventory_count > 0){
             in_stock = true;
@@ -1118,8 +1118,8 @@ function checkDesignSizeInventory(product_element_id){
     if($(current_product).find(".size_inventories").children.length > 0){
         var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
         console.log("current size index: " + current_size_index);
-        var current_size_inventory_count = Number($(current_product).find(".size_inventories").children(current_size_index).html());
-        console.log($(current_product).find(".size_inventories"));
+        var current_size_inventory_count = Number($(current_product).find(".size_inventories:hidden").children(current_size_index).html());
+        console.log($(current_product).find(".size_inventories:hidden"));
         console.log("current size inventory count: " + current_size_inventory_count);
         if(current_size_inventory_count > 0){
             in_stock = true;
