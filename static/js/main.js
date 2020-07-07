@@ -1111,7 +1111,7 @@ function checkDesignSizeInventory(product_element_id){
         var current_design_index = $(".product_design_icon.active").index();
         console.log("current design index: " + current_design_index);
         var current_design_inventory_count = String($(current_product).find(".design_inventories").get(0).children[current_design_index]);
-        console.log("current_design_inventory_count: " + current_size_inventory_count);
+        console.log("current_design_inventory_child count: " + $(current_product).find(".design_inventories").get(0).children.length);
         if(Number(current_design_inventory_count) > 0){
             in_stock = true;
         }
