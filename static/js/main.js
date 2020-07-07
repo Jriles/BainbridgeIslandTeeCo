@@ -1106,7 +1106,7 @@ function checkDesignSizeInventory(product_element_id){
     if ($(current_product).find(".design_names").children.length > 0){
         //we have designs
         var current_design = $(current_product).find("img.active");
-        console.log(current_design.show());
+        console.log(current_design.attr('class'));
         var current_design_index = $(".product_design_icon.active").index();
         console.log("current design index: " + current_design_index);
         //var current_design_inventory_count = String($(current_product).find(".design_inventories").get(0).children[current_design_index]);
