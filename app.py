@@ -228,7 +228,6 @@ class DisplayProduct(db.Model):
     price = db.Column(db.Integer())
     description = db.Column(db.String())
     primary_product_image = db.Column(db.String())
-    sizes = db.Column(db.Integer())
     product_order_num = db.Column(db.Integer(), autoincrement=True)
 
 class ProductDesign(db.Model):
@@ -240,13 +239,14 @@ class ProductDesign(db.Model):
     design_image = db.Column(db.String())
     design_icon = db.Column(db.String())
 
-class ProductSize(db.Model):
-    __tablename__ = "product_sizes"
+#sizes are crossed with designs
+class DesignSizes(db.Model):
+    __tablename__ = "design_sizes"
     id = db.Column(db.Integer(), primary_key=True)
-    inventory = db.Column(db.Integer())
-    product_id = db.Column(db.Integer())
-    product_size = db.Column(db.String())
+    size_name = db.Column(db.String())
+    design_id = db.Column(db.Integer(), db.ForeignKey('Product_Designs.id', ondelete='CASCADE', onupdate='CASCADE'))
     order_number = db.Column(db.Integer(), autoincrement=True)
+    inventory = db.Column(db.Integer())
 
 class MaintenanceMode(db.Model):
     __tablename__ = "Maintenance"
