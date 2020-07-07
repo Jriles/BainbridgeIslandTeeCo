@@ -1103,6 +1103,8 @@ function checkDesignSizeInventory(product_element_id){
     if ($(current_product).find(".design_names").children.length > 0){
         //we have designs
         var current_design_index = $(".product-design-icon.active").index();
+        console.log("current index: " + current_design_index);
+        console.log("design: inventories children: " + $(current_product).find("design_inventories").children);
         var current_design_inventory_count = Number($(current_product).find("design_inventories").children[current_design_index].innerHTML);
         if(current_design_inventory_count > 0){
             in_stock = true;
