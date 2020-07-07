@@ -314,8 +314,8 @@ def get_display_products_in_order():
 def get_designs_for_product(id):
     return ProductDesign.query.filter_by(product_id=id)
 
-def get_sizes_for_product(id):
-    return ProductSize.query.filter_by(product_id=id)
+def get_sizes_for_product_in_order(id):
+    return ProductSize.query.filter_by(product_id=id).order_by(ProductSize.order_number)
 
 def get_product_inventory(id):
     total_inventory_count = 0
