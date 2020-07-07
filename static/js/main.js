@@ -798,7 +798,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         design_buttons[index].style.border = ("2px solid " + primary_color);
     }
     //change the in stock value for this permutation of sizes/designs
-    checkDesignSizeInventory($(button).closest(".product_image_area").id);
+    checkDesignSizeInventory($(event.target).closest(".product_image_area").id);
 })
 
 var locations2D = [];
