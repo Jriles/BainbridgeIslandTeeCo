@@ -57,7 +57,6 @@ class CreateProduct(FlaskForm):
     product_name = StringField('Product Name', validators=[validators.Optional()])
     product_price = IntegerField('Product Price',  validators=[validators.Optional()])
     primary_product_image = FileField('File', validators=[validators.Optional()])
-    show_sizes = BooleanField('Show Sizes?', validators=[validators.Optional()])
     description = TextAreaField('Product Description', validators=[validators.Optional()])
 
 class InternalOrderNote(FlaskForm):
