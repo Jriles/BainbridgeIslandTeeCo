@@ -714,7 +714,7 @@ def edit_products():
     if (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
         this_size = ProductSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
-            this_size.size_name = edit_size_form.size_name.data
+            this_size.product_size = edit_size_form.size_name.data
             this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
     elif edit_product_form.product_name.data is not None and edit_product_form.validate():
