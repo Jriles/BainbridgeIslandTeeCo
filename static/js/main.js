@@ -1117,6 +1117,12 @@ function checkDesignSizeInventory(product_element_id){
             in_stock = true;
         }
     }
+
+    if(in_stock){
+        $(current_product).find(".product-in-stock").html("In Stock");
+    }else{
+        $(current_product).find(".product-in-stock").html("Out of Stock");
+    }
 }
 
 function inventorySizeCheckWrapper(dropdown){
