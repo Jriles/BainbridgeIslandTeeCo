@@ -796,7 +796,8 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     if(design_names.get(0).children[index] !== undefined){
         this_design_name.html(design_names.get(0).children[index].innerHTML);
         design_buttons[index].style.border = ("2px solid " + primary_color);
-        design_buttons[index].get(0).addClass("active");
+        console.log(design_buttons[index]);
+        design_buttons[index].addClass("active");
     }
     //change the in stock value for this permutation of sizes/designs
     checkDesignSizeInventory($(event.target).closest(".product_image_area").id);
