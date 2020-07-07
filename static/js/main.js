@@ -1106,6 +1106,7 @@ function checkDesignSizeInventory(product_element_id){
         //we have designs
         var current_design = $(".product-design-icon.active")
         var current_design_index = $(".product-design-icon.active").index();
+        console.log($(".product-design-icon.active"));
         console.log("current index: " + current_design_index);
         console.log("design: inventories children: " + $(current_product).find("design_inventories").children);
         var current_design_inventory_count = Number($(current_product).find("design_inventories").children[current_design_index].innerHTML);
