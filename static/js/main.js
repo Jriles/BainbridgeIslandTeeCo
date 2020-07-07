@@ -797,6 +797,8 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         this_design_name.html(design_names.get(0).children[index].innerHTML);
         design_buttons[index].style.border = ("2px solid " + primary_color);
     }
+    //change the in stock value for this permutation of sizes/designs
+    checkDesignSizeInventory($(button).closest(".product_image_area").id);
 })
 
 var locations2D = [];
@@ -1054,8 +1056,8 @@ function goToSlide(button){
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
-    $(button).closest
-    checkDesignSizeInventory();
+    //change in stock value for this permutation of sizes/designs
+    checkDesignSizeInventory($(button).closest(".product_image_area").id);
 }
 
 function showThisOrderItems(button){
@@ -1115,4 +1117,9 @@ function checkDesignSizeInventory(product_element_id){
             in_stock = true;
         }
     }
+}
+
+function inventorySizeCheckWrapper(dropdown){
+        //change the in stock value for this permutation of sizes/designs
+    checkDesignSizeInventory($(dropdown).closest(".product_image_area").id);
 }

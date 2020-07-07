@@ -43,7 +43,7 @@
 								</div>
 								<ul class="product-options-area">
 									<li class="options-menu-item">
-										<select id="t-shirt-size">
+										<select id="t-shirt-size" onclick="inventorySizeCheckWrapper(this)">
 										{% for size in sizes[product_loop.index-1] %}
 											<option>size.product_size</option>
 										{% endfor %}

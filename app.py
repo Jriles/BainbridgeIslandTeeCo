@@ -241,7 +241,7 @@ class ProductDesign(db.Model):
     design_icon = db.Column(db.String())
 
 class ProductSize(db.Model):
-    __tablename__ = "product_designs"
+    __tablename__ = "product_sizes"
     id = db.Column(db.Integer(), primary_key=True)
     inventory = db.Column(db.Integer())
     product_id = db.Column(db.Integer())
