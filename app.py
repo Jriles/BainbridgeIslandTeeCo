@@ -1255,6 +1255,7 @@ def create_size(productID):
     new_size_form = forms.CreateSize()
     if new_size_form.size_name.data is not None and new_size_form.validate():
         new_size = ProductSize()
+        app.logger.info("size name: " + new_size_form.size_name.data)
         new_size.size_name = new_size_form.size_name.data
         new_size.inventory = new_size_form.inventory.data
         new_size.product_id = productID
