@@ -1110,8 +1110,7 @@ function checkDesignSizeInventory(product_element_id){
         console.log(current_design.attr('class'));
         var current_design_index = $(".product_design_icon.active").index();
         console.log("current design index: " + current_design_index);
-        var current_design_inventory_count = String($(current_product).find(".design_inventories").children().eq(current_design_index).html());
-        console.log("design inventories children: " + $(current_product).find(".design_inventories").get(0));
+        var current_design_inventory_count = String($(current_product).find(".design_inventories").get(0).children[current_design_index].innerHTML);
         console.log("current_design_inventory_count: " + current_size_inventory_count);
         if(Number(current_design_inventory_count) > 0){
             in_stock = true;
