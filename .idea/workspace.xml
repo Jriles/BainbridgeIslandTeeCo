@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +20,7 @@
               <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="357">
-                    <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+                    <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
                     <folding>
                       <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                       <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -87,8 +89,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="1108" column="36" lean-forward="true" selection-start-line="1108" selection-start-column="36" selection-end-line="1108" selection-end-column="36" />
+            <state relative-caret-position="217">
+              <caret line="1107" column="54" selection-start-line="1107" selection-start-column="54" selection-end-line="1107" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -436,9 +438,9 @@
     <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20073216" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20073216" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" visible="true" weight="0.22605364" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" visible="true" weight="0.22605364" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32950193" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.91397196" weight="0.27203065" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -850,7 +852,7 @@
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+          <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
           <folding>
             <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -868,8 +870,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="1108" column="36" lean-forward="true" selection-start-line="1108" selection-start-column="36" selection-end-line="1108" selection-end-column="36" />
+        <state relative-caret-position="217">
+          <caret line="1107" column="54" selection-start-line="1107" selection-start-column="54" selection-end-line="1107" selection-end-column="54" />
         </state>
       </provider>
     </entry>
