@@ -626,22 +626,9 @@ def home():
         db.session.add(this_email)
         db.session.commit()
     display_products = get_display_products_in_order()
-    designs = []
-    for product in display_products:
-        designs.append(get_designs_for_product(product.id))
+    designs = ProductDesign.query.all()
     #we also need sizes too
-    sizes = []
-    product_idx = 0
-    for product in display_products:
-        # we want to append an empty array representing the designs for this product
-        sizes.append([])
-        # get all the designs associated with this product
-        this_product_designs = designs[product_idx]
-        product_idx += 1
-        design_idx = 0
-        for design in this_product_designs:
-            sizes[product_idx][design_idx].append(get_sizes_for_design_in_order(this_product_designs[design_idx].id))
-            design_idx += 1
+    sizes = DesignSize.query.all()
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
