@@ -1118,12 +1118,9 @@ function checkDesignSizeInventory(product_element_id){
         var relevant_design_names = $(current_product).find(".design_names")[0];
         var this_product_design_sizes = $(relevant_design_names.children[current_design_index]).find(".size_inventories")[0].children;
         console.log("this product design sizes: " + this_product_design_sizes);
-        console.log("this size inventory: " + this_product_design_sizes[current_size_drop_selected_index]);
-        var in_stock = false;
+        console.log("this size inventory: " + this_product_design_sizes[current_size_drop_selected_index].innerHTML);
 
-        //if there is a
-        console.log("this permutation in stock? " + in_stock);
-        if(in_stock){
+        if(Number(this_product_design_sizes[current_size_drop_selected_index].innerHTML)){
             $(current_product).find(".product-in-stock").html("In Stock");
         }else{
             $(current_product).find(".product-in-stock").html("Out of Stock");
