@@ -1108,8 +1108,8 @@ function checkDesignSizeInventory(product_element_id){
     var current_product = document.getElementById(product_element_id);
      var current_design_index = $(current_product).find(".product_design_icon.active").index();
     console.log("current design index: " + current_design_index);
-    var current_size_drop_down = $(current_product).find("t-shirt-size" + current_design_index).get(0);
-    console.log("current drop down children length: " + current_size_drop_down);;
+    var current_size_drop_down = current_product.getElementById("t-shirt-size" + current_design_index);
+    console.log("current drop down: " + current_size_drop_down);;
     var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
     console.log(current_size_drop_selected_index);
     if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
