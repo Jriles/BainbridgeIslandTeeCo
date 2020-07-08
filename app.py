@@ -247,7 +247,7 @@ class DisplayProduct(db.Model):
     price = db.Column(db.Integer())
     description = db.Column(db.String())
     primary_product_image = db.Column(db.String())
-    product_order_num = db.Column(db.Integer(), autoincrement=True)
+    order_num = db.Column(db.Integer(), autoincrement=True)
     product_designs = db.relationship("ProductDesign")
 
 class MaintenanceMode(db.Model):
