@@ -799,6 +799,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         console.log(design_buttons[index]);
         $(design_buttons[index]).addClass("active");
     }
+    console.log("about to call check design size inventory");
     //change the in stock value for this permutation of sizes/designs
     checkDesignSizeInventory($(event.target).closest(".product_image_area").attr('id'));
 })
@@ -1102,8 +1103,10 @@ function submitOrderNote(button){
 
 //we want to call this function whenever we change designs or sizes
 function checkDesignSizeInventory(product_element_id){
+    console.log("product id: " + product_element_id);
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
+    console.log("current product: " + current_product);
     if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
         //first we want to grab the current design from the design names hidden bucket for this product
         console.log(product_element_id);
