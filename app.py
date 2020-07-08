@@ -221,16 +221,14 @@ class Discount(db.Model):
     amount = db.Column(db.Integer())
     type = db.Column(db.String())
 
-
-class DisplayProduct(db.Model):
-    __tablename__ = "Display_Products"
+#sizes are crossed with designs
+class DesignSize(db.Model):
+    __tablename__ = "design_sizes"
     id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String())
-    price = db.Column(db.Integer())
-    description = db.Column(db.String())
-    primary_product_image = db.Column(db.String())
-    product_order_num = db.Column(db.Integer(), autoincrement=True)
-    product_designs = db.relationship("ProductDesign")
+    size_name = db.Column(db.String())
+    design_id = db.Column(db.Integer(), db.ForeignKey('Product_Designs.id', ondelete='CASCADE', onupdate='CASCADE'))
+    order_number = db.Column(db.Integer(), autoincrement=True)
+    inventory = db.Column(db.Integer())
 
 class ProductDesign(db.Model):
     __tablename__ = "Product_Designs"
@@ -241,14 +239,16 @@ class ProductDesign(db.Model):
     design_icon = db.Column(db.String())
     design_sizes = db.relationship("DesignSize")
 
-#sizes are crossed with designs
-class DesignSize(db.Model):
-    __tablename__ = "design_sizes"
+
+class DisplayProduct(db.Model):
+    __tablename__ = "Display_Products"
     id = db.Column(db.Integer(), primary_key=True)
-    size_name = db.Column(db.String())
-    design_id = db.Column(db.Integer(), db.ForeignKey('Product_Designs.id', ondelete='CASCADE', onupdate='CASCADE'))
-    order_number = db.Column(db.Integer(), autoincrement=True)
-    inventory = db.Column(db.Integer())
+    name = db.Column(db.String())
+    price = db.Column(db.Integer())
+    description = db.Column(db.String())
+    primary_product_image = db.Column(db.String())
+    product_order_num = db.Column(db.Integer(), autoincrement=True)
+    product_designs = db.relationship("ProductDesign")
 
 class MaintenanceMode(db.Model):
     __tablename__ = "Maintenance"
