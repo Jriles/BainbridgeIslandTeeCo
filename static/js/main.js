@@ -1116,7 +1116,7 @@ function checkDesignSizeInventory(product_element_id){
         //first we want to grab the current design from the design names hidden bucket for this product
         console.log(product_element_id);
         var relevant_design_names = $(current_product).find(".design-names");
-        var this_product_design_sizes = $(relevant_design_names.children[current_design_index]).find(".size_inventories");
+        var this_product_design_sizes = relevant_design_names.children[current_design_index];
         var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
         console.log(this_product_design_sizes);
         var in_stock = false;
