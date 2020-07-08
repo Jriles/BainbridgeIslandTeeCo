@@ -39,7 +39,7 @@
 									<h3 id="product-name">{{product.name}}</h3>
 									<h2 id="product-price" style="color: {{primary_color}};">${{product.price}}</h2>
 									<h5 class="product-in-stock"></h5>
-									<h6 class="design-name">{% if product.product_designs|length > 0 }{{(product.product_designs|first).design_name}}{% endif %}</h6>
+									<h6 class="design-name">{% if product.product_designs|length > 0 %}{{(product.product_designs|first).design_name}}{% endif %}</h6>
 								</div>
 								<ul class="product-options-area">
 									<li class="options-menu-item">
