@@ -1112,7 +1112,7 @@ function checkDesignSizeInventory(product_element_id){
     console.log("current drop down children length: " + current_size_drop_down);;
     var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
     console.log(current_size_drop_selected_index);
-    if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
+    if(current_size_drop_selected_index !== undefined){
         //first we want to grab the current design from the design names hidden bucket for this product
         console.log(product_element_id);
         var relevant_design_names = $(current_product).find(".design-names");
