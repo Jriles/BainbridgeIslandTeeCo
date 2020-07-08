@@ -63,8 +63,8 @@
 										{% endfor %}
 											<ul class="design_names" style="display: none;">
 												{% for design in product.product_designs %}
-												<li>{{design.design_name}}</li>
 												<li class="design-size-list">
+													<div>{{design.design_name}}</div>
 													<ul class="size_inventories" style="display: none;">
 														{% for size in design.design_sizes|sort(attribute='order_number') %}
 														<li>{{size.inventory}}</li>

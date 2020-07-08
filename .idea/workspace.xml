@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/aroma/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,8 +60,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="1078" column="57" selection-start-line="1078" selection-start-column="57" selection-end-line="1078" selection-end-column="57" />
+            <state relative-caret-position="319">
+              <caret line="1111" column="35" lean-forward="true" selection-start-line="1111" selection-start-column="35" selection-end-line="1111" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -80,8 +82,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="51" column="80" selection-start-line="51" selection-start-column="80" selection-end-line="51" selection-end-column="80" />
+            <state relative-caret-position="306">
+              <caret line="66" column="85" lean-forward="true" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -161,12 +163,12 @@
       <find>product_size</find>
       <find>admin-form</find>
       <find>design-dele</find>
-      <find>showThisProductDesigns(</find>
       <find>product.id</find>
       <find>h6</find>
       <find>active</find>
-      <find>.designs</find>
       <find>&quot;/&quot;</find>
+      <find>.designs</find>
+      <find>showThisProductDesigns(</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -246,9 +248,9 @@
         <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/templates/aroma/create-design.html" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
       </list>
     </option>
@@ -419,9 +421,9 @@
     <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20073216" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20073216" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50030506" side_tool="true" visible="true" weight="0.22605364" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50030506" side_tool="true" visible="true" weight="0.22605364" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49969494" weight="0.32950193" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.91397196" weight="0.27203065" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -802,24 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="1078" column="57" selection-start-line="1078" selection-start-column="57" selection-end-line="1078" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="100" column="130" selection-start-line="100" selection-start-column="130" selection-end-line="100" selection-end-column="130" />
-          <folding>
-            <element signature="e#287#294#1" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -837,10 +821,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="100" column="130" selection-start-line="100" selection-start-column="130" selection-end-line="100" selection-end-column="130" />
+          <folding>
+            <element signature="e#287#294#1" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="1111" column="35" lean-forward="true" selection-start-line="1111" selection-start-column="35" selection-end-line="1111" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="51" column="80" selection-start-line="51" selection-start-column="80" selection-end-line="51" selection-end-column="80" />
+        <state relative-caret-position="306">
+          <caret line="66" column="85" lean-forward="true" selection-start-line="66" selection-start-column="85" selection-end-line="66" selection-end-column="85" />
           <folding>
             <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />

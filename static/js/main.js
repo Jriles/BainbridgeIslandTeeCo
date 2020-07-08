@@ -1101,40 +1101,24 @@ function submitOrderNote(button){
 }
 
 //we want to call this function whenever we change designs or sizes
-function checkDesignSizeInventory(product_element_id){
-    //if there are designs, we want our current design inventory count
-    console.log(product_element_id);
+function checkDesignSizeInventory(product_element_id, current_design_index){
+    //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
-    console.log(current_product);
-    var in_stock = false;
-    if ($(current_product).find(".design_names").children.length > 0){
-        //we have designs
-        var current_design = $(current_product).find("img.active");
-        console.log(current_design.attr('class'));
-        var current_design_index = $(".product_design_icon.active").index();
-        console.log("current design index: " + current_design_index);
-        var current_design_inventory_count = String($(current_product).find(".design_inventories").get(0).children[current_design_index]);
-        console.log("current_design_inventory_child count: " + $(current_product).find(".design_inventories").get(0).children[current_design_index]);
-        if(Number(current_design_inventory_count) > 0){
-            in_stock = true;
-        }
-    }
+    if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
+        //first we want to grab the current design from the design names hidden bucket for this product
+        console.log(product_element_id);
+        var relevant_design_names = $(current_product).find(".design-names");
+        var design_sizes = relevant_design_names.getElementsByClassName("design-size-list");
+        var current_design_sizes = 
+        var in_stock = false;
 
-    //if there are sizes, we want our current size inventory count
-    if($(current_product).find(".size_inventories").children.length > 0 && $(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
-        var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
-        console.log("current size index: " + current_size_index);
-        var current_size_inventory_count = Number($(current_product).find(".size_inventories").children().eq(current_size_index).html());
-        console.log("current size inventory count: " + current_size_inventory_count);
-        if(current_size_inventory_count > 0){
-            in_stock = true;
+        //if there is a
+        console.log("this permutation in stock? " + in_stock);
+        if(in_stock){
+            $(current_product).find(".product-in-stock").html("In Stock");
+        }else{
+            $(current_product).find(".product-in-stock").html("Out of Stock");
         }
-    }
-    console.log("this permutation in stock? " + in_stock);
-    if(in_stock){
-        $(current_product).find(".product-in-stock").html("In Stock");
-    }else{
-        $(current_product).find(".product-in-stock").html("Out of Stock");
     }
 }
 
