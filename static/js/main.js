@@ -1108,7 +1108,7 @@ function checkDesignSizeInventory(product_element_id){
     var current_product = document.getElementById(product_element_id);
      var current_design_index = $(current_product).find(".product_design_icon.active").index();
     console.log("current design index: " + current_design_index);
-    var current_size_drop_down = $(current_product).find("t-shirt-size" + String(current_design_index)).get(0);
+    var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);;
     var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
     console.log(current_size_drop_selected_index);
