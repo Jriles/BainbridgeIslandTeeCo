@@ -9,7 +9,7 @@ body {
 
 .edit-design-form{
     width: 100%;
-    
+
 }
 
 .delete-account-link{
@@ -252,7 +252,8 @@ a {
 }
 
 .design-delete-button{
-    width: 100%;
+    width: 50%;
+    margin-left: 25%;
 }
 
 .close-order-items{
