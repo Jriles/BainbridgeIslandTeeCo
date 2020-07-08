@@ -1101,15 +1101,18 @@ function submitOrderNote(button){
 }
 
 //we want to call this function whenever we change designs or sizes
-function checkDesignSizeInventory(product_element_id, current_design_index){
+function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
         //first we want to grab the current design from the design names hidden bucket for this product
         console.log(product_element_id);
+        var current_design_index = $(current_product).find(".product_design_icon.active").index();
         var relevant_design_names = $(current_product).find(".design-names");
-        var design_sizes = relevant_design_names.getElementsByClassName("design-size-list");
-        var current_design_sizes = 
+        var this_product_design_sizes = relevant_design_names.getElementsByClassName("design-size-list");
+        var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
+        var current_design_sizes = $(this_product_design_sizes[current_design_index]).find(".size_inventories").children();
+        console.log(current_design_sizes);
         var in_stock = false;
 
         //if there is a
