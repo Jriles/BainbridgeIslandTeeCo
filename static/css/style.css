@@ -7,6 +7,11 @@ body {
 	line-height: 1.667
 }
 
+.edit-design-form{
+    width: 100%;
+    
+}
+
 .delete-account-link{
     width: 100%;
 }

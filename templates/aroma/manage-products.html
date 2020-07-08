@@ -79,7 +79,7 @@
                             <img class="admin-product-image" alt="Picture Unavailable" src="{{ design.design_image }}">
                             {% endif %}
                             <div class="">
-                                <form method="post" class="form admin-form" enctype="multipart/form-data">
+                                <form method="post" class="form admin-form edit-design-form" enctype="multipart/form-data">
                                     {{ edit_design_form.csrf_token }}
                                     Design Name:
                                     {{ edit_design_form.edit_design_name(class_ = 'edit-design card-title', value = design.design_name) }}
@@ -96,10 +96,10 @@
                                         <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design.id}}">Delete Design</a></button>
                                     </div>
                                 </form>
+                                <h5>Design Sizes</h5>
                                 <div>
                                     <a href="/new-size/{{product.id}}/{{design.id}}"><button class="btn btn-primary product_button admin-button">New Size</button></a>
                                 </div>
-                                <h5>Design Sizes</h5>
                                 <table class="table table-responsive" id="sizes-table">
                                     {% for size in design.design_sizes %}
                                     <tr>
