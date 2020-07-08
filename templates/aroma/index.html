@@ -49,7 +49,7 @@
 												<li id="{{size_design_loop.index-1}}" {% if size_design_loop.index-1 == 0 %}class="active-sizes"{% else %}class="" style="display:none;"{% endif %}>
 													<select id="t-shirt-size" onclick="inventorySizeCheckWrapper(this)">
 													{% for size in design.design_sizes|sort(attribute='order_number') %}
-														<option>{{size.product_size}}</option>
+														<option>{{size.size_name}}</option>
 													{% endfor %}
 													</select>
 												</li>
