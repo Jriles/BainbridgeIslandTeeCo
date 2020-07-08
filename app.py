@@ -786,12 +786,12 @@ def edit_products():
     for product in display_products:
         designs.append(get_designs_for_product(product.id))
     #we also need sizes too
-    sizes = display_products
+    sizes = list(display_products.fetchall())
     product_idx = 0
     for product in display_products:
         # we want to append an empty array representing the designs for this product
         # get all the designs associated with this product
-        this_product_designs = designs[product_idx]
+        this_product_designs = list(designs[product_idx].fetchall())
         sizes.append(this_product_designs)
         product_idx += 1
         design_idx = 0
