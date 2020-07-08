@@ -43,19 +43,26 @@
 								</div>
 								<ul class="product-options-area">
 									<li class="options-menu-item">
-										<select id="t-shirt-size" onclick="inventorySizeCheckWrapper(this)">
-										{% for size in sizes[product_loop.index-1] %}
-											<option>{{size.product_size}}</option>
-										{% endfor %}
-										</select>
+										<ul class="size-dropdowns">
+											{% for design in product.designs %}
+												{% set size_design_loop = loop %}
+												<li id="{{size_design_loop.index-1}}">
+													<select id="t-shirt-size" onclick="inventorySizeCheckWrapper(this)">
+													{% for size in sizes[product_loop.index-1] %}
+														<option>{{size.product_size}}</option>
+													{% endfor %}
+													</select>
+												</li>
+											{% endfor %}
+										</ul>
 									</li>
 									<li class="options-menu-item">
 										<div id="design-selection" class="card_area d-flex align-items-center">
-										{% for design in designs[product_loop.index-1] %}
+										{% for design in product.designs %}
 											<img onclick="goToSlide(this)" src="{{design.design_icon}}" class="product_design_icon">
 										{% endfor %}
 											<ul class="design_names" style="display: none;">
-												{% for design in designs[product_loop.index-1] %}
+												{% for design in product.designs %}
 												<li>{{design.design_name}}</li>
 												<li class="design-size-list">
 													<ul class="size_inventories" style="display: none;">
