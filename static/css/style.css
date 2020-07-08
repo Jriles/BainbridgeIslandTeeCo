@@ -251,6 +251,10 @@ a {
 	display: inline-block
 }
 
+.size-delete-button{
+    width: 100%;
+}
+
 .design-delete-button{
     width: 50%;
     margin-left: 25%;
