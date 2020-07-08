@@ -1072,8 +1072,11 @@ function showThisOrderItems(button){
 function showThisProductDesigns(button){
     var item_list = $(button).parent().parent().find(".design-list");
     //console.log(item_list);
+    var closest_table = $(button).closest("table");
+    var closest_table_client_width = $(closest_table).width();
     $(button).hide();
     item_list.show();
+    closest_table.scrollLeft(closest_table_client_width);
 }
 
 function closeThisItemSection(button){
