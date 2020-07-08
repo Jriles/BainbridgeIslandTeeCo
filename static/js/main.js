@@ -1107,6 +1107,7 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     console.log("current product: " + current_product);
+    console.log("size index: " + $(current_product).find("t-shirt-size").prop('selectedIndex'));
     if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
         //first we want to grab the current design from the design names hidden bucket for this product
         console.log(product_element_id);
