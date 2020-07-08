@@ -1118,6 +1118,7 @@ function checkDesignSizeInventory(product_element_id){
         var relevant_design_names = $(current_product).find(".design_names")[0];
         var this_product_design_sizes = $(relevant_design_names.children[current_design_index]).find(".size_inventories")[0].children;
         var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
+        console.log("this product design sizes: " + this_product_design_sizes);
         console.log("this size inventory: " + this_product_design_sizes[current_size_index]);
         var in_stock = false;
 
