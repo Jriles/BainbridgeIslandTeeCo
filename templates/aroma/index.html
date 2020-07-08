@@ -25,7 +25,7 @@
 									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid primary-image" src="{{product.primary_product_image}}" alt="">
 								</div>
 							{% endif %}
-							{% for design in designs[product_loop.index-1] %}
+							{% for design in product.designs %}
 								<div class="single-prd-item">
 									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design.design_image}}" alt="">
 								</div>
