@@ -26,6 +26,7 @@ import smtplib
 from smtplib import SMTPException
 from smtpd import SMTPServer
 
+from sqlalchemy.orm import relationship
 from werkzeug.utils import secure_filename
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -229,14 +230,16 @@ class DisplayProduct(db.Model):
     description = db.Column(db.String())
     primary_product_image = db.Column(db.String())
     product_order_num = db.Column(db.Integer(), autoincrement=True)
+    product_designs = db.relationship("ProductDesign")
 
 class ProductDesign(db.Model):
     __tablename__ = "Product_Designs"
     id = db.Column(db.Integer(), primary_key=True)
-    product_id = db.Column(db.Integer())
+    product_id = db.Column(db.Integer(), db.ForeignKey('Display_Products.id', ondelete='CASCADE', onupdate='CASCADE'))
     design_name = db.Column(db.String())
     design_image = db.Column(db.String())
     design_icon = db.Column(db.String())
+    design_sizes = db.relationship("DesignSize")
 
 #sizes are crossed with designs
 class DesignSize(db.Model):
@@ -782,22 +785,9 @@ def edit_products():
             db.session.commit()
     # we need to query all of the existing products and render them with the forms
     display_products = get_display_products_in_order()
-    designs = []
-    for product in display_products:
-        designs.append(get_designs_for_product(product.id))
+    designs = ProductDesign.query.all()
     #we also need sizes too
-    sizes = list(display_products.fetchall())
-    product_idx = 0
-    for product in display_products:
-        # we want to append an empty array representing the designs for this product
-        # get all the designs associated with this product
-        this_product_designs = list(designs[product_idx].fetchall())
-        sizes.append(this_product_designs)
-        product_idx += 1
-        design_idx = 0
-        for design in this_product_designs:
-            sizes[product_idx][design_idx].append(get_sizes_for_design_in_order(this_product_designs[design_idx].id))
-            design_idx += 1
+    sizes = DesignSize.query.all()
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
                            display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes)
 

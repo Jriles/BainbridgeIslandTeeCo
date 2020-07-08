@@ -74,7 +74,7 @@
                     <button type="button" onclick="closeThisDesignSection(this)" class="close-product-designs" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    {% for design in designs[product_loop.index-1] %}
+                    {% for design in product.product_designs %}
                         <div class="" id="{{design.id}} Image">
                             {% if design.design_image!= None %}
                             <img class="admin-product-image" alt="Picture Unavailable" src="{{ design.design_image }}">
@@ -104,7 +104,7 @@
                                 </div>
                                 <h5>Design Sizes</h5>
                                 <table class="table table-responsive" id="sizes-table">
-                                    {% for size in sizes[product_loop.index-1] %}
+                                    {% for size in design.design_sizes %}
                                     <tr>
                                         <form method="post" class="form admin-form" enctype="multipart/form-data">
                                             {{ edit_size_form.csrf_token }}

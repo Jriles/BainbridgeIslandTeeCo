@@ -59,7 +59,7 @@
 												<li>{{design.design_name}}</li>
 												<li class="design-size-list">
 													<ul class="size_inventories" style="display: none;">
-														{% for size in sizes[product_loop.index-1] %}
+														{% for size in design.design_sizes %}
 														<li>{{size.inventory}}</li>
 														{% endfor %}
 													</ul>
