@@ -790,9 +790,9 @@ def edit_products():
     product_idx = 0
     for product in display_products:
         # we want to append an empty array representing the designs for this product
-        sizes.append([])
         # get all the designs associated with this product
         this_product_designs = designs[product_idx]
+        sizes.append(this_product_designs)
         product_idx += 1
         design_idx = 0
         for design in this_product_designs:
