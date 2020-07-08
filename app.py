@@ -787,8 +787,17 @@ def edit_products():
         designs.append(get_designs_for_product(product.id))
     #we also need sizes too
     sizes = []
+    product_idx = 0
     for product in display_products:
-        sizes.append(get_sizes_for_product_in_order(product.id))
+        # we want to append an empty array representing the designs for this product
+        sizes.append([])
+        # get all the designs associated with this product
+        this_product_designs = designs[product_idx]
+        product_idx += 1
+        design_idx = 0
+        for design in this_product_designs:
+            sizes[product_idx][design_idx].append(get_sizes_for_design_in_order(this_product_designs[design_idx].id))
+            design_idx += 1
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
                            display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes)
 
