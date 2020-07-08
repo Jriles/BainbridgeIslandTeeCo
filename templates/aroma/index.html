@@ -48,7 +48,7 @@
 												{% set size_design_loop = loop %}
 												<li id="{{size_design_loop.index-1}}">
 													<select id="t-shirt-size" onclick="inventorySizeCheckWrapper(this)">
-													{% for size in sizes[product_loop.index-1] %}
+													{% for size in design.design_sizes %}
 														<option>{{size.product_size}}</option>
 													{% endfor %}
 													</select>
