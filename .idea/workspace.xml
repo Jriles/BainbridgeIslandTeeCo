@@ -58,8 +58,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="520">
-                  <caret line="915" column="18" selection-start-line="915" selection-start-column="18" selection-end-line="915" selection-end-column="18" />
+                <state relative-caret-position="472">
+                  <caret line="1064" column="6" selection-start-line="1064" selection-start-column="6" selection-end-line="1064" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -131,8 +131,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="24">
-                  <caret line="49" column="97" selection-start-line="49" selection-start-column="97" selection-end-line="49" selection-end-column="97" />
+                <state relative-caret-position="262">
+                  <caret line="48" column="121" lean-forward="true" selection-start-line="48" selection-start-column="121" selection-end-line="48" selection-end-column="133" />
                   <folding>
                     <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -876,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="915" column="18" selection-start-line="915" selection-start-column="18" selection-end-line="915" selection-end-column="18" />
+        <state relative-caret-position="472">
+          <caret line="1064" column="6" selection-start-line="1064" selection-start-column="6" selection-end-line="1064" selection-end-column="6" />
         </state>
       </provider>
     </entry>
