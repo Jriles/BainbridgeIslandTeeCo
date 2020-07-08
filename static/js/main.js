@@ -1106,12 +1106,12 @@ function checkDesignSizeInventory(product_element_id){
     console.log("product id: " + product_element_id);
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
-    console.log("current product: " + current_product);
-    console.log("size index: " + $(current_product).find("t-shirt-size").prop('selectedIndex'));
+     var current_design_index = $(current_product).find(".product_design_icon.active").index();
+    console.log("current design index: " + current_design_index);
+    console.log("size index: " + $(current_product).find("t-shirt-size" + current_design_index));
     if($(current_product).find("t-shirt-size").prop('selectedIndex') !== undefined){
         //first we want to grab the current design from the design names hidden bucket for this product
         console.log(product_element_id);
-        var current_design_index = $(current_product).find(".product_design_icon.active").index();
         var relevant_design_names = $(current_product).find(".design-names");
         var this_product_design_sizes = relevant_design_names.getElementsByClassName("design-size-list");
         var current_size_index = $(current_product).find("t-shirt-size").prop('selectedIndex');
