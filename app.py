@@ -233,7 +233,6 @@ class DisplayProduct(db.Model):
 class ProductDesign(db.Model):
     __tablename__ = "Product_Designs"
     id = db.Column(db.Integer(), primary_key=True)
-    inventory = db.Column(db.Integer())
     product_id = db.Column(db.Integer())
     design_name = db.Column(db.String())
     design_image = db.Column(db.String())
@@ -314,8 +313,8 @@ def get_display_products_in_order():
 def get_designs_for_product(id):
     return ProductDesign.query.filter_by(product_id=id)
 
-def get_sizes_for_product_in_order(id):
-    return ProductSize.query.filter_by(product_id=id).order_by(ProductSize.order_number)
+def get_sizes_for_design_in_order(id):
+    return DesignSize.query.filter_by(design_id=id).order_by(DesignSize.order_number)
 
 def get_product_inventory(id):
     total_inventory_count = 0
@@ -595,9 +594,20 @@ def paymentsuccess():
     for product in display_products:
         designs.append(get_designs_for_product(product.id))
     #we also need sizes too
+    #sizes needs to be a threeD array because there are sizes per design
+    #this empty array represents the products
     sizes = []
+    product_idx = 0
     for product in display_products:
-        sizes.append(get_sizes_for_product_in_order(product.id))
+        #we want to append an empty array representing the designs for this product
+        sizes.append([])
+        #get all the designs associated with this product
+        this_product_designs = designs[product_idx]
+        product_idx += 1
+        design_idx = 0
+        for design in this_product_designs:
+            sizes[product_idx][design_idx].append(get_sizes_for_design_in_order(this_product_designs[design_idx].id))
+            design_idx += 1
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
@@ -618,8 +628,17 @@ def home():
         designs.append(get_designs_for_product(product.id))
     #we also need sizes too
     sizes = []
+    product_idx = 0
     for product in display_products:
-        sizes.append(get_sizes_for_product_in_order(product.id))
+        # we want to append an empty array representing the designs for this product
+        sizes.append([])
+        # get all the designs associated with this product
+        this_product_designs = designs[product_idx]
+        product_idx += 1
+        design_idx = 0
+        for design in this_product_designs:
+            sizes[product_idx][design_idx].append(get_sizes_for_design_in_order(this_product_designs[design_idx].id))
+            design_idx += 1
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
@@ -738,7 +757,6 @@ def edit_products():
         this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
         if this_design is not None:
             this_design.design_name = edit_design_form.edit_design_name.data
-            this_design.inventory = int(edit_design_form.edit_design_inventory.data)
             image = request.files["edit_design_image"]
             if image and allowed_file(image.filename):
                 filename = secure_filename(image.filename)
