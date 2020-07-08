@@ -7,6 +7,10 @@ body {
 	line-height: 1.667
 }
 
+.active-sizes{
+    display: unset;
+}
+
 .edit-design-form{
     width: 100%;
 

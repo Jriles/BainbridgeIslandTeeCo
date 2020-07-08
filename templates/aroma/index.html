@@ -39,7 +39,6 @@
 									<h3 id="product-name">{{product.name}}</h3>
 									<h2 id="product-price" style="color: {{primary_color}};">${{product.price}}</h2>
 									<h5 class="product-in-stock"></h5>
-									{% for movie in movie_list|sort(attribute='rating') %}
 									<h6 class="design-name">{{product.product_designs|first.design_name}}</h6>
 								</div>
 								<ul class="product-options-area">
@@ -47,9 +46,9 @@
 										<ul class="size-dropdowns">
 											{% for design in product.product_designs %}
 												{% set size_design_loop = loop %}
-												<li id="{{size_design_loop.index-1}}">
+												<li id="{{size_design_loop.index-1}}" {% if size_design_loop.index-1 == 0 %}class="active-sizes"{% else %}class="" style="display:none;"{% endif %}>
 													<select id="t-shirt-size" onclick="inventorySizeCheckWrapper(this)">
-													{% for size in design.design_sizes %}
+													{% for size in design.design_sizes|sort(attribute='order_number') %}
 														<option>{{size.product_size}}</option>
 													{% endfor %}
 													</select>
@@ -67,7 +66,7 @@
 												<li>{{design.design_name}}</li>
 												<li class="design-size-list">
 													<ul class="size_inventories" style="display: none;">
-														{% for size in design.design_sizes %}
+														{% for size in design.design_sizes|sort(attribute='order_number') %}
 														<li>{{size.inventory}}</li>
 														{% endfor %}
 													</ul>
