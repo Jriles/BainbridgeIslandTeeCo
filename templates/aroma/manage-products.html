@@ -65,45 +65,6 @@
             </form>
             <td>
                 <div>
-                    <a href="/new-size/{{product.id}}"><button class="btn btn-primary product_button admin-button">New Size</button></a>
-                </div>
-                <h5>Product Sizes</h5>
-                <table class="table table-responsive" id="sizes-table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Size Name</th>
-                            <th>Size Inventory Count</th>
-                            <th>Submit Changes</th>
-                        </tr>
-                    </thead>
-                    {% for size in sizes[product_loop.index-1] %}
-                    <tr>
-                        <form method="post" class="form admin-form" enctype="multipart/form-data">
-                            {{ edit_size_form.csrf_token }}
-                            <td>
-                                Name:
-                                {{ edit_size_form.size_name(value = size.product_size) }}
-                            </td>
-                            <td>
-                                Inventory:
-                                {{ edit_size_form.inventory(value = size.inventory) }}
-                            <td>
-                                {{ edit_size_form.size_id(class_ = 'discount-form-element', value = size.id) }}
-                                {{ edit_size_form.order_number(class_ = 'discount-form-element', value = size.order_number) }}
-                                <div>
-                                    <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
-                                </div>
-                                <div>
-                                    <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-size/{{size.id}}">Delete Size</a></button>
-                                </div>
-                            </td>
-                        </form>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </td>
-            <td>
-                <div>
                     <button class="btn btn-info admin-button show-items-button" onclick="showThisProductDesigns(this)">View Designs</button>
                 </div>
                 <div>
@@ -138,6 +99,38 @@
                                         <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design.id}}">Delete Design</a></button>
                                     </div>
                                 </form>
+                                <div>
+                                    <a href="/new-size/{{product.id}}"><button class="btn btn-primary product_button admin-button">New Size</button></a>
+                                </div>
+                                <h5>Design Sizes</h5>
+                                <table class="table table-responsive" id="sizes-table">
+                                    {% for size in sizes[product_loop.index-1] %}
+                                    <tr>
+                                        <form method="post" class="form admin-form" enctype="multipart/form-data">
+                                            {{ edit_size_form.csrf_token }}
+                                            <td>
+                                                Name:
+                                                {{ edit_size_form.size_name(value = size.size_name) }}
+                                            </td>
+                                            <td>
+                                                Inventory:
+                                                {{ edit_size_form.inventory(value = size.inventory) }}
+                                            <td>
+                                                {{ edit_size_form.size_id(class_ = 'discount-form-element', value = size.id) }}
+                                                {{ edit_size_form.order_number(class_ = 'discount-form-element', value = size.order_number) }}
+                                                <div>
+                                                    <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-size/{{size.id}}">Delete Size</a></button>
+                                                </div>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
                             </div>
                         </div>
                     {% endfor %}

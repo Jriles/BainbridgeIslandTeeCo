@@ -240,7 +240,7 @@ class ProductDesign(db.Model):
     design_icon = db.Column(db.String())
 
 #sizes are crossed with designs
-class DesignSizes(db.Model):
+class DesignSize(db.Model):
     __tablename__ = "design_sizes"
     id = db.Column(db.Integer(), primary_key=True)
     size_name = db.Column(db.String())
@@ -712,7 +712,7 @@ def edit_products():
     edit_product_order = forms.ReOrderProducts()
     edit_size_form = forms.EditSize()
     if (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
-        this_size = ProductSize.query.filter_by(id=edit_size_form.size_id.data).first()
+        this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
             this_size.product_size = edit_size_form.size_name.data
             this_size.inventory = int(edit_size_form.inventory.data)
@@ -1249,25 +1249,25 @@ def create_design(productID):
             flash("Successfully created a new design for product " + productID)
     return render_template('/aroma/create-design.html', new_design_form=new_design_form)
 
-@app.route("/new-size/<productID>", methods=('GET', 'POST'))
+@app.route("/new-size/<productID>/<designID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
-def create_size(productID):
+def create_size(productID, designID):
     new_size_form = forms.CreateSize()
     if new_size_form.size_name.data is not None and new_size_form.validate():
-        new_size = ProductSize()
+        new_size = DesignSize()
         app.logger.info("size name: " + new_size_form.size_name.data)
-        new_size.product_size = new_size_form.size_name.data
+        new_size.size_name = new_size_form.size_name.data
         new_size.inventory = new_size_form.inventory.data
-        new_size.product_id = productID
+        new_size.design_id = designID
         db.session.add(new_size)
         db.session.commit()
         flash("Successfully created a new size for product " + productID)
-    return render_template('/aroma/create-product-size.html', new_size_form=new_size_form)
+    return render_template('/aroma/create-design-size.html', new_size_form=new_size_form)
 
 @app.route("/delete-size/<sizeID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def delete_size(sizeID):
-    size_to_delete = ProductSize.query.filter_by(id=sizeID).first()
+    size_to_delete = DesignSize.query.filter_by(id=sizeID).first()
     db.session.delete(size_to_delete)
     db.session.commit()
     return redirect('/manage-products')
