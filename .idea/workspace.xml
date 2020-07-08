@@ -58,8 +58,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="404">
-                  <caret line="1120" column="79" selection-start-line="1120" selection-start-column="79" selection-end-line="1120" selection-end-column="79" />
+                <state relative-caret-position="520">
+                  <caret line="915" column="18" selection-start-line="915" selection-start-column="18" selection-end-line="915" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -163,18 +163,15 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>products</find>
-      <find>get_designs_for_product</find>
       <find>ProductSize</find>
       <find>get_sizes</find>
       <find>get_designs</find>
-      <find />
+      <find>In Stock</find>
       <find>delete_design</find>
       <find>'/p</find>
       <find>new_product</find>
       <find>get_sizes_for_product</find>
-      <find />
-      <find>changed</find>
+      <find>(&quot;2px solid &quot; + primary_color);</find>
       <find>Design</find>
       <find>manage</find>
       <find>product_id</find>
@@ -193,6 +190,9 @@
       <find>inventorySizeCheckWrapper</find>
       <find>addClass</find>
       <find>checkDesignSizeInventory</find>
+      <find>changed</find>
+      <find>trigger</find>
+      <find>goToSlide</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -212,8 +212,8 @@
       <replace>TrackingID</replace>
       <replace>homeurl</replace>
       <replace>http://www.klikattatfootwear.com/</replace>
-      <replace />
-      <replace />
+      <replace>Julius Sans One</replace>
+      <replace>Bainbridge Island Tee Co</replace>
     </replaceStrings>
     <dirStrings>
       <dir />
@@ -876,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="1120" column="79" selection-start-line="1120" selection-start-column="79" selection-end-line="1120" selection-end-column="79" />
+        <state relative-caret-position="520">
+          <caret line="915" column="18" selection-start-line="915" selection-start-column="18" selection-end-line="915" selection-end-column="18" />
         </state>
       </provider>
     </entry>

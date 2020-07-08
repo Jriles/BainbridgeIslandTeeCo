@@ -1060,7 +1060,9 @@ function goToSlide(button){
     var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
     design_name_display.innerHTML = design_names[button_index].innerHTML;
     //change in stock value for this permutation of sizes/designs
-    checkDesignSizeInventory($(button).closest(".product_image_area").id);
+    //change which sizes thing we are showing
+
+    //checkDesignSizeInventory($(button).closest(".product_image_area").id);
 }
 
 function showThisOrderItems(button){
