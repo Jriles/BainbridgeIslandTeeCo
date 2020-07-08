@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,8 +58,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="353">
-                  <caret line="1117" column="69" selection-start-line="1117" selection-start-column="69" selection-end-line="1117" selection-end-column="69" />
+                <state relative-caret-position="404">
+                  <caret line="1120" column="79" selection-start-line="1120" selection-start-column="79" selection-end-line="1120" selection-end-column="79" />
                 </state>
               </provider>
             </entry>
@@ -170,12 +168,12 @@
       <find>ProductSize</find>
       <find>get_sizes</find>
       <find>get_designs</find>
-      <find>In Stock</find>
+      <find />
       <find>delete_design</find>
       <find>'/p</find>
       <find>new_product</find>
       <find>get_sizes_for_product</find>
-      <find>(&quot;2px solid &quot; + primary_color);</find>
+      <find />
       <find>changed</find>
       <find>Design</find>
       <find>manage</find>
@@ -214,8 +212,8 @@
       <replace>TrackingID</replace>
       <replace>homeurl</replace>
       <replace>http://www.klikattatfootwear.com/</replace>
-      <replace>Julius Sans One</replace>
-      <replace>Bainbridge Island Tee Co</replace>
+      <replace />
+      <replace />
     </replaceStrings>
     <dirStrings>
       <dir />
@@ -878,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="1117" column="69" selection-start-line="1117" selection-start-column="69" selection-end-line="1117" selection-end-column="69" />
+        <state relative-caret-position="404">
+          <caret line="1120" column="79" selection-start-line="1120" selection-start-column="79" selection-end-line="1120" selection-end-column="79" />
         </state>
       </provider>
     </entry>
