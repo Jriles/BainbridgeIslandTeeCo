@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aroma/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,8 +60,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="1110" column="60" lean-forward="true" selection-start-line="1110" selection-start-column="60" selection-end-line="1110" selection-end-column="60" />
+                <state relative-caret-position="268">
+                  <caret line="1112" column="50" selection-start-line="1112" selection-start-column="50" selection-end-line="1112" selection-end-column="50" />
                 </state>
               </provider>
             </entry>
@@ -879,8 +878,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="1110" column="60" lean-forward="true" selection-start-line="1110" selection-start-column="60" selection-end-line="1110" selection-end-column="60" />
+        <state relative-caret-position="268">
+          <caret line="1112" column="50" selection-start-line="1112" selection-start-column="50" selection-end-line="1112" selection-end-column="50" />
         </state>
       </provider>
     </entry>
