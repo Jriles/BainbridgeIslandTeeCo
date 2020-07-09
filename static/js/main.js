@@ -769,7 +769,6 @@ function applyDiscount(discounts){
     }
 }
 
-
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     var dot_count = $(dots).children().length;
@@ -1110,8 +1109,9 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     var active_design_icon = $(current_product).find(".product_design_icon_active");
-    var current_design_index = $(active_design_icon).index();
     console.log("current design index: " + current_design_index);
+    var nodes = Array.prototype.slice.call( active_design_icon.get(0).parentElement.children );
+    var current_design_index = nodes.indexOf( active_design_icon );
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);
     var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
@@ -1134,5 +1134,6 @@ function checkDesignSizeInventory(product_element_id){
 
 function inventorySizeCheckWrapper(dropdown){
         //change the in stock value for this permutation of sizes/designs
+
     checkDesignSizeInventory($(dropdown).closest(".product_image_area").id);
 }
