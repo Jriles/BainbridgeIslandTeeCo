@@ -797,7 +797,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         this_design_name.html(design_names.get(0).children[index].innerHTML);
         design_buttons[index].style.border = ("2px solid " + primary_color);
         console.log(design_buttons[index]);
-        $(design_buttons[index]).addClass("active");
+        $(design_buttons[index]).addClass("product_design_icon_active"");
     }
     console.log("about to call check design size inventory");
     //change the in stock value for this permutation of sizes/designs
@@ -1048,7 +1048,7 @@ function goToSlide(button){
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
     design_buttons.forEach(function(design_icon_button) {
         design_icon_button.style.borderStyle = "none";
-        $(design_icon_button).removeClass("active");
+        $(design_icon_button).removeClass("product_design_icon_active"");
     });
     $(button).addClass("active");
     button.style.border = ("2px solid " + primary_color);
@@ -1108,7 +1108,7 @@ function checkDesignSizeInventory(product_element_id){
     console.log("product id: " + product_element_id);
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
-     var current_design_index = $(current_product).find(".product_design_icon.active").index();
+     var current_design_index = $(current_product).find(".product_design_icon_active").index();
     console.log("current design icon: " + current_design_index);
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);;
