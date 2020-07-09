@@ -1114,7 +1114,7 @@ function checkDesignSizeInventory(product_element_id){
     var dot_count = $(dots).children().length;
     var dot_count_subtract = 1;
     //this thicket of if statements helps up differentiate how to change things depending on the primary product image
-    if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
+    if((current_product).find(".primary-image").length > 0){
         var index = event.item.index-3;
     }else{
         var index = event.item.index-2;
@@ -1126,7 +1126,7 @@ function checkDesignSizeInventory(product_element_id){
     }
     var current_design_index = index;
 
-    
+
     console.log("current design index: " + current_design_index);
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);
