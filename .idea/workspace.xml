@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,8 +58,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="190">
-                  <caret line="1110" column="33" selection-start-line="1110" selection-start-column="33" selection-end-line="1110" selection-end-column="33" />
+                <state relative-caret-position="258">
+                  <caret line="1114" column="43" lean-forward="true" selection-start-line="1114" selection-start-column="43" selection-end-line="1114" selection-end-column="43" />
                 </state>
               </provider>
             </entry>
@@ -846,8 +844,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="1110" column="33" selection-start-line="1110" selection-start-column="33" selection-end-line="1110" selection-end-column="33" />
+        <state relative-caret-position="258">
+          <caret line="1114" column="43" lean-forward="true" selection-start-line="1114" selection-start-column="43" selection-end-line="1114" selection-end-column="43" />
         </state>
       </provider>
     </entry>
