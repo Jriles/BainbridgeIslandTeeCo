@@ -772,9 +772,9 @@ function applyDiscount(discounts){
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
     var index = $(dots).find(".active").index()
-    if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
-        index++;
-    }
+    //if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
+    //    index++;
+    //}
     console.log("index: " + index);
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
