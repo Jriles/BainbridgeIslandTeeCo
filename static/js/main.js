@@ -1122,7 +1122,7 @@ function checkDesignSizeInventory(product_element_id){
         }
     }
     console.log(current_design_index);
-    /*
+    
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);
     var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
@@ -1141,7 +1141,6 @@ function checkDesignSizeInventory(product_element_id){
             $(current_product).find(".product-in-stock").html("Out of Stock");
         }
     }
-    */
 }
 
 function inventorySizeCheckWrapper(dropdown){
