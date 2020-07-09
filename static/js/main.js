@@ -1111,7 +1111,9 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     var current_design_icons = $(current_product).find("#design-selection");
-    console.log(current_design_icons);
+    var current_icon = $(current_design_icons).find(".product_design_icon_active");
+    console.log("active icon: " + current_icon);
+    console.log("active icon index: " + $(current_icon).index())
     console.log("index of active icon: " + current_design_icons.find(".product_design_icon_active").index())
     /*
     //we want to know if there is a primary product image
