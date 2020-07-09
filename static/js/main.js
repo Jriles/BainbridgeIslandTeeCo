@@ -1043,6 +1043,7 @@ function goToSlide(button){
     }else{
         $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
     }
+    /*
     //highlight this icon in green
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
     design_buttons.forEach(function(design_icon_button) {
@@ -1063,6 +1064,7 @@ function goToSlide(button){
     //change which sizes thing we are showing
 
     //checkDesignSizeInventory($(button).closest(".product_image_area").id);
+    */
 }
 
 function showThisOrderItems(button){

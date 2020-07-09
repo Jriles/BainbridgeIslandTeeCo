@@ -60,8 +60,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-4825">
-                  <caret line="786" column="5" selection-start-line="786" selection-start-column="5" selection-end-line="786" selection-end-column="5" />
+                <state relative-caret-position="598">
+                  <caret line="1066" column="6" selection-start-line="1066" selection-start-column="6" selection-end-line="1066" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -845,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4825">
-          <caret line="786" column="5" selection-start-line="786" selection-start-column="5" selection-end-line="786" selection-end-column="5" />
+        <state relative-caret-position="598">
+          <caret line="1066" column="6" selection-start-line="1066" selection-start-column="6" selection-end-line="1066" selection-end-column="6" />
         </state>
       </provider>
     </entry>
