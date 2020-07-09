@@ -771,20 +771,11 @@ function applyDiscount(discounts){
 
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var dots = $(this).find(".owl-dots");//.childNodes;
-    var dot_count = $(dots).children().length;
-    var dot_count_subtract = 1;
-    //this thicket of if statements helps up differentiate how to change things depending on the primary product image
-    if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
-        var index = event.item.index-3;
-    }else{
-        var index = event.item.index-2;
-        dot_count_subtract = 0;
+    var index = $(dots).find(".active").index()
+    if($(button).closest(".product_image_area").find(".primary-image").length > 0){
+        index++;
     }
-    console.log("event.item.index: " + event.item.index);
     console.log("index: " + index);
-    if(index < 0 || index === (dot_count-dot_count_subtract)){
-        index = 0;
-    }
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
     for(i = 0; i < design_buttons.length;i++){
