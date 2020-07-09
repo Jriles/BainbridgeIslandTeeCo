@@ -1112,6 +1112,7 @@ function checkDesignSizeInventory(product_element_id){
     var current_product = document.getElementById(product_element_id);
     var current_design_icons = $(current_product).find("#design-selection");
     console.log(current_design_icons);
+    /*
     //we want to know if there is a primary product image
     if($(current_product).find(".primary-image").length > 0){
         //that means there is a primary image with this product
@@ -1141,6 +1142,7 @@ function checkDesignSizeInventory(product_element_id){
             $(current_product).find(".product-in-stock").html("Out of Stock");
         }
     }
+    */
 }
 
 function inventorySizeCheckWrapper(dropdown){
