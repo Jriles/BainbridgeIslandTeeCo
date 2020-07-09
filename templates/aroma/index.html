@@ -72,7 +72,7 @@
 										<div id="design-selection" class="card_area d-flex align-items-center">
 										{% for design in product.product_designs %}
 											{% set design_loop = loop %}
-											<img onclick="goToSlide(this)" src="{{design.design_icon}}" {% if design_loop.index-1 == 0 %}class="product_design_icon product_design_icon_active"{% else %}class="product_design_icon"{% endif %}>
+											<img onclick="goToSlide(this)" src="{{design.design_icon}}" {% if design_loop.index-1 == 0 %}class="product_design_icon product_design_icon_active" style="border: 2px solid {{primary_color}}"{% else %}class="product_design_icon"{% endif %}>
 										{% endfor %}
 										</div>
 									</li>
