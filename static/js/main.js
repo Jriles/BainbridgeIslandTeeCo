@@ -1057,8 +1057,9 @@ function goToSlide(button){
     //set the design description-use this when we add to cart
     var product_name = String(button.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML);
     var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
-    var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
-    design_name_display.innerHTML = design_names[button_index].innerHTML;
+    //var options_menu_item = $(button).closest("options-menu-item");
+    //var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
+    //design_name_display.innerHTML = design_names[button_index].innerHTML;
     //change in stock value for this permutation of sizes/designs
     //change which sizes thing we are showing
 

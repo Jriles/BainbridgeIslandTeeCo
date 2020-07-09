@@ -60,8 +60,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="326">
-                  <caret line="1113" column="73" selection-start-line="1113" selection-start-column="73" selection-end-line="1113" selection-end-column="73" />
+                <state relative-caret-position="396">
+                  <caret line="1059" column="6" selection-start-line="1059" selection-start-column="6" selection-end-line="1059" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -132,8 +132,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+                <state relative-caret-position="238">
+                  <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
                   <folding>
                     <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -164,7 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_designs</find>
       <find />
       <find>delete_design</find>
       <find>'/p</find>
@@ -194,6 +193,7 @@
       <find>design-selection</find>
       <find>checkDesignSizeInventory</find>
       <find>owl-dot</find>
+      <find>var design_names</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -845,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="1113" column="73" selection-start-line="1113" selection-start-column="73" selection-end-line="1113" selection-end-column="73" />
+        <state relative-caret-position="396">
+          <caret line="1059" column="6" selection-start-line="1059" selection-start-column="6" selection-end-line="1059" selection-end-column="6" />
         </state>
       </provider>
     </entry>
