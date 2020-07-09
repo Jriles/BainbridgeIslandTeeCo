@@ -1050,7 +1050,7 @@ function goToSlide(button){
         design_icon_button.style.borderStyle = "none";
         $(design_icon_button).removeClass("product_design_icon_active");
     });
-    $(button).addClass("active");
+    $(button).addClass("product_design_icon_active");
     button.style.border = ("2px solid " + primary_color);
     //this will need to be maintained
     //if we are working with t-shirts or bags

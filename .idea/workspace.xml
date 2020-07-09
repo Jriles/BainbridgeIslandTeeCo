@@ -61,7 +61,7 @@
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="184">
-                  <caret line="1050" column="69" selection-start-line="1050" selection-start-column="69" selection-end-line="1050" selection-end-column="69" />
+                  <caret line="1110" column="84" selection-start-line="1110" selection-start-column="78" selection-end-line="1110" selection-end-column="84" />
                 </state>
               </provider>
             </entry>
@@ -165,7 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ProductSize</find>
       <find>get_sizes</find>
       <find>get_designs</find>
       <find>In Stock</find>
@@ -194,6 +193,7 @@
       <find>changed</find>
       <find>trigger</find>
       <find>goToSlide</find>
+      <find>act</find>
       <find>active</find>
     </findStrings>
     <replaceStrings>
@@ -879,7 +879,7 @@
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
-          <caret line="1050" column="69" selection-start-line="1050" selection-start-column="69" selection-end-line="1050" selection-end-column="69" />
+          <caret line="1110" column="84" selection-start-line="1110" selection-start-column="78" selection-end-line="1110" selection-end-column="84" />
         </state>
       </provider>
     </entry>
