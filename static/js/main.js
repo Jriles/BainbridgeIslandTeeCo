@@ -1111,7 +1111,7 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     var current_design_icons = $(current_product).find("#design-selection");
-    var current_icon = $(current_design_icons).find(".product_design_icon_active");
+    var current_icon = $(current_design_icons).find(".product_design_icon.product_design_icon_active");
     console.log(current_design_icons);
     console.log(current_icon);
     console.log("active icon index: " + $(current_icon).index())
