@@ -1048,7 +1048,7 @@ function goToSlide(button){
     var design_buttons = Array.prototype.slice.call(button.parentElement.children);
     design_buttons.forEach(function(design_icon_button) {
         design_icon_button.style.borderStyle = "none";
-        $(design_icon_button).removeClass("product_design_icon_active"");
+        $(design_icon_button).removeClass("product_design_icon_active");
     });
     $(button).addClass("active");
     button.style.border = ("2px solid " + primary_color);

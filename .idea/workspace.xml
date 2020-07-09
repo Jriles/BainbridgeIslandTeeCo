@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +60,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="217">
-                  <caret line="1110" column="89" selection-start-line="1110" selection-start-column="89" selection-end-line="1110" selection-end-column="89" />
+                <state relative-caret-position="184">
+                  <caret line="1050" column="69" selection-start-line="1050" selection-start-column="69" selection-end-line="1050" selection-end-column="69" />
                 </state>
               </provider>
             </entry>
@@ -183,7 +185,6 @@
       <find>design-dele</find>
       <find>product.id</find>
       <find>h6</find>
-      <find>active</find>
       <find>&quot;/&quot;</find>
       <find>.designs</find>
       <find>showThisProductDesigns(</find>
@@ -193,6 +194,7 @@
       <find>changed</find>
       <find>trigger</find>
       <find>goToSlide</find>
+      <find>active</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -876,8 +878,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="1110" column="89" selection-start-line="1110" selection-start-column="89" selection-end-line="1110" selection-end-column="89" />
+        <state relative-caret-position="184">
+          <caret line="1050" column="69" selection-start-line="1050" selection-start-column="69" selection-end-line="1050" selection-end-column="69" />
         </state>
       </provider>
     </entry>
