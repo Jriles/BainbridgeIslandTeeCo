@@ -1112,7 +1112,7 @@ function checkDesignSizeInventory(product_element_id){
     var current_product = document.getElementById(product_element_id);
     var current_design_icons = $(current_product).find("#design-selection");
     var current_icon = $(current_design_icons).find(".product_design_icon.product_design_icon_active");
-    console.log(current_design_icons);
+    console.log(current_design_icons.children());
     console.log(current_icon);
     console.log("active icon index: " + $(current_icon).index())
     console.log("index of active icon: " + current_design_icons.find(".product_design_icon_active").index())
