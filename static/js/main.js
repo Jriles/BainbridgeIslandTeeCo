@@ -784,27 +784,29 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     if(index < 0 || index === (dot_count-dot_count_subtract)){
         index = 0;
     }
-    //we also want to reset which design icon we are highlighting
-    var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
-    for(i = 0; i < design_buttons.length;i++){
-        design_buttons[i].style.border = "none";
-        console.log($(design_buttons[i]));
-        $(design_buttons[i]).attr("class", "product_design_icon");
-        console.log($(design_buttons[i]));
+    if(index !== -3){
+        //we also want to reset which design icon we are highlighting
+        var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
+        for(i = 0; i < design_buttons.length;i++){
+            design_buttons[i].style.border = "none";
+            console.log($(design_buttons[i]));
+            $(design_buttons[i]).attr("class", "product_design_icon");
+            console.log($(design_buttons[i]));
+        }
+        //finally we want to set the name and border of the designs
+        var design_names = $(event.target).parent().parent().find(".design_names");
+        var this_design_name = $(event.target).parent().parent().find(".design-name");
+        if(design_names.get(0).children[index] !== undefined){
+            this_design_name.html(design_names.get(0).children[index].innerHTML);
+            design_buttons[index].style.border = ("2px solid " + primary_color);
+            console.log(design_buttons[index]);
+            $(design_buttons[index]).attr("class", "product_design_icon product_design_icon_active");
+            console.log(design_buttons[index]);
+        }
+        console.log("about to call check design size inventory");
+        //change the in stock value for this permutation of sizes/designs
+        checkDesignSizeInventory($(event.target).closest(".product_image_area").attr('id'));
     }
-    //finally we want to set the name and border of the designs
-    var design_names = $(event.target).parent().parent().find(".design_names");
-    var this_design_name = $(event.target).parent().parent().find(".design-name");
-    if(design_names.get(0).children[index] !== undefined){
-        this_design_name.html(design_names.get(0).children[index].innerHTML);
-        design_buttons[index].style.border = ("2px solid " + primary_color);
-        console.log(design_buttons[index]);
-        $(design_buttons[index]).attr("class", "product_design_icon product_design_icon_active");
-        console.log(design_buttons[index]);
-    }
-    console.log("about to call check design size inventory");
-    //change the in stock value for this permutation of sizes/designs
-    checkDesignSizeInventory($(event.target).closest(".product_image_area").attr('id'));
 })
 
 var locations2D = [];
@@ -1119,7 +1121,6 @@ function checkDesignSizeInventory(product_element_id){
     console.log(current_design_icons.children());
     console.log(current_icon);
     console.log("active icon index: " + $(current_icon).index())
-    console.log("index of active icon: " + current_design_icons.find(".product_design_icon_active").index())
     /*
     //we want to know if there is a primary product image
     if($(current_product).find(".primary-image").length > 0){
