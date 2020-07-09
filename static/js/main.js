@@ -1109,6 +1109,7 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     var active_design_icon = $(current_product).find(".product_design_icon_active");
+    console.log("parent element: " + active_design_icon.get(0).parentElement);
     var nodes = Array.prototype.slice.call( active_design_icon.get(0).parentElement.children );
     var current_design_index = nodes.indexOf( active_design_icon.get(0) );
     console.log("current design index: " + current_design_index);
