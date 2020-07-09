@@ -57,22 +57,22 @@
 										</ul>
 									</li>
 									<li class="options-menu-item">
+										<ul class="design_names" style="display: none;">
+											{% for design in product.product_designs %}
+											<li class="design-size-list">
+												<div>{{design.design_name}}</div>
+												<ul class="size_inventories" style="display: none;">
+													{% for size in design.design_sizes|sort(attribute='order_number') %}
+													<li>{{size.inventory}}</li>
+													{% endfor %}
+												</ul>
+											</li>
+											{% endfor %}
+										</ul>
 										<div id="design-selection" class="card_area d-flex align-items-center">
 										{% for design in product.product_designs %}
 											<img onclick="goToSlide(this)" src="{{design.design_icon}}" class="product_design_icon">
 										{% endfor %}
-											<ul class="design_names" style="display: none;">
-												{% for design in product.product_designs %}
-												<li class="design-size-list">
-													<div>{{design.design_name}}</div>
-													<ul class="size_inventories" style="display: none;">
-														{% for size in design.design_sizes|sort(attribute='order_number') %}
-														<li>{{size.inventory}}</li>
-														{% endfor %}
-													</ul>
-												</li>
-												{% endfor %}
-											</ul>
 										</div>
 									</li>
 									<li class="options-menu-item"><div class="product_count">
