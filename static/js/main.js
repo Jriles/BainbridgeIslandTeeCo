@@ -1105,6 +1105,8 @@ function submitOrderNote(button){
 
 //we want to call this function whenever we change designs or sizes
 function checkDesignSizeInventory(product_element_id){
+    //this is wrong
+
     console.log("product id: " + product_element_id);
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
@@ -1122,7 +1124,6 @@ function checkDesignSizeInventory(product_element_id){
         }
     }
     console.log(current_design_index);
-    
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);
     var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
