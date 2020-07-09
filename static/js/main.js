@@ -1108,6 +1108,7 @@ function checkDesignSizeInventory(product_element_id){
     console.log("product id: " + product_element_id);
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
+    console.log(current_product);
     var dots = $(current_product).find(".owl-dots");//.childNodes;
     var dot_count = $(dots).children().length;
     console.log("dot count: " + dot_count);
