@@ -60,8 +60,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="377">
-                  <caret line="788" column="51" selection-start-line="788" selection-start-column="51" selection-end-line="788" selection-end-column="51" />
+                <state relative-caret-position="292">
+                  <caret line="780" column="35" lean-forward="true" selection-start-line="780" selection-start-column="35" selection-end-line="780" selection-end-column="35" />
                 </state>
               </provider>
             </entry>
@@ -164,7 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>delete_design</find>
       <find>'/p</find>
       <find>new_product</find>
       <find>get_sizes_for_product</find>
@@ -194,6 +193,7 @@
       <find>owl-dot</find>
       <find>var design_names</find>
       <find>product_design_icon_active</find>
+      <find>loop</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -845,8 +845,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="788" column="51" selection-start-line="788" selection-start-column="51" selection-end-line="788" selection-end-column="51" />
+        <state relative-caret-position="292">
+          <caret line="780" column="35" lean-forward="true" selection-start-line="780" selection-start-column="35" selection-end-line="780" selection-end-column="35" />
         </state>
       </provider>
     </entry>
