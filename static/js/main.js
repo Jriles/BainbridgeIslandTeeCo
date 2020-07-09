@@ -770,14 +770,14 @@ function applyDiscount(discounts){
 }
 
 $('.owl-carousel').on('changed.owl.carousel', function(event) {
-    var pos = event.relatedTarget.normalize(event.item.index, true) -2;
-    if (pos < 0)
+    var index = event.relatedTarget.normalize(event.item.index, true) -2;
+    if (index < 0)
     {
         var sourceImages = getYourImageListHere(); //your source array of images/image data....
         var imgCount = sourceImages.length;
-        pos = imgCount + pos;
+        index = imgCount + index;
     }
-    console.debug("index in original image list is ", pos);
+    console.debug("index in original image list is ", index);
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
     for(i = 0; i < design_buttons.length;i++){
