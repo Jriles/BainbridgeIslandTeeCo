@@ -797,7 +797,7 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         this_design_name.html(design_names.get(0).children[index].innerHTML);
         design_buttons[index].style.border = ("2px solid " + primary_color);
         console.log(design_buttons[index]);
-        $(design_buttons[index]).addClass("product_design_icon_active"");
+        $(design_buttons[index]).addClass("product_design_icon_active");
     }
     console.log("about to call check design size inventory");
     //change the in stock value for this permutation of sizes/designs
