@@ -780,18 +780,16 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         var index = event.item.index-2;
         dot_count_subtract = 0;
     }
+    console.log("event.item.index: " + event.item.index);
     console.log("index: " + index);
     if(index < 0 || index === (dot_count-dot_count_subtract)){
         index = 0;
     }
-    console.log("thinks index is not equal to negative 3");
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
-        console.log($(design_buttons[i]));
         $(design_buttons[i]).attr("class", "product_design_icon");
-        console.log($(design_buttons[i]));
     }
     //finally we want to set the name and border of the designs
     var design_names = $(event.target).parent().parent().find(".design_names");
@@ -799,11 +797,8 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     if(design_names.get(0).children[index] !== undefined){
         this_design_name.html(design_names.get(0).children[index].innerHTML);
         design_buttons[index].style.border = ("2px solid " + primary_color);
-        console.log(design_buttons[index]);
         $(design_buttons[index]).attr("class", "product_design_icon product_design_icon_active");
-        console.log(design_buttons[index]);
     }
-    console.log("about to call check design size inventory");
     //change the in stock value for this permutation of sizes/designs
     checkDesignSizeInventory($(event.target).closest(".product_image_area").attr('id'));
 })
