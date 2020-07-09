@@ -1109,9 +1109,24 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     var active_design_icon = $(current_product).find(".product_design_icon_active");
-    console.log("parent element: " + active_design_icon.get(0).parentElement);
-    var nodes = Array.prototype.slice.call( active_design_icon.get(0).parentElement.children );
-    var current_design_index = nodes.indexOf( active_design_icon.get(0) );
+    console.log("parent element: " + active_design_icon.get(0).parentElement.children);
+    var dots = $(current_product).find(".owl-dots");//.childNodes;
+    var dot_count = $(dots).children().length;
+    var dot_count_subtract = 1;
+    //this thicket of if statements helps up differentiate how to change things depending on the primary product image
+    if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
+        var index = event.item.index-3;
+    }else{
+        var index = event.item.index-2;
+        dot_count_subtract = 0;
+    }
+    console.log("index: " + index);
+    if(index < 0 || index === (dot_count-dot_count_subtract)){
+        index = 0;
+    }
+    var current_design_index = index;
+
+    
     console.log("current design index: " + current_design_index);
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);

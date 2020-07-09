@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +60,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/static/js/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="239">
-                  <caret line="1112" column="70" selection-start-line="1112" selection-start-column="70" selection-end-line="1112" selection-end-column="70" />
+                <state relative-caret-position="292">
+                  <caret line="1128" column="4" lean-forward="true" selection-start-line="1128" selection-start-column="4" selection-end-line="1128" selection-end-column="4" />
                 </state>
               </provider>
             </entry>
@@ -162,7 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_sizes</find>
       <find>get_designs</find>
       <find />
       <find>delete_design</find>
@@ -192,6 +193,7 @@
       <find>active</find>
       <find>design-selection</find>
       <find>checkDesignSizeInventory</find>
+      <find>owl-dot</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -844,8 +846,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="1112" column="70" selection-start-line="1112" selection-start-column="70" selection-end-line="1112" selection-end-column="70" />
+        <state relative-caret-position="292">
+          <caret line="1128" column="4" lean-forward="true" selection-start-line="1128" selection-start-column="4" selection-end-line="1128" selection-end-column="4" />
         </state>
       </provider>
     </entry>
