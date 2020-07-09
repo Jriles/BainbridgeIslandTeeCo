@@ -1109,11 +1109,19 @@ function checkDesignSizeInventory(product_element_id){
     //if a size is selected show if in stock
     var current_product = document.getElementById(product_element_id);
     console.log($(current_product).find(".owl-dots"));
-    var dots = $("#" + String(product_element_id)).find(".owl-dot.active").index();//.childNodes;
-    console.log(dots);
-    var dot_count = $(dots).children().length;
-    console.log("dot count: " + dot_count);
-
+    var current_design_index = $(current_product).find(".owl-dot.active").index();//.childNodes;
+    console.log(current_design_index);
+    //we want to know if there is a primary product image
+    if($(current_product).find(".primary-image").length > 0){
+        //that means there is a primary image with this product
+        //next we want to ask if we are at zero
+        //if so, do nothing
+        //else subtract one
+        if(current_design_index !== 0){
+            current_design_index--;
+        }
+    }
+    console.log(current_design_index);
     /*
     var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
     console.log("current drop down children length: " + current_size_drop_down);
