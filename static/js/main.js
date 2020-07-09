@@ -784,7 +784,8 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     if(index < 0 || index === (dot_count-dot_count_subtract)){
         index = 0;
     }
-    if(index !== -3){
+    if(index !== (-3)){
+        console.log("thinks index is not equal to negative 3");
         //we also want to reset which design icon we are highlighting
         var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
         for(i = 0; i < design_buttons.length;i++){
