@@ -1114,7 +1114,7 @@ function checkDesignSizeInventory(product_element_id){
     var dot_count = $(dots).children().length;
     var dot_count_subtract = 1;
     //this thicket of if statements helps up differentiate how to change things depending on the primary product image
-    if((current_product).find(".primary-image").length > 0){
+    if($(current_product).find(".primary-image").length > 0){
         var index = event.item.index-3;
     }else{
         var index = event.item.index-2;
