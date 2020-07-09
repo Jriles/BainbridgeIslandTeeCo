@@ -71,7 +71,8 @@
 										</ul>
 										<div id="design-selection" class="card_area d-flex align-items-center">
 										{% for design in product.product_designs %}
-											<img onclick="goToSlide(this)" src="{{design.design_icon}}" class="product_design_icon">
+											{% set design_loop = loop %}
+											<img onclick="goToSlide(this)" src="{{design.design_icon}}" {% if design_loop.index-1 == 0 %}class="product_design_icon product_design_icon_active"{% endif %}>
 										{% endfor %}
 										</div>
 									</li>
