@@ -165,12 +165,12 @@
     <findStrings>
       <find>get_sizes</find>
       <find>get_designs</find>
-      <find>In Stock</find>
+      <find />
       <find>delete_design</find>
       <find>'/p</find>
       <find>new_product</find>
       <find>get_sizes_for_product</find>
-      <find>(&quot;2px solid &quot; + primary_color);</find>
+      <find />
       <find>Design</find>
       <find>manage</find>
       <find>product_id</find>
@@ -212,8 +212,8 @@
       <replace>TrackingID</replace>
       <replace>homeurl</replace>
       <replace>http://www.klikattatfootwear.com/</replace>
-      <replace>Julius Sans One</replace>
-      <replace>Bainbridge Island Tee Co</replace>
+      <replace />
+      <replace />
     </replaceStrings>
     <dirStrings>
       <dir />
