@@ -778,7 +778,6 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
         pos = imgCount + pos;
     }
     console.debug("index in original image list is ", pos);
-    console.log("index: " + index);
     //we also want to reset which design icon we are highlighting
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
     for(i = 0; i < design_buttons.length;i++){
