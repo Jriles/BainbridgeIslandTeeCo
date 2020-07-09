@@ -788,9 +788,9 @@ $('.owl-carousel').on('changed.owl.carousel', function(event) {
     var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
     for(i = 0; i < design_buttons.length;i++){
         design_buttons[i].style.border = "none";
-        console.log($(design_buttons[index]));
-        $(design_buttons[index]).attr("class", "product_design_icon");
-        console.log($(design_buttons[index]));
+        console.log($(design_buttons[i]));
+        $(design_buttons[i]).attr("class", "product_design_icon");
+        console.log($(design_buttons[i]));
     }
     //finally we want to set the name and border of the designs
     var design_names = $(event.target).parent().parent().find(".design_names");
