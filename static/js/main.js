@@ -1112,6 +1112,7 @@ function checkDesignSizeInventory(product_element_id){
     var current_product = document.getElementById(product_element_id);
     var current_design_icons = $(current_product).find("#design-selection");
     console.log(current_design_icons);
+    console.log("index of active icon: " + current_design_icons.find(".product_design_icon_active").index())
     /*
     //we want to know if there is a primary product image
     if($(current_product).find(".primary-image").length > 0){
