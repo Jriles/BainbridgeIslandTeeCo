@@ -19,9 +19,9 @@
 			<div class="container">
 				<div class="row s_product_inner">
 					<div class="col-lg-6">
-						<div class="owl-carousel owl-theme s_Product_carousel">
+						<div class="slick-carousel">
 							{% if product.primary_product_image is not none %}
-								<div class="single-prd-item">
+								<div>
 									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid primary-image" src="{{product.primary_product_image}}" alt="">
 								</div>
 							{% endif %}

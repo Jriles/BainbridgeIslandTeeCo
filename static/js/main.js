@@ -65,65 +65,6 @@ $(function() {
   });
 
 
-  //------- hero carousel -------//
-  $(".hero-carousel").owlCarousel({
-    items:3,
-    margin: 10,
-    autoplay:false,
-    autoplayTimeout: 5000,
-    loop:true,
-    nav:false,
-    dots:false,
-    responsive:{
-      0:{
-        items:1
-      },
-      600:{
-        items: 2
-      },
-      810:{
-        items:3
-      }
-    }
-  });
-
-  //------- Best Seller Carousel -------//
-  if($('.owl-carousel').length > 0){
-    $('#bestSellerCarousel').owlCarousel({
-      loop:true,
-      margin:30,
-      nav:true,
-      navText: ["<i class='ti-arrow-left'></i>","<i class='ti-arrow-right'></i>"],
-      dots: false,
-      responsive:{
-        0:{
-          items:1
-        },
-        600:{
-          items: 2
-        },
-        900:{
-          items:3
-        },
-        1130:{
-          items:4
-        }
-      }
-    })
-  }
-
-  //------- single product area carousel -------//
-  $(".s_Product_carousel").owlCarousel({
-    items:1,
-    autoplay:false,
-    autoplayTimeout: 5000,
-    loop:true,
-    nav:false,
-    dots:true
-  });
-
-
-
    if (performance.navigation.type == 2) {
     console.info( "This page is reloaded" );
     $('#tree-input').prop('checked', false);
@@ -359,6 +300,10 @@ $(function() {
                     console.log("new order array value: " + document.getElementById("new_order_array").value);
                     document.getElementById("product-reordering-form").submit();
                 }
+            });
+            $(".slick-carousel").slick({
+                autoplay: true,
+                dots: true
             });
 		});
 
