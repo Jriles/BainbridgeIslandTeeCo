@@ -1091,11 +1091,12 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     $(current_icon).css("border", ("2px solid" + primary_color));
 
     //now we want to set the name of the design shown
-    var design_names = $(product_area).find(".design_names");
+    var design_detail_li = $(product_area).find(".design_size_list").eq(design_index);
     console.log(design_names);
-    var current_design_name = $(design_names).children().eq(design_index).children().eq(0);
+
+    var current_design_name = $(design_detail_li).children().eq(0);
     console.log(current_design_name);
-    $(design_names).children().hide();
+    //$(design_names).children().hide();
     $(current_design_name).show();
 });
 
