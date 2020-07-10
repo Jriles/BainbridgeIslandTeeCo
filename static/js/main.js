@@ -303,7 +303,9 @@ $(function() {
             });
             $(".slick-carousel").slick({
                 autoplay: true,
-                dots: true
+                dots: true,
+                pauseOnDotsHover: true,
+                arrows: true
             });
 		});
 
