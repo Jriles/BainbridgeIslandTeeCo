@@ -307,11 +307,6 @@ $(function() {
                 pauseOnDotsHover: true,
                 arrows: true
             });
-            //change slick arrows to primary color
-            console.log("primary color: " + primary_color);
-            console.log($(".slick-arrow:before"));
-            $(".slick-arrow:before").attr("style", "" + String(primary_color) + " !important;");
-            console.log($(".slick-arrow:before"));
 		});
 
     //check if this is the cart page
