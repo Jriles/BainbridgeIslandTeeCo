@@ -309,7 +309,7 @@ $(function() {
             });
             //change slick arrows to primary color
             console.log("primary color: " + primary_color);
-            $(".slick-arrow").css("color", primary_color);
+            $(".slick-arrow").css("color", '"' + primary_color + '"');
 		});
 
     //check if this is the cart page
