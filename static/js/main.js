@@ -310,7 +310,8 @@ $(function() {
             //change slick arrows to primary color
             console.log("primary color: " + primary_color);
             console.log($(".slick-arrow"));
-            $(".slick-arrow").css("color", '"' + primary_color + '"');
+            $(".slick-arrow").css("color", String(primary_color));
+            console.log($(".slick-arrow"));
 		});
 
     //check if this is the cart page
