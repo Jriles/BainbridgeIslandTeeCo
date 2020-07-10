@@ -1066,9 +1066,7 @@ function checkDesignSizeInventory(product_element_id){
 }
 
 $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
-    console.log(currentSlide);
     //we want to ask if there is a primary image first
-    console.log($(event.target).closest(".product_image_area").find(".primary-image"));
     var design_index = currentSlide;   //we want to determine what design we want to show
     //if there is a primary product image
     var product_area = $(event.target).closest(".product_image_area");
@@ -1094,7 +1092,9 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 
     //now we want to set the name of the design shown
     var design_names = $(product_area).find(".design_names");
+    console.log(design_names);
     var current_design_name = $(design_names).children().eq(design_index);
+    console.log(current_design_name);
     $(design_names).children().hide();
     $(current_design_name).show();
 });
