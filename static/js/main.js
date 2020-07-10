@@ -1092,7 +1092,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 
     //now we want to set the name of the design shown
     var design_detail_li = $(product_area).find(".design_size_list").eq(design_index);
-    console.log(design_names);
+    console.log(design_detail_li);
 
     var current_design_name = $(design_detail_li).children().eq(0);
     console.log(current_design_name);
