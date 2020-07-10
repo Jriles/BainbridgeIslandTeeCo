@@ -1071,7 +1071,8 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     console.log($(event.target).closest(".product_image_area").find(".primary-image"));
     var design_index = currentSlide;   //we want to determine what design we want to show
     //if there is a primary product image
-    if($(event.target).closest(".product_image_area").find(".primary-image").length > 0){
+    var product_area = $(event.target).closest(".product_image_area");
+    if($(product_area).find(".primary-image").length > 0){
         //there is a primary product image
         //first we want to ask if the index is zero
         //0 -> 0
@@ -1083,6 +1084,12 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
         }
     }
     //else there is no primary product image and we simply do nothing
+    //now that we have our design index we want to have the correct design icon highlighted and the correct design name show
+    var this_product_design_icons = $(product_area).find("#design-selection");
+    //fist we want to blank the border of all the icons
+    $(this_product_design_sizes).children().css("border", "unset");
+    var current_icon = $(this_product_design_sizes).children().eq(design_index);
+    $(current_icon).css("border", ("2px solid" + primary_color));
 });
 
 function inventorySizeCheckWrapper(dropdown){
