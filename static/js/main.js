@@ -306,8 +306,8 @@ $(function() {
                 dots: true,
                 pauseOnDotsHover: true,
                 arrows: true,
-                nextArrow: '<i class="fa fa-arrow-right"></i>',
-                prevArrow: '<i class="fa fa-arrow-left"></i>'
+                nextArrow: '<div><i class="fa fa-arrow-right"></i></div>',
+                prevArrow: '<div><i class="fa fa-arrow-left"></i></div>'
             });
 		});
 
