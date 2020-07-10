@@ -309,10 +309,12 @@ $(function() {
             });
             //change slick arrows to primary color
             console.log("primary color: " + primary_color);
-            console.log($(".slick-arrow"));
-            $(".slick-prev::before").css("color", String(primary_color));
-            $(".slick-next::before").css("color", String(primary_color));
-            console.log($(".slick-arrow"));
+            console.log($(".slick-prev:before"));
+            console.log($(".slick-next:before"));
+            $(".slick-prev:before").css("color", String(primary_color));
+            $(".slick-next:before").css("color", String(primary_color));
+            console.log($(".slick-prev:before"));
+            console.log($(".slick-next:before"));
 		});
 
     //check if this is the cart page
