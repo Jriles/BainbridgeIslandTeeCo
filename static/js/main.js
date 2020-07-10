@@ -310,8 +310,8 @@ $(function() {
             //change slick arrows to primary color
             console.log("primary color: " + primary_color);
             console.log($(".slick-arrow"));
-            $(".slick-prev:before").css("color", String(primary_color));
-            $(".slick-next:before").css("color", String(primary_color));
+            $(".slick-prev::before").css("color", String(primary_color));
+            $(".slick-next::before").css("color", String(primary_color));
             console.log($(".slick-arrow"));
 		});
 
