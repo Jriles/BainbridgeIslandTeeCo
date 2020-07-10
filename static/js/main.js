@@ -1066,7 +1066,7 @@ function checkDesignSizeInventory(product_element_id){
 }
 
 $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
-    console.log($(currentSlide).index());
+    console.log(currentSlide);
 });
 
 function inventorySizeCheckWrapper(dropdown){
