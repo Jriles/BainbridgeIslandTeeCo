@@ -4827,6 +4827,7 @@ li .product_count{
     width: 100%;
 }
 
+.slick-prev:before, .slick-next:before { font-family: "slick"; font-size: 40px; line-height: 1; color: red; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .hero-text{
     width: 80%;
 }

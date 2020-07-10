@@ -305,9 +305,7 @@ $(function() {
                 autoplay: true,
                 dots: true,
                 pauseOnDotsHover: true,
-                arrows: true,
-                nextArrow: '<div><i class="fa fa-arrow-right"></i></div>',
-                prevArrow: '<div><i class="fa fa-arrow-left"></i></div>'
+                arrows: true
             });
 		});
 
