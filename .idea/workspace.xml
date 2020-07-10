@@ -46,8 +46,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="1067" column="30" selection-start-line="1067" selection-start-column="30" selection-end-line="1067" selection-end-column="30" />
+            <state relative-caret-position="496">
+              <caret line="1078" column="16" lean-forward="true" selection-start-line="1078" selection-start-column="16" selection-end-line="1078" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -138,7 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>manage</find>
       <find>product_id</find>
       <find>get_sizes_for_pro</find>
       <find>edit_design</find>
@@ -168,6 +167,7 @@
       <find>owl-carousel</find>
       <find>.ready</find>
       <find>setPrimaryColor</find>
+      <find>primary-image</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -825,8 +825,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="1067" column="30" selection-start-line="1067" selection-start-column="30" selection-end-line="1067" selection-end-column="30" />
+        <state relative-caret-position="496">
+          <caret line="1078" column="16" lean-forward="true" selection-start-line="1078" selection-start-column="16" selection-end-line="1078" selection-end-column="16" />
         </state>
       </provider>
     </entry>
