@@ -4829,7 +4829,7 @@ li .product_count{
 
 .slick-prev:before,
 .slick-next:before {
-  color: grey !important;
+  color: yellow!important;
 }
 
 .hero-text{
