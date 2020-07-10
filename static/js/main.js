@@ -308,7 +308,8 @@ $(function() {
                 arrows: true
             });
             //change slick arrows to primary color
-            $("document").find(".slick-arrow").css("color", primary_color);
+            console.log("primary color: " + primary_color);
+            $(".slick-arrow").css("color", primary_color);
 		});
 
     //check if this is the cart page
