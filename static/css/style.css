@@ -7,6 +7,9 @@ body {
 	line-height: 1.667
 }
 
+.slick-prev:before, .slick-next:before { font-family: "slick"; font-size: 40px; line-height: 1; color: red; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+
 .active-sizes{
     display: unset;
 }
@@ -4826,8 +4829,6 @@ li .product_count{
 .product-cart-buttons{
     width: 100%;
 }
-
-.slick-prev:before, .slick-next:before { font-family: "slick"; font-size: 40px; line-height: 1; color: red; opacity: 0.75; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 .hero-text{
     width: 80%;
