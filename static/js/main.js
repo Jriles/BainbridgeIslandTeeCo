@@ -1083,6 +1083,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
             design_index--;
         }
     }
+
     //else there is no primary product image and we simply do nothing
     //now that we have our design index we want to have the correct design icon highlighted and the correct design name show
     var this_product_design_icons = $(product_area).find("#design-selection");
@@ -1090,6 +1091,12 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     $(this_product_design_icons).children().css("border", "unset");
     var current_icon = $(this_product_design_icons).children().eq(design_index);
     $(current_icon).css("border", ("2px solid" + primary_color));
+
+    //now we want to set the name of the design shown
+    var design_names = $(product_area).find(".design_names");
+    var current_design_name = $(design_names).children().eq(design_index);
+    $(design_names).children().hide();
+    $(current_design_name).show();
 });
 
 function inventorySizeCheckWrapper(dropdown){
