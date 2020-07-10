@@ -301,6 +301,7 @@ $(function() {
                     document.getElementById("product-reordering-form").submit();
                 }
             });
+            //slick carousel initialization
             $(".slick-carousel").slick({
                 autoplay: true,
                 dots: true,
@@ -717,33 +718,6 @@ function applyDiscount(discounts){
     }
 }
 
-$('.owl-carousel').on('changed.owl.carousel', function(event) {
-    var index = event.relatedTarget.normalize(event.item.index, true) -2;
-    if (index < 0)
-    {
-        var sourceImages = getYourImageListHere(); //your source array of images/image data....
-        var imgCount = sourceImages.length;
-        index = imgCount + index;
-    }
-    console.debug("index in original image list is ", index);
-    //we also want to reset which design icon we are highlighting
-    var design_buttons = $(event.target).closest(".s_product_inner").find('#design-selection').children();
-    for(i = 0; i < design_buttons.length;i++){
-        design_buttons[i].style.border = "none";
-        $(design_buttons[i]).attr("class", "product_design_icon");
-    }
-    //finally we want to set the name and border of the designs
-    var design_names = $(event.target).parent().parent().find(".design_names");
-    var this_design_name = $(event.target).parent().parent().find(".design-name");
-    if(design_names.get(0).children[index] !== undefined){
-        this_design_name.html(design_names.get(0).children[index].innerHTML);
-        design_buttons[index].style.border = ("2px solid " + primary_color);
-        $(design_buttons[index]).attr("class", "product_design_icon product_design_icon_active");
-    }
-    //change the in stock value for this permutation of sizes/designs
-    checkDesignSizeInventory($(event.target).closest(".product_image_area").attr('id'));
-})
-
 var locations2D = [];
 var orders = [];
 function showShippingOrders (arrayOfOrders, arrayOfLocations, arrayOfEvents){
@@ -1090,6 +1064,10 @@ function checkDesignSizeInventory(product_element_id){
     }
     */
 }
+
+$('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
+    console.log($(currentSlide).index());
+});
 
 function inventorySizeCheckWrapper(dropdown){
         //change the in stock value for this permutation of sizes/designs
