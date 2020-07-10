@@ -1088,7 +1088,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     var this_product_design_icons = $(product_area).find("#design-selection");
     //fist we want to blank the border of all the icons
     $(this_product_design_icons).children().css("border", "unset");
-    var current_icon = $(this_product_design_sizes).children().eq(design_index);
+    var current_icon = $(this_product_design_icons).children().eq(design_index);
     $(current_icon).css("border", ("2px solid" + primary_color));
 });
 
