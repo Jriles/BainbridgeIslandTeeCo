@@ -4827,6 +4827,11 @@ li .product_count{
     width: 100%;
 }
 
+.slick-prev:before,
+.slick-next:before {
+  color: grey;
+}
+
 .hero-text{
     width: 80%;
 }
