@@ -973,6 +973,10 @@ function showThisProductDesigns(button){
     $(button).hide();
     item_list.show();
     closest_table.scrollLeft(closest_table_client_width);
+    //we also want to turn off the reordering functionality for
+    //for each row in the main table product table we want to add the class
+    $("#manage-products-table").find("tr").addClass("nodrag");
+    $("#manage-products-table").tableDnDUpdate();
 }
 
 function closeThisItemSection(button){
