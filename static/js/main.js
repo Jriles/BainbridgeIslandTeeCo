@@ -1118,11 +1118,6 @@ function inventorySizeCheckWrapper(dropdown_item){
             design_index--;
         }
     }
-    console.log(design_index)
-    //we want to display the sizes associated with this product
-    var current_size_drop_down = $(product_area).find(".active-sizes");
-    $(current_size_drop_down).removeClass("active-sizes");
-    $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
     var design_names = $(product_area).find(".design_names");
     var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
     //now that we have this index, lets use it to indicate if this permutation is in stock
