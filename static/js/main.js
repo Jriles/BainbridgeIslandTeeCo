@@ -1111,7 +1111,7 @@ function doesCurrentProductHaveImage(product){
 function inventorySizeCheckWrapper(dropdown_item){
     var product_area = $(dropdown_item).closest(".product_image_area");
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
-    var design_index = $(product_area).find(".slick-carousel").slick('currentSlide');
+    var design_index = $(product_area).find('.slick-carousel').slick('slickCurrentSlide');
     if(doesCurrentProductHaveImage(product_area)){
         //if so we want to subtract from the design index
         if(design_index !== 0){
