@@ -1091,20 +1091,24 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 
     //now we want to set the name of the design shown
     var design_names = $(product_area).find(".design_names");
-    var current_design_name = $(design_names).children().eq(design_index).children().eq(0).html();
-    console.log(current_design_name);
-    $(product_area).find(".design-name").html(current_design_name);
+    if($(design_names).children().length > 0){
+        var current_design_name = $(design_names).children().eq(design_index).children().eq(0).html();
+        console.log(current_design_name);
+        $(product_area).find(".design-name").html(current_design_name);
+    }
 
     //now we want to know if this permutation is in stock and we want to let the customer know if so
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
-    console.log($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index));
-    var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
-    console.log(this_permutation_inventory_count);
-    //now that we have this index, lets use it to indicate if this permutation is in stock
-    if(this_permutation_inventory_count > 0){
-        $(product_area).find(".product-in-stock").html("In Stock");
-    }else {
-        $(product_area).find(".product-in-stock").html("Out of Stock");
+    console.log();
+    if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
+        var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
+        console.log(this_permutation_inventory_count);
+        //now that we have this index, lets use it to indicate if this permutation is in stock
+        if(this_permutation_inventory_count > 0){
+            $(product_area).find(".product-in-stock").html("In Stock");
+        }else {
+            $(product_area).find(".product-in-stock").html("Out of Stock");
+        }
     }
 });
 
