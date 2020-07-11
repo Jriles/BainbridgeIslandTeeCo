@@ -4801,7 +4801,7 @@ li .product_count{
 
   /* slick */
   .slick-prev, .slick-next{
-    top: 415px;
+    top: 110%;
   }
 
   .slick-prev{
