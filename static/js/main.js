@@ -287,20 +287,22 @@ $(function() {
                 }
             }
             scrollDown();
-            $("#manage-products-table").tableDnD({
-                onDrop: function(table, row) {
-                    console.log(table.rows);
-                    var arr = [].slice.call(table.rows);
-                    var new_order_id_arr = [];
-                    for(i = 1; i < arr.length;i++){
-                        new_order_id_arr.push($(arr[i]).find("#product_id").val());
+            if($("#manage-products-table").length > 0){
+                $("#manage-products-table").tableDnD({
+                    onDrop: function(table, row) {
+                        console.log(table.rows);
+                        var arr = [].slice.call(table.rows);
+                        var new_order_id_arr = [];
+                        for(i = 1; i < arr.length;i++){
+                            new_order_id_arr.push($(arr[i]).find("#product_id").val());
+                        }
+                        console.log(new_order_id_arr);
+                        document.getElementById("new_order_array").value = String(new_order_id_arr);
+                        console.log("new order array value: " + document.getElementById("new_order_array").value);
+                        document.getElementById("product-reordering-form").submit();
                     }
-                    console.log(new_order_id_arr);
-                    document.getElementById("new_order_array").value = String(new_order_id_arr);
-                    console.log("new order array value: " + document.getElementById("new_order_array").value);
-                    document.getElementById("product-reordering-form").submit();
-                }
-            });
+                });
+            }
             //slick carousel initialization
             $(".slick-carousel").slick({
                 autoplay: true,
