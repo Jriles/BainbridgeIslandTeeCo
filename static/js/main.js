@@ -1100,6 +1100,12 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     console.log(size_index);
     var this_permutation_inventory_count = $(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index);
     console.log(this_permutation_inventory_count);
+    //now that we have this index, lets use it to indicate if this permutation is in stock
+    if(this_permutation_inventory_count > 0){
+        $(product_area).find(".product-in-stock").html("In Stock");
+    }else {
+        $(product_area).find(".product-in-stock").html("Out of Stock");
+    }
 });
 
 function inventorySizeCheckWrapper(dropdown){
