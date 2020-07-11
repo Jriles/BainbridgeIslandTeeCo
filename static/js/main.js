@@ -307,7 +307,7 @@ $(function() {
                 dots: true,
                 pauseOnDotsHover: true,
                 arrows: true,
-                speed: 100,
+                speed: 800,
                 autoplaySpeed: 5000,
                  // the magic
                 responsive: [{
