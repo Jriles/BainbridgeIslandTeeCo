@@ -4813,7 +4813,7 @@ li .product_count{
   }
 
   .slick-carousel{
-    margin-bottom: 50px;
+    margin-bottom: 50px !important;
   }
 
 .product-options-area{
