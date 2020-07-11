@@ -1087,7 +1087,7 @@ function goToSlide(button){
     var design_index = Number($(button).index());
 
     //if there is a primary product image we want to add one to the index so that we are actually showing the right slide
-    if($(product_area).find(".primary-image").length > 0){
+    if(doesCurrentProductHaveImage(product_area)){
         design_index++;
     }
 
@@ -1098,12 +1098,26 @@ function goToSlide(button){
     $(product_area).find('.slick-carousel').slick('slickGoTo', design_index);
 }
 
+function doesCurrentProductHaveImage(product){
+    if($(product).find(".primary-image").length > 0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 //when the customer changes sizes with the drop down
 //we are basically only doing an inventory check here
 function inventorySizeCheckWrapper(dropdown_item){
     var product_area = $(dropdown_item).closest(".product_image_area");
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
-    var design_index = $(product_area).find(".product_design_icon_active").index();
+    var design_index = $(product_area).find(".slick-carousel").slick('currentSlide');
+    if(doesCurrentProductHaveImage(product_area)){
+        //if so we want to subtract from the design index
+        if(design_index !== 0){
+            design_index--;
+        }
+    }
     console.log(design_index)
     //we want to display the sizes associated with this product
     var current_size_drop_down = $(product_area).find(".active-sizes");
@@ -1112,7 +1126,7 @@ function inventorySizeCheckWrapper(dropdown_item){
     var design_names = $(product_area).find(".design_names");
     var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
     //now that we have this index, lets use it to indicate if this permutation is in stock
-    if(this_permutation_inventory_count > 0){
+    if(doesCurrentProductHaveImage(product_area)){
         $(product_area).find(".product-in-stock").html("In Stock");
     }else {
         $(product_area).find(".product-in-stock").html("Out of Stock");
