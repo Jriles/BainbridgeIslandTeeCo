@@ -46,7 +46,7 @@
 										<ul class="size-dropdowns">
 											{% for design in product.product_designs %}
 												{% set design_loop = loop %}
-												<li id="{{design_loop.index-1}}" {% if design_loop.index-1 == 0 %}class="active-sizes"{% else %}class="" style="display:none;"{% endif %}>
+												<li id="{{design_loop.index-1}}" {% if design_loop.index-1 == 0 %}class="active-sizes hidden-sizes"{% else %}class="hidden-sizes"{% endif %}>
 													<select class="size-selection" id="t-shirt-size{{design_loop.index-1}}" onclick="inventorySizeCheckWrapper(this)">
 													{% for size in design.design_sizes|sort(attribute='order_number') %}
 														<option>{{size.size_name}}</option>

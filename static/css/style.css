@@ -11,7 +11,11 @@ body {
 
 
 .active-sizes{
-    display: unset;
+    display: unset !important;
+}
+
+.hidden-sizes{
+    display: none;
 }
 
 .edit-design-form{
