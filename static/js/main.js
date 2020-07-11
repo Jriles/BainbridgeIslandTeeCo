@@ -1095,7 +1095,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     var design_names = $(product_area).find(".design_names");
     var current_design_name = $(design_names).children().eq(design_index).children().eq(0).html();
     console.log(current_design_name);
-    //$(design_names).children().hide();
+    $(product_area).find(".design-name").html(current_design_name);
     //$(current_design_name).show();
 });
 
