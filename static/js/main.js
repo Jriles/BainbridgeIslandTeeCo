@@ -1123,9 +1123,9 @@ function doesCurrentProductHaveImage(product){
 
 //when the customer changes sizes with the drop down
 //we are basically only doing an inventory check here
-$('option').change(function(){
+$('select').change(function(){
     var product_area = $(this).closest(".product_image_area");
-    var size_index = $(this).index();
+    var size_index = $(this).prop('selectedIndex');
     console.log("size index: " + size_index);
     var design_index = $(product_area).find('.slick-carousel').slick('slickCurrentSlide');
     if(doesCurrentProductHaveImage(product_area)){
