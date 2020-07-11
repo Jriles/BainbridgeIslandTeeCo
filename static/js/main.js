@@ -1088,6 +1088,12 @@ function goToSlide(button){
     var product_area = $(button).closest(".product_image_area");
     console.log("current button index: " + Number($(button).index()));
     var design_index = Number($(button).index());
+
+    //if there is a primary product image we want to add one to the index so that we are actually showing the right slide
+    if($(product_area).find(".primary-image").length > 0){
+        design_index++;
+    }
+
     //we want to change the icon border and go to the right carousel slide
     $(button).parent().children().css("border", "unset");
     var current_icon = $(button).parent().children().eq(design_index);
