@@ -1058,7 +1058,6 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     var design_names = $(product_area).find(".design_names");
     if($(design_names).children().length > 0){
         var current_design_name = $(design_names).children().eq(design_index).children().eq(0).html();
-        console.log(current_design_name);
         $(product_area).find(".design-name").html(current_design_name);
     }
 
@@ -1068,10 +1067,8 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     var current_size_drop_down = $(product_area).find(".active-sizes");
     $(current_size_drop_down).removeClass("active-sizes");
     $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
-    console.log(size_index);
     if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
         var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
-        console.log(this_permutation_inventory_count);
         //now that we have this index, lets use it to indicate if this permutation is in stock
         if(this_permutation_inventory_count > 0){
             $(product_area).find(".product-in-stock").html("In Stock");
@@ -1087,7 +1084,6 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 function goToSlide(button){
     //first we want the product associated with this button
     var product_area = $(button).closest(".product_image_area");
-    console.log("current button index: " + Number($(button).index()));
     var design_index = Number($(button).index());
 
     //if there is a primary product image we want to add one to the index so that we are actually showing the right slide
@@ -1108,14 +1104,13 @@ function inventorySizeCheckWrapper(dropdown_item){
     var product_area = $(dropdown_item).closest(".product_image_area");
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
     var design_index = $(product_area).find(".product_design_icon_active").index();
+    console.log(design_index)
     //we want to display the sizes associated with this product
     var current_size_drop_down = $(product_area).find(".active-sizes");
     $(current_size_drop_down).removeClass("active-sizes");
     $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
-    console.log(size_index);
     var design_names = $(product_area).find(".design_names");
     var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
-    console.log(this_permutation_inventory_count);
     //now that we have this index, lets use it to indicate if this permutation is in stock
     if(this_permutation_inventory_count > 0){
         $(product_area).find(".product-in-stock").html("In Stock");
