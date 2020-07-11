@@ -4812,6 +4812,10 @@ li .product_count{
     right: 20%;
   }
 
+  .slick-carousel{
+    margin-bottom: 50px;
+  }
+
 .product-options-area{
     width: 50% !important;
 }
