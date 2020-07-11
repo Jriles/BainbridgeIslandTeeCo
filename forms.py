@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import TextField, PasswordField, StringField, IntegerField, FileField, BooleanField, SubmitField, SelectField, HiddenField, TextAreaField
-from wtforms.validators import DataRequired, EqualTo, Length
+from wtforms.validators import DataRequired, EqualTo, Length, InputRequired
 from wtforms.fields.html5 import EmailField, DecimalRangeField
 from wtforms import validators
 
@@ -117,10 +117,10 @@ class ChangeUserAgreement(FlaskForm):
 
 class CreateSize(FlaskForm):
     size_name = StringField('Size Name', validators=[DataRequired()])
-    inventory = IntegerField('Inventory Count', validators=[DataRequired()])
+    inventory = IntegerField('Inventory Count', validators=[InputRequired()])
 
 class EditSize(FlaskForm):
     size_name = StringField('Size Name', validators=[validators.DataRequired()])
-    inventory = IntegerField('Inventory Count', validators=[validators.DataRequired()])
+    inventory = IntegerField('Inventory Count', validators=[validators.InputRequired()])
     size_id = HiddenField()
     order_number = HiddenField()
