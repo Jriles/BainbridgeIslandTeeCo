@@ -49,7 +49,7 @@
 												<li id="{{design_loop.index-1}}" {% if design_loop.index-1 == 0 %}class="active-sizes hidden-sizes"{% else %}class="hidden-sizes"{% endif %}>
 													<select class="size-selection" id="t-shirt-size{{design_loop.index-1}}">
 													{% for size in design.design_sizes|sort(attribute='order_number') %}
-														<option onclick="inventorySizeCheckWrapper(this)">{{size.size_name}}</option>
+														<option onchange="inventorySizeCheckWrapper(this)">{{size.size_name}}</option>
 													{% endfor %}
 													</select>
 												</li>
