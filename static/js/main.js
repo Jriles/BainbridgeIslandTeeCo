@@ -1109,6 +1109,8 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
         }else {
             $(product_area).find(".product-in-stock").html("Out of Stock");
         }
+    }else{
+        $(product_area).find(".product-in-stock").html("");
     }
 });
 
