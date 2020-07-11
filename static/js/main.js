@@ -306,8 +306,7 @@ $(function() {
                 autoplay: true,
                 dots: true,
                 pauseOnDotsHover: true,
-                arrows: true,
-                adaptiveHeight: true
+                arrows: true
             });
 		});
 
