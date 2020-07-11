@@ -1087,7 +1087,7 @@ function goToSlide(button){
     //first we want the product associated with this button
     var product_area = $(button).closest(".product_image_area");
     var current_carousel = $(product_area).find('.slick-carousel');
-    current_carousel.slickGoTo($(button).index());
+    $(current_carousel).slick('slickGoTo', 'index', $(button).index());
 }
 
 function inventorySizeCheckWrapper(dropdown){

@@ -50,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="513">
-              <caret line="1089" column="20" selection-start-line="1089" selection-start-column="20" selection-end-line="1089" selection-end-column="20" />
+              <caret line="1089" column="71" lean-forward="true" selection-start-line="1089" selection-start-column="71" selection-end-line="1089" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -829,7 +829,7 @@
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
-          <caret line="1089" column="20" selection-start-line="1089" selection-start-column="20" selection-end-line="1089" selection-end-column="20" />
+          <caret line="1089" column="71" lean-forward="true" selection-start-line="1089" selection-start-column="71" selection-end-line="1089" selection-end-column="71" />
         </state>
       </provider>
     </entry>
