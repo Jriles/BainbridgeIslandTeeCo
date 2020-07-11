@@ -1104,8 +1104,8 @@ function goToSlide(button){
 
 //when the customer changes sizes with the drop down
 //we are basically only doing an inventory check here
-function inventorySizeCheckWrapper(dropdown){
-    var product_area = $(dropdown).closest(".product_image_area");
+function inventorySizeCheckWrapper(dropdown_item){
+    var product_area = $(dropdown_item).closest(".product_image_area");
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
     var design_index = $(product_area).find(".product_design_icon_active").index();
     //we want to display the sizes associated with this product
@@ -1114,16 +1114,12 @@ function inventorySizeCheckWrapper(dropdown){
     $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
     console.log(size_index);
     var design_names = $(product_area).find(".design_names");
-    if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
-        var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
-        console.log(this_permutation_inventory_count);
-        //now that we have this index, lets use it to indicate if this permutation is in stock
-        if(this_permutation_inventory_count > 0){
-            $(product_area).find(".product-in-stock").html("In Stock");
-        }else {
-            $(product_area).find(".product-in-stock").html("Out of Stock");
-        }
-    }else{
-        $(product_area).find(".product-in-stock").html("");
+    var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
+    console.log(this_permutation_inventory_count);
+    //now that we have this index, lets use it to indicate if this permutation is in stock
+    if(this_permutation_inventory_count > 0){
+        $(product_area).find(".product-in-stock").html("In Stock");
+    }else {
+        $(product_area).find(".product-in-stock").html("Out of Stock");
     }
 }
