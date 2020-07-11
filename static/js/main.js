@@ -306,7 +306,17 @@ $(function() {
                 autoplay: true,
                 dots: true,
                 pauseOnDotsHover: true,
-                arrows: true
+                arrows: true,
+                speed: 100,
+                autoplaySpeed: 5000,
+                 // the magic
+                responsive: [{
+                    breakpoint: 1024
+                    }, {
+                    breakpoint: 600
+                    }, {
+                    breakpoint: 300
+                    }]
             });
 		});
 
