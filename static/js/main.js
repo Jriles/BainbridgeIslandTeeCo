@@ -946,41 +946,6 @@ function mobileCheck(){
     return false;
 }
 
-function goToSlide(button){
-    var relevant_carousel = button.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
-    var nodes = Array.prototype.slice.call( button.parentElement.children );
-    var button_index = nodes.indexOf( button );
-    var primary_image_exists = false;
-    console.log($(button).closest(".product_image_area").find(".primary-image"));
-    if($(button).closest(".product_image_area").find(".primary-image").length > 0){
-        $(relevant_carousel).trigger("to.owl.carousel", [button_index+1, 400, true]);
-    }else{
-        $(relevant_carousel).trigger("to.owl.carousel", [button_index, 400, true]);
-    }
-    /*
-    //highlight this icon in green
-    var design_buttons = Array.prototype.slice.call(button.parentElement.children);
-    design_buttons.forEach(function(design_icon_button) {
-        design_icon_button.style.borderStyle = "none";
-        $(design_icon_button).removeClass("product_design_icon_active");
-    });
-    $(button).addClass("product_design_icon_active");
-    button.style.border = ("2px solid " + primary_color);
-    //this will need to be maintained
-    //if we are working with t-shirts or bags
-    //set the design description-use this when we add to cart
-    var product_name = String(button.parentElement.parentElement.parentElement.parentElement.children[0].children[0].innerHTML);
-    var design_name_display = button.parentElement.parentElement.parentElement.parentElement.children[0].children[3];
-    //var options_menu_item = $(button).closest("options-menu-item");
-    //var design_names = button.parentElement.children[button.parentElement.children.length-1].children;
-    //design_name_display.innerHTML = design_names[button_index].innerHTML;
-    //change in stock value for this permutation of sizes/designs
-    //change which sizes thing we are showing
-
-    //checkDesignSizeInventory($(button).closest(".product_image_area").id);
-    */
-}
-
 function showThisOrderItems(button){
     var item_list = $(button).parent().find(".item-list");
     //console.log(item_list);
@@ -1103,7 +1068,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     var current_size_drop_down = $(product_area).find(".active-sizes");
     $(current_size_drop_down).removeClass("active-sizes");
     $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
-    console.log();
+    console.log(size_index);
     if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
         var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
         console.log(this_permutation_inventory_count);
@@ -1117,6 +1082,13 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
         $(product_area).find(".product-in-stock").html("");
     }
 });
+
+function goToSlide(button){
+    //first we want the product associated with this button
+    var product_area = $(button).closest(".product_image_area");
+    var current_carousel = $(product_area).find(".slick-carousel");
+    $(current_carousel).slickGoTo($(button).index());
+}
 
 function inventorySizeCheckWrapper(dropdown){
         //change the in stock value for this permutation of sizes/designs
