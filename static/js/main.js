@@ -1113,6 +1113,7 @@ function inventorySizeCheckWrapper(dropdown){
     $(current_size_drop_down).removeClass("active-sizes");
     $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
     console.log(size_index);
+    var design_names = $(product_area).find(".design_names");
     if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
         var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
         console.log(this_permutation_inventory_count);
