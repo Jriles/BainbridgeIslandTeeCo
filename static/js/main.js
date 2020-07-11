@@ -1063,6 +1063,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 
     //now we want to know if this permutation is in stock and we want to let the customer know if so
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
+    console.log("size index now: " + size_index);
     //we want to display the sizes associated with this product
     var current_size_drop_down = $(product_area).find(".active-sizes");
     $(current_size_drop_down).removeClass("active-sizes");
@@ -1111,6 +1112,7 @@ function doesCurrentProductHaveImage(product){
 function inventorySizeCheckWrapper(dropdown_item){
     var product_area = $(dropdown_item).closest(".product_image_area");
     var size_index = $(dropdown_item).index();
+    console.log("size index: " + size_index);
     var design_index = $(product_area).find('.slick-carousel').slick('slickCurrentSlide');
     if(doesCurrentProductHaveImage(product_area)){
         //if so we want to subtract from the design index
