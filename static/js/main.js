@@ -1083,6 +1083,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     }
 });
 
+//when the customer changes designs with the icons
 function goToSlide(button){
     //first we want the product associated with this button
     var product_area = $(button).closest(".product_image_area");
@@ -1101,7 +1102,27 @@ function goToSlide(button){
     $(product_area).find('.slick-carousel').slick('slickGoTo', design_index);
 }
 
+//when the customer changes sizes with the drop down
+//we are basically only doing an inventory check here
 function inventorySizeCheckWrapper(dropdown){
-        //change the in stock value for this permutation of sizes/designs
-    checkDesignSizeInventory($(dropdown).closest(".product_image_area").id);
+    var product_area = $(dropdown).closest(".product_image_area");
+    var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
+    var design_index = $(product_area).find(".product_design_icon_active").index();
+    //we want to display the sizes associated with this product
+    var current_size_drop_down = $(product_area).find(".active-sizes");
+    $(current_size_drop_down).removeClass("active-sizes");
+    $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
+    console.log(size_index);
+    if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
+        var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
+        console.log(this_permutation_inventory_count);
+        //now that we have this index, lets use it to indicate if this permutation is in stock
+        if(this_permutation_inventory_count > 0){
+            $(product_area).find(".product-in-stock").html("In Stock");
+        }else {
+            $(product_area).find(".product-in-stock").html("Out of Stock");
+        }
+    }else{
+        $(product_area).find(".product-in-stock").html("");
+    }
 }
