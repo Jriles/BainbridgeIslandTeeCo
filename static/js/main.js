@@ -1088,6 +1088,10 @@ function goToSlide(button){
     var product_area = $(button).closest(".product_image_area");
     console.log("current button index: " + Number($(button).index()));
     var design_index = Number($(button).index());
+    //we want to change the icon border and go to the right carousel slide
+    $(button).parent().children().css("border", "unset");
+    var current_icon = $(button).parent().children().eq(design_index);
+    $(current_icon).css("border", ("2px solid" + primary_color));
     $(product_area).find('.slick-carousel').slick('slickGoTo', design_index);
 }
 
