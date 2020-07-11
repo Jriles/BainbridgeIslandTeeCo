@@ -1086,9 +1086,8 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 function goToSlide(button){
     //first we want the product associated with this button
     var product_area = $(button).closest(".product_image_area");
-    var current_carousel = $(product_area).find('.slick-carousel');
-    console.log("design icon index: " + $(button).index());
-    $(current_carousel).slick('slickGoTo', 'index', Number($(button).index()), 'dontAnimate', false);
+    console.log("current button index: " + Number($(button).index()));
+    $(product_area).find('.slick-carousel').slick('slickGoTo', 'index', Number($(button).index()), 'dontAnimate', false);
 }
 
 function inventorySizeCheckWrapper(dropdown){
