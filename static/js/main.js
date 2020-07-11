@@ -1121,7 +1121,7 @@ function inventorySizeCheckWrapper(dropdown_item){
     var design_names = $(product_area).find(".design_names");
     var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
     //now that we have this index, lets use it to indicate if this permutation is in stock
-    if(doesCurrentProductHaveImage(product_area)){
+    if(this_permutation_inventory_count > 0){
         $(product_area).find(".product-in-stock").html("In Stock");
     }else {
         $(product_area).find(".product-in-stock").html("Out of Stock");
