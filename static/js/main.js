@@ -1090,16 +1090,19 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     $(current_icon).css("border", ("2px solid" + primary_color));
 
     //now we want to set the name of the design shown
-    //TO DO
     var design_names = $(product_area).find(".design_names");
     var current_design_name = $(design_names).children().eq(design_index).children().eq(0).html();
     console.log(current_design_name);
     $(product_area).find(".design-name").html(current_design_name);
-    //$(current_design_name).show();
+
+    //now we want to know if this permutation is in stock and we want to let the customer know if so
+    var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
+    console.log(size_index);
+    var this_permutation_inventory_count = $(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index);
+    console.log(this_permutation_inventory_count);
 });
 
 function inventorySizeCheckWrapper(dropdown){
         //change the in stock value for this permutation of sizes/designs
-
     checkDesignSizeInventory($(dropdown).closest(".product_image_area").id);
 }
