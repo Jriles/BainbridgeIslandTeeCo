@@ -1097,7 +1097,7 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
 
     //now we want to know if this permutation is in stock and we want to let the customer know if so
     var size_index = $(product_area).find(".size-selection").prop('selectedIndex');
-    console.log(size_index);
+    console.log($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index));
     var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
     console.log(this_permutation_inventory_count);
     //now that we have this index, lets use it to indicate if this permutation is in stock
