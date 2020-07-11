@@ -1080,9 +1080,11 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     //now that we have chanes the sizes lets ask if the currently shown one is in stock
     var size_index = $(product_area).find(".active-sizes").children().eq(0).prop('selectedIndex');
     console.log("size index now: " + size_index);
+    console.log("ask if there is a size here: " + $(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length);
     if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
         var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
         //now that we have this index, lets use it to indicate if this permutation is in stock
+        console.log("this permutation inventory count: " + this_permutation_inventory_count);
         if(this_permutation_inventory_count > 0){
             $(product_area).find(".product-in-stock").html("In Stock");
         }else {
