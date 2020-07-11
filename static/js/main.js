@@ -1087,6 +1087,7 @@ function goToSlide(button){
     //first we want the product associated with this button
     var product_area = $(button).closest(".product_image_area");
     var current_carousel = $(product_area).find('.slick-carousel');
+    console.log("design icon index: " + $(button).index());
     $(current_carousel).slick('slickGoTo', 'index', $(button).index());
 }
 
