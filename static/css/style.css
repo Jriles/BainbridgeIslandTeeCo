@@ -7,24 +7,15 @@ body {
 	line-height: 1.667
 }
 
-.slick-prev:before, .slick-next:before {
+.slick-prev:before, .slick-next:before, .slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus, .slick-prev:active, .slick-next:active {
     color: black;
     background-color: white;
-}
-
-.slick-prev:hover, .slick-next:hover{
-    color: black;
-    background-color: white;
-}
-
-.slick-prev:focus, .slick-next:focus{
-    color: black;
-    background-color: white;
-}
-
-.slick-prev:active, .slick-next:active{
-    color: black;
-    background-color: white;
+    display: inline-block;
+    -webkit-transform:scale(8,1); /* Safari and Chrome */
+    -moz-transform:scale(8,1); /* Firefox */
+    -ms-transform:scale(8,1); /* IE 9 */
+    -o-transform:scale(8,1); /* Opera */
+    transform:scale(8,1); /* W3C */
 }
 
 .slick-prev:before{
@@ -32,7 +23,7 @@ body {
 }
 
 .slick-next:before{
-    content: '>';
+    content: '<';
 }
 
 .slick-prev, .slick-next{
