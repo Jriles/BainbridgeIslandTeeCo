@@ -315,9 +315,10 @@ $(function() {
                             new_size_order_id_arr.push($(arr[i]).find("#size_id").val());
                         }
                         console.log(new_size_order_id_arr);
-
+                        console.log("order input element: ");
+                        console.log($(table.parentElement).find("#new_size_order_arr"));
                         $(table.parentElement).find("#new_size_order_arr").val(String(new_size_order_id_arr));
-                        console.log($(table).parent().find("#size-reordering-form"));
+
                         //$(table).parent().find("#size-reordering-form").submit();
                     }
                 });
