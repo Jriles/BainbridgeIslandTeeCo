@@ -952,7 +952,6 @@ function scrollDown(){
     //we only want to scroll down if they
     //first we want to get all the navbar product links
     console.log($(document).scrollTop());
-    /*
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
     if(document.getElementById("product" + String(product_index)) !== null){
         console.log("product index: " + product_index);
@@ -973,7 +972,6 @@ function scrollDown(){
             // Animation complete.
         });
     }
-    */
 }
 
 function browseSweatshirts(){
