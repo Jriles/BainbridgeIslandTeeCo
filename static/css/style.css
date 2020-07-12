@@ -8,7 +8,7 @@ body {
 }
 
 .slick-prev:before, .slick-next:before, .slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus, .slick-prev:active, .slick-next:active {
-    color: black;
+    color: unset;
     background-color: white;
 }
 
@@ -19,6 +19,7 @@ body {
     -ms-transform:scale(2,8); /* IE 9 */
     -o-transform:scale(2,8); /* Opera */
     transform:scale(2,8); /* W3C */
+    font-smooth
 }
 
 .slick-prev:before{
@@ -34,6 +35,14 @@ body {
     width: 5%;
     transparent: unset;
     color: unset;
+}
+
+.slick-prev{
+    padding-right: 4%;
+}
+
+.slick-next{
+    padding-left: 4%;
 }
 
 .home-quantity-label{
