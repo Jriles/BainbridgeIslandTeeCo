@@ -617,8 +617,9 @@ function addToCart(button){
     $(button).text("Added to Cart!");
     //
     var thisProductInfo = $(button).closest(".s_product_inner");
+    var current_design_index = $(thisProductInfo).find('.slick-carousel').slick('slickCurrentSlide');
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
-    var size = $(thisProductInfo).find(".size-selection option:selected").val();
+    var size = $(thisProductInfo).find("#t-shirt-size" + current_design_index + " option:selected").val();
     if(size === undefined){
         size = "N/A";
     }
