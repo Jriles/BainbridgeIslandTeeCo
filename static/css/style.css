@@ -11,11 +11,11 @@ body {
     color: black;
     background-color: white;
     display: inline-block;
-    -webkit-transform:scale(8,1); /* Safari and Chrome */
-    -moz-transform:scale(8,1); /* Firefox */
-    -ms-transform:scale(8,1); /* IE 9 */
-    -o-transform:scale(8,1); /* Opera */
-    transform:scale(8,1); /* W3C */
+    -webkit-transform:scale(1,8); /* Safari and Chrome */
+    -moz-transform:scale(1,8); /* Firefox */
+    -ms-transform:scale(1,8); /* IE 9 */
+    -o-transform:scale(1,8); /* Opera */
+    transform:scale(1,8); /* W3C */
 }
 
 .slick-prev:before{
