@@ -1060,9 +1060,11 @@ function checkDesignSizeInventory(product_element_id){
     */
 }
 
-$('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
+$('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     //we want to ask if there is a primary image first
-    var design_index = currentSlide+1;   //we want to determine what design we want to show
+    var design_index = currentSlide;   //we want to determine what design we want to show
+    console.log("current design index: " + currentSlide);
+
     //if there is a primary product image
     var product_area = $(event.target).closest(".product_image_area");
     if($(product_area).find(".primary-image").length > 0){
