@@ -317,7 +317,7 @@ $(function() {
                         console.log(new_size_order_id_arr);
                         console.log("order input element: ");
                         console.log($(table.parentElement).find("#new_size_order_arr"));
-                        $(table.parentElement).find("#new_size_order_arr").prop('value', String(new_size_order_id_arr));
+                        $(table.parentElement).find("#new_size_order_arr").prop('value', new_size_order_id_arr);
                         console.log("new value: " + $(table.parentElement).find("#new_size_order_arr").val());
                         $(table).parent().find("#size-reordering-form").submit();
                     }
