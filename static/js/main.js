@@ -298,8 +298,8 @@ $(function() {
                     }
                 });
                 //for each design we want to initialize the sizes table
-                var total_design_count =
-                for()
+                //var total_design_count =
+                //for()
                 $(".sizes-table").tableDnD({
                     onDrop: function(table, row) {
                         console.log(table.rows);
