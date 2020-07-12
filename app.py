@@ -771,8 +771,8 @@ def edit_products():
             current_product.product_order_num = idx
             db.session.add(current_product)
             db.session.commit()
-    elif edit_size_order.new_size_order_array.data is not None and edit_size_order.validate():
-        new_order_id_arr = edit_product_order.new_order_array.data.split(',')
+    elif edit_size_order.new_size_order_arr.data is not None and edit_size_order.validate():
+        new_order_id_arr = edit_product_order.new_order_arr.data.split(',')
         app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
         for idx, this_id in enumerate(new_order_id_arr):
             # get this particular product using its id
@@ -786,7 +786,7 @@ def edit_products():
     #we also need sizes too
     sizes = DesignSize.query.all()
     return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
-                           display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes)
+                           display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes, edit_size_order=edit_size_order)
 
 
 @app.route("/new-product", methods=('GET', 'POST'))
