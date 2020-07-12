@@ -762,7 +762,7 @@ def edit_products():
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
-    elif edit_product_order.new_order_array.data is not None:
+    elif edit_product_order.new_order_array.data is not None and edit_product_order.new_order_array.data is not '':
         app.logger.info("new order array data: " + edit_product_order.new_order_array.data)
         #we should be able to validate these but jquery is fun
         new_order_id_arr = edit_product_order.new_order_array.data.split(',')

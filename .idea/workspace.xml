@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="773" column="92" lean-forward="true" selection-start-line="773" selection-start-column="92" selection-end-line="773" selection-end-column="92" />
+            <state relative-caret-position="68">
+              <caret line="750" column="31" lean-forward="true" selection-start-line="750" selection-start-column="31" selection-end-line="750" selection-end-column="31" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -32,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="579">
@@ -248,9 +248,9 @@
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -806,12 +806,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="773" column="92" lean-forward="true" selection-start-line="773" selection-start-column="92" selection-end-line="773" selection-end-column="92" />
+        <state relative-caret-position="579">
+          <caret line="128" column="78" lean-forward="true" selection-start-line="128" selection-start-column="78" selection-end-line="128" selection-end-column="78" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -823,12 +823,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="128" column="78" lean-forward="true" selection-start-line="128" selection-start-column="78" selection-end-line="128" selection-end-column="78" />
+        <state relative-caret-position="68">
+          <caret line="750" column="31" lean-forward="true" selection-start-line="750" selection-start-column="31" selection-end-line="750" selection-end-column="31" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
