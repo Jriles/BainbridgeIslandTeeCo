@@ -126,4 +126,4 @@ class EditSize(FlaskForm):
     order_number = HiddenField()
 
 class ReOrderSizes(FlaskForm):
-    new_size_order_arr = StringField('Ordering', validators=[validators.DataRequired()])
+    new_size_order_arr = StringField('Ordering', validators=[InputRequired()])
