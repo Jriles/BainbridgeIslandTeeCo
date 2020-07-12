@@ -296,13 +296,14 @@ $(function() {
                     for(i = 0; i < arr.length;i++){
                         new_order_id_arr.push($(arr[i]).find("#size_id").val());
                     }
-                    console.log(new_order_id_arr);
+                    //console.log(new_order_id_arr);
 
-                    $(table).parent().find("#new_size_order_arr").val(String(new_order_id_arr));
-                    console.log($(table).parent().find("#size-reordering-form"));
+                    $(table.parentElement).find("#new_size_order_arr").val(String(new_order_id_arr));
+                    //console.log($(table).parent().find("#size-reordering-form"));
                     $(table).parent().find("#size-reordering-form").submit();
                 }
             });
+            console.log("made it this far");
             if($("#manage-products-table").length > 0){
                 /*
                 $("#manage-products-table").tableDnD({
