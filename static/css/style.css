@@ -10,6 +10,9 @@ body {
 .slick-prev:before, .slick-next:before, .slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus, .slick-prev:active, .slick-next:active {
     color: black;
     background-color: white;
+}
+
+.slick-prev:before, .slick-next:before{
     display: inline-block;
     -webkit-transform:scale(1,8); /* Safari and Chrome */
     -moz-transform:scale(1,8); /* Firefox */
@@ -19,11 +22,11 @@ body {
 }
 
 .slick-prev:before{
-    content: '>';
+    content: '<';
 }
 
 .slick-next:before{
-    content: '<';
+    content: '>';
 }
 
 .slick-prev, .slick-next{
