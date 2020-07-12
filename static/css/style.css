@@ -8,7 +8,7 @@ body {
 }
 
 .slick-prev:before, .slick-next:before, .slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus, .slick-prev:active, .slick-next:active {
-    color: unset;
+    color: black;
     background-color: white;
 }
 
@@ -33,16 +33,15 @@ body {
     height: 100%;
     width: 5%;
     transparent: unset;
-    color: unset;
+    color: black;
 }
 
 .slick-prev{
-    left: -5%;
+    left: -6%;
 }
 
 .slick-next{
-    right: -5%;
-    right: 0px;
+    right: -6%;
 }
 
 .home-quantity-label{
