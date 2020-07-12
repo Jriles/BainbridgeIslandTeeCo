@@ -299,7 +299,7 @@ $(function() {
                             new_order_id_arr.push($(arr[i]).find("#product_id").val());
                         }
                         document.getElementById("new_order_array").value = String(new_order_id_arr);
-                        document.getElementById("product-reordering-form").get(0).submit();
+                        document.getElementById("product-reordering-form").submit();
                     }
                 });
                 $("#sizes-table").tableDnD({
