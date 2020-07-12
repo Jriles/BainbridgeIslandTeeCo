@@ -644,7 +644,8 @@ function addToCart(button){
     var thisProductImage = $(thisProductInfo).find(".primary-image").attr('src');
     var thisProductDesign = $(thisProductInfo).find('.design-name').text();
     console.log($(thisProductInfo).find('.design_names').children().eq(current_design_index));
-    var thisSizeID = $(thisProductInfo).find('.design_names').children().eq(current_design_index).find("#size-id").text();
+    var size_index = $(thisProductInfo).find(".active-sizes").children().eq(0).prop('selectedIndex');
+    var thisSizeID = $(thisProductInfo).find('.design_names').children().eq(current_design_index).find(".size_inventories").children().eq(size_index).find("#size-id").text();
     console.log(thisProductDesign);
     var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign, "SizeID": thisSizeID};
     var cart = sessionStorage.getItem("Cart");
