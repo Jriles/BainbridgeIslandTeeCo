@@ -287,6 +287,7 @@ $(function() {
                 }
             }
             scrollDown();
+            /*
             $("#sizes-table").tableDnD({
                 onDrop: function(table, row) {
                     console.log(table.rows);
@@ -303,9 +304,9 @@ $(function() {
                     $(table).parent().find("#size-reordering-form").submit();
                 }
             });
+            */
             console.log("made it this far");
             if($("#manage-products-table").length > 0){
-                /*
                 $("#manage-products-table").tableDnD({
                     onDrop: function(table, row) {
                         console.log(table.rows);
@@ -321,7 +322,6 @@ $(function() {
                         document.getElementById("product-reordering-form").submit();
                     }
                 });
-                */
             }
             //slick carousel initialization
             $(".slick-carousel").slick({
