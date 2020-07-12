@@ -299,7 +299,7 @@ $(function() {
                             new_order_id_arr.push($(arr[i]).find("#product_id").val());
                         }
                         document.getElementById("new_order_array").value = String(new_order_id_arr);
-                        document.getElementById("product-reordering-form").submit();
+                        document.getElementById("product-reordering-form").get(0).submit();
                     }
                 });
                 $("#sizes-table").tableDnD({
@@ -313,7 +313,7 @@ $(function() {
                             new_size_order_id_arr.push($(arr[i]).find("#size_id").val());
                         }
                         $(table.parentElement).find("#new_size_order_arr").get(0).value = String(new_size_order_id_arr);
-                        $(table).parent().find("#size-reordering-form").submit();
+                        $(table).parent().find("#size-reordering-form").get(0).submit();
                     }
                 });
             }

@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="780" column="16" lean-forward="true" selection-start-line="780" selection-start-column="16" selection-end-line="780" selection-end-column="16" />
+            <state relative-caret-position="459">
+              <caret line="773" column="92" lean-forward="true" selection-start-line="773" selection-start-column="92" selection-end-line="773" selection-end-column="92" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -32,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="128" column="88" lean-forward="true" selection-start-line="128" selection-start-column="88" selection-end-line="128" selection-end-column="88" />
+            <state relative-caret-position="562">
+              <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -71,8 +71,8 @@
       <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="132" column="120" lean-forward="true" selection-start-line="132" selection-start-column="120" selection-end-line="132" selection-end-column="120" />
+            <state relative-caret-position="351">
+              <caret line="133" column="65" selection-start-line="133" selection-start-column="65" selection-end-line="133" selection-end-column="65" />
               <folding>
                 <element signature="e#287#294#1" expanded="true" />
                 <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#ul#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
@@ -167,9 +167,9 @@
       <find>slick</find>
       <find>Mob</find>
       <find>.ready</find>
-      <find>Order</find>
-      <find>View</find>
       <find>showThisProductDesigns</find>
+      <find>View</find>
+      <find>Order</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -794,10 +794,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="299" column="25" selection-start-line="299" selection-start-column="25" selection-end-line="299" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="132" column="120" lean-forward="true" selection-start-line="132" selection-start-column="120" selection-end-line="132" selection-end-column="120" />
+        <state relative-caret-position="351">
+          <caret line="133" column="65" selection-start-line="133" selection-start-column="65" selection-end-line="133" selection-end-column="65" />
           <folding>
             <element signature="e#287#294#1" expanded="true" />
             <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#ul#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
@@ -806,29 +813,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="780" column="16" lean-forward="true" selection-start-line="780" selection-start-column="16" selection-end-line="780" selection-end-column="16" />
+        <state relative-caret-position="562">
+          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="299" column="25" selection-start-line="299" selection-start-column="25" selection-end-line="299" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="128" column="88" lean-forward="true" selection-start-line="128" selection-start-column="88" selection-end-line="128" selection-end-column="88" />
+        <state relative-caret-position="459">
+          <caret line="773" column="92" lean-forward="true" selection-start-line="773" selection-start-column="92" selection-end-line="773" selection-end-column="92" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
