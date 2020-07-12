@@ -619,6 +619,7 @@ function addToCart(button){
     var thisProductInfo = $(button).closest(".s_product_inner");
     var current_design_index = $(thisProductInfo).find('.slick-carousel').slick('slickCurrentSlide');
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
+    console.log("current design index: " + current_design_index);
     var size = $(thisProductInfo).find("#t-shirt-size" + current_design_index + " option:selected").val();
     if(size === undefined){
         size = "N/A";
