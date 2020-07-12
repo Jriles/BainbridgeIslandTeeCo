@@ -236,11 +236,6 @@ $(function() {
 			document.getElementById("cart-count").innerHTML = currentCartJSON.length;
 		});*/
 
-		//add t-shirt to cart
-        $(".add-to-cat-button").on('click', function(){
-			console.log("called add to cart method");
-
-		});
 		//make sure cart value is set once the page loads
 		$('document').ready(function(){
 			var cart = sessionStorage.getItem("Cart");
@@ -1160,4 +1155,12 @@ $('select').change(function(){
     }else {
         $(product_area).find(".product-in-stock").html("Out of Stock");
     }
+});
+
+$( ".add-to-cart-button" ).click(function() {
+    $(this).html("Added to Cart!");
+      $( "#book" ).animate({
+      }, 1000, "linear", function() {
+        $( this ).html("Add to Cart");
+      });
 });
