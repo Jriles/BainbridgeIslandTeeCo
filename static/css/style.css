@@ -37,12 +37,11 @@ body {
 }
 
 .slick-prev{
-    right: -5%;
-    left: 0px;
+    left: -5%;
 }
 
 .slick-next{
-    left: -5%;
+    right: -5%;
     right: 0px;
 }
 
