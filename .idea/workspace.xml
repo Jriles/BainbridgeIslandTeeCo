@@ -124,8 +124,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="4875" column="26" lean-forward="true" selection-start-line="4875" selection-start-column="26" selection-end-line="4875" selection-end-column="26" />
+            <state relative-caret-position="186">
+              <caret line="4015" column="22" selection-start-line="4015" selection-start-column="22" selection-end-line="4015" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -142,7 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>act</find>
       <find>active</find>
       <find>design-selection</find>
       <find>checkDesignSizeInventory</find>
@@ -172,6 +171,7 @@
       <find>quantity-item</find>
       <find>options-menu-item</find>
       <find>prev</find>
+      <find>Mobile</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -830,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="4875" column="26" lean-forward="true" selection-start-line="4875" selection-start-column="26" selection-end-line="4875" selection-end-column="26" />
+        <state relative-caret-position="186">
+          <caret line="4015" column="22" selection-start-line="4015" selection-start-column="22" selection-end-line="4015" selection-end-column="22" />
         </state>
       </provider>
     </entry>
