@@ -1035,6 +1035,8 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
         }
     }
 
+    console.log("after deleting if not zero: " + design_index);
+
     //else there is no primary product image and we simply do nothing
     //now that we have our design index we want to have the correct design icon highlighted and the correct design name show
     var this_product_design_icons = $(product_area).find("#design-selection");
