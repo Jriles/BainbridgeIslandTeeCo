@@ -12,8 +12,14 @@ body {
     height: 75%;
 }
 
+.slick-prev:hover, .slick-next:hover{
+    color: black;
+    background-color: white;
+}
+
 .slick-prev:active, .slick-next:active{
-    color: unset !important;
+    color: black;
+    background-color: white;
 }
 
 .slick-prev:before{
