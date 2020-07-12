@@ -281,7 +281,6 @@ $(function() {
                     checkboxes[i].checked = false;
                 }
             }
-            scrollDown();
 
             if($("#manage-products-table").length > 0){
                 $("#manage-products-table").tableDnD({
