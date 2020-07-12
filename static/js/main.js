@@ -301,7 +301,7 @@ $(function() {
                         console.log(new_order_id_arr);
                         document.getElementById("new_order_array").value = String(new_order_id_arr);
                         console.log("new order array value: " + document.getElementById("new_order_array").value);
-                        document.getElementById("product-reordering-form").submit();
+                        //document.getElementById("product-reordering-form").submit();
                     }
                 });
                 $("#sizes-table").tableDnD({
@@ -318,7 +318,7 @@ $(function() {
                         console.log("order input element: ");
                         console.log($(table.parentElement).find("#new_size_order_arr"));
                         $(table.parentElement).find("#new_size_order_arr").get(0).value = String(new_size_order_id_arr);
-                        $(table).parent().find("#size-reordering-form").submit();
+                        //$(table).parent().find("#size-reordering-form").submit();
                     }
                 });
             }
