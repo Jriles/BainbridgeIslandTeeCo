@@ -949,11 +949,8 @@ function scrollDown(){
     //we only want to scroll down if they
     //first we want to get all the navbar product links
     $(window).scrollTop(0);
-    console.log($(document).scrollTop());
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
     if(document.getElementById("product" + String(product_index)) !== null){
-        console.log("product index: " + product_index);
-        console.log(document.getElementById("product" + String(product_index)));
         var relevant_product_top_dist = document.getElementById("product" + String(product_index)).getBoundingClientRect().top;
         //relevant_product.scrollIntoView();
         var offset = 130;

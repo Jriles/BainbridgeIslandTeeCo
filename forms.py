@@ -127,3 +127,6 @@ class EditSize(FlaskForm):
 
 class ReOrderSizes(FlaskForm):
     new_size_order_arr = StringField('Ordering', validators=[InputRequired()])
+
+class ChangeShippingPolicy(FlaskForm):
+    new_policy = TextAreaField('New Shipping Policy', validators=[validators.DataRequired()])

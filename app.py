@@ -310,6 +310,11 @@ class UserAgreement(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     user_agreement = db.Column(db.String())
 
+class ShippingPolicy(db.Model):
+    __tablename__ = "shipping_policy"
+    id = db.Column(db.Integer(), primary_key=True)
+    shipping_policy = db.Column(db.String())
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -400,7 +405,11 @@ def create_tables():
     privacy_policy.privacy_policy = "At Bainbridge Island Tee Co, we appreciate the trust you place in us when you choose to visit our stores or use our websites and mobile applications—and we take that responsibility seriously. This Bainbridge Island Tee Co Privacy Policy (the 'Policy') describes how we collect and use personal information about you when you visit our website, use our mobile application, or call us on the phone. By 'personal information', we mean information that directly identifies you, such as your name, address, or email address. In this Policy, 'we' and 'our' mean Bainbridge Island Tee Co, Inc., and 'you' means any person who visits our website, uses our mobile application, or calls us on the phone. Your information is never shared after your visit, the only third parties that your information could be made visible to are PayPal and Gmail, which are essential to the store.<br>Intellectual Property<br>Any and all logos, product images and names are intellectual property of Bainbridge Island Tee Co. Use of any Bainbridge Island Tee Co branding materials, or other intellectual materials will result in legal retaliation and potential penalties."
     db.session.add(privacy_policy)
     db.session.commit()
-
+    shipping_policy = ShippingPolicy()
+    shipping_policy.shipping_policy = "You can expect to receive your package within two weeks!"
+    shipping_policy.id = 0
+    db.session.add(shipping_policy)
+    db.session.commit()
 
 app.cli.add_command(create_tables)
 
@@ -857,7 +866,7 @@ def thecart():
         new_inner_array.append(discount[2])
         new_inner_array.append(discount[3])
         discount_2d.append(new_inner_array)
-    return render_template('/aroma/cart.html', discounts=discount_2d)
+    return render_template('/aroma/cart.html', discounts=discount_2d, shipping_policy=ShippingPolicy.query.first().shipping_policy)
 
 
 @app.route("/terms-and-conditions")
@@ -1267,6 +1276,18 @@ def delete_size(sizeID):
     db.session.delete(size_to_delete)
     db.session.commit()
     return redirect('/manage-products')
+
+@app.route("/change-shipping-policy", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def change_user_agreement():
+    form = forms.ChangeShippingPolicy()
+    if form.validate_on_submit():
+        agreement = ShippingPolicy.query.first()
+        agreement.shipping_policy = form.new_policy.data
+        db.session.add(agreement)
+        db.session.commit()
+        flash("Successfully changed user agreement.")
+    return render_template("/aroma/shipping-policy.html", form=form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
