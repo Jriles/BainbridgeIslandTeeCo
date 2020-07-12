@@ -101,7 +101,7 @@
                                     <a href="/new-size/{{product.id}}/{{design.id}}"><button class="btn btn-primary product_button">New Size</button></a>
                                 </div>
                                 <table class="table table-responsive" id="sizes-table">
-                                    {% for size in design.design_sizes %}
+                                    {% for size in design.design_sizes|sort(attribute='order_number') %}
                                     {% set size_loop = loop %}
                                     <tr id="{{size_loop.index-1}}">
                                         <form method="post" class="form admin-form" enctype="multipart/form-data">
