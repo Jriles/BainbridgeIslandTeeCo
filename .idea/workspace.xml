@@ -124,8 +124,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="4818" column="15" lean-forward="true" selection-start-line="4818" selection-start-column="15" selection-end-line="4818" selection-end-column="15" />
+            <state relative-caret-position="237">
+              <caret line="5230" column="14" selection-start-line="5230" selection-start-column="14" selection-end-line="5230" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -830,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="4818" column="15" lean-forward="true" selection-start-line="4818" selection-start-column="15" selection-end-line="4818" selection-end-column="15" />
+        <state relative-caret-position="237">
+          <caret line="5230" column="14" selection-start-line="5230" selection-start-column="14" selection-end-line="5230" selection-end-column="14" />
         </state>
       </provider>
     </entry>
