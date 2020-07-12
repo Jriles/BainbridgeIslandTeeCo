@@ -293,6 +293,7 @@ $(function() {
                         console.log(table.rows);
                         var arr = [].slice.call(table.rows);
                         var new_order_id_arr = [];
+                        //make new order array of the product ids
                         for(i = 1; i < arr.length;i++){
                             new_order_id_arr.push($(arr[i]).find("#product_id").val());
                         }
@@ -302,6 +303,20 @@ $(function() {
                         document.getElementById("product-reordering-form").submit();
                     }
                 });
+                $("#sizes-table").tableDnD({
+                    onDrop: function(table, row) {
+                        console.log(table.rows);
+                        var arr = [].slice.call(table.rows);
+                        var new_size_order_id_arr = [];
+                        //make new order array of the product ids
+                        for(i = 0; i < arr.length;i++){
+                            new_order_id_arr.push($(arr[i]).find("#size_id").val());
+                        }
+                        console.log(new_order_id_arr);
+                        $(table).parent().find("#new_size_order_array").val(String(new_order_id_arr));
+                        $(table).parent().find("#size-reordering-form").submit();
+                    }
+                })
             }
             //slick carousel initialization
             $(".slick-carousel").slick({

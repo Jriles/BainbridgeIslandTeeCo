@@ -124,3 +124,6 @@ class EditSize(FlaskForm):
     inventory = IntegerField('Inventory Count', validators=[validators.InputRequired()])
     size_id = HiddenField()
     order_number = HiddenField()
+
+class ReOrderSizes(FlaskForm):
+    new_size_order_array = StringField('Ordering', validators=[validators.Optional()])

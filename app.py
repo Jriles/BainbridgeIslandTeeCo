@@ -720,6 +720,7 @@ def edit_products():
     edit_design_form = forms.EditDesign()
     edit_product_order = forms.ReOrderProducts()
     edit_size_form = forms.EditSize()
+    edit_size_order = forms.ReOrderSizes()
     if (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
         this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
@@ -769,6 +770,15 @@ def edit_products():
             current_product = DisplayProduct.query.filter_by(id=int(this_id)).first()
             current_product.product_order_num = idx
             db.session.add(current_product)
+            db.session.commit()
+    elif edit_size_order.new_size_order_array.data is not None and edit_size_order.validate():
+        new_order_id_arr = edit_product_order.new_order_array.data.split(',')
+        app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
+        for idx, this_id in enumerate(new_order_id_arr):
+            # get this particular product using its id
+            current_size = DesignSize.query.filter_by(id=int(this_id)).first()
+            current_size.order_number = idx
+            db.session.add(current_size)
             db.session.commit()
     # we need to query all of the existing products and render them with the forms
     display_products = get_display_products_in_order()
