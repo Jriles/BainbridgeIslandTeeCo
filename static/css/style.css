@@ -20,6 +20,7 @@ body {
     -o-transform:scale(2,9); /* Opera */
     transform:scale(2,9); /* W3C */
     font-smooth: always;
+    font: 5px;
 }
 
 .slick-prev:before{
