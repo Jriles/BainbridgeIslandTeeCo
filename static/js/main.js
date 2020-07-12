@@ -665,7 +665,9 @@ function addToCart(button){
     //want to update website with new cart infomation
     document.getElementById("cart-count").innerHTML = currentCartJSON.length;
     //$(button).text("Add to Cart");
-    $(button).delay(2000).text("Add to Cart");
+    setTimeout(function(){
+        $(button).text("Add to Cart");
+    },5000);
 }
 
 
