@@ -621,6 +621,17 @@ function addToCart(button){
     //
     var thisProductInfo = $(button).closest(".s_product_inner");
     var current_design_index = $(thisProductInfo).find('.slick-carousel').slick('slickCurrentSlide');
+    if($(button).closest(".product_image_area").find(".primary-image").length > 0){
+        //there is a primary product image
+        //first we want to ask if the index is zero
+        //0 -> 0
+        //1 -> 0
+        //2 -> 1
+
+        if(current_design_index !== 0){
+            current_design_index--;
+        }
+    }
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
     console.log("current design index: " + current_design_index);
     var size = $(thisProductInfo).find("#t-shirt-size" + current_design_index + " option:selected").val();
@@ -1020,7 +1031,7 @@ function submitOrderNote(button){
 $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     //we want to ask if there is a primary image first
     var design_index = nextSlide;   //we want to determine what design we want to show
-    
+
     //if there is a primary product image
     var product_area = $(event.target).closest(".product_image_area");
     var this_product_design_icons = $(product_area).find("#design-selection");
