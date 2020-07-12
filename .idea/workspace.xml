@@ -38,8 +38,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="1032" column="28" lean-forward="true" selection-start-line="1032" selection-start-column="28" selection-end-line="1032" selection-end-column="28" />
+            <state relative-caret-position="356">
+              <caret line="628" column="75" lean-forward="true" selection-start-line="628" selection-start-column="75" selection-end-line="628" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -82,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="50">
               <caret line="34" column="73" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="73" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -119,7 +119,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="185">
@@ -140,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkDesignSizeInventory</find>
       <find>owl-dot</find>
       <find>var design_names</find>
       <find>product_design_icon_active</find>
@@ -170,6 +169,7 @@
       <find>.s_pro</find>
       <find>Mobile</find>
       <find>product-details-area</find>
+      <find>addToCart</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -248,9 +248,9 @@
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/terms.html" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/static/js/main.js" />
       </list>
     </option>
   </component>
@@ -802,16 +802,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="4859" column="10" lean-forward="true" selection-start-line="4859" selection-start-column="10" selection-end-line="4859" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="1032" column="28" lean-forward="true" selection-start-line="1032" selection-start-column="28" selection-end-line="1032" selection-end-column="28" />
+        <state relative-caret-position="356">
+          <caret line="628" column="75" lean-forward="true" selection-start-line="628" selection-start-column="75" selection-end-line="628" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="50">
           <caret line="34" column="73" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="73" />
           <folding>
             <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -823,13 +830,6 @@
             <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="4859" column="10" lean-forward="true" selection-start-line="4859" selection-start-column="10" selection-end-line="4859" selection-end-column="10" />
         </state>
       </provider>
     </entry>

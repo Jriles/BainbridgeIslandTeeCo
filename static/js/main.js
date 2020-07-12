@@ -625,9 +625,8 @@ function addToCart(button){
     var productName = String($(thisProductInfo).find("#product-name").text());
     var productPrice = String($(thisProductInfo).find("#product-price").text());
     var thisProductImage = $(thisProductInfo).find(".primary-image").attr('src');
-    console.log(thisProductImage);
     var thisProductDesign = $(thisProductInfo).find('.design-name').text();
-    console.log(thisProductImage);
+    console.log(thisProductDesign);
     var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign};
     var cart = sessionStorage.getItem("Cart");
     console.log(cart);
@@ -639,7 +638,6 @@ function addToCart(button){
         cart = JSON.stringify(newCartJson);
         sessionStorage.setItem("Cart", cart);
     }else{
-        console.log("adding to cart");
         var refreshCart = JSON.parse(cart);
         //figure out quantity
         var foundProductInCart = false;
@@ -661,7 +659,6 @@ function addToCart(button){
     var type = typeof cart;
     console.log("new cart obj type: " + type);
     var currentCartJSON = JSON.parse(newCart);
-    console.log(currentCartJSON);
     //want to update website with new cart infomation
     document.getElementById("cart-count").innerHTML = currentCartJSON.length;
     //$(button).text("Add to Cart");
