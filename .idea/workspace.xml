@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,15 +23,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forgot.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/forgot.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forms.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -46,11 +35,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="667" column="14" selection-start-line="667" selection-start-column="4" selection-end-line="667" selection-end-column="14" />
+            <state relative-caret-position="362">
+              <caret line="669" column="12" lean-forward="true" selection-start-line="669" selection-start-column="12" selection-end-line="669" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="terms.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/aroma/terms.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -142,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.designs</find>
       <find>showThisProductDesigns(</find>
       <find>inventorySizeCheckWrapper</find>
       <find>addClass</find>
@@ -172,6 +169,7 @@
       <find>View</find>
       <find>add-to-cat-button</find>
       <find>scrollDown</find>
+      <find>addToC</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -237,7 +235,6 @@
         <option value="$PROJECT_DIR$/templates/aroma/admin-account-settings.html" />
         <option value="$PROJECT_DIR$/templates/aroma/privacy-policy.html" />
         <option value="$PROJECT_DIR$/templates/aroma/user-agreement.html" />
-        <option value="$PROJECT_DIR$/templates/aroma/terms.html" />
         <option value="$PROJECT_DIR$/templates/aroma/legal-summary.html" />
         <option value="$PROJECT_DIR$/templates/aroma/admin.html" />
         <option value="$PROJECT_DIR$/templates/aroma/changetermsandconditions.html" />
@@ -253,6 +250,7 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/templates/aroma/terms.html" />
       </list>
     </option>
   </component>
@@ -422,9 +420,9 @@
     <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15680292" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15680292" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" visible="true" weight="0.28480205" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" visible="true" weight="0.28480205" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49969494" weight="0.32950193" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" />
@@ -675,13 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/terms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/privacy-policy.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -830,8 +821,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="667" column="14" selection-start-line="667" selection-start-column="4" selection-end-line="667" selection-end-column="14" />
+        <state relative-caret-position="362">
+          <caret line="669" column="12" lean-forward="true" selection-start-line="669" selection-start-column="12" selection-end-line="669" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/terms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="14" lean-forward="true" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
         </state>
       </provider>
     </entry>
