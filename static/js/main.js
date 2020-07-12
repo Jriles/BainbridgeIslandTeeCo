@@ -955,7 +955,7 @@ function scrollDown(){
         if (mobileCheck()){
             offset = 80;
         }
-
+        console.log("offset: " + offset);
         relevant_product_top_dist = relevant_product_top_dist - offset;
         console.log("scroll distance: " + relevant_product_top_dist);
         $('body,html').animate({
