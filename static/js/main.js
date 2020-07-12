@@ -613,6 +613,12 @@ function setPoints(element){
 }
 
 function addToCart(button){
+    //do animation on click
+    $(button).html("Added to Cart!");
+    $(button).animate({
+    }, 1000, "linear", function() {
+        $( this ).html("Add to Cart");
+    });
     //
     var thisProductInfo = $(button).closest(".s_product_inner");
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
@@ -1158,9 +1164,5 @@ $('select').change(function(){
 });
 
 $( ".add-to-cart-button" ).click(function() {
-    $(this).html("Added to Cart!");
-      $( "#book" ).animate({
-      }, 1000, "linear", function() {
-        $( this ).html("Add to Cart");
-      });
+
 });
