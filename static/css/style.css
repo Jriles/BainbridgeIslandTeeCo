@@ -7,7 +7,24 @@ body {
 	line-height: 1.667
 }
 
-.slick-prev:before, .slick-next:before { color: grey; }
+.slick-prev:before, .slick-next:before {
+    color: unset;
+}
+
+.slick-prev:before{
+    content: '>';
+}
+
+.slick-next:before{
+    content: '>';
+}
+
+.slick-prev, .slick-next{
+    height: 100%;
+    width: 5%;
+    transparent: unset;
+    color: unset;
+}
 
 .home-quantity-label{
     float: left;
