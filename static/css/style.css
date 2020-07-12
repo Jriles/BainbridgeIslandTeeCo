@@ -37,13 +37,11 @@ body {
 }
 
 .slick-prev{
-    right: 4%;
-    left: 0px;
+    right: -5%;
 }
 
 .slick-next{
-    right: 0px;
-    left: 4%;
+    left: -5%;
 }
 
 .home-quantity-label{
