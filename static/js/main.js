@@ -1015,51 +1015,6 @@ function submitOrderNote(button){
     .appendTo('#cart-contents-form');
 }
 
-//we want to call this function whenever we change designs or sizes
-function checkDesignSizeInventory(product_element_id){
-    //this is wrong
-
-    console.log("product id: " + product_element_id);
-    //if a size is selected show if in stock
-    var current_product = document.getElementById(product_element_id);
-    var current_design_icons = $(current_product).find("#design-selection");
-    var current_icon = $(current_design_icons).find(".product_design_icon.product_design_icon_active");
-    console.log(current_design_icons.children());
-    console.log(current_icon);
-    console.log("active icon index: " + $(current_icon).index())
-    /*
-    //we want to know if there is a primary product image
-    if($(current_product).find(".primary-image").length > 0){
-        //that means there is a primary image with this product
-        //next we want to ask if we are at zero
-        //if so, do nothing
-        //else subtract one
-        if(current_design_index !== 0){
-            current_design_index--;
-        }
-    }
-    console.log(current_design_index);
-    var current_size_drop_down = $(current_product).find("#t-shirt-size" + String(current_design_index))[0];
-    console.log("current drop down children length: " + current_size_drop_down);
-    var current_size_drop_selected_index = $(current_size_drop_down).prop('selectedIndex');
-    console.log(current_size_drop_selected_index);
-    if(current_size_drop_selected_index !== undefined){
-        //first we want to grab the current design from the design names hidden bucket for this product
-        console.log(product_element_id);
-        var relevant_design_names = $(current_product).find(".design_names")[0];
-        var this_product_design_sizes = $(relevant_design_names.children[current_design_index]).find(".size_inventories")[0].children;
-        console.log("this product design sizes: " + this_product_design_sizes);
-        console.log("this size inventory: " + this_product_design_sizes[current_size_drop_selected_index].innerHTML);
-
-        if(Number(this_product_design_sizes[current_size_drop_selected_index].innerHTML)){
-            $(current_product).find(".product-in-stock").html("In Stock");
-        }else{
-            $(current_product).find(".product-in-stock").html("Out of Stock");
-        }
-    }
-    */
-}
-
 $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     //we want to ask if there is a primary image first
     var design_index = currentSlide;   //we want to determine what design we want to show
@@ -1100,12 +1055,9 @@ $('.slick-carousel').on('afterChange', function(event, slick, currentSlide){
     $(product_area).find(".size-dropdowns").children().eq(design_index).addClass("active-sizes");
     //now that we have chanes the sizes lets ask if the currently shown one is in stock
     var size_index = $(product_area).find(".active-sizes").children().eq(0).prop('selectedIndex');
-    console.log("size index now: " + size_index);
-    console.log("ask if there is a size here: " + $(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length);
     if($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).length > 0){
         var this_permutation_inventory_count = Number($(design_names).children().eq(design_index).find(".size_inventories").children().eq(size_index).html());
         //now that we have this index, lets use it to indicate if this permutation is in stock
-        console.log("this permutation inventory count: " + this_permutation_inventory_count);
         if(this_permutation_inventory_count > 0){
             $(product_area).find(".product-in-stock").html("In Stock");
         }else {
@@ -1147,7 +1099,6 @@ function doesCurrentProductHaveImage(product){
 $('select').change(function(){
     var product_area = $(this).closest(".product_image_area");
     var size_index = $(this).prop('selectedIndex');
-    console.log("size index: " + size_index);
     var design_index = $(product_area).find('.slick-carousel').slick('slickCurrentSlide');
     if(doesCurrentProductHaveImage(product_area)){
         //if so we want to subtract from the design index
