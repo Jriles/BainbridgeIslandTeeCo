@@ -4860,7 +4860,7 @@ li .product_count{
 
   /* slick */
   .slick-prev, .slick-next{
-    top: 115%;
+    top: 120%;
     height: 15%;
     width: 30%;
     cursor: pointer;
@@ -4876,10 +4876,12 @@ li .product_count{
 
   .slick-prev{
     left: 20%;
+    margin-left: 5%;
   }
 
   .slick-next{
     right: 20%;
+    margin-right: 5%;
   }
 
   .slick-carousel{
