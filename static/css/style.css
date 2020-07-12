@@ -35,6 +35,7 @@ body {
     transparent: unset;
     color: grey;
     border: 1px grey solid;
+    border-radius: 4px;
 }
 
 .slick-prev{
@@ -4856,7 +4857,10 @@ li .product_count{
 
   /* slick */
   .slick-prev, .slick-next{
-    top: 110%;
+    top: 115%;
+    height: 15%;
+    width: 30%;
+    cursor: pointer;
   }
 
   .slick-prev{
