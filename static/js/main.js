@@ -945,6 +945,7 @@ function browse(){
 }
 
 function scrollDown(){
+    console.log("in scroll down");
     //first we want to get all the navbar product links
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
     if(document.getElementById("product" + String(product_index)) !== null){
@@ -955,7 +956,9 @@ function scrollDown(){
         if (mobileCheck()){
             offset = 80;
         }
+
         relevant_product_top_dist = relevant_product_top_dist - offset;
+        console.log("scroll distance: " + relevant_product_top_dist);
         $('body,html').animate({
             scrollTop: relevant_product_top_dist
         }, 1000, function() {
