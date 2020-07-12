@@ -1023,15 +1023,16 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
 
     //if there is a primary product image
     var product_area = $(event.target).closest(".product_image_area");
+    var this_product_design_icons = $(product_area).find("#design-selection");
     if($(product_area).find(".primary-image").length > 0){
         //there is a primary product image
         //first we want to ask if the index is zero
         //0 -> 0
         //1 -> 0
         //2 -> 1
-        //etc. essentially if not zero subtract one. But only if there is a primary product image'
-        if(currentSlide !== 0){
-            design_index--;
+
+        if(currentSlide === $(this_product_design_icons).children().length){
+            design_index = 0;
         }
     }
 
@@ -1039,7 +1040,7 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
 
     //else there is no primary product image and we simply do nothing
     //now that we have our design index we want to have the correct design icon highlighted and the correct design name show
-    var this_product_design_icons = $(product_area).find("#design-selection");
+
     //fist we want to blank the border of all the icons
     $(this_product_design_icons).children().css("border", "unset");
     var current_icon = $(this_product_design_icons).children().eq(design_index);
