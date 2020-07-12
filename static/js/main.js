@@ -314,6 +314,7 @@ $(function() {
                         }
                         console.log(new_order_id_arr);
                         $(table).parent().find("#new_size_order_arr").val(String(new_order_id_arr));
+                        console.log($(table).parent().find("#size-reordering-form"));
                         $(table).parent().find("#size-reordering-form").submit();
                     }
                 })
