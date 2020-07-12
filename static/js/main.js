@@ -1030,7 +1030,7 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nex
         //1 -> 0
         //2 -> 1
 
-        if(currentSlide === $(this_product_design_icons).children().length){
+        if(nextSlide === $(this_product_design_icons).children().length){
             design_index--;
         }
     }
