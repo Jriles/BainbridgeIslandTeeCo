@@ -154,7 +154,7 @@
       <find>design-selection</find>
       <find>checkDesignSizeInventory</find>
       <find>owl-dot</find>
-      <find>var design_names</find>
+      <find />
       <find>product_design_icon_active</find>
       <find>loop</find>
       <find>product_loop</find>
