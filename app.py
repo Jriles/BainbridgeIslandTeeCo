@@ -557,6 +557,9 @@ def paymentsuccess():
         app.logger.info(new_item.__str__())
         db.session.add(new_item)
         db.session.commit()
+
+        #now we want to go through and decrement the correct size
+
     app.logger.info("got though saving all the order items to the database")
     # want to confirmation to email given by paypal for everyone, including not users.
     # we also want to send an email to the business to let them know there is a new order
@@ -1286,7 +1289,7 @@ def change_shipping_policy():
         agreement.shipping_policy = form.new_policy.data
         db.session.add(agreement)
         db.session.commit()
-        flash("Successfully changed user agreement.")
+        flash("Successfully changed shipping policy.")
     return render_template("/aroma/shipping-policy.html", form=form)
 
 def redirect_url(default='index'):

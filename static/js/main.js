@@ -414,6 +414,7 @@ $(function() {
 			for(i = 0; i < currentCartJSON.length;i++){
 				//next we need to alter the new copy of the element with the right info
 				$(cloneOfElement).find('#product-name').html(currentCartJSON[i].ProductName);
+				$(cloneOfElement).find('#product-id').html(currentCartJSON[i].ProductID);
 				$(cloneOfElement).find('#unit-price').html(currentCartJSON[i].Price);
 				$(cloneOfElement).find('#quantity').attr("value", currentCartJSON[i].Quantity);
 				console.log(currentCartJSON[i].IMGSRC);
@@ -642,8 +643,9 @@ function addToCart(button){
     var productPrice = String($(thisProductInfo).find("#product-price").text());
     var thisProductImage = $(thisProductInfo).find(".primary-image").attr('src');
     var thisProductDesign = $(thisProductInfo).find('.design-name').text();
+    var thisSizeID = $(thisProductInfo).find('.design-size-list').children().eq(current_design_index).find("#size-id").text();
     console.log(thisProductDesign);
-    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign};
+    var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign, "SizeID": thisSizeID};
     var cart = sessionStorage.getItem("Cart");
     console.log(cart);
     //if cart is empty we make it an array of json objects, with just one product
