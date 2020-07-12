@@ -616,7 +616,7 @@ function addToCart(button){
     //do animation on click
     $(button).html("Added to Cart!");
     $(button).animate({
-    }, 1000, "linear", function() {
+    }, 1000, function() {
         $( this ).html("Add to Cart");
     });
     //
@@ -1161,8 +1161,4 @@ $('select').change(function(){
     }else {
         $(product_area).find(".product-in-stock").html("Out of Stock");
     }
-});
-
-$( ".add-to-cart-button" ).click(function() {
-
 });
