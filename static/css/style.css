@@ -4875,13 +4875,11 @@ li .product_count{
   }
 
   .slick-prev{
-    left: 20%;
-    margin-left: 5%;
+    left: 15%;
   }
 
   .slick-next{
-    right: 20%;
-    margin-right: 5%;
+    right: 15%;
   }
 
   .slick-carousel{
