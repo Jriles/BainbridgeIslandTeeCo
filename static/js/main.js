@@ -311,7 +311,7 @@ $(function() {
                         var new_size_order_id_arr = [];
                         //make new order array of the product ids
                         for(i = 0; i < arr.length;i++){
-                            new_order_id_arr.push($(arr[i]).find("#size_id").val());
+                            new_size_order_id_arr.push($(arr[i]).find("#size_id").val());
                         }
                         console.log(new_order_id_arr);
 
