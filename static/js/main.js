@@ -1031,7 +1031,7 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nex
         //2 -> 1
 
         if(currentSlide === $(this_product_design_icons).children().length){
-            design_index = 0;
+            design_index--;
         }
     }
 
