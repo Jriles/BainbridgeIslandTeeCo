@@ -319,7 +319,7 @@ $(function() {
                         console.log($(table.parentElement).find("#new_size_order_arr"));
                         $(table.parentElement).find("#new_size_order_arr").prop('value', String(new_size_order_id_arr));
                         console.log("new value: " + $(table.parentElement).find("#new_size_order_arr").val());
-                        //$(table).parent().find("#size-reordering-form").submit();
+                        $(table).parent().find("#size-reordering-form").submit();
                     }
                 });
             }
