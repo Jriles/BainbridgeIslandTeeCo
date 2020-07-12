@@ -943,11 +943,14 @@ function browse(){
     });
 }
 
+$(window).on('beforeunload', function() {
+    $(window).scrollTop(0);
+});
+
 function scrollDown(){
     console.log("in scroll down");
     //we only want to scroll down if they
     //first we want to get all the navbar product links
-    $(document).scrollTop(0);
     console.log($(document).scrollTop());
     /*
     var product_index = window.location.pathname.replace(/^\/([^\/]*).*$/, '$1');
