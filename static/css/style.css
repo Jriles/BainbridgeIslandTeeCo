@@ -4795,6 +4795,11 @@ li .product_count{
   vertical-align: middle;
 }
 
+.quantity-item{
+    margin-bottom: 0px;
+    margin-top: 25px;
+}
+
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
