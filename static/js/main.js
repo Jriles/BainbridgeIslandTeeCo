@@ -288,6 +288,7 @@ $(function() {
             }
             scrollDown();
             if($("#manage-products-table").length > 0){
+                /*
                 $("#manage-products-table").tableDnD({
                     onDrop: function(table, row) {
                         console.log(table.rows);
@@ -303,6 +304,7 @@ $(function() {
                         document.getElementById("product-reordering-form").submit();
                     }
                 });
+                */
                 $("#sizes-table").tableDnD({
                     onDrop: function(table, row) {
                         console.log(table.rows);
