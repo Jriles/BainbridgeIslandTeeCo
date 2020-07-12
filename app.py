@@ -956,13 +956,8 @@ def product_view(product):
         db.session.add(this_email)
         db.session.commit()
     display_products = get_display_products_in_order()
-    designs = []
-    for display_product in display_products:
-        designs.append(get_designs_for_product(display_product.id))
-    #we also need sizes too
-    sizes = []
-    for product in display_products:
-        sizes.append(get_sizes_for_product_in_order(product.id))
+    designs = ProductDesign.query.all()
+    sizes = DesignSize.query.all()
     product_order_index = DisplayProduct.query.filter_by(id=product.id).first()
     return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
