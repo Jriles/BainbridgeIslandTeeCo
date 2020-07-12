@@ -615,10 +615,6 @@ function setPoints(element){
 function addToCart(button){
     //do animation on click
     $(button).html("Added to Cart!");
-    $(button).animate({
-    }, 1000, function() {
-        $( this ).html("Add to Cart");
-    });
     //
     var thisProductInfo = $(button).closest(".s_product_inner");
     var quantity = parseInt($(thisProductInfo).find('#t-shirt-quantity-count').val());
@@ -668,6 +664,7 @@ function addToCart(button){
     console.log(currentCartJSON);
     //want to update website with new cart infomation
     document.getElementById("cart-count").innerHTML = currentCartJSON.length;
+    $(button).html("Add to Cart");
 }
 
 
