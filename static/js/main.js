@@ -287,6 +287,22 @@ $(function() {
                 }
             }
             scrollDown();
+            $("#sizes-table").tableDnD({
+                onDrop: function(table, row) {
+                    console.log(table.rows);
+                    var arr = [].slice.call(table.rows);
+                    var new_size_order_id_arr = [];
+                    //make new order array of the product ids
+                    for(i = 0; i < arr.length;i++){
+                        new_order_id_arr.push($(arr[i]).find("#size_id").val());
+                    }
+                    console.log(new_order_id_arr);
+
+                    $(table).parent().find("#new_size_order_arr").val(String(new_order_id_arr));
+                    console.log($(table).parent().find("#size-reordering-form"));
+                    $(table).parent().find("#size-reordering-form").submit();
+                }
+            });
             if($("#manage-products-table").length > 0){
                 /*
                 $("#manage-products-table").tableDnD({
@@ -305,22 +321,6 @@ $(function() {
                     }
                 });
                 */
-                $("#sizes-table").tableDnD({
-                    onDrop: function(table, row) {
-                        console.log(table.rows);
-                        var arr = [].slice.call(table.rows);
-                        var new_size_order_id_arr = [];
-                        //make new order array of the product ids
-                        for(i = 0; i < arr.length;i++){
-                            new_order_id_arr.push($(arr[i]).find("#size_id").val());
-                        }
-                        console.log(new_order_id_arr);
-
-                        $(table).parent().find("#new_size_order_arr").val(String(new_order_id_arr));
-                        console.log($(table).parent().find("#size-reordering-form"));
-                        $(table).parent().find("#size-reordering-form").submit();
-                    }
-                });
             }
             //slick carousel initialization
             $(".slick-carousel").slick({
@@ -994,8 +994,8 @@ function showThisProductDesigns(button){
     closest_table.scrollLeft(closest_table_client_width);
     //we also want to turn off the reordering functionality for
     //for each row in the main table product table we want to add the class
-    $("#manage-products-table tr").addClass("nodrag nodrop");
-    $("#sizes-table tr").removeClass("nodrag nodrop");
+    //$("#manage-products-table tr").addClass("nodrag nodrop");
+    //$("#sizes-table tr").removeClass("nodrag nodrop");
 }
 
 function closeThisItemSection(button){
