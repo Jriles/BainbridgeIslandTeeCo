@@ -11,6 +11,7 @@ body {
 
 .home-quantity-label{
     float: left;
+    margin-top: 5px;
 }
 
 .quantity-input-home{
@@ -4804,7 +4805,7 @@ li .product_count{
 
 .quantity-item{
     margin-bottom: 0px !important;
-    margin-top: 31px !important;
+    margin-top: 20px !important;
 }
 
 .product-options-area{
