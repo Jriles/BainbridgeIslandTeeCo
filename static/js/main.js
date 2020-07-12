@@ -318,6 +318,7 @@ $(function() {
                         console.log("order input element: ");
                         console.log($(table.parentElement).find("#new_size_order_arr"));
                         $(table.parentElement).find("#new_size_order_arr").get(0).value = String(new_size_order_id_arr);
+                        console.log($(table.parentElement).find("#new_size_order_arr").get(0).value);
                         //$(table).parent().find("#size-reordering-form").submit();
                     }
                 });
