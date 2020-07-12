@@ -8,17 +8,17 @@ body {
 }
 
 .slick-prev:before, .slick-next:before, .slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus, .slick-prev:active, .slick-next:active {
-    color: black;
+    color: grey;
     background-color: white;
 }
 
 .slick-prev:before, .slick-next:before{
     display: inline-block;
-    -webkit-transform:scale(1,2); /* Safari and Chrome */
-    -moz-transform:scale(1,2); /* Firefox */
-    -ms-transform:scale(1,2); /* IE 9 */
-    -o-transform:scale(1,2); /* Opera */
-    transform:scale(1,2); /* W3C */
+    -webkit-transform:scale(1,3); /* Safari and Chrome */
+    -moz-transform:scale(1,3); /* Firefox */
+    -ms-transform:scale(1,3); /* IE 9 */
+    -o-transform:scale(1,3); /* Opera */
+    transform:scale(1,3); /* W3C */
 }
 
 .slick-prev:before{
@@ -33,15 +33,16 @@ body {
     height: 100%;
     width: 5%;
     transparent: unset;
-    color: black;
+    color: grey;
+    border: 1px grey solid;
 }
 
 .slick-prev{
-    left: -6%;
+    left: -5%;
 }
 
 .slick-next{
-    right: -6%;
+    right: -5%;
 }
 
 .home-quantity-label{
