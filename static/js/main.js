@@ -1019,6 +1019,7 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
     //we want to ask if there is a primary image first
     var design_index = currentSlide;   //we want to determine what design we want to show
     console.log("current design index: " + currentSlide);
+    console.log("current design index + 1: " + String(design_index + 1));
 
     //if there is a primary product image
     var product_area = $(event.target).closest(".product_image_area");
