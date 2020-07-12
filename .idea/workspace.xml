@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aroma/forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/forgot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aroma/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,8 +46,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="645" column="124" selection-start-line="645" selection-start-column="124" selection-end-line="645" selection-end-column="124" />
+            <state relative-caret-position="515">
+              <caret line="646" column="59" selection-start-line="646" selection-start-column="59" selection-end-line="646" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -830,8 +827,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="645" column="124" selection-start-line="645" selection-start-column="124" selection-end-line="645" selection-end-column="124" />
+        <state relative-caret-position="515">
+          <caret line="646" column="59" selection-start-line="646" selection-start-column="59" selection-end-line="646" selection-end-column="59" />
         </state>
       </provider>
     </entry>
