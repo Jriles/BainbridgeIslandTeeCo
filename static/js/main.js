@@ -1015,9 +1015,9 @@ function submitOrderNote(button){
     .appendTo('#cart-contents-form');
 }
 
-$('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
+$('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     //we want to ask if there is a primary image first
-    var design_index = currentSlide;   //we want to determine what design we want to show
+    var design_index = nextSlide;   //we want to determine what design we want to show
     console.log("current design index: " + currentSlide);
     console.log("current design index + 1: " + String(design_index + 1));
 
@@ -1030,9 +1030,8 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide){
         //0 -> 0
         //1 -> 0
         //2 -> 1
-
-        if(currentSlide === $(this_product_design_icons).children().length){
-            design_index = 0;
+        if(currentSlide !== 0){
+            design_index--;
         }
     }
 
