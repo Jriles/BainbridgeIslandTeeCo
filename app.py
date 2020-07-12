@@ -771,7 +771,7 @@ def edit_products():
             current_product.product_order_num = idx
             db.session.add(current_product)
             db.session.commit()
-    elif edit_size_order.new_size_order_arr.data is not None and edit_size_order.validate():
+    elif edit_size_order.new_size_order_arr.data is not None:
         new_order_id_arr = edit_product_order.new_order_arr.data.split(',')
         app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
         for idx, this_id in enumerate(new_order_id_arr):
