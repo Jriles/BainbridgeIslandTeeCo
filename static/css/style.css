@@ -4815,6 +4815,9 @@ li .product_count{
     display: block;
 }
 
+#t-shirt-quantity-count{
+    width: 40%;
+}
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */

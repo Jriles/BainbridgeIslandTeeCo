@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aroma/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="279">
-              <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="63" />
+              <caret line="79" column="70" selection-start-line="79" selection-start-column="52" selection-end-line="79" selection-end-column="70" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -125,8 +124,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="4830" column="21" selection-start-line="4830" selection-start-column="1" selection-end-line="4830" selection-end-column="21" />
+            <state relative-caret-position="424">
+              <caret line="4818" column="15" lean-forward="true" selection-start-line="4818" selection-start-column="15" selection-end-line="4818" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -815,7 +814,7 @@
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
-          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="63" />
+          <caret line="79" column="70" selection-start-line="79" selection-start-column="52" selection-end-line="79" selection-end-column="70" />
           <folding>
             <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -831,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="4830" column="21" selection-start-line="4830" selection-start-column="1" selection-end-line="4830" selection-end-column="21" />
+        <state relative-caret-position="424">
+          <caret line="4818" column="15" lean-forward="true" selection-start-line="4818" selection-start-column="15" selection-end-line="4818" selection-end-column="15" />
         </state>
       </provider>
     </entry>
