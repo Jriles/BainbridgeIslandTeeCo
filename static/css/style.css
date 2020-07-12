@@ -9,6 +9,13 @@ body {
 
 .slick-prev:before, .slick-next:before { color: grey; }
 
+.home-quantity-label{
+    float: left;
+}
+
+.quantity-input-home{
+    float: right;
+}
 
 .active-sizes{
     display: unset !important;
@@ -5133,7 +5140,6 @@ Label the data
 	position: relative;
 	text-align: right;
 	float: right;
-	width: 100px;
 	bottom: 15px;
 	height: 150px;
 }
@@ -5186,13 +5192,6 @@ Label the data
 	margin-bottom: 15px;
 }
 
-.product_count {
-    position: relative !important;
-    width: 160px !important;
-    margin-bottom: 0px !important;
-    margin-left: 33%;
-}
-
 .card_area{
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -5217,7 +5216,6 @@ Label the data
 	position: relative;
 	text-align: right;
 	float: right;
-	width: 100px;
 	bottom: 15px;
 	height: 150px;
 }
