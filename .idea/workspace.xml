@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,8 +49,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="320" column="83" lean-forward="true" selection-start-line="320" selection-start-column="83" selection-end-line="320" selection-end-column="83" />
+            <state relative-caret-position="544">
+              <caret line="319" column="95" selection-start-line="319" selection-start-column="95" selection-end-line="319" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -71,8 +73,8 @@
       <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="144" column="82" lean-forward="true" selection-start-line="144" selection-start-column="82" selection-end-line="144" selection-end-column="82" />
+            <state relative-caret-position="320">
+              <caret line="132" column="120" lean-forward="true" selection-start-line="132" selection-start-column="120" selection-end-line="132" selection-end-column="120" />
               <folding>
                 <element signature="e#287#294#1" expanded="true" />
                 <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#ul#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
@@ -167,8 +169,8 @@
       <find>slick</find>
       <find>Mob</find>
       <find>.ready</find>
-      <find>Order</find>
       <find>showThisProductDesigns</find>
+      <find>Order</find>
       <find>View</find>
     </findStrings>
     <replaceStrings>
@@ -736,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/create-design-size.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/forgot.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -763,27 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/create-design.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="133" selection-start-line="23" selection-start-column="133" selection-end-line="23" selection-end-column="133" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="4803" column="14" lean-forward="true" selection-start-line="4803" selection-start-column="14" selection-end-line="4803" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,10 +792,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/create-design.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="133" selection-start-line="23" selection-start-column="133" selection-end-line="23" selection-end-column="133" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/aroma/create-design-size.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="144" column="82" lean-forward="true" selection-start-line="144" selection-start-column="82" selection-end-line="144" selection-end-column="82" />
+        <state relative-caret-position="320">
+          <caret line="132" column="120" lean-forward="true" selection-start-line="132" selection-start-column="120" selection-end-line="132" selection-end-column="120" />
           <folding>
             <element signature="e#287#294#1" expanded="true" />
             <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#ul#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#!!top" expanded="true" />
@@ -828,8 +830,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="320" column="83" lean-forward="true" selection-start-line="320" selection-start-column="83" selection-end-line="320" selection-end-column="83" />
+        <state relative-caret-position="544">
+          <caret line="319" column="95" selection-start-line="319" selection-start-column="95" selection-end-line="319" selection-end-column="95" />
         </state>
       </provider>
     </entry>
