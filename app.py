@@ -1279,7 +1279,7 @@ def delete_size(sizeID):
 
 @app.route("/change-shipping-policy", methods=('GET', 'POST'))
 @roles_required(['Admin'])
-def change_user_agreement():
+def change_shipping_policy():
     form = forms.ChangeShippingPolicy()
     if form.validate_on_submit():
         agreement = ShippingPolicy.query.first()
