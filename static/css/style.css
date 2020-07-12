@@ -4812,7 +4812,7 @@ li .product_count{
 }
 
 #t-shirt-quantity-count{
-    width: 40%;
+    width: 50%;
 }
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
