@@ -320,6 +320,7 @@ $(function() {
                         console.log($(table.parentElement).find("#new_size_order_arr").get(0));
                         $(table.parentElement).find("#new_size_order_arr").get(0).value = String(new_size_order_id_arr);
                         console.log($(table.parentElement).find("#new_size_order_arr").get(0).value);
+                        console.log($(table.parentElement).find("#new_size_order_arr").get(0));
                         //$(table).parent().find("#size-reordering-form").submit();
                     }
                 });
