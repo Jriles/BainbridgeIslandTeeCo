@@ -629,7 +629,7 @@ def product_view(product):
     display_products = get_display_products_in_order()
     designs = ProductDesign.query.all()
     sizes = DesignSize.query.all()
-    product_order_index = DisplayProduct.query.filter_by(product_order_num=product).first()
+    product_order_index = DisplayProduct.query.filter_by(id=product).first()
     return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
