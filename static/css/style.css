@@ -34,8 +34,6 @@ body {
     width: 5%;
     transparent: unset;
     color: grey;
-    border: 1px grey solid;
-    border-radius: 4px;
 }
 
 .slick-prev{
@@ -4854,6 +4852,11 @@ li .product_count{
 .product-details-area{
     margin-top: 100px;
 }
+
+.slick-prev:active, .slick-next:active, .slick-prev:hover, .slick-next:hover{
+    border: 1px grey solid;
+    border-radius: 4px;
+}
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
@@ -4864,6 +4867,8 @@ li .product_count{
     height: 15%;
     width: 30%;
     cursor: pointer;
+    border: 1px grey solid;
+    border-radius: 4px;
   }
 
   .slick-prev:before, .slick-next:before{
