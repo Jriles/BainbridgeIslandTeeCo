@@ -47,7 +47,7 @@
 											{% for design in product.product_designs %}
 												{% set design_loop = loop %}
 												<li id="{{design_loop.index-1}}" {% if design_loop.index-1 == 0 %}class="active-sizes hidden-sizes"{% else %}class="hidden-sizes"{% endif %}>
-													<select class="size-selection form-control" id="t-shirt-size{{design_loop.index-1}}">
+													<select class="size-selection custom-select" id="t-shirt-size{{design_loop.index-1}}">
 													{% for size in design.design_sizes|sort(attribute='order_number') %}
 														<option>{{size.size_name}}</option>
 													{% endfor %}
@@ -78,7 +78,7 @@
 									</li>
 									<li class="options-menu-item quantity-item"><div class="product_count">
 										<label for="t-shirt-quantity-count">Quantity:</label>
-										<input type="number" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty form-control">
+										<input type="text" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="form-control">
 									</div></li>
 								</ul>
 							</div>

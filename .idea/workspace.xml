@@ -87,8 +87,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="80" column="194" selection-start-line="80" selection-start-column="194" selection-end-line="80" selection-end-column="194" />
+            <state relative-caret-position="262">
+              <caret line="69" column="56" lean-forward="true" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -820,8 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="80" column="194" selection-start-line="80" selection-start-column="194" selection-end-line="80" selection-end-column="194" />
+        <state relative-caret-position="262">
+          <caret line="69" column="56" lean-forward="true" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
