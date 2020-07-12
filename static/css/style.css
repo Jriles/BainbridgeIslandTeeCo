@@ -11,6 +11,10 @@ body {
     color: unset;
 }
 
+.slick-prev:active, .slick-next:active{
+    color: unset !important;
+}
+
 .slick-prev:before{
     content: '>';
 }
