@@ -5152,8 +5152,7 @@ Label the data
 	position: relative;
 	text-align: right;
 	float: right;
-	bottom: 20px;
-	height: 150px;
+	bottom: 5px;
 }
 
 .input-text{
@@ -5200,8 +5199,7 @@ Label the data
 .options-menu-item{
 	position: relative;
 	height: 40px;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .card_area{
@@ -5222,14 +5220,6 @@ Label the data
 .product-info{
 	position: relative;
 	float: left;
-}
-
-.product-options-area{
-	position: relative;
-	text-align: right;
-	float: right;
-	bottom: 20px;
-	height: 150px;
 }
 
 .info-and-options{

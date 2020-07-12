@@ -125,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="237">
-              <caret line="5230" column="14" selection-start-line="5230" selection-start-column="14" selection-end-line="5230" selection-end-column="14" />
+              <caret line="5154" column="13" selection-start-line="5154" selection-start-column="13" selection-end-line="5154" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -142,8 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addClass</find>
-      <find>changed</find>
       <find>trigger</find>
       <find>goToSlide</find>
       <find>act</find>
@@ -172,6 +170,8 @@
       <find>add-to-cat-button</find>
       <find>product_count</find>
       <find>product-options-area</find>
+      <find>options-menu-item</find>
+      <find>product-options</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -831,7 +831,7 @@
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
-          <caret line="5230" column="14" selection-start-line="5230" selection-start-column="14" selection-end-line="5230" selection-end-column="14" />
+          <caret line="5154" column="13" selection-start-line="5154" selection-start-column="13" selection-end-line="5154" selection-end-column="13" />
         </state>
       </provider>
     </entry>
