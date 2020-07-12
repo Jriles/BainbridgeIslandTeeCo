@@ -667,7 +667,7 @@ function addToCart(button){
     //$(button).text("Add to Cart");
     setTimeout(function(){
         $(button).text("Add to Cart");
-    },5000);
+    },1000);
 }
 
 
