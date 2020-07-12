@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,8 +122,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="4858" lean-forward="true" selection-start-line="4858" selection-end-line="4858" />
+            <state relative-caret-position="185">
+              <caret line="4859" column="10" lean-forward="true" selection-start-line="4859" selection-start-column="10" selection-end-line="4859" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -830,8 +828,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="4858" lean-forward="true" selection-start-line="4858" selection-end-line="4858" />
+        <state relative-caret-position="185">
+          <caret line="4859" column="10" lean-forward="true" selection-start-line="4859" selection-start-column="10" selection-end-line="4859" selection-end-column="10" />
         </state>
       </provider>
     </entry>
