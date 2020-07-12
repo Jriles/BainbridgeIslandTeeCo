@@ -1018,8 +1018,7 @@ function submitOrderNote(button){
 $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide){
     //we want to ask if there is a primary image first
     var design_index = nextSlide;   //we want to determine what design we want to show
-    console.log("current design index: " + currentSlide);
-    console.log("current design index + 1: " + String(design_index + 1));
+    console.log("next slide index: " + nextSlide);
 
     //if there is a primary product image
     var product_area = $(event.target).closest(".product_image_area");
@@ -1030,9 +1029,9 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nex
         //0 -> 0
         //1 -> 0
         //2 -> 1
-        if(currentSlide !== 0){
-            design_index--;
-        }
+        //if(currentSlide !== 0){
+            //design_index--;
+        //}
     }
 
     console.log("after deleting if not zero: " + design_index);
