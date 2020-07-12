@@ -313,11 +313,12 @@ $(function() {
                             new_order_id_arr.push($(arr[i]).find("#size_id").val());
                         }
                         console.log(new_order_id_arr);
+
                         $(table).parent().find("#new_size_order_arr").val(String(new_order_id_arr));
                         console.log($(table).parent().find("#size-reordering-form"));
                         $(table).parent().find("#size-reordering-form").submit();
                     }
-                })
+                });
             }
             //slick carousel initialization
             $(".slick-carousel").slick({
