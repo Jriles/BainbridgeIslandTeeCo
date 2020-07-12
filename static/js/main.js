@@ -331,6 +331,7 @@ $(function() {
                     breakpoint: 300
                     }]
             });
+            scrollDown();
 		});
 
     //check if this is the cart page
