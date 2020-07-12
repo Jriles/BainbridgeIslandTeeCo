@@ -664,7 +664,7 @@ function addToCart(button){
     console.log(currentCartJSON);
     //want to update website with new cart infomation
     document.getElementById("cart-count").innerHTML = currentCartJSON.length;
-    $(button).text("Add to Cart");
+    //$(button).text("Add to Cart");
 }
 
 
