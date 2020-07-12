@@ -47,9 +47,9 @@
 											{% for design in product.product_designs %}
 												{% set design_loop = loop %}
 												<li id="{{design_loop.index-1}}" {% if design_loop.index-1 == 0 %}class="active-sizes hidden-sizes"{% else %}class="hidden-sizes"{% endif %}>
-													<select class="size-selection dropdown-menu" id="t-shirt-size{{design_loop.index-1}}">
+													<select class="size-selection form-control" id="t-shirt-size{{design_loop.index-1}}">
 													{% for size in design.design_sizes|sort(attribute='order_number') %}
-														<option class="dropdown-item">{{size.size_name}}</option>
+														<option>{{size.size_name}}</option>
 													{% endfor %}
 													</select>
 												</li>
