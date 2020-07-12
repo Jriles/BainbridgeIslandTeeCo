@@ -495,7 +495,7 @@ def random_with_N_digits(n):
 
 
 # we want to convert our discount code collection in our db to an array for safe passage
-
+#the next three views all need some of the same things
 @app.route('/payment-success', methods=['GET', 'POST'])
 def paymentsuccess():
     email_form = forms.EmailForm()
@@ -593,24 +593,9 @@ def paymentsuccess():
     except SMTPException:
         app.logger.info("there was a problem sending the confirmation email")
     display_products = get_display_products_in_order()
-    designs = []
-    for product in display_products:
-        designs.append(get_designs_for_product(product.id))
+    designs = ProductDesign.query.all()
     #we also need sizes too
-    #sizes needs to be a threeD array because there are sizes per design
-    #this empty array represents the products
-    sizes = []
-    product_idx = 0
-    for product in display_products:
-        #we want to append an empty array representing the designs for this product
-        sizes.append([])
-        #get all the designs associated with this product
-        this_product_designs = designs[product_idx]
-        product_idx += 1
-        design_idx = 0
-        for design in this_product_designs:
-            sizes[product_idx][design_idx].append(get_sizes_for_design_in_order(this_product_designs[design_idx].id))
-            design_idx += 1
+    sizes = DesignSize.query.all()
     return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
@@ -630,6 +615,22 @@ def home():
     #we also need sizes too
     sizes = DesignSize.query.all()
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
+                           designs=designs, sizes=sizes)
+
+@app.route("/<product>", methods=('GET', 'POST'))
+def product_view(product):
+    email_form = forms.EmailForm()
+    if email_form.validate_on_submit():
+        print(email_form.email.data)
+        this_email = Email()
+        this_email.email = email_form.email.data
+        db.session.add(this_email)
+        db.session.commit()
+    display_products = get_display_products_in_order()
+    designs = ProductDesign.query.all()
+    sizes = DesignSize.query.all()
+    product_order_index = DisplayProduct.query.filter_by(product_order_num=product).first()
+    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
 
@@ -945,22 +946,6 @@ def email_all_customers():
             app.logger.info(smtpObj.sendmail(msg["From"], msg["To"], msg.as_string()))
         smtpObj.quit()
     return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
-
-@app.route("/<product>", methods=('GET', 'POST'))
-def product_view(product):
-    email_form = forms.EmailForm()
-    if email_form.validate_on_submit():
-        print(email_form.email.data)
-        this_email = Email()
-        this_email.email = email_form.email.data
-        db.session.add(this_email)
-        db.session.commit()
-    display_products = get_display_products_in_order()
-    designs = ProductDesign.query.all()
-    sizes = DesignSize.query.all()
-    product_order_index = DisplayProduct.query.filter_by(product_order_numb=product).first()
-    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
-                           designs=designs, sizes=sizes)
 
 @app.route("/change-color", methods=('GET', 'POST'))
 @roles_required(['Admin'])
