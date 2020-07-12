@@ -779,6 +779,7 @@ def edit_products():
         for idx, this_id in enumerate(new_order_id_arr):
             # get this particular product using its id
             current_size = DesignSize.query.filter_by(id=int(this_id)).first()
+            app.logger.info(current_size);
             current_size.order_number = idx
             db.session.add(current_size)
             db.session.commit()
