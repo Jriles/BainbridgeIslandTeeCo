@@ -764,7 +764,7 @@ def edit_products():
             db.session.commit()
     elif edit_product_order.new_order_array.data is not None:
         new_order_id_arr = edit_product_order.new_order_array.data.split(',')
-        app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
+        app.logger.info("REORDER PRODUCT ARRAY[1]: " + str(new_order_id_arr))
         for idx, this_id in enumerate(new_order_id_arr):
             #get this particular product using its id
             current_product = DisplayProduct.query.filter_by(id=int(this_id)).first()
@@ -772,8 +772,8 @@ def edit_products():
             db.session.add(current_product)
             db.session.commit()
     elif edit_size_order.new_size_order_arr.data is not None:
-        new_order_id_arr = edit_product_order.new_order_arr.data.split(',')
-        app.logger.info("REORDER ARRAY[1]: " + str(new_order_id_arr))
+        new_order_id_arr = edit_size_order.new_size_order_arr.data.split(',')
+        app.logger.info("REORDER SIZE ARRAY[1]: " + str(new_order_id_arr))
         for idx, this_id in enumerate(new_order_id_arr):
             # get this particular product using its id
             current_size = DesignSize.query.filter_by(id=int(this_id)).first()

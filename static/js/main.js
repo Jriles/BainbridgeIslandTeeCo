@@ -298,11 +298,8 @@ $(function() {
                         for(i = 1; i < arr.length;i++){
                             new_order_id_arr.push($(arr[i]).find("#product_id").val());
                         }
-                        console.log(new_order_id_arr);
                         document.getElementById("new_order_array").value = String(new_order_id_arr);
-                        console.log("new order array value: " + document.getElementById("new_order_array").value);
-                        console.log(document.getElementById("new_order_array"));
-                        //document.getElementById("product-reordering-form").submit();
+                        document.getElementById("product-reordering-form").submit();
                     }
                 });
                 $("#sizes-table").tableDnD({
@@ -315,14 +312,8 @@ $(function() {
                             console.log($(arr[i]).find("#size_id").val());
                             new_size_order_id_arr.push($(arr[i]).find("#size_id").val());
                         }
-                        console.log(new_size_order_id_arr);
-                        console.log("order input element: ");
-                        console.log($(table.parentElement).find("#new_size_order_arr"));
-                        console.log($(table.parentElement).find("#new_size_order_arr").get(0));
                         $(table.parentElement).find("#new_size_order_arr").get(0).value = String(new_size_order_id_arr);
-                        console.log($(table.parentElement).find("#new_size_order_arr").get(0).value);
-                        console.log($(table.parentElement).find("#new_size_order_arr").get(0));
-                        //$(table).parent().find("#size-reordering-form").submit();
+                        $(table).parent().find("#size-reordering-form").submit();
                     }
                 });
             }
