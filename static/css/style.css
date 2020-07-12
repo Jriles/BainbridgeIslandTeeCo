@@ -37,11 +37,13 @@ body {
 }
 
 .slick-prev{
-    padding-right: 4%;
+    right: 4%;
+    left: 0px;
 }
 
 .slick-next{
-    padding-left: 4%;
+    right: 0px;
+    left: 4%;
 }
 
 .home-quantity-label{
