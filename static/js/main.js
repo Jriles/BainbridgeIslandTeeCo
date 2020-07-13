@@ -646,7 +646,7 @@ function addToCart(button){
     var size_index = $(thisProductInfo).find(".active-sizes").children().eq(0).prop('selectedIndex');
     console.log("size index: " + size_index);
     console.log("design id element: ");
-    console.log($(thisProductInfo).find('.design_names').children().eq(current_design_index).find(".size_ids").children().eq(size_index));
+    console.log($(thisProductInfo).find('.design_names').children().eq(current_design_index).find(".size_ids"));
     var thisSizeID = $(thisProductInfo).find('.design_names').children().eq(current_design_index).find(".size_ids").children().eq(size_index).text();
     var newProduct = {"ProductName": productName,"Size": size,"Price": productPrice, "Quantity": String(quantity), "IMGSRC": String(thisProductImage), "Design": thisProductDesign, "SizeID": thisSizeID};
     var cart = sessionStorage.getItem("Cart");
