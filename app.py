@@ -799,7 +799,7 @@ def edit_products():
             current_size.order_number = idx
             db.session.add(current_size)
             db.session.commit()
-    elif edit_product_form.product_name.data is not None and edit_product_form.validate() and :
+    elif edit_product_form.product_name.data is not None and edit_product_form.validate():
         app.logger.info("id= " + str(edit_product_form.data["product_id"]))
         this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
         this_display_product.name = edit_product_form.data["product_name"]
