@@ -571,7 +571,7 @@ def paymentsuccess():
             db.session.add(this_design_size)
             db.session.commit()
 
-            if this_design_size.inventory <= 1:
+            if new_inventory <= 1:
                 try:
                     #lets send an email to the admins saying how low the inventory is for this size
                     html_body = render_template('email/inventory-low.html', product_name=item["ProductName"], design_name=item["Design"], size_name=item["Size"], current_inventory=new_inventory)
