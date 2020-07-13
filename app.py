@@ -565,7 +565,7 @@ def paymentsuccess():
 
         if item["SizeID"] is not '':
             #now we want to go through and decrement the correct size
-            this_design_size = DesignSize.query.filter_by(id=item["SizeID"])
+            this_design_size = DesignSize.query.filter_by(id=item["SizeID"]).first()
             this_design_size.inventory = this_design_size.inventory - 1
             new_inventory = this_design_size.inventory
             db.session.add(this_design_size)
