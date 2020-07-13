@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/email/inventory-low.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +17,29 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="561" lean-forward="true" selection-start-line="561" selection-end-line="561" />
+            <state relative-caret-position="324">
+              <caret line="576" column="193" selection-start-line="576" selection-start-column="193" selection-end-line="576" selection-end-column="193" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new_order_email.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/email/new_order_email.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inventory-low.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/email/inventory-low.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -43,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="648" column="110" selection-start-line="648" selection-start-column="110" selection-end-line="648" selection-end-column="110" />
+            <state relative-caret-position="362">
+              <caret line="646" column="45" lean-forward="true" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -109,24 +128,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shipping-policy.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/shipping-policy.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changetermsandconditions.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/changetermsandconditions.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="22" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -139,7 +140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Mob</find>
       <find>Order</find>
       <find>showThisProductDesigns</find>
       <find>View</find>
@@ -167,8 +167,9 @@
       <find>paymen</find>
       <find>cart</find>
       <find>&quot;/mycart</find>
-      <find>addTo</find>
       <find>product_id</find>
+      <find>addTo</find>
+      <find>/pay</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -199,8 +200,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/aroma/single-product.html" />
-        <option value="$PROJECT_DIR$/venv/Lib/site-packages/dict2xml.py" />
         <option value="$PROJECT_DIR$/venv/Lib/site-packages/ClassicUPS/ups.py" />
         <option value="$PROJECT_DIR$/cityLocations.txt" />
         <option value="$PROJECT_DIR$/setup.py" />
@@ -246,10 +245,12 @@
         <option value="$PROJECT_DIR$/templates/aroma/shipping-policy.html" />
         <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/templates/aroma/forgot.html" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/cart.html" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/static/js/main.js" />
+        <option value="$PROJECT_DIR$/templates/aroma/inventory-low.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/email/inventory-low.html" />
       </list>
     </option>
   </component>
@@ -343,6 +344,7 @@
       <recent name="C:\Users\jrile\Sock Website\templates\aroma" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jrile\Desktop\Software Engineering\AlexApparel\templates\email" />
       <recent name="C:\Users\jrile\Sock Website\templates\aroma" />
       <recent name="C:\Users\jrile\Sock Website\templates" />
       <recent name="C:\Users\jrile\Sock Website\static\img" />
@@ -419,7 +421,7 @@
     <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15680292" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15680292" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.08602807" side_tool="true" weight="0.28480205" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49969494" weight="0.32950193" />
@@ -470,13 +472,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python38/Lib/site-packages/requests/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/database.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1003">
@@ -580,13 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/email/new_order_email.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -798,16 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="561" lean-forward="true" selection-start-line="561" selection-end-line="561" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -829,8 +807,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="648" column="110" selection-start-line="648" selection-start-column="110" selection-end-line="648" selection-end-column="110" />
+        <state relative-caret-position="362">
+          <caret line="646" column="45" lean-forward="true" selection-start-line="646" selection-start-column="45" selection-end-line="646" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/email/new_order_email.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="576" column="193" selection-start-line="576" selection-start-column="193" selection-end-line="576" selection-end-column="193" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/email/inventory-low.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
         </state>
       </provider>
     </entry>

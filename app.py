@@ -544,6 +544,11 @@ def paymentsuccess():
     most_recent_order = descending.first()
     app.logger.info("got through saving the order to the db")
     order_total = 0
+
+    #login to email
+    smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
+    smtpObj.starttls()
+    smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
     for item in cart:
         new_item = OrderItem()
         new_item.order_id = most_recent_order.id
@@ -558,15 +563,31 @@ def paymentsuccess():
         db.session.add(new_item)
         db.session.commit()
 
-        #now we want to go through and decrement the correct size
+        if item["SizeID"] is not '':
+            #now we want to go through and decrement the correct size
+            this_design_size = DesignSize.query.filter_by(id=item["SizeID"])
+            this_design_size.inventory = this_design_size.inventory - 1
+            new_inventory = this_design_size.inventory
+            db.session.add(this_design_size)
+            db.session.commit()
 
+            if this_design_size.inventory <= 1:
+                try:
+                    #lets send an email to the admins saying how low the inventory is for this size
+                    html_body = render_template('email/inventory-low.html', product_name=item["ProductName"], design_name=item["Design"], size_name=item["Size"], current_inventory=new_inventory)
+                    html = MIMEText(html_body, 'html')
+                    msg = MIMEMultipart()
+                    msg["From"] = 'bainbrigeislandteeco@gmail.com'
+                    msg["To"] = 'bainbridgeislandteeco@gmail.com'
+                    msg["Subject"] = "Inventory Low!"
+                    msg.attach(html)
+                    smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
+                except SMTPException:
+                    app.logger.info("there was a problem sending the inventory email")
     app.logger.info("got though saving all the order items to the database")
     # want to confirmation to email given by paypal for everyone, including not users.
     # we also want to send an email to the business to let them know there is a new order
     try:
-        smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
-        smtpObj.starttls()
-        smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
         # send an email to the business
         html_body = render_template('email/new_order_email.html', cart=cart, paypalID=paypalID, email=email,
                                     address=address)
