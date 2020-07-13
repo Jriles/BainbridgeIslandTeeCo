@@ -65,7 +65,11 @@
 												<ul class="size_inventories" style="display: none;">
 													{% for size in design.design_sizes|sort(attribute='order_number') %}
 													<li>{{size.inventory}}</li>
-													<li id="size-id">{{size.id}}</li>
+													{% endfor %}
+												</ul>
+												<ul class="size-ids">
+													{% for size in design.design_sizes|sort(attribute='order_number') %}
+													<li>{{size.id}}</li>
 													{% endfor %}
 												</ul>
 											</li>
