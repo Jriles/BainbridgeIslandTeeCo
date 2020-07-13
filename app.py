@@ -187,7 +187,7 @@ class Email(db.Model):
 class UserOrders(db.Model):
     __tablename__ = "User_Orders"
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE'))
+    user_id = db.Column(db.String())
     paypal_order_id = db.Column(db.String())
     address = db.Column(db.String())
     internal_note = db.Column(db.String())
