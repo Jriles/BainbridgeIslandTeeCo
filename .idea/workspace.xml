@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +14,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="435" column="59" selection-start-line="435" selection-start-column="59" selection-end-line="435" selection-end-column="59" />
+            <state relative-caret-position="346">
+              <caret line="329" column="51" selection-start-line="329" selection-start-column="51" selection-end-line="329" selection-end-column="51" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -127,7 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addTo</find>
       <find>/pay</find>
       <find>.close</find>
       <find>edit</find>
@@ -154,9 +151,10 @@
       <find>smtpObj.login</find>
       <find>&quot;/login</find>
       <find>verify_reset_password_token</find>
-      <find>get_curr</find>
       <find>jwt.encode</find>
       <find>email_password</find>
+      <find>SMTP</find>
+      <find>get_curr</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -808,8 +806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="435" column="59" selection-start-line="435" selection-start-column="59" selection-end-line="435" selection-end-column="59" />
+        <state relative-caret-position="346">
+          <caret line="329" column="51" selection-start-line="329" selection-start-column="51" selection-end-line="329" selection-end-column="51" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
