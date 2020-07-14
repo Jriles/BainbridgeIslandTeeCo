@@ -91,7 +91,7 @@
                                         {{ edit_design_form.edit_design_icon(value = design.design_icon, class_ = 'card-text icon-input') }}
                                     </div>
                                     {{ edit_design_form.design_id(value = design.id, class_ = 'edit-design card-text') }}
-                                    {{ edit_design_form.edit_design(class_ = 'btn btn-warning product_button')}}
+                                    {{ edit_design_form.edit_design(class_ = 'btn btn-warning product_button design-delete-button')}}
                                     <div>
                                         <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design.id}}">Delete Design</a></button>
                                     </div>
@@ -117,7 +117,7 @@
                                             <td>
                                                 {{ edit_size_form.size_id(class_ = 'discount-form-element', value = size.id) }}
                                                 {{ edit_size_form.order_number(class_ = 'discount-form-element', value = size.order_number) }}
-                                                {{ edit_size_form.edit_size(class_ = 'btn btn-warning product_button') }}
+                                                {{ edit_size_form.edit_size(class_ = 'btn btn-warning') }}
                                             </td>
                                             <td>
                                                 <div>

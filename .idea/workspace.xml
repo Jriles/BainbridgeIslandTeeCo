@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aroma/manage-products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aroma/manage-products.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,20 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="785" column="70" selection-start-line="785" selection-start-column="70" selection-end-line="785" selection-end-column="70" />
+            <state relative-caret-position="431">
+              <caret line="785" column="67" selection-start-line="785" selection-start-column="67" selection-end-line="785" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+            <state relative-caret-position="534">
+              <caret line="119" column="101" selection-start-line="119" selection-start-column="101" selection-end-line="119" selection-end-column="101" />
             </state>
           </provider>
         </entry>
@@ -136,8 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add-to-cat-button</find>
-      <find>product_count</find>
       <find>product-options-area</find>
       <find>product-options</find>
       <find>quantity-item</find>
@@ -166,6 +164,8 @@
       <find>edit</find>
       <find>product_view</find>
       <find>manage-pr</find>
+      <find>product_size</find>
+      <find>manage-p</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -245,8 +245,8 @@
         <option value="$PROJECT_DIR$/templates/email/inventory-low.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/forms.py" />
-        <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
       </list>
     </option>
   </component>
@@ -810,17 +810,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
+        <state relative-caret-position="431">
+          <caret line="785" column="67" selection-start-line="785" selection-start-column="67" selection-end-line="785" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="785" column="70" selection-start-line="785" selection-start-column="70" selection-end-line="785" selection-end-column="70" />
+        <state relative-caret-position="534">
+          <caret line="119" column="101" selection-start-line="119" selection-start-column="101" selection-end-line="119" selection-end-column="101" />
         </state>
       </provider>
     </entry>
