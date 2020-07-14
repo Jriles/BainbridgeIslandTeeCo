@@ -776,12 +776,12 @@ def edit_products():
         db.session.commit()
     elif edit_design_form.validate_on_submit() and edit_design_form.edit_design.data:
         this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
+        app.logger.info("thinks that we are in the edit design form")
         if this_design is not None:
             this_design.design_name = edit_design_form.edit_design_name.data
             image = request.files["edit_design_image"]
             if image and allowed_file(image.filename):
                 filename = secure_filename(image.filename)
-                print(filename)
                 img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 image.save(img_path)
                 this_design.design_image = "/static/img/" + filename
