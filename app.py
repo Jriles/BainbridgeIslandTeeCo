@@ -317,12 +317,21 @@ class BusinessEmail(db.Model):
     __tablename__ = "business_email"
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String())
+    password = db.Column(db.String())
 
+#this is important to leave where it is
 def get_current_business_email():
     main_email_object = BusinessEmail.query.first()
     app.logger.info(main_email_object)
     return main_email_object.email
 
+#this ones position doesnt matter
+def get_current_business_email_password():
+    main_email_object = BusinessEmail.query.first()
+    app.logger.info("password: " + main_email_object.password.decode())
+    return main_email_object.password.decode()
+
+#this one's does
 app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
 
 def get_display_products_in_order():
@@ -424,6 +433,7 @@ def create_tables():
     current_email = BusinessEmail()
     current_email.id = 0
     current_email.email = "bainbridgeislandteeco@gmail.com"
+    current_email.password =
     db.session.add(current_email)
     db.session.commit()
 
@@ -566,7 +576,7 @@ def paymentsuccess():
     #login to email
     smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
     smtpObj.starttls()
-    smtpObj.login(get_current_business_email(), str(os.environ["SMTP_PASS"]))
+    smtpObj.login(get_current_business_email(), get_current_business_email_password())
     for item in cart:
         new_item = OrderItem()
         new_item.order_id = most_recent_order.id
@@ -998,7 +1008,7 @@ def email_all_customers():
             this_file_path = img_path
         smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
         smtpObj.starttls()
-        smtpObj.login(get_current_business_email(), str(os.environ["SMTP_PASS"]))
+        smtpObj.login(get_current_business_email(), get_current_business_email_password())
         app.logger.info("logged in")
         for customer in Email.query.all():
             body = email_all_customers_form.message.data
@@ -1148,7 +1158,7 @@ def forgot():
             token = get_user_token(email)
             smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
             smtpObj.starttls()
-            smtpObj.login(get_current_business_email(), str(os.environ["SMTP_PASS"]))
+            smtpObj.login(get_current_business_email(), get_current_business_email_password())
             html_body = render_template('email/reset_password.html', token=token)
             html = MIMEText(html_body, 'html')
             msg = MIMEMultipart()
@@ -1340,6 +1350,10 @@ def change_business_email():
     if email_form.validate_on_submit():
         email = BusinessEmail.query.first()
         email.email = email_form.new_email.data
+        password = email_form.new_password.data
+        h = hashlib.md5(password.encode())
+        passhash = h.hexdigest()
+        email.password = passhash
         db.session.add(email)
         db.session.commit()
         flash("Successfully changed business email.")
