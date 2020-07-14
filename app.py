@@ -36,8 +36,6 @@ import datetime
 from random import randint
 import os
 import paypalstuff
-
-sender = 'bainbridgeislandteeco@gmail.com'
 import forms
 from flask_user import roles_required, UserManager, UserMixin, login_required
 from flask_sqlalchemy import SQLAlchemy
@@ -335,6 +333,10 @@ def get_product_inventory(id):
     for design in designs:
         total_inventory_count += design.inventory
 
+def get_current_business_email():
+    main_email_object = BusinessEmail.query.first()
+    return main_email_object.email
+
 @app.cli.command("create_tables")
 @with_appcontext
 def create_tables():
@@ -425,6 +427,9 @@ def create_tables():
 app.cli.add_command(create_tables)
 
 user_manager = UserManager(app, db, User)
+
+#mail email
+sender = get_current_business_email()
 
 
 @app.route('/turn-on-maintenance-mode')
@@ -591,8 +596,8 @@ def paymentsuccess():
                     html_body = render_template('email/inventory-low.html', product_name=item["ProductName"], design_name=item["Design"], size_name=item["Size"], current_inventory=new_inventory)
                     html = MIMEText(html_body, 'html')
                     msg = MIMEMultipart()
-                    msg["From"] = 'bainbrigeislandteeco@gmail.com'
-                    msg["To"] = 'bainbridgeislandteeco@gmail.com'
+                    msg["From"] = get_current_business_email()
+                    msg["To"] = get_current_business_email()
                     msg["Subject"] = "Inventory Low!"
                     msg.attach(html)
                     smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
@@ -607,8 +612,8 @@ def paymentsuccess():
                                     address=address)
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
-        msg["From"] = 'bainbrigeislandteeco@gmail.com'
-        msg["To"] = 'bainbridgeislandteeco@gmail.com'
+        msg["From"] = get_current_business_email()
+        msg["To"] = get_current_business_email()
         msg["Subject"] = "New Order!"
         msg.attach(html)
         smtpObj.sendmail(msg["From"], msg["To"], msg.as_string())
@@ -620,7 +625,7 @@ def paymentsuccess():
         html_body = render_template('email/thank_you.html', cart=cart, paypalID=paypalID, address=address, logo=logo, primary_color=primary_color, customer_name=request.form["Customer_Name"], order_total="{:.2f}".format(order_total))
         html = MIMEText(html_body, 'html')
         msg = MIMEMultipart()
-        msg["From"] = 'bainbridgeislandteeco@gmail.com'
+        msg["From"] = get_current_business_email()
         msg["To"] = request.form["Email"]
         msg["Subject"] = "Thank you for your order!"
         msg.attach(html)
@@ -999,7 +1004,7 @@ def email_all_customers():
         for customer in Email.query.all():
             body = email_all_customers_form.message.data
             msg = MIMEMultipart()
-            msg["From"] = 'bainbridgeislandteeco@gmail.com'
+            msg["From"] = get_current_business_email()
             msg["To"] = customer.email
             msg["Subject"] = email_all_customers_form.subject.data
             msg.attach(MIMEText(body))
