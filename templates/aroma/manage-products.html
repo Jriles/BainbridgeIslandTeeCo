@@ -55,7 +55,7 @@
                     {{ edit_product_form.product_id(class_ = 'discount-form-element', value = product.id) }}
                     {{ edit_product_form.order_number(class_ = 'discount-form-element', value = product.product_order_num) }}
                     <div>
-                        <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                        {{ edit_product_form.edit_product(class_ = 'btn btn-warning product_button admin-button') }}
                     </div>
                     <div>
                         <button class="btn btn-danger product_button admin-button size-delete-button"><a class="delete-link" href="/delete-product/{{product.id}}">Delete Product</a></button>
@@ -91,7 +91,7 @@
                                         {{ edit_design_form.edit_design_icon(value = design.design_icon, class_ = 'card-text icon-input') }}
                                     </div>
                                     {{ edit_design_form.design_id(value = design.id, class_ = 'edit-design card-text') }}
-                                    <input type="submit" value="Edit Design" class="btn btn-primary product_button admin-button design-delete-button">
+                                    {{ edit_design_form.edit_design(class_ = 'btn btn-warning product_button admin-button'}}
                                     <div>
                                         <button class="btn btn-danger product_button admin-button design-delete-button"><a class="delete-link" href="/delete-design/{{design.id}}">Delete Design</a></button>
                                     </div>
@@ -117,7 +117,7 @@
                                                 {{ edit_size_form.size_id(class_ = 'discount-form-element', value = size.id) }}
                                                 {{ edit_size_form.order_number(class_ = 'discount-form-element', value = size.order_number) }}
                                                 <div>
-                                                    <input type="submit" value="Submit Edits" class="btn btn-warning product_button admin-button">
+                                                    {{ edit_size_form.edit_design(class_ = 'btn btn-warning product_button admin-button') }}
                                                 </div>
                                             </td>
                                             <td>
