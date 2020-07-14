@@ -779,9 +779,11 @@ def edit_products():
             db.session.commit()
     elif edit_size_form.validate_on_submit() and edit_size_form.edit_size.data:
         app.logger.info("validated size form")
+        app.logger.info("size id: " + edit_size_form.size_id.data)
         this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
             app.logger.info("found this size")
+            app.logger.info("size name: " + edit_size_form.size_name.data)
             this_size.product_size = edit_size_form.size_name.data
             this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
