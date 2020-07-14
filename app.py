@@ -916,6 +916,18 @@ def change_logo_view():
             logo.file_path = "/static/img/" + filename
             db.session.add(logo)
             db.session.commit()
+        image = request.files["new_favicon"]
+        if 'new_favicon' not in request.files:
+            return redirect(request.url)
+        if image and allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            image = TabIcon.query.first()
+            image.icon = filename
+            db.session.add(image)
+            db.session.commit()
+            flash("Successfully uploaded new tab icon.")
     return render_template('/aroma/changelogo.html', logo_form=logo_form)
 
 @app.route("/discount-form", methods=('GET', 'POST'))
@@ -1044,25 +1056,6 @@ def change_site_title():
         db.session.commit()
         flash("Successfully changed landing site title.")
     return render_template("/aroma/changesitetitle.html", title_form=title_form)
-
-@app.route("/change-tab-icon", methods=('GET', 'POST'))
-@roles_required(['Admin'])
-def change_site_favicon():
-    favicon_form = forms.ChangeSiteFavicon()
-    if favicon_form.validate_on_submit():
-        image = request.files["new_favicon"]
-        if 'new_favicon' not in request.files:
-            return redirect(request.url)
-        if image and allowed_file(image.filename):
-            filename = secure_filename(image.filename)
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            image.save(img_path)
-            image = TabIcon.query.first()
-            image.icon = filename
-            db.session.add(image)
-            db.session.commit()
-            flash("Successfully uploaded new tab icon.")
-    return render_template('/aroma/changesitefavicon.html', favicon_form=favicon_form)
 
 
 @app.route("/change-terms-and-conditions", methods=('GET', 'POST'))

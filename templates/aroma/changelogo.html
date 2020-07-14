@@ -15,9 +15,10 @@
     <a href="/admin"><button class="btn btn-success admin-button back-to-admin">Back To Admin Page</button></a>
 </div>
 <form method="post" class="form account-form" enctype="multipart/form-data">
-    <h3>Change Logo</h3>
+    <h3>Change Logo and Tab Icon</h3>
     {{ logo_form.csrf_token }}
     {{ logo_form.new_logo(class_ = 'form-control', placeholder = logo_form.new_logo.label.text) }}
-    <input type="submit" value="Submit New Logo" class="btn btn-primary admin-button">
+    {{ logo_form.new_favicon(class_ = 'form-control', placeholder = logo_form.new_favicon.label.text) }}
+    <input type="submit" value="Submit New Logos" class="btn btn-primary admin-button">
 </form>
 {% endblock %}

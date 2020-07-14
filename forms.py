@@ -9,7 +9,8 @@ class EmailForm(FlaskForm):
     email = EmailField('Your Email', validators=[DataRequired()])
 
 class LogoForm(FlaskForm):
-    new_logo = FileField('Your New Logo')
+    new_logo = FileField('New Logo')
+    new_favicon = FileField('New Favicon')
 
 class AdminRegisterForm(FlaskForm):
     admin_code = StringField('Admin Code', validators=[DataRequired()])
@@ -78,9 +79,6 @@ class ChangePrimaryColor(FlaskForm):
 
 class ChangeLandingImage(FlaskForm):
     new_landing_image = FileField('New Landing Image')
-
-class ChangeSiteFavicon(FlaskForm):
-    new_favicon = FileField('New Favicon')
 
 class ChangeSiteTitle(FlaskForm):
     new_site_title = StringField('New Business Name', validators=[validators.DataRequired()])
