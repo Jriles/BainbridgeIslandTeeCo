@@ -764,7 +764,6 @@ def edit_products():
         this_display_product.name = edit_product_form.data["product_name"]
         this_display_product.price = edit_product_form.data["product_price"]
         this_display_product.description = edit_product_form.data["description"]
-        this_display_product.sizes = int(edit_product_form.data["show_sizes"])
         this_display_product.product_order_num = int(edit_product_form.data["order_number"])
         image = request.files["primary_product_image"]
         if image and allowed_file(image.filename):
