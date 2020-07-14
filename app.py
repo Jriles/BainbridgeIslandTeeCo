@@ -331,6 +331,9 @@ def get_current_business_email_password():
     return jwt.decode(main_email_object.password, app.config['SECRET_KEY'],
                algorithms=['HS256'])['email_password']
 
+#this one's does
+app.config['USER_EMAIL_SENDER_EMAIL'] = "jriley9000@gmail.com"
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -436,10 +439,6 @@ def create_tables():
     db.session.commit()
 
 app.cli.add_command(create_tables)
-
-
-#this one's does
-app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
 
 user_manager = UserManager(app, db, User)
 
