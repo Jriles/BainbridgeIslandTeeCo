@@ -750,18 +750,32 @@ def delete_product(productID):
 @app.route("/manage-products", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def edit_products():
+    #edit product form
     edit_product_form = forms.EditProduct()
+    #edit design form
     edit_design_form = forms.EditDesign()
-    edit_product_order = forms.ReOrderProducts()
+    #edit size form
     edit_size_form = forms.EditSize()
+    edit_product_order = forms.ReOrderProducts()
     edit_size_order = forms.ReOrderSizes()
-    if (edit_size_form.size_name.data is not None or edit_size_form.inventory.data is not None) and edit_size_form.validate():
-        this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
-        if this_size is not None:
-            this_size.product_size = edit_size_form.size_name.data
-            this_size.inventory = int(edit_size_form.inventory.data)
-            db.session.commit()
-    elif (edit_design_form.edit_design_name.data is not None or edit_design_form.edit_design_image.data is not None or edit_design_form.edit_design_icon.data is not None) and edit_design_form.validate():
+    if edit_product_form.validate_on_submit() and edit_product_form.edit_product.data:
+        app.logger.info("id= " + str(edit_product_form.data["product_id"]))
+        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
+        this_display_product.name = edit_product_form.data["product_name"]
+        this_display_product.price = edit_product_form.data["product_price"]
+        this_display_product.description = edit_product_form.data["description"]
+        this_display_product.sizes = int(edit_product_form.data["show_sizes"])
+        this_display_product.product_order_num = int(edit_product_form.data["order_number"])
+        image = request.files["primary_product_image"]
+        if image and allowed_file(image.filename):
+            app.logger.info("validated image form")
+            filename = secure_filename(image.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(img_path)
+            this_display_product.primary_product_image = "/static/img/" + filename
+            app.logger.info("this product image: " + this_display_product.primary_product_image)
+        db.session.commit()
+    elif edit_design_form.validate_on_submit() and edit_design_form.edit_design.data:
         this_design = ProductDesign.query.filter_by(id=edit_design_form.design_id.data).first()
         if this_design is not None:
             this_design.design_name = edit_design_form.edit_design_name.data
@@ -778,6 +792,12 @@ def edit_products():
                 icon_path = os.path.join(app.config['UPLOAD_FOLDER'], icon_file_name)
                 icon.save(icon_path)
                 this_design.design_icon = "static/img/" + icon_file_name
+            db.session.commit()
+    elif edit_size_form.validate_on_submit() and edit_size_form.edit_size.data:
+        this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
+        if this_size is not None:
+            this_size.product_size = edit_size_form.size_name.data
+            this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
     elif edit_product_order.new_order_array.data is not None and edit_product_order.new_order_array.data is not '':
         app.logger.info("new order array data: " + edit_product_order.new_order_array.data)
@@ -799,23 +819,6 @@ def edit_products():
             current_size.order_number = idx
             db.session.add(current_size)
             db.session.commit()
-    elif edit_product_form.product_name.data is not None and edit_product_form.validate():
-        app.logger.info("id= " + str(edit_product_form.data["product_id"]))
-        this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
-        this_display_product.name = edit_product_form.data["product_name"]
-        this_display_product.price = edit_product_form.data["product_price"]
-        this_display_product.description = edit_product_form.data["description"]
-        this_display_product.sizes = int(edit_product_form.data["show_sizes"])
-        this_display_product.product_order_num = int(edit_product_form.data["order_number"])
-        image = request.files["primary_product_image"]
-        if image and allowed_file(image.filename):
-            app.logger.info("validated image form")
-            filename = secure_filename(image.filename)
-            img_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            image.save(img_path)
-            this_display_product.primary_product_image = "/static/img/" + filename
-            app.logger.info("this product image: " + this_display_product.primary_product_image)
-        db.session.commit()
     # we need to query all of the existing products and render them with the forms
     display_products = get_display_products_in_order()
     designs = ProductDesign.query.all()

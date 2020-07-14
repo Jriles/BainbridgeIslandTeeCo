@@ -39,6 +39,7 @@ class EditProduct(FlaskForm):
     description = TextAreaField('Product Description', validators=[validators.Optional()])
     product_id = HiddenField()
     order_number = HiddenField()
+    edit_product = SubmitField('Edit Product')
 
 class AddDesign(FlaskForm):
     design_name = StringField('Design Name', validators=[DataRequired()])
@@ -52,6 +53,7 @@ class EditDesign(FlaskForm):
     edit_design_icon = FileField('Design Icon', validators=[validators.Optional()])
     edit_design_inventory = IntegerField('Inventory Count', validators=[validators.Optional()])
     design_id = HiddenField()
+    edit_design = SubmitField('Edit Design')
 
 class CreateProduct(FlaskForm):
     product_name = StringField('Product Name', validators=[validators.Optional()])
@@ -124,6 +126,7 @@ class EditSize(FlaskForm):
     inventory = IntegerField('Inventory Count', validators=[validators.InputRequired()])
     size_id = HiddenField()
     order_number = HiddenField()
+    edit_size = SubmitField('Edit Size')
 
 class ReOrderSizes(FlaskForm):
     new_size_order_arr = StringField('Ordering', validators=[InputRequired()])
