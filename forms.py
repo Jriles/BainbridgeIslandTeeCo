@@ -134,3 +134,4 @@ class ChangeShippingPolicy(FlaskForm):
 
 class ChangeBusinessEmail(FlaskForm):
     new_email = EmailField('New Business Email', validators=[validators.DataRequired()])
+    new_password = PasswordField('New Bussiness Email Password', validators=[validators.DataRequired()])
