@@ -783,7 +783,8 @@ def edit_products():
         this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
             app.logger.info("found this size")
-            app.logger.info("size name: " + edit_size_form.size_name.data)
+            app.logger.info("previous name: " + this_size.product_size)
+            app.logger.info("new name: " + edit_size_form.size_name.data)
             this_size.product_size = edit_size_form.size_name.data
             this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()

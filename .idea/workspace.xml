@@ -17,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="482">
-              <caret line="788" column="60" selection-start-line="788" selection-start-column="60" selection-end-line="788" selection-end-column="60" />
+              <caret line="785" column="70" selection-start-line="785" selection-start-column="70" selection-end-line="785" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -25,7 +25,7 @@
       <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="891">
+            <state relative-caret-position="585">
               <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
             </state>
           </provider>
@@ -136,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addToC</find>
       <find>add-to-cat-button</find>
       <find>product_count</find>
       <find>product-options-area</find>
@@ -166,6 +165,7 @@
       <find>.close</find>
       <find>edit</find>
       <find>product_view</find>
+      <find>manage-pr</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -812,7 +812,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
+        <state relative-caret-position="585">
           <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
         </state>
       </provider>
@@ -820,7 +820,7 @@
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
-          <caret line="788" column="60" selection-start-line="788" selection-start-column="60" selection-end-line="788" selection-end-column="60" />
+          <caret line="785" column="70" selection-start-line="785" selection-start-column="70" selection-end-line="785" selection-end-column="70" />
         </state>
       </provider>
     </entry>
