@@ -98,7 +98,7 @@ def get_current_business_email():
     return main_email_object.email
 
 
-app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
+app.config['USER_EMAIL_SENDER_EMAIL'] = "jriley9000@gmail.com"#get_current_business_email()
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
