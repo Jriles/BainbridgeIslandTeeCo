@@ -428,10 +428,6 @@ def get_current_business_email():
     main_email_object = BusinessEmail.query.first()
     return main_email_object.email
 
-#mail email
-sender = get_current_business_email()
-
-
 @app.route('/turn-on-maintenance-mode')
 def turn_on_mode():
     maintenance_status = MaintenanceMode.query.first()
@@ -567,7 +563,7 @@ def paymentsuccess():
     #login to email
     smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
     smtpObj.starttls()
-    smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
+    smtpObj.login(get_current_business_email(), str(os.environ["SMTP_PASS"]))
     for item in cart:
         new_item = OrderItem()
         new_item.order_id = most_recent_order.id
@@ -999,7 +995,7 @@ def email_all_customers():
             this_file_path = img_path
         smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
         smtpObj.starttls()
-        smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
+        smtpObj.login(get_current_business_email(), str(os.environ["SMTP_PASS"]))
         app.logger.info("logged in")
         for customer in Email.query.all():
             body = email_all_customers_form.message.data
@@ -1149,15 +1145,15 @@ def forgot():
             token = get_user_token(email)
             smtpObj = smtplib.SMTP(host="smtp.gmail.com", port=587)
             smtpObj.starttls()
-            smtpObj.login(sender, str(os.environ["SMTP_PASS"]))
+            smtpObj.login(get_current_business_email(), str(os.environ["SMTP_PASS"]))
             html_body = render_template('email/reset_password.html', token=token)
             html = MIMEText(html_body, 'html')
             msg = MIMEMultipart()
-            msg["From"] = sender
+            msg["From"] = get_current_business_email()
             msg["To"] = email
             msg["Subject"] = "Reset Password"
             msg.attach(html)
-            smtpObj.sendmail(sender, msg["To"], msg.as_string())
+            smtpObj.sendmail(get_current_business_email(), msg["To"], msg.as_string())
             smtpObj.quit()
             flash("Successfully sent reset email to: " + str(email) + ".")
             # except :
