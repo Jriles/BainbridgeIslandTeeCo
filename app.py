@@ -83,7 +83,7 @@ app.config['USER_APP_NAME'] = 'Alex apparel website'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
-app.config['USER_EMAIL_SENDER_EMAIL'] = sender
+#app.config['USER_EMAIL_SENDER_EMAIL'] = sender
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
@@ -333,10 +333,6 @@ def get_product_inventory(id):
     for design in designs:
         total_inventory_count += design.inventory
 
-def get_current_business_email():
-    main_email_object = BusinessEmail.query.first()
-    return main_email_object.email
-
 @app.cli.command("create_tables")
 @with_appcontext
 def create_tables():
@@ -427,6 +423,10 @@ def create_tables():
 app.cli.add_command(create_tables)
 
 user_manager = UserManager(app, db, User)
+
+def get_current_business_email():
+    main_email_object = BusinessEmail.query.first()
+    return main_email_object.email
 
 #mail email
 sender = get_current_business_email()
