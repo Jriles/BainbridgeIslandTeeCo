@@ -131,3 +131,6 @@ class ReOrderSizes(FlaskForm):
 
 class ChangeShippingPolicy(FlaskForm):
     new_policy = TextAreaField('New Shipping Policy', validators=[validators.DataRequired()])
+
+class ChangeBusinessEmail(FlaskForm):
+    new_email = EmailField('New Business Email', validators=[validators.DataRequired()])

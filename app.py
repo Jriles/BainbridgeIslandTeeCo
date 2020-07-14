@@ -315,6 +315,16 @@ class ShippingPolicy(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     shipping_policy = db.Column(db.String())
 
+class ShippingPolicy(db.Model):
+    __tablename__ = "shipping_policy"
+    id = db.Column(db.Integer(), primary_key=True)
+    shipping_policy = db.Column(db.String())
+
+class BusinessEmail(db.Model):
+    __tablename__ = "business_email"
+    id = db.Column(db.Integer(), primary_key=True)
+    email = db.Column(db.String())
+
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
 
@@ -410,6 +420,12 @@ def create_tables():
     shipping_policy.id = 0
     db.session.add(shipping_policy)
     db.session.commit()
+    #business email
+    current_email = BusinessEmail()
+    current_email.id = 0
+    current_email.email = "bainbridgeislandteeco@gmail.com"
+    db.commit.add(current_email)
+    db.session.commit()
 
 app.cli.add_command(create_tables)
 
@@ -473,6 +489,8 @@ def inject_logo():
     email_text = email_text.email_text
     email_cta = EmailCallToAction.query.first()
     email_cta = email_cta.email_cta
+    business_email = BusinessEmail.query.first()
+    business_email = business_email.email
     return dict(this_file_path=path,
                 nav_products=get_display_products_in_order(),
                 primary_color=primary_color,
@@ -482,7 +500,8 @@ def inject_logo():
                 site_icon=site_icon,
                 call_to_action=call_to_action,
                 email_text=email_text,
-                email_cta=email_cta
+                email_cta=email_cta,
+                business_email=business_email
                 )
 
 
@@ -648,6 +667,22 @@ def home():
     #we also need sizes too
     sizes = DesignSize.query.all()
     return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
+                           designs=designs, sizes=sizes)
+
+@app.route("/<product>", methods=('GET', 'POST'))
+def product_view(product):
+    email_form = forms.EmailForm()
+    if email_form.validate_on_submit():
+        print(email_form.email.data)
+        this_email = Email()
+        this_email.email = email_form.email.data
+        db.session.add(this_email)
+        db.session.commit()
+    display_products = get_display_products_in_order()
+    designs = ProductDesign.query.all()
+    sizes = DesignSize.query.all()
+    product_order_index = DisplayProduct.query.filter_by(id=product).first()
+    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
 
@@ -1299,21 +1334,17 @@ def change_shipping_policy():
 def admin_company_summary():
     return render_template('/aroma/company-details-section.html')
 
-@app.route("/<product>", methods=('GET', 'POST'))
-def product_view(product):
-    email_form = forms.EmailForm()
+@app.route("/change-business-email", methods=('GET', 'POST'))
+@roles_required(['Admin'])
+def change_business_email():
+    email_form = forms.ChangeBusinessEmail()
     if email_form.validate_on_submit():
-        print(email_form.email.data)
-        this_email = Email()
-        this_email.email = email_form.email.data
-        db.session.add(this_email)
+        email = BusinessEmail.query.first()
+        email.email = email_form.new_email.data
+        db.session.add(email)
         db.session.commit()
-    display_products = get_display_products_in_order()
-    designs = ProductDesign.query.all()
-    sizes = DesignSize.query.all()
-    product_order_index = DisplayProduct.query.filter_by(id=product).first()
-    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
-                           designs=designs, sizes=sizes)
+        flash("Successfully changed business email.")
+    return render_template("/aroma/changesitetitle.html", email_form=email_form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
