@@ -419,7 +419,7 @@ def create_tables():
     current_email = BusinessEmail()
     current_email.id = 0
     current_email.email = "bainbridgeislandteeco@gmail.com"
-    db.commit.add(current_email)
+    db.session.add(current_email)
     db.session.commit()
 
 app.cli.add_command(create_tables)
