@@ -315,11 +315,6 @@ class ShippingPolicy(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     shipping_policy = db.Column(db.String())
 
-class ShippingPolicy(db.Model):
-    __tablename__ = "shipping_policy"
-    id = db.Column(db.Integer(), primary_key=True)
-    shipping_policy = db.Column(db.String())
-
 class BusinessEmail(db.Model):
     __tablename__ = "business_email"
     id = db.Column(db.Integer(), primary_key=True)
