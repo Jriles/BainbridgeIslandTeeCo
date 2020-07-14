@@ -433,8 +433,7 @@ def create_tables():
     current_email = BusinessEmail()
     current_email.id = 0
     current_email.email = "bainbridgeislandteeco@gmail.com"
-    current_email.password = jwt.encode({'email_password': str(os.environ["SMTP_PASS"])}, app.config['SECRET_KEY'],
-                   algorithm='HS256').decode('utf-8')
+    current_email.password = "fake_password"
     db.session.add(current_email)
     db.session.commit()
 
