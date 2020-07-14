@@ -1307,7 +1307,7 @@ def change_shipping_policy():
         flash("Successfully changed shipping policy.")
     return render_template("/aroma/shipping-policy.html", form=form)
 
-@app.route("/company-details")
+@app.route("/business-details")
 @roles_required(['Admin'])
 def admin_company_summary():
     return render_template('/aroma/company-details-section.html')
