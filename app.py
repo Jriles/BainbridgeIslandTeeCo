@@ -1339,7 +1339,7 @@ def change_business_email():
         db.session.add(email)
         db.session.commit()
         flash("Successfully changed business email.")
-    return render_template("/aroma/changesitetitle.html", email_form=email_form)
+    return render_template("/aroma/change-business-email.html", email_form=email_form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \
