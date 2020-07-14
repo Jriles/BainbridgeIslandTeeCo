@@ -4861,6 +4861,9 @@ li .product_count{
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
 
+  .size-selection{
+    width: 30% !important;
+  }
   /* slick */
   .slick-prev, .slick-next{
     top: 120%;
