@@ -18,6 +18,7 @@
     <h3>Change Business Email</h3>
     {{ email_form.csrf_token }}
     {{ email_form.new_email(class_ = 'form-control', placeholder = email_form.new_email.label.text) }}
+    {{ email_form.new_password(class_ = 'form-control', placeholder = email_form.new_password.label.text) }}
     <input type="submit" value="Submit New Email" class="btn btn-primary admin-button">
 </form>
 {% endblock %}
