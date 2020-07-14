@@ -1033,7 +1033,7 @@ def change_landing_text():
         flash("Successfully changed landing text.")
     return render_template("/aroma/changelandingtext.html", text_form=text_form)
 
-@app.route("/change-tab-title", methods=('GET', 'POST'))
+@app.route("/change-business-name", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def change_site_title():
     title_form = forms.ChangeSiteTitle()
@@ -1081,12 +1081,6 @@ def change_terms():
 @roles_required(['Admin'])
 def landing_details_area():
     return render_template("/aroma/landingsummary.html")
-
-@app.route("/change-site-title-details", methods=('GET', 'POST'))
-@roles_required(['Admin'])
-def tab_title_details_view():
-    return render_template("/aroma/titlesummary.html")
-
 
 
 from flask import send_from_directory

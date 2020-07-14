@@ -83,7 +83,7 @@ class ChangeSiteFavicon(FlaskForm):
     new_favicon = FileField('New Favicon')
 
 class ChangeSiteTitle(FlaskForm):
-    new_site_title = StringField('New Website Title', validators=[validators.DataRequired()])
+    new_site_title = StringField('New Business Name', validators=[validators.DataRequired()])
 
 class ChangeLandingText(FlaskForm):
     new_landing_text = StringField('New Landing Text', validators=[validators.Optional()])

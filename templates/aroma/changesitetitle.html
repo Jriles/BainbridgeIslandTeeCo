@@ -12,12 +12,12 @@
 {% endif %}
 {% endwith %}
 <div class="admin-form-back-to-admin">
-    <a href="/change-site-title-details"><button class="btn btn-success admin-button back-to-admin">Back To Tab Control</button></a>
+    <a href="/business-details"><button class="btn btn-success admin-button back-to-admin">Back To Business Details</button></a>
 </div>
 <form method="post" class="form account-form" enctype="multipart/form-data">
-    <h3>Change Tab Title/Org. Name</h3>
+    <h3>Change Business Name</h3>
     {{ title_form.csrf_token }}
     {{ title_form.new_site_title(class_ = 'form-control', placeholder = title_form.new_site_title.label.text) }}
-    <input type="submit" value="Submit New Title" class="btn btn-primary admin-button">
+    <input type="submit" value="Submit New Name" class="btn btn-primary admin-button">
 </form>
 {% endblock %}
