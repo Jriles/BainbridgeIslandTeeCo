@@ -781,9 +781,12 @@ def edit_products():
         app.logger.info("validated size form")
         this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
+            app.logger.info("found this size")
             this_size.product_size = edit_size_form.size_name.data
             this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
+        else:
+            app.logger.info("unable to find the right size")
     elif edit_product_order.new_order_array.data is not None and edit_product_order.new_order_array.data is not '':
         app.logger.info("new order array data: " + edit_product_order.new_order_array.data)
         #we should be able to validate these but jquery is fun

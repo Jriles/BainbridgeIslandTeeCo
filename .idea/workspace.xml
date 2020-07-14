@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +16,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="1317" column="5" selection-start-line="1317" selection-start-column="5" selection-end-line="1317" selection-end-column="5" />
+            <state relative-caret-position="482">
+              <caret line="788" column="60" selection-start-line="788" selection-start-column="60" selection-end-line="788" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -23,7 +25,7 @@
       <file leaf-file-name="manage-products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
+            <state relative-caret-position="891">
               <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
             </state>
           </provider>
@@ -243,8 +245,8 @@
         <option value="$PROJECT_DIR$/templates/email/inventory-low.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/forms.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -412,7 +414,7 @@
     <option name="totallyTimeSpent" value="2288000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1653" height="896" extended-state="7" />
+    <frame x="-7" y="-7" width="1653" height="896" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15680292" />
@@ -810,15 +812,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/manage-products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
+        <state relative-caret-position="891">
           <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="1317" column="5" selection-start-line="1317" selection-start-column="5" selection-end-line="1317" selection-end-column="5" />
+        <state relative-caret-position="482">
+          <caret line="788" column="60" selection-start-line="788" selection-start-column="60" selection-end-line="788" selection-end-column="60" />
         </state>
       </provider>
     </entry>
