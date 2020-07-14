@@ -328,8 +328,8 @@ def get_current_business_email():
 #this ones position doesnt matter
 def get_current_business_email_password():
     main_email_object = BusinessEmail.query.first()
-    app.logger.info("password: " + main_email_object.password.decode())
-    return main_email_object.password.decode()
+    return jwt.decode(main_email_object.password, app.config['SECRET_KEY'],
+               algorithms=['HS256'])['email_password']
 
 #this one's does
 app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
@@ -433,7 +433,8 @@ def create_tables():
     current_email = BusinessEmail()
     current_email.id = 0
     current_email.email = "bainbridgeislandteeco@gmail.com"
-    current_email.password =
+    current_email.password = jwt.encode({'email_password': str(os.environ["SMTP_PASS"])}, app.config['SECRET_KEY'],
+                   algorithm='HS256').decode('utf-8')
     db.session.add(current_email)
     db.session.commit()
 
@@ -1351,9 +1352,8 @@ def change_business_email():
         email = BusinessEmail.query.first()
         email.email = email_form.new_email.data
         password = email_form.new_password.data
-        h = hashlib.md5(password.encode())
-        passhash = h.hexdigest()
-        email.password = passhash
+        email.password = jwt.encode({'email_password': password}, app.config['SECRET_KEY'],
+                   algorithm='HS256').decode('utf-8')
         db.session.add(email)
         db.session.commit()
         flash("Successfully changed business email.")
