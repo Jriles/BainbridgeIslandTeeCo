@@ -83,15 +83,22 @@ app.config['USER_APP_NAME'] = 'Alex apparel website'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
-app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
+
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
 
 pathToDB = os.path.abspath("database/database.db")
 
 db = SQLAlchemy(app)
 
+def get_current_business_email():
+    main_email_object = BusinessEmail.query.first()
+    app.logger.info(main_email_object)
+    return main_email_object.email
+
+
+app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
@@ -423,10 +430,6 @@ def create_tables():
 app.cli.add_command(create_tables)
 
 user_manager = UserManager(app, db, User)
-
-def get_current_business_email():
-    main_email_object = BusinessEmail.query.first()
-    return main_email_object.email
 
 @app.route('/turn-on-maintenance-mode')
 def turn_on_mode():
