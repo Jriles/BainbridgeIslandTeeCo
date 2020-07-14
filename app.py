@@ -437,10 +437,11 @@ def create_tables():
 
 app.cli.add_command(create_tables)
 
-user_manager = UserManager(app, db, User)
 
 #this one's does
 app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
+
+user_manager = UserManager(app, db, User)
 
 @app.route('/turn-on-maintenance-mode')
 def turn_on_mode():
