@@ -785,7 +785,7 @@ def edit_products():
             app.logger.info("found this size")
             app.logger.info("previous name: " + this_size.product_size)
             app.logger.info("new name: " + edit_size_form.size_name.data)
-            this_size.product_size = edit_size_form.size_name.data
+            this_size.size_name = edit_size_form.size_name.data
             this_size.inventory = int(edit_size_form.inventory.data)
             db.session.commit()
         else:
