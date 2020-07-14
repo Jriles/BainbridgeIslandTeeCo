@@ -92,13 +92,6 @@ pathToDB = os.path.abspath("database/database.db")
 
 db = SQLAlchemy(app)
 
-def get_current_business_email():
-    main_email_object = BusinessEmail.query.first()
-    app.logger.info(main_email_object)
-    return main_email_object.email
-
-app.logger.info(get_current_business_email())
-app.config['USER_EMAIL_SENDER_EMAIL'] = "jriley9000@gmail.com"#get_current_business_email()
 # IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
 # GitHub's webhook configuration page as "Payload URL".
 @app.route("/myhook", methods=['POST'])
@@ -324,6 +317,13 @@ class BusinessEmail(db.Model):
     __tablename__ = "business_email"
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String())
+
+def get_current_business_email():
+    main_email_object = BusinessEmail.query.first()
+    app.logger.info(main_email_object)
+    return main_email_object.email
+
+app.config['USER_EMAIL_SENDER_EMAIL'] = get_current_business_email()
 
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
