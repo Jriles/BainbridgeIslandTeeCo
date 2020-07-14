@@ -742,6 +742,7 @@ def edit_products():
     edit_size_form = forms.EditSize()
     edit_product_order = forms.ReOrderProducts()
     edit_size_order = forms.ReOrderSizes()
+    app.logger.info("about to try to validate product forms")
     if edit_product_form.validate_on_submit() and edit_product_form.edit_product.data:
         app.logger.info("id= " + str(edit_product_form.data["product_id"]))
         this_display_product = DisplayProduct.query.filter_by(id=edit_product_form.data["product_id"]).first()
@@ -777,6 +778,7 @@ def edit_products():
                 this_design.design_icon = "static/img/" + icon_file_name
             db.session.commit()
     elif edit_size_form.validate_on_submit() and edit_size_form.edit_size.data:
+        app.logger.info("validated size form")
         this_size = DesignSize.query.filter_by(id=edit_size_form.size_id.data).first()
         if this_size is not None:
             this_size.product_size = edit_size_form.size_name.data
