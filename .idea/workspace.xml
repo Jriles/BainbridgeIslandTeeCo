@@ -14,7 +14,7 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
+            <state relative-caret-position="332">
               <caret line="1284" column="23" lean-forward="true" selection-start-line="1284" selection-start-column="23" selection-end-line="1284" selection-end-column="23" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -73,15 +73,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="company-details-section.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/aroma/company-details-section.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/base.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -134,10 +125,10 @@
       <find>business</find>
       <find>&quot;/&quot;</find>
       <find>new_logo</find>
-      <find>Bainbridge Isl</find>
+      <find />
       <find>title_form</find>
       <find>bainbridgeislandteeco@gmail.com</find>
-      <find>sender =</find>
+      <find />
       <find>def</find>
       <find>sender</find>
       <find>get_current_business_email</find>
@@ -238,7 +229,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
-    <option name="width" value="2070" />
+    <option name="width" value="2068" />
     <option name="height" value="1120" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -259,40 +250,6 @@
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="scss" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="aroma" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -458,13 +415,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/aroma/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/category.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -815,9 +765,12 @@
     <entry file="file://$PROJECT_DIR$/database/database.db">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
+        <state relative-caret-position="332">
           <caret line="1284" column="23" lean-forward="true" selection-start-line="1284" selection-start-column="23" selection-end-line="1284" selection-end-column="23" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
