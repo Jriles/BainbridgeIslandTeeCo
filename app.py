@@ -2,36 +2,22 @@ import hashlib
 import sqlite3
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
-from subprocess import TimeoutExpired, check_output
-
-from flask import Flask, jsonify
 from flask import render_template, session
 from flask import url_for
-# from flask_pymongo import PyMongo
 from flask.cli import with_appcontext
 from flask_login import logout_user, login_user, current_user
-from pymongo import *
-from pymongo.errors import ConnectionFailure
-from pymongo import MongoClient
+
 from flask import request
 from flask import Flask, redirect, flash
-from flask_mongoengine import MongoEngine
 from datetime import date
 import json
 from pathlib import Path
-import socket
-import io
-import re
-import smtplib
 from smtplib import SMTPException
-from smtpd import SMTPServer
 
-from sqlalchemy.orm import relationship
 from werkzeug.utils import secure_filename
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-# from ups import UPSConnection
 import datetime
 from random import randint
 import os
@@ -46,40 +32,18 @@ from flask.logging import default_handler
 from logging.config import dictConfig
 import jwt
 from time import time
-import logging
-
-#configure logging for production
-dictConfig({
-    'version': 1,
-    'formatters': {
-        'f': {'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'}
-    },
-    'handlers': {
-        'ch': {'class': 'logging.StreamHandler',
-               'formatter': 'f',
-               'level': 'DEBUG'},
-        'fh': {'class': 'logging.FileHandler',
-               'formatter': 'f',
-               'filename': 'app.log',
-               'level': 'DEBUG'}
-    },
-    'root': {
-        'handlers': ['ch', 'fh'],
-        'level': 'DEBUG',
-    }
-})
 
 app = Flask(__name__)
 import logging
 from logging.handlers import RotatingFileHandler
 app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
-app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
+app.config['SECRET_KEY'] = "Secret key here"
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
 app.config["USER_UNAUTHORIZED_ENDPOINT"] = 'login'
-app.config['USER_APP_NAME'] = 'Alex apparel website'
+app.config['USER_APP_NAME'] = 'Your website name here'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
@@ -92,53 +56,6 @@ pathToDB = os.path.abspath("database/database.db")
 
 db = SQLAlchemy(app)
 
-# IMPORTANT: Make sure to specify this route (https://<this server>/myhook) on
-# GitHub's webhook configuration page as "Payload URL".
-@app.route("/myhook", methods=['POST'])
-def github_webhook_endpoint():
-    app.logger.info("called webhook route")
-    # Extract signature header
-    signature = request.headers.get("X-Hub-Signature")
-    if not signature or not signature.startswith("sha1="):
-        abort(400, "X-Hub-Signature required")
-
-    # Create local hash of payload
-    digest = hmac.new(str(os.environ['REPOSITORY_KEY']).encode(),
-                      request.data, hashlib.sha1).hexdigest()
-
-    # Verify signature
-    if not hmac.compare_digest(signature, "sha1=" + digest):
-        abort(400, "Invalid signature")
-
-    # The signature was fine, let's parse the data
-    request_data = request.get_json()
-
-    # now we want to run our .sh file in our home page
-    import subprocess
-    os.environ['PATH'] = '/home/ubuntu/BainbridgeIslandTeeCo/BainbridgeIslandTeeCoenv/bin:/home/ubuntu/bin:/home/ubuntu/.local/bin:/usr/bin/git:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
-    os.environ['GIT_SSH_COMMAND'] = "ssh -o IdentitiesOnly=yes -i /home/ubuntu/.ssh/id_rsa"
-    app.logger.info("path: " + str(os.environ['PATH']))
-
-    process =subprocess.Popen('git pull origin master', cwd="/home/ubuntu/BainbridgeIslandTeeCo", universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-    app.logger.info(process.stdout.read())
-    #now we need to restart the server
-    restart_process = subprocess.Popen('sudo systemctl restart BainbridgeIslandTeeCo', cwd="/home/ubuntu/BainbridgeIslandTeeCo",
-                               universal_newlines=False, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-    app.logger.info(restart_process.stdout.read())
-    app.logger.info("finished running the command")
-    return "Okay, thank you, if you still care."
-
-from sqlalchemy import event
-from sqlalchemy.engine import Engine
-from sqlite3 import Connection as SQLite3Connection
-
-@event.listens_for(Engine, "connect")
-def _set_sqlite_pragma(dbapi_connection, connection_record):
-    if isinstance(dbapi_connection, SQLite3Connection):
-        cursor = dbapi_connection.cursor()
-        cursor.execute("PRAGMA foreign_keys=ON;")
-        app.logger.info("called foreign key enforcement event")
-        cursor.close()
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -332,7 +249,7 @@ def get_current_business_email_password():
                algorithms=['HS256'])['email_password']
 
 #this one's does
-app.config['USER_EMAIL_SENDER_EMAIL'] = "jriley9000@gmail.com"
+app.config['USER_EMAIL_SENDER_EMAIL'] = "youremailhere@gmail.com"
 
 def get_display_products_in_order():
     return DisplayProduct.query.order_by(DisplayProduct.product_order_num)
@@ -386,7 +303,7 @@ def create_tables():
     db.session.commit()
     site_title = TabTitle()
     site_title.id = 0
-    site_title.title_text = "Bainbridge Island Tee Co"
+    site_title.title_text = "Ecommerce Store Name"
     db.session.add(site_title)
     db.session.commit()
     terms = TermsAndConditions()
@@ -416,12 +333,12 @@ def create_tables():
     #need user agreement and privacy policy
     user_agreement = UserAgreement()
     user_agreement.id = 0
-    user_agreement.user_agreement = "This user agreement is a contract between you and Bainbridge Island Tee Co, Inc. governing your use of bainbridgeislandteeco.com and associated services. You agree to comply with all of the terms and conditions in this user agreement. We may revise this user agreement and any of the policies listed above from time to time. The revised version will be effective at the time we post it, unless otherwise noted. If our changes reduce your rights or increase your responsibilities we will provide notice to you of at least 21 days. We reserve the right to amend this agreement at any time without notice, subject to applicable law. By continuing to use our services after any changes to this user agreement become effective, you agree to abide and be bound by those changes. If you do not agree with any changes to this user agreement, you may close your account.Intellectual Property<br>Any and all logos, product images and names are intellectual property of Bainbridge Island Tee Co. Use of any Bainbridge Island Tee Co branding materials, or other intellectual materials will result in legal retaliation and potential penalties."
+    user_agreement.user_agreement = "User agreement"
     db.session.add(user_agreement)
     db.session.commit()
     privacy_policy = PrivacyPolicy()
     privacy_policy.id = 0
-    privacy_policy.privacy_policy = "At Bainbridge Island Tee Co, we appreciate the trust you place in us when you choose to visit our stores or use our websites and mobile applications—and we take that responsibility seriously. This Bainbridge Island Tee Co Privacy Policy (the 'Policy') describes how we collect and use personal information about you when you visit our website, use our mobile application, or call us on the phone. By 'personal information', we mean information that directly identifies you, such as your name, address, or email address. In this Policy, 'we' and 'our' mean Bainbridge Island Tee Co, Inc., and 'you' means any person who visits our website, uses our mobile application, or calls us on the phone. Your information is never shared after your visit, the only third parties that your information could be made visible to are PayPal and Gmail, which are essential to the store.<br>Intellectual Property<br>Any and all logos, product images and names are intellectual property of Bainbridge Island Tee Co. Use of any Bainbridge Island Tee Co branding materials, or other intellectual materials will result in legal retaliation and potential penalties."
+    privacy_policy.privacy_policy = "Privacy Policy"
     db.session.add(privacy_policy)
     db.session.commit()
     shipping_policy = ShippingPolicy()
