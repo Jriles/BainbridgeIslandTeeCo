@@ -615,7 +615,10 @@ def product_view(product):
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
     admin_register_form = forms.AdminRegisterForm()
-    if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
+    #production version
+    #if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
+
+    if admin_register_form.admin_code.data == "test_code" and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
@@ -1282,5 +1285,4 @@ def redirect_url(default='index'):
 
 
 if __name__ == "__main__":
-    # socketio.run(app)
     app.run(host='localhost', port='5000', debug=True)
