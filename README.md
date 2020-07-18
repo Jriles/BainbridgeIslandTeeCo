@@ -11,10 +11,9 @@ https://www.bainbridgeislandteeco.com/
 4. [Credits](#credits)
 
 ### Requirements <a name="requirements"></a>
+Make sure to make a business PayPal account to connect to the website, you have to swap out the cdn in base.html. You can easily test the website with a PayPal sandbox account. 
+In order to run this app on your own environment, please clone the master branch. You should be able to run the application with no issues at this point as long as you install the appropriate packages and have python three.
 
-Make sure to make a bussiness paypal account to connect to the website, you have to swap out the cdn in base.html. You can easily test the website with a paypal sandbox account. 
-You will also need to make a your_project.ini file among other things depending on how far you want to go on deploying a secure application. Here is the guide I used:
-https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uswgi-and-nginx-on-ubuntu-18-04
 
 There shouldn't be anything like a CMS, plugins or other things like that as long as you install all the packages you need with:
 

@@ -349,7 +349,7 @@ def create_tables():
     #business email
     current_email = BusinessEmail()
     current_email.id = 0
-    current_email.email = "bainbridgeislandteeco@gmail.com"
+    current_email.email = "your_company's email"
     current_email.password = "fake_password"
     db.session.add(current_email)
     db.session.commit()
@@ -615,7 +615,13 @@ def product_view(product):
 @app.route('/admin-register', methods=('GET', 'POST'))
 def register():
     admin_register_form = forms.AdminRegisterForm()
-    if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
+    #how you do this in production:
+    #you can change your env vars at the end of your .ini file.
+    #if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
+
+    #this is just for testing
+    #never do this in production >:(
+    if admin_register_form.admin_code.data == "test_code" and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
