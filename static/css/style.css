@@ -49,6 +49,11 @@ body {
     margin-top: 5px;
 }
 
+.quantity-input{
+    width: 70%;
+    margin-left: 15%;
+}
+
 .quantity-input-home{
     float: right;
 }
