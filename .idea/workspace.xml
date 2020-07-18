@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="" />
+    <list default="true" id="6f17464d-164f-4061-a5de-53047cb7ba4a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,15 +21,6 @@
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="database.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/database.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -104,11 +97,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cart.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cart.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/aroma/cart.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
               <caret line="19" column="77" lean-forward="true" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="4860" column="18" selection-start-line="4860" selection-start-column="18" selection-end-line="4860" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -165,8 +167,8 @@
       <find>SENDER</find>
       <find>new_logo</find>
       <find>change</find>
-      <find>quantity-input</find>
       <find>qua</find>
+      <find>quantity-input</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -236,7 +238,6 @@
         <option value="$PROJECT_DIR$/templates/aroma/inventory-low.html" />
         <option value="$PROJECT_DIR$/templates/email/inventory-low.html" />
         <option value="$PROJECT_DIR$/templates/aroma/manage-products.html" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/aroma/changesitetitle.html" />
         <option value="$PROJECT_DIR$/templates/aroma/admin.html" />
         <option value="$PROJECT_DIR$/templates/aroma/company-details-section.html" />
@@ -248,6 +249,7 @@
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/templates/aroma/index.html" />
         <option value="$PROJECT_DIR$/templates/aroma/cart.html" />
+        <option value="$PROJECT_DIR$/static/css/style.css" />
       </list>
     </option>
   </component>
@@ -274,6 +276,17 @@
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
               <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlexApparel" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AlexApparel" type="b2602c69:ProjectViewProjectNode" />
@@ -450,13 +463,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/aroma/contact.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/category.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -683,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="4867" column="32" selection-start-line="4867" selection-start-column="32" selection-end-line="4867" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/aroma/legal-summary.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -815,6 +814,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="77" lean-forward="true" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/database.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="4860" column="18" selection-start-line="4860" selection-start-column="18" selection-end-line="4860" selection-end-column="18" />
         </state>
       </provider>
     </entry>
