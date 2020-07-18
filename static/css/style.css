@@ -50,7 +50,7 @@ body {
 }
 
 .quantity-input{
-    width: 70%;
+    width: 70% !important;
     margin-left: 15%;
 }
 
