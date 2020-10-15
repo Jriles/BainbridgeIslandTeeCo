@@ -10,12 +10,8 @@ from flask import url_for
 # from flask_pymongo import PyMongo
 from flask.cli import with_appcontext
 from flask_login import logout_user, login_user, current_user
-from pymongo import *
-from pymongo.errors import ConnectionFailure
-from pymongo import MongoClient
 from flask import request
 from flask import Flask, redirect, flash
-from flask_mongoengine import MongoEngine
 from datetime import date
 import json
 from pathlib import Path
@@ -31,7 +27,6 @@ from werkzeug.utils import secure_filename
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-# from ups import UPSConnection
 import datetime
 from random import randint
 import os
