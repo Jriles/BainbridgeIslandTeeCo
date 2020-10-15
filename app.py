@@ -663,6 +663,7 @@ def paymentsuccess():
 
 @app.route("/", methods=('GET', 'POST'))
 def home():
+    app.logger.info('called homepage')
     # socketio.emit("message", "data")
     email_form = forms.EmailForm()
     if email_form.validate_on_submit():
