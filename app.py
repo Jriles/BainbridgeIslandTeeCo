@@ -46,35 +46,11 @@ from flask.logging import default_handler
 from logging.config import dictConfig
 import jwt
 from time import time
-import logging
-
-#configure logging for production
-dictConfig({
-    'version': 1,
-    'formatters': {
-        'f': {'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'}
-    },
-    'handlers': {
-        'ch': {'class': 'logging.StreamHandler',
-               'formatter': 'f',
-               'level': 'DEBUG'},
-        'fh': {'class': 'logging.FileHandler',
-               'formatter': 'f',
-               'filename': 'app.log',
-               'level': 'DEBUG'}
-    },
-    'root': {
-        'handlers': ['ch', 'fh'],
-        'level': 'DEBUG',
-    }
-})
 
 app = Flask(__name__)
-import logging
-from logging.handlers import RotatingFileHandler
-app.logger.removeHandler(default_handler)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
-app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
+#app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
+app.config['SECRET_KEY'] = 'My Secret Key 2: the reup'
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
@@ -83,8 +59,7 @@ app.config['USER_APP_NAME'] = 'Alex apparel website'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:843134@localhost:5432/teecotest"
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
 
@@ -128,62 +103,32 @@ db = SQLAlchemy(app)
 #     app.logger.info("finished running the command")
 #     return "Okay, thank you, if you still care."
 
-from sqlalchemy import event
-from sqlalchemy.engine import Engine
-from sqlite3 import Connection as SQLite3Connection
-
-@event.listens_for(Engine, "connect")
-def _set_sqlite_pragma(dbapi_connection, connection_record):
-    if isinstance(dbapi_connection, SQLite3Connection):
-        cursor = dbapi_connection.cursor()
-        cursor.execute("PRAGMA foreign_keys=ON;")
-        app.logger.info("called foreign key enforcement event")
-        cursor.close()
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(pathToDB)
-    return db
-
-
-def query_db(query, args=(), one=False):
-    cur = get_db().execute(query, args)
-    rv = cur.fetchall()
-    cur.close()
-    return (rv[0] if rv else None) if one else rv
-
 # Define the UserRoles association table
 class UserRoles(db.Model):
-    __tablename__ = 'User_Roles'
     id = db.Column(db.Integer(), primary_key=True)
-    user_id = db.Column(db.String(), db.ForeignKey('Users.email', ondelete='CASCADE', onupdate='CASCADE'))
-    role_id = db.Column(db.Integer(), db.ForeignKey('Roles.id'))
+    user_id = db.Column(db.String(), db.ForeignKey('user.email', ondelete='CASCADE', onupdate='CASCADE'))
+    role_id = db.Column(db.Integer(), db.ForeignKey('role.id'))
 
 class Role(db.Model):
-    __tablename__ = 'Roles'
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'Users'
     # User Authentication fields
     email = db.Column(db.String(255), primary_key=True)
     email_confirmed_at = datetime.datetime.now()
     password = db.Column(db.String(255))
-    roles = db.relationship('Role', secondary='User_Roles')
+    roles = db.relationship('Role', secondary='user_roles')
     active = True
     name = db.Column(db.String(255))
     id = db.Column(db.String(255))
 
 class Email(db.Model):
-    __tablename__ = 'CustomerEmail'
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(50), unique=True)
 
 
 class UserOrders(db.Model):
-    __tablename__ = "User_Orders"
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.String())
     paypal_order_id = db.Column(db.String())
@@ -195,9 +140,8 @@ class UserOrders(db.Model):
 
 
 class OrderItem(db.Model):
-    __tablename__ = "Order_Item"
     id = db.Column(db.Integer(), primary_key=True)
-    order_id = db.Column(db.Integer(), db.ForeignKey('User_Orders.id', ondelete='CASCADE'))
+    order_id = db.Column(db.Integer(), db.ForeignKey('user_orders.id', ondelete='CASCADE'))
     product_name = db.Column(db.String())
     product_size = db.Column(db.String())
     price = db.Column(db.String())
@@ -207,13 +151,11 @@ class OrderItem(db.Model):
 
 
 class Logo(db.Model):
-    __tablename__ = "LogoImages"
     id = db.Column(db.Integer(), primary_key=True)
     file_path = db.Column(db.String())
 
 
 class Discount(db.Model):
-    __tablename__ = "Discounts"
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String())
     amount = db.Column(db.Integer())
@@ -221,17 +163,15 @@ class Discount(db.Model):
 
 #sizes are crossed with designs
 class DesignSize(db.Model):
-    __tablename__ = "design_sizes"
     id = db.Column(db.Integer(), primary_key=True)
     size_name = db.Column(db.String())
-    design_id = db.Column(db.Integer(), db.ForeignKey('Product_Designs.id', ondelete='CASCADE', onupdate='CASCADE'))
+    design_id = db.Column(db.Integer(), db.ForeignKey('product_design.id', ondelete='CASCADE', onupdate='CASCADE'))
     order_number = db.Column(db.Integer(), autoincrement=True)
     inventory = db.Column(db.Integer())
 
 class ProductDesign(db.Model):
-    __tablename__ = "Product_Designs"
     id = db.Column(db.Integer(), primary_key=True)
-    product_id = db.Column(db.Integer(), db.ForeignKey('Display_Products.id', ondelete='CASCADE', onupdate='CASCADE'))
+    product_id = db.Column(db.Integer(), db.ForeignKey('display_product.id', ondelete='CASCADE', onupdate='CASCADE'))
     design_name = db.Column(db.String())
     design_image = db.Column(db.String())
     design_icon = db.Column(db.String())
@@ -239,7 +179,6 @@ class ProductDesign(db.Model):
 
 
 class DisplayProduct(db.Model):
-    __tablename__ = "Display_Products"
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String())
     price = db.Column(db.Integer())
@@ -249,7 +188,6 @@ class DisplayProduct(db.Model):
     product_designs = db.relationship("ProductDesign")
 
 class MaintenanceMode(db.Model):
-    __tablename__ = "Maintenance"
     id = db.Column(db.Integer(), primary_key=True)
     status = db.Column(db.String())
 
@@ -258,66 +196,57 @@ class SitePrimaryColor(db.Model):
     color = db.Column(db.String())
 
 class LandingImage(db.Model):
-    __tablename__ = "LandingImages"
     id = db.Column(db.Integer(), primary_key=True)
     file_path = db.Column(db.String())
 
 class LandingText(db.Model):
-    __tablename__ = "LandingTexts"
     id = db.Column(db.Integer(), primary_key=True)
     text = db.Column(db.String())
 
 class TabTitle(db.Model):
-    __tablename__ = "TabTitles"
     id = db.Column(db.Integer(), primary_key=True)
     title_text = db.Column(db.String())
 
 class TabIcon(db.Model):
-    __tablename__ = "Favicons"
     id = db.Column(db.Integer(), primary_key=True)
     icon = db.Column(db.String())
 
 class CallToAction(db.Model):
-    __tablename__ = "CTA"
     id = db.Column(db.Integer(), primary_key=True)
     call_text = db.Column(db.String())
 
 class EmailText(db.Model):
-    __tablename__ = "EmailText"
     id = db.Column(db.Integer(), primary_key=True)
     email_text = db.Column(db.String())
 
 class EmailCallToAction(db.Model):
-    __tablename__ = "EmailCTA"
     id = db.Column(db.Integer(), primary_key=True)
     email_cta = db.Column(db.String())
 
 #legal stuff
 class TermsAndConditions(db.Model):
-    __tablename__ = "Terms"
     id = db.Column(db.Integer(), primary_key=True)
     terms = db.Column(db.String())
 
 class PrivacyPolicy(db.Model):
-    __tablename__ = "privacy_policy"
     id = db.Column(db.Integer(), primary_key=True)
     privacy_policy = db.Column(db.String())
 
 class UserAgreement(db.Model):
-    __tablename__ = "user_agreement"
     id = db.Column(db.Integer(), primary_key=True)
     user_agreement = db.Column(db.String())
 
 class ShippingPolicy(db.Model):
-    __tablename__ = "shipping_policy"
     id = db.Column(db.Integer(), primary_key=True)
     shipping_policy = db.Column(db.String())
 
 class BusinessEmail(db.Model):
-    __tablename__ = "business_email"
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String())
     password = db.Column(db.String())
+
+with app.app_context():
+    db.create_all()
 
 #this is important to leave where it is
 def get_current_business_email():
@@ -896,10 +825,10 @@ def new_product():
 @app.route("/manage-orders", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def manage_orders():
-    orders = query_db("SELECT * FROM User_Orders")
+    orders = Order.query.all()
     order_items = []
     for order in orders:
-        order_items.append(query_db("SELECT * FROM Order_Item WHERE order_id='%s'" % order[0]))
+        order_items.append(OrderItem.query.filter_by(order_id=order.id).first())
 
     internal_order_note = forms.InternalOrderNote()
     order_status_form = forms.OrderStatusForm()
@@ -920,14 +849,14 @@ def manage_orders():
 
 @app.route("/mycart")
 def thecart():
-    discounts_original_structure = query_db("SELECT * FROM Discounts")
+    discounts_original_structure = Discount.query.all()
     discount_2d = []
     for discount in discounts_original_structure:
         new_inner_array = []
-        new_inner_array.append(discount[0])
-        new_inner_array.append(discount[1])
-        new_inner_array.append(discount[2])
-        new_inner_array.append(discount[3])
+        new_inner_array.append(discount.id)
+        new_inner_array.append(discount.name)
+        new_inner_array.append(discount.amount)
+        new_inner_array.append(discount.type)
         discount_2d.append(new_inner_array)
     return render_template('/aroma/cart.html', discounts=discount_2d, shipping_policy=ShippingPolicy.query.first().shipping_policy)
 
@@ -1366,5 +1295,5 @@ def redirect_url(default='index'):
 
 
 if __name__ == "__main__":
-    # socketio.run(app)
-    app.run(host='0.0.0.0', port='5050', debug=True)
+    app.run()
+    #app.run(host='0.0.0.0', port='5050', debug=True)

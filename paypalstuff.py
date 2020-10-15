@@ -1,4 +1,4 @@
-from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment,
+from paypalcheckoutsdk.core import PayPalHttpClient, SandboxEnvironment
 from paypalcheckoutsdk.orders import OrdersGetRequest
 
 import sys
