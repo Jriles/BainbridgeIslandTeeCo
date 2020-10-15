@@ -11,7 +11,7 @@ class PayPalClient:
         """Set up and return PayPal Python SDK environment with PayPal access credentials.
            This sample uses SandboxEnvironment. In production, use LiveEnvironment."""
 
-        self.environment = LiveEnvironment(client_id=self.client_id, client_secret=self.client_secret)
+        self.environment = SandboxEnvironment(client_id=self.client_id, client_secret=self.client_secret)
 
         """ Returns PayPal HTTP client instance with environment that has access
             credentials context. Use this instance to invoke PayPal APIs, provided the
