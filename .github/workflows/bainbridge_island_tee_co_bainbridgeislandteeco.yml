@@ -19,18 +19,6 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: '3.8'
-        
-    - name: Cache
-      uses: actions/cache@v2.1.1
-      with:
-        # A list of files, directories, and wildcard patterns to cache and restore
-        path: ${{github.workspace}}/.pip
-        # An explicit key for restoring and saving the cache
-        key: 'python | "${{runner.os}}" | requirements.txt'
-        # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
-        restore-keys: | 
-          python | "${{runner.os}}"
-          python
 
     - name: Build using AppService-Build
       uses: azure/appservice-build@v2
@@ -43,4 +31,4 @@ jobs:
       with:
         app-name: 'bainbridgeislandteeco'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_62494261b82042a98c0710f33329e3fc }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6939b0090e3545c9a20534c9ae28838b }}
