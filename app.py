@@ -41,6 +41,7 @@ from flask.logging import default_handler
 from logging.config import dictConfig
 import jwt
 from time import time
+#test commit comment
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
