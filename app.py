@@ -58,7 +58,6 @@ app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://biadmin@biteecoserver:bless26!@biteecoserver.postgres.database.azure.com:5432/pollsdb"
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
-#test comment
 
 pathToDB = os.path.abspath("database/database.db")
 
