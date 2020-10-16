@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'bainbridgeislandteeco'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6939b0090e3545c9a20534c9ae28838b }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6939B0090E3545C9A20534C9AE28838B }}
