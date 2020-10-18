@@ -217,8 +217,7 @@ def get_current_business_email():
 #this ones position doesnt matter
 def get_current_business_email_password():
     main_email_object = BusinessEmail.query.first()
-    return jwt.decode(main_email_object.password, app.config['SECRET_KEY'],
-               algorithms=['HS256'])['email_password']
+    return jwt.decode(main_email_object.password, app.config['SECRET_KEY'], algorithms=['HS256'])['email_password']
 
 #this one's does
 app.config['USER_EMAIL_SENDER_EMAIL'] = "jriley9000@gmail.com"
@@ -439,6 +438,7 @@ def paymentsuccess():
         db.session.add(this_email)
         db.session.commit()
     paypalID = request.form['PayPalTransactionID']
+    print("PAYPAL ID: " + str(paypalID))
     orderDeets = paypalstuff.GetOrder.get_order(paypalstuff.GetOrder, paypalID)
     address = orderDeets.result.purchase_units[0].shipping.address
     app.logger.info(orderDeets)
@@ -785,7 +785,7 @@ def new_product():
 @app.route("/manage-orders", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def manage_orders():
-    orders = Order.query.all()
+    orders = UserOrders.query.all()
     order_items = []
     for order in orders:
         order_items.append(OrderItem.query.filter_by(order_id=order.id).first())
