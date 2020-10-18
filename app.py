@@ -45,8 +45,7 @@ from time import time
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
-#app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
-app.config['SECRET_KEY'] = 'My Secret Key 2: the reup'
+app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
