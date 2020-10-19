@@ -47,8 +47,7 @@ app.config['USER_APP_NAME'] = 'Your website name here'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = str(os.environ['PROD_DB_CONN_STR'])
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
 
