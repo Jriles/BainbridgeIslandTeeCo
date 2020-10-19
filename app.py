@@ -46,6 +46,7 @@ from time import time
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
 app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
+#app.config['SECRET_KEY'] = "My Secret Key better than yours"
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
@@ -54,7 +55,6 @@ app.config['USER_APP_NAME'] = 'Alex apparel website'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
-#app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://biadmin@biteecoserver:bless26!@biteecoserver.postgres.database.azure.com:5432/pollsdb"
 app.config['SQLALCHEMY_DATABASE_URI'] = str(os.environ['PROD_DB_CONN_STR'])
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587

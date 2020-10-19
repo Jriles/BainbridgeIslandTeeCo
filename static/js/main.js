@@ -314,6 +314,7 @@ $(function() {
                     }
                 });
             }
+            console.log('about to init car.');
             //slick carousel initialization
             $(".slick-carousel").slick({
                 autoplay: true,
@@ -331,6 +332,7 @@ $(function() {
                     breakpoint: 300
                     }]
             });
+            console.log('finished carousel')
             scrollDown();
 		});
 

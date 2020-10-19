@@ -4857,6 +4857,18 @@ li .product_count{
 .product-details-area{
     margin-top: 100px;
 }
+
+.slick-slide {
+   height:500px;
+   width: 100%;
+}
+
+.slick-slide img {
+   height:500px;
+}
+
+.slick-carousel div { text-align: center; }
+.slick-carousel img { margin: auto; }
 /*
 bars for carousels
 .slick-prev:active, .slick-next:active, .slick-prev:hover, .slick-next:hover{
@@ -4864,6 +4876,8 @@ bars for carousels
     border-radius: 4px;
 }
 */
+
+
 /*Mobile*/
 @media all and (min-width:200px) and (max-width: 900px) {
   /* put your css styles in here */
