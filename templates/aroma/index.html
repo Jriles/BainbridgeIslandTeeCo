@@ -110,7 +110,7 @@
           <div id="mc_embed_signup">
             <form method="post" class="subscribe-form form-inline mt-5 pt-1">
 				{{ email_form.csrf_token }}
-				{{ email_form.email(class_ = 'form-control first-input', placeholder = email_form.email.label.text, required = true, autofocus = true) }}
+				{{ email_form.email(class_ = 'form-control first-input', placeholder = email_form.email.label.text, required = true) }}
               <button class="button button-subscribe mr-auto mb-1" type="submit" style="background-color: {{primary_color}}; border-color: {{primary_color}};">{{email_cta}}</button>
             </form>
           </div>
