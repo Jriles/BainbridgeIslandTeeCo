@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="admin-form-back-to-admin">
+    <a href="/business-details"><button class="btn btn-success admin-button back-to-admin">Back To Business Details</button></a>
+</div>
+<form method="post" class="form account-form" enctype="multipart/form-data">
+    <h3>Change Business Name</h3>
+    {{ title_form.csrf_token }}
+    {{ title_form.new_site_title(class_ = 'form-control', placeholder = title_form.new_site_title.label.text) }}
+    <input type="submit" value="Submit New Name" class="btn btn-primary admin-button">
+</form>
+{% endblock %}

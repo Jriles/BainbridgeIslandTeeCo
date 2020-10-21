@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <!--================Login Box Area =================-->
+	<section class="login_box_area section-margin">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div style="height: 470px !important;" class="login_box_img">
+						<div class="hover">
+							<h4>Today's Promotion</h4>
+							<p>Check the best value for money deal on our site:</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="hero-carousel__slide">
+                    <img src="{{url_for('static', filename='img/home/hero-slide1.png')}}" alt="" class="img-fluid">
+                    <a href="/sample-product-page" class="hero-carousel__slideOverlay">
+                    <h3>Wireless Headphone</h3>
+                    <p>Accessories Item</p></a>
+                </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+
+{% endblock %}

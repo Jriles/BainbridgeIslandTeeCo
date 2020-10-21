@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="site-main">
+    <!--================ Hero banner start =================-->
+    <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
+      <div class="hero-image" {% if landing_image != 'None' %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{landing_image}});"{% endif %}>
+        <div class="hero-text">
+            <h3 style="color:white;" id="call-to-action">{{landing_text}}</h3>
+            <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px; background-color: {{primary_color}}; border-color: {{primary_color}};">{{call_to_action}}</button>
+        </div>
+      </div>
+    </section>
+
+	{% for product in display_products %}
+		{% set product_loop = loop %}
+		<!--================ Hero banner start =================-->
+		<div class="product_image_area" id="product{{product.id}}" style="margin-top: 75px;">
+			<div class="container">
+				<div class="row s_product_inner">
+					<div class="col-lg-6">
+						<div class="slick-carousel">
+							{% if product.primary_product_image is not none %}
+								<div>
+									<img id="primary-product-image{{product_loop.index-1}}" class="img-fluid primary-image" src="{{product.primary_product_image}}" alt="">
+								</div>
+							{% endif %}
+							{% for design in product.product_designs %}
+								<div class="single-prd-item">
+									<img id="bag-product-image{{product_loop.index-1}}" class="img-fluid" src="{{design.design_image}}" alt="">
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-1 product-details-area">
+						<div class="s_product_text">
+							<div class="info-and-options">
+								<div class="product-info">
+									<h3 id="product-name">{{product.name}}</h3>
+									<h2 id="product-price" style="color: {{primary_color}};">${{product.price}}</h2>
+									<h5 class="product-in-stock"></h5>
+									<h6 class="design-name">{% if product.product_designs|length > 0 %}{{(product.product_designs|first).design_name}}{% endif %}</h6>
+									<p style="display: none;" id="product_id">{{product.id}}</p>
+								</div>
+								<ul class="product-options-area">
+									<li class="options-menu-item">
+										<ul class="size-dropdowns">
+											{% for design in product.product_designs %}
+												{% set design_loop = loop %}
+												<li id="{{design_loop.index-1}}" {% if design_loop.index-1 == 0 %}class="active-sizes hidden-sizes"{% else %}class="hidden-sizes"{% endif %}>
+													<select class="size-selection custom-select" id="t-shirt-size{{design_loop.index-1}}">
+													{% for size in design.design_sizes|sort(attribute='order_number') %}
+														<option>{{size.size_name}}</option>
+													{% endfor %}
+													</select>
+												</li>
+											{% endfor %}
+										</ul>
+									</li>
+									<li class="options-menu-item">
+										<ul class="design_names" style="display: none;">
+											{% for design in product.product_designs %}
+											<li class="design-size-list">
+												<div>{{design.design_name}}</div>
+												<ul class="size_inventories" style="display: none;">
+													{% for size in design.design_sizes|sort(attribute='order_number') %}
+													<li>{{size.inventory}}</li>
+													{% endfor %}
+												</ul>
+												<ul class="size-ids">
+													{% for size in design.design_sizes|sort(attribute='order_number') %}
+													<li>{{size.id}}</li>
+													{% endfor %}
+												</ul>
+											</li>
+											{% endfor %}
+										</ul>
+										<div id="design-selection" class="card_area d-flex align-items-center">
+										{% for design in product.product_designs %}
+											{% set design_loop = loop %}
+											<img onclick="goToSlide(this)" src="{{design.design_icon}}" {% if design_loop.index-1 == 0 %}class="product_design_icon product_design_icon_active" style="border: 2px solid {{primary_color}}"{% else %}class="product_design_icon"{% endif %}>
+										{% endfor %}
+										</div>
+									</li>
+									<li class="options-menu-item">
+										<div class="quantity-container">
+											<label for="t-shirt-quantity-count" class="home-quantity-label">Quantity:</label>
+											<input type="text" name="qty" min="1" id="t-shirt-quantity-count" size="2" maxlength="12" value="1" title="Quantity:" class="form-control quantity-input-home">
+										</div>
+									</li>
+								</ul>
+							</div>
+							<p>{{product.description}}</p>
+							<div class="product-cart-buttons">
+								<button class="button button-coupon add-to-cart-button" style="background-color: {{primary_color}}; border-color: {{primary_color}};" onclick="addToCart(this)">Add to Cart</button>
+								<a class="go-to-cart-from-product" href="/mycart"><button type="button" class="btn btn-warning proceed-to-cart">Checkout <i class="fas fa-arrow-right"></i></button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--================End Single Product Area =================-->
+	{% endfor %}
+    <!-- ================ Subscribe section start ================= -->
+    <section style="position: relative; margin-top: 150px; margin-bottom: 100px;">
+      <div class="container">
+        <div class="subscribe text-center">
+          <h3 class="subscribe__title">{{email_text}}</h3>
+          <div id="mc_embed_signup">
+            <form method="post" class="subscribe-form form-inline mt-5 pt-1">
+				{{ email_form.csrf_token }}
+				{{ email_form.email(class_ = 'form-control first-input', placeholder = email_form.email.label.text, required = true, autofocus = true) }}
+              <button class="button button-subscribe mr-auto mb-1" type="submit" style="background-color: {{primary_color}}; border-color: {{primary_color}};">{{email_cta}}</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- ================ Subscribe section end ================= -->
+  </main>
+{% endblock %}

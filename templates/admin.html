@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="admin-container">
+    <div class="header-container">
+        <h1 class="admin-title">Welcome {{current_user.name}}</h1>
+    </div>
+    <br>
+    <h4>Customers</h4>
+    <div class="card-deck">
+        <a href="/manage-orders">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-shopping-cart"></i> Manage Orders</h5>
+                <p class="card-text">Here you can view order details like date placed, address, shipping status, make internal notes among other things.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/discount-form">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-tags"></i> Make a Discount</h5>
+                <p class="card-text">Here you can make cash or percentage discount coupons, don't forget to share the codes!</p>
+              </div>
+            </div>
+        </a>
+        <a href="/email-customers">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-paper-plane"></i> Email All Customers</h5>
+                <p class="card-text">Here you can mass mail customers announcements or other details.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/change-shipping-policy">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-shipping-fast"></i> Change Shipping Policy</h5>
+                <p class="card-text">This blurb appears on the cart page and gives your customers some sense of when they might receive a product.</p>
+              </div>
+            </div>
+        </a>
+    </div>
+    <br>
+    <h4>Website</h4>
+    <div class="card-deck">
+        <a href="/manage-products">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-boxes"></i> Manage Products</h5>
+                <p class="card-text">Here you can make products and designs, as well as edit product and design details like names, prices images, sizes descriptions, etc. </p>
+              </div>
+            </div>
+        </a>
+        <a href="/change-color">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-palette"></i> Change Primary Color</h5>
+                <p class="card-text">Here you can change the primary color of your website.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/change-landing-details">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-edit"></i> Change Homepage Details</h5>
+                <p class="card-text">Here you can change the landing image and text of your homepage.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/business-details">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="far fa-building"></i> Change Business Details</h5>
+                <p class="card-text">Here you can change the business name, logo and email of your website.</p>
+              </div>
+            </div>
+        </a>
+        <a href="/legal">
+            <div class="card border-primary mb-3 admin-card-width">
+              <div class="card-body text-primary">
+                <h5 class="card-title"><i class="fas fa-balance-scale"></i> Change Legal Details</h5>
+                <p class="card-text">Here you can change the terms and conditions of sale, privacy policy and user agreement for the website.</p>
+              </div>
+            </div>
+        </a>
+        {% if maintenance_mode == True %}
+        <a href="/turn-off-maintenance-mode">
+            <div class="card border-warning mb-3 admin-card-width">
+              <div class="card-body text-warning">
+                <h5 class="card-title"><i class="fas fa-tools"></i> Turn Off Maintenance Mode</h5>
+                <p class="card-text">Make your website visible to customers.</p>
+              </div>
+            </div>
+        </a>
+        {% else %}
+        <a href="/turn-on-maintenance-mode">
+            <div class="card border-danger mb-3 admin-card-width">
+              <div class="card-body text-danger">
+                <h5 class="card-title"><i class="fas fa-tools"></i> Turn On Maintenance Mode</h5>
+                <p class="card-text">Shield your customers from unfinished content.</p>
+              </div>
+            </div>
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

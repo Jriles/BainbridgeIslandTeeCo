@@ -546,7 +546,7 @@ def paymentsuccess():
     designs = ProductDesign.query.all()
     #we also need sizes too
     sizes = DesignSize.query.all()
-    return render_template("/aroma/index.html", email_form=email_form, display_products=display_products,
+    return render_template("index.html", email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
 
@@ -565,7 +565,7 @@ def home():
     designs = ProductDesign.query.all()
     #we also need sizes too
     sizes = DesignSize.query.all()
-    return render_template('/aroma/index.html', email_form=email_form, display_products=display_products,
+    return render_template('index.html', email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
 @app.route("/<product>", methods=('GET', 'POST'))
@@ -581,7 +581,7 @@ def product_view(product):
     designs = ProductDesign.query.all()
     sizes = DesignSize.query.all()
     product_order_index = DisplayProduct.query.filter_by(id=product).first()
-    return render_template('/aroma/index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
+    return render_template('index.html', scroll_product=product_order_index.product_order_num, email_form=email_form, display_products=display_products,
                            designs=designs, sizes=sizes)
 
 
@@ -613,7 +613,7 @@ def register():
             return redirect('/admin-register')
     elif request.method == 'POST':
         flash("Unable to validate form.")
-    return render_template('/aroma/admin_register.html', admin_register_form=admin_register_form)
+    return render_template('admin_register.html', admin_register_form=admin_register_form)
 
 
 @app.route('/login', methods=('GET', 'POST'))
@@ -635,7 +635,7 @@ def login():
         else:
             flash("Unable to find user with those details, please try again")
             return redirect('/login')
-    return render_template('/aroma/login.html', login_form=login_form)
+    return render_template('login.html', login_form=login_form)
 
 
 @app.route("/admin", methods=('GET', 'POST'))
@@ -646,7 +646,7 @@ def admin():
         is_maintenance_mode = True
     else:
         is_maintenance_mode = False
-    return render_template('/aroma/admin.html', maintenance_mode=is_maintenance_mode)
+    return render_template('admin.html', maintenance_mode=is_maintenance_mode)
 
 @app.route("/delete-design/<designID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -749,7 +749,7 @@ def edit_products():
     designs = ProductDesign.query.all()
     #we also need sizes too
     sizes = DesignSize.query.all()
-    return render_template('/aroma/manage-products.html', edit_product_form=edit_product_form,
+    return render_template('manage-products.html', edit_product_form=edit_product_form,
                            display_products=display_products, designs=designs, edit_design_form=edit_design_form, edit_product_order=edit_product_order, edit_size_form=edit_size_form, sizes=sizes, edit_size_order=edit_size_order)
 
 
@@ -778,7 +778,7 @@ def new_product():
         db.session.add(new_product)
         db.session.commit()
         flash("Successfully created new product: " + str(new_product.product_order_num))
-    return render_template('/aroma/new-product.html', new_product_form=new_product_form)
+    return render_template('new-product.html', new_product_form=new_product_form)
 
 
 
@@ -803,7 +803,7 @@ def manage_orders():
         this_order.status = int(order_status_form.status.data)
         db.session.commit()
         return redirect("/manage-orders")
-    return render_template('/aroma/manage-orders.html', orders=orders, order_items=order_items,
+    return render_template('manage-orders.html', orders=orders, order_items=order_items,
                            internal_order_note=internal_order_note, order_status_form=order_status_form)
 
 
@@ -818,14 +818,14 @@ def thecart():
         new_inner_array.append(discount.amount)
         new_inner_array.append(discount.type)
         discount_2d.append(new_inner_array)
-    return render_template('/aroma/cart.html', discounts=discount_2d, shipping_policy=ShippingPolicy.query.first().shipping_policy)
+    return render_template('cart.html', discounts=discount_2d, shipping_policy=ShippingPolicy.query.first().shipping_policy)
 
 
 @app.route("/terms-and-conditions")
 def showtermspage():
     terms_and_conds = TermsAndConditions.query.first()
     terms_and_conds = terms_and_conds.terms
-    return render_template('/aroma/terms.html', terms=terms_and_conds)
+    return render_template('terms.html', terms=terms_and_conds)
 
 
 @app.route("/logout")
@@ -862,7 +862,7 @@ def change_logo_view():
             db.session.add(image)
             db.session.commit()
             flash("Successfully uploaded new tab icon.")
-    return render_template('/aroma/changelogo.html', logo_form=logo_form)
+    return render_template('changelogo.html', logo_form=logo_form)
 
 @app.route("/discount-form", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -880,7 +880,7 @@ def make_discount():
         db.session.add(new_discount)
         db.session.commit()
         flash("Saved New Discount")
-    return render_template('/aroma/makediscount.html', new_discount_form=new_discount_form)
+    return render_template('makediscount.html', new_discount_form=new_discount_form)
 
 @app.route('/email-customers', methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -918,7 +918,7 @@ def email_all_customers():
             app.logger.info("about to try to send email")
             app.logger.info(smtpObj.sendmail(msg["From"], msg["To"], msg.as_string()))
         smtpObj.quit()
-    return render_template('/aroma/emailallcustomers.html', email_all_customers=email_all_customers_form)
+    return render_template('emailallcustomers.html', email_all_customers=email_all_customers_form)
 
 @app.route("/change-color", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -930,7 +930,7 @@ def change_color():
         db.session.add(color)
         db.session.commit()
         flash("Successfully changed primary color.")
-    return render_template("/aroma/changecolor.html", color_form=color_form)
+    return render_template("changecolor.html", color_form=color_form)
 
 @app.route("/change-landing-image", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -949,7 +949,7 @@ def change_landing_image():
             db.session.add(image)
             db.session.commit()
             flash("Successfully uploaded new landing image.")
-    return render_template('/aroma/changelandingimage.html', landing_image_form=landing_form)
+    return render_template('changelandingimage.html', landing_image_form=landing_form)
 
 @app.route("/change-landing-text", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -977,7 +977,7 @@ def change_landing_text():
             db.session.add(email_cta)
             db.session.commit()
         flash("Successfully changed landing text.")
-    return render_template("/aroma/changelandingtext.html", text_form=text_form)
+    return render_template("changelandingtext.html", text_form=text_form)
 
 @app.route("/change-business-name", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -989,7 +989,7 @@ def change_site_title():
         db.session.add(title)
         db.session.commit()
         flash("Successfully changed landing site title.")
-    return render_template("/aroma/changesitetitle.html", title_form=title_form)
+    return render_template("changesitetitle.html", title_form=title_form)
 
 
 @app.route("/change-terms-and-conditions", methods=('GET', 'POST'))
@@ -1002,12 +1002,12 @@ def change_terms():
         db.session.add(terms)
         db.session.commit()
         flash("Successfully changed landing terms and conditions.")
-    return render_template("/aroma/changetermsandconditions.html", terms_form=terms_form)
+    return render_template("changetermsandconditions.html", terms_form=terms_form)
 
 @app.route("/change-landing-details", methods=('GET', 'POST'))
 @roles_required(['Admin'])
 def landing_details_area():
-    return render_template("/aroma/landingsummary.html")
+    return render_template("landingsummary.html")
 
 
 from flask import send_from_directory
@@ -1060,7 +1060,7 @@ def forgot():
             smtpObj.quit()
             flash("Successfully sent reset email to: " + str(email) + ".")
             # except :
-    return render_template('/aroma/forgot.html', forgot_form=forgot_form)
+    return render_template('forgot.html', forgot_form=forgot_form)
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
@@ -1079,7 +1079,7 @@ def reset_password(token):
             db.session.commit()
             login_user(User.query.filter_by(email=user).first())
             return redirect("/admin")
-    return render_template('/aroma/reset_password.html', reset_form=reset_form)
+    return render_template('reset_password.html', reset_form=reset_form)
 
 @app.route("/delete-order/<order_id>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1113,7 +1113,7 @@ def edit_admin_account_details():
         logout()
         user = User.query.filter_by(id=current_user_id).first()
         login_user(user)
-    return render_template("/aroma/admin-account-settings.html", form=edit_admin_settings)
+    return render_template("admin-account-settings.html", form=edit_admin_settings)
 
 @app.route("/delete-account")
 @roles_required(['Admin'])
@@ -1129,18 +1129,18 @@ def delete_admin_account():
 def privacy_policy_view():
     policy = PrivacyPolicy.query.first()
     policy = policy.privacy_policy
-    return render_template("/aroma/privacy-policy.html", privacy_policy=policy)
+    return render_template("privacy-policy.html", privacy_policy=policy)
 
 @app.route('/user-agreement')
 def user_agreement_view():
     agreement = UserAgreement.query.first()
     agreement = agreement.user_agreement
-    return render_template("/aroma/user-agreement.html", user_agreement=agreement)
+    return render_template("user-agreement.html", user_agreement=agreement)
 
 @app.route('/legal')
 @roles_required(['Admin'])
 def admin_legal_view():
-    return render_template('/aroma/legal-summary.html')
+    return render_template('legal-summary.html')
 
 @app.route("/change-privacy-policy", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1152,7 +1152,7 @@ def change_privacy_policy():
         db.session.add(policy)
         db.session.commit()
         flash("Successfully changed privacy policy.")
-    return render_template("/aroma/change-privacy-policy.html", form=form)
+    return render_template("change-privacy-policy.html", form=form)
 
 @app.route("/change-user-agreement", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1164,7 +1164,7 @@ def change_user_agreement():
         db.session.add(agreement)
         db.session.commit()
         flash("Successfully changed user agreement.")
-    return render_template("/aroma/change-user-agreement.html", form=form)
+    return render_template("change-user-agreement.html", form=form)
 
 @app.route("/new-design/<productID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1191,7 +1191,7 @@ def create_design(productID):
             db.session.add(new_design)
             db.session.commit()
             flash("Successfully created a new design for product " + productID)
-    return render_template('/aroma/create-design.html', new_design_form=new_design_form)
+    return render_template('create-design.html', new_design_form=new_design_form)
 
 @app.route("/new-size/<productID>/<designID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1206,7 +1206,7 @@ def create_size(productID, designID):
         db.session.add(new_size)
         db.session.commit()
         flash("Successfully created a new size for product " + productID)
-    return render_template('/aroma/create-design-size.html', new_size_form=new_size_form)
+    return render_template('create-design-size.html', new_size_form=new_size_form)
 
 @app.route("/delete-size/<sizeID>", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1226,12 +1226,12 @@ def change_shipping_policy():
         db.session.add(agreement)
         db.session.commit()
         flash("Successfully changed shipping policy.")
-    return render_template("/aroma/shipping-policy.html", form=form)
+    return render_template("shipping-policy.html", form=form)
 
 @app.route("/business-details")
 @roles_required(['Admin'])
 def admin_company_summary():
-    return render_template('/aroma/company-details-section.html')
+    return render_template('company-details-section.html')
 
 @app.route("/change-business-email", methods=('GET', 'POST'))
 @roles_required(['Admin'])
@@ -1246,7 +1246,7 @@ def change_business_email():
         db.session.add(email)
         db.session.commit()
         flash("Successfully changed business email.")
-    return render_template("/aroma/change-business-email.html", email_form=email_form)
+    return render_template("change-business-email.html", email_form=email_form)
 
 def redirect_url(default='index'):
     return request.args.get('next') or \

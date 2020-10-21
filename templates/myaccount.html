@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- ================ start banner area ================= -->
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1 id="account-header">{{value}}'s Account</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">Check Your Loyalty Points, View Past Orders, Track Current Orders and Change Your Account Details</li>
+            </ol>
+                        <div class="button button-coupon" id="logout-button">Logout</div>
+                        <div class="button gray_btn" id="settings-button" onclick="showSettingsPopUp()">Settings</div>
+          </nav>
+				</div>
+			</div>
+    </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div style="display: inline; float: right;"><span class="close">&times;</span></div>
+                <ul style="margin-top: -20px;">
+                    <li style="text-align: center;"><div><h3>Settings</h3></div></li>
+                    <li style="text-align: center;"><div><p>Change your email, username or password</p></div></li>
+                    <form action="/settingsReset" method="post">
+                        <li><div><input type="email" style="outline: none; background: none; box-shadow: none; padding: 10px 15px; margin-right: 30px; border: 1px solid #808080; border-radius: 3px;" name="email" id="email" placeholder="Your new email.."><button class="button button-login" type="submit">Reset Email</button></div></li>
+                        <br>
+                        <li><div><input type="text" style="outline: none; background: none; box-shadow: none; padding: 10px 15px; border: 1px solid #808080; border-radius: 3px;" name="username" id="username" placeholder="Your new username.."><button style="margin-left: 30px; scale: .9;" class="button button-login" type="submit">Reset Username</button></div></li>
+                        <br>
+                        <li><div><input type="password" style="outline: none; background: none; box-shadow: none; padding: 10px 15px; border: 1px solid #808080; border-radius: 3px;" name="password" id="password" placeholder="Your new password.."><button style="margin-left: 30px; scale: .9;" class="button button-login" type="submit">Reset Password</button></div></li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+
+
+  <!--================Tracking Box Area =================-->
+  <section class="tracking_box_area section-margin--small">
+      <div class="container">
+          <div class="tracking_box_inner" style="text-align: center;">
+              <h2>Your Loyalty Points: <div class="button button-coupon" style="pointer-events: none; position: relative; bottom: 7px;">{{pointsValue}}</div></h2>
+              <br>
+              <h2>Orders Awaiting Shipment</h2>
+              <hr style="width: 900px;">
+              <ul id="orders-awaiting-shipment">
+              </ul>
+              <br>
+              <h2>Shipping Orders</h2>
+              <hr style="width: 900px;">
+              <ul id="shipping-orders-list" style="text-align: center;">
+                  <li style="margin-top: 30px; height: 400px; width: 900px; box-sizing: border-box; border: 1px solid gray; position: relative; left: 9.5%;">
+                      <div>
+                          <div class="map" style="height: 350px; width: 70%; margin: 20px; display: inline; float: right;"></div>
+                          <div id="order-info-section" style="display: inline; float: left; position: relative; left: 20px !important; margin-top: 20px;">
+                            <h4 id="order-id"></h4>
+                            <p style="margin: 0px; padding: 0px;" id="event"></p>
+                            <p style="margin: 0px; padding: 0px;" id="date"></p>
+                             <ul id="product-list">
+                             </ul>
+                            <p style="margin: 0px; padding: 0px;" id="total-price"></p>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+              <br>
+              <h2>Delivered Orders</h2>
+              <hr style="width: 900px;">
+              <ul id="shipped-orders-list">
+              </ul>
+          </div>
+      </div>
+  </section>
+  <!--================End Tracking Box Area =================-->
+
+{% endblock %}

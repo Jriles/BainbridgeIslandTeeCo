@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div>
+    <a class="back-to-admin-link" href="/manage-products"><button class="btn btn-success admin-button">Back To Manage Products Page</button></a>
+</div>
+<form method="post" class="form account-form" enctype="multipart/form-data">
+    <h2>Create New Product</h2>
+    {{ new_product_form.csrf_token }}
+    {{ new_product_form.product_name(class_ = 'form-control', placeholder = new_product_form.product_name.label.text, required = true) }}
+    {{ new_product_form.product_price(class_ = 'form-control', placeholder = new_product_form.product_price.label.text, required = true) }}
+    {{ new_product_form.primary_product_image(class = 'form-control', placeholder = new_product_form.primary_product_image.label.text, required = false) }}
+    {{ new_product_form.description(class_ = 'form-control', placeholder = new_product_form.description.label.text, required = true) }}
+    <input type="submit" value="Create New Product" class="btn btn-primary btn-lg btn-block">
+</form>
+{% endblock %}

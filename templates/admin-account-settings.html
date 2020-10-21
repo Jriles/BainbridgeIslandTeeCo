@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-block alert-error section-error-alert">
+  <a class="close" data-dismiss="alert">&times;</a>
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form method="post" class="form account-form">
+    <h2>Edit Your Account Details</h2>
+    <p>*All fields are optional, no need to fill out the whole form.</p>
+    {{ form.csrf_token }}
+    {{ form.email(class_ = 'form-control', placeholder = form.email.label.text) }}
+    {{ form.name(class_ = 'form-control', placeholder = form.name.label.text) }}
+    {{ form.password(class_ = 'form-control', placeholder = form.password.label.text) }}
+    {{ form.confirm(class_ = 'form-control', placeholder = form.confirm.label.text) }}
+    <input type="submit" value="Submit New Details" class="btn btn-primary btn-lg btn-block">
+    <br>
+    <a href="/delete-account" class="delete-account-link"><button class="btn btn-danger btn-lg btn-block">Delete Your Account</button></a>
+</form>
+{% endblock %}
