@@ -69,7 +69,7 @@ $(function() {
     console.info( "This page is reloaded" );
     $('#tree-input').prop('checked', false);
   }
-  //------- fixed navbar --------//  
+  //------- fixed navbar --------//
 /*  $(window).scroll(function(){
     console.log("thinks were scrolling");
     var sticky = $('.header_area'),
@@ -82,9 +82,9 @@ $(function() {
 
   //------- Price Range slider -------//
   if(document.getElementById("price-range")){
-  
+
     var nonLinearSlider = document.getElementById('price-range');
-    
+
     noUiSlider.create(nonLinearSlider, {
         connect: true,
         behaviour: 'tap',
@@ -98,19 +98,19 @@ $(function() {
             'max': [ 10000 ]
         }
     });
-  
-  
+
+
     var nodes = [
         document.getElementById('lower-value'), // 0
         document.getElementById('upper-value')  // 1
     ];
-  
+
     // Display the slider value and how far the handle moved
     // from the left edge of the slider.
     nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
         nodes[handle].innerHTML = values[handle];
     });
-  
+
   }
 
 	    //login and signup success and failure alerts
@@ -317,7 +317,7 @@ $(function() {
             console.log('about to init car.');
             //slick carousel initialization
             $(".slick-carousel").slick({
-                autoplay: true,
+                autoplay: false,
                 dots: true,
                 pauseOnDotsHover: true,
                 arrows: true,
