@@ -4,7 +4,7 @@
     <main class="site-main">
     <!--================ Hero banner start =================-->
     <section class="hero-banner" style="position: relative; height: 700px; left: 20%">
-      <div class="hero-image" {% if landing_image != 'None' %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{landing_image}});"{% endif %}>
+      <div class="hero-image" {% if landing_image != 'None' %} style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url({{landing_image}});"{% endif %}>
         <div class="hero-text">
             <h3 style="color:white;" id="call-to-action">{{landing_text}}</h3>
             <button class="button" onclick="browse()" id="landing-button-1" style="margin: 10px; background-color: {{primary_color}}; border-color: {{primary_color}};">{{call_to_action}}</button>
@@ -39,7 +39,7 @@
 									<h3 id="product-name">{{product.name}}</h3>
 									<h2 id="product-price" style="color: {{primary_color}};">${{product.price}}</h2>
 									<h5 class="product-in-stock"></h5>
-									<h6 class="design-name">{% if product.product_designs|length > 0 %}{{(product.product_designs|first).design_name}}{% endif %}</h6>
+									<h6 class="design-name" style="display: none;">{% if product.product_designs|length > 0 %}{{(product.product_designs|first).design_name}}{% endif %}</h6>
 									<p style="display: none;" id="product_id">{{product.id}}</p>
 								</div>
 								<ul class="product-options-area">
@@ -78,7 +78,7 @@
 										<div id="design-selection" class="card_area d-flex align-items-center">
 										{% for design in product.product_designs %}
 											{% set design_loop = loop %}
-											<img onclick="goToSlide(this)" src="{{design.design_icon}}" {% if design_loop.index-1 == 0 %}class="product_design_icon product_design_icon_active" style="border: 2px solid {{primary_color}}"{% else %}class="product_design_icon"{% endif %}>
+											<img onclick="goToSlide(this)" src="{{design.design_icon}}" {% if design_loop.index-1 == 0 %}class="product_design_icon product_design_icon_active" style="border: 2px solid #ffc107"{% else %}class="product_design_icon"{% endif %}>
 										{% endfor %}
 										</div>
 									</li>
