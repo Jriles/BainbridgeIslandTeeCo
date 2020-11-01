@@ -434,7 +434,7 @@ a {
 }
 
 .logo_styling{
-    max-height: 50px;
+    max-height: 70px;
 }
 
 .header-container{
@@ -4371,7 +4371,7 @@ left:0
 	color:#999999
 }
 .footer-area {
-	background:#002347;
+	/*background:#002347;*/
 	padding:50px 0px 50px
 }
 @media (min-width: 1000px) {
@@ -5335,4 +5335,3 @@ Label the data
 		padding-bottom: 115px !important
 	}
 }
-

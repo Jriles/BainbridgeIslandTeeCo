@@ -69,7 +69,7 @@ $(function() {
     console.info( "This page is reloaded" );
     $('#tree-input').prop('checked', false);
   }
-  //------- fixed navbar --------//  
+  //------- fixed navbar --------//
 /*  $(window).scroll(function(){
     console.log("thinks were scrolling");
     var sticky = $('.header_area'),
@@ -82,9 +82,9 @@ $(function() {
 
   //------- Price Range slider -------//
   if(document.getElementById("price-range")){
-  
+
     var nonLinearSlider = document.getElementById('price-range');
-    
+
     noUiSlider.create(nonLinearSlider, {
         connect: true,
         behaviour: 'tap',
@@ -98,19 +98,19 @@ $(function() {
             'max': [ 10000 ]
         }
     });
-  
-  
+
+
     var nodes = [
         document.getElementById('lower-value'), // 0
         document.getElementById('upper-value')  // 1
     ];
-  
+
     // Display the slider value and how far the handle moved
     // from the left edge of the slider.
     nonLinearSlider.noUiSlider.on('update', function ( values, handle, unencoded, isTap, positions ) {
         nodes[handle].innerHTML = values[handle];
     });
-  
+
   }
 
 	    //login and signup success and failure alerts
@@ -317,7 +317,7 @@ $(function() {
             console.log('about to init car.');
             //slick carousel initialization
             $(".slick-carousel").slick({
-                autoplay: true,
+                autoplay: false,
                 dots: true,
                 pauseOnDotsHover: true,
                 arrows: true,
@@ -1066,13 +1066,19 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nex
     //fist we want to blank the border of all the icons
     $(this_product_design_icons).children().css("border", "unset");
     var current_icon = $(this_product_design_icons).children().eq(design_index);
-    $(current_icon).css("border", ("2px solid" + primary_color));
+    $(current_icon).css("border", ("2px solid #ffc107"));
 
     //now we want to set the name of the design shown
     var design_names = $(product_area).find(".design_names");
     if($(design_names).children().length > 0){
         var current_design_name = $(design_names).children().eq(design_index).children().eq(0).html();
         $(product_area).find(".design-name").html(current_design_name);
+        //hide the first design name when we are showing the main product photo
+        if(nextSlide > 0){
+          $(product_area).find(".design-name").show();
+        }else{
+          $(product_area).find(".design-name").hide();
+        }
     }
 
     //we want to display the sizes associated with this product
@@ -1087,7 +1093,7 @@ $('.slick-carousel').on('beforeChange', function(event, slick, currentSlide, nex
         if(this_permutation_inventory_count > 0){
             $(product_area).find(".product-in-stock").html("In Stock");
         }else {
-            $(product_area).find(".product-in-stock").html("Out of Stock");
+            $(product_area).find(".product-in-stock").html("Out of Stock (Backorder)");
         }
     }else{
         $(product_area).find(".product-in-stock").html("");
@@ -1108,7 +1114,7 @@ function goToSlide(button){
     //we want to change the icon border and go to the right carousel slide
     $(button).parent().children().css("border", "unset");
     var current_icon = $(button).parent().children().eq(design_index);
-    $(current_icon).css("border", ("2px solid" + primary_color));
+    $(current_icon).css("border", ("2px solid #ffc107"));
     $(product_area).find('.slick-carousel').slick('slickGoTo', design_index);
 }
 
