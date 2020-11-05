@@ -42,7 +42,6 @@ from logging.config import dictConfig
 import jwt
 from time import time
 
-
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
 #app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
@@ -412,13 +411,6 @@ def random_with_N_digits(n):
     range_end = (10 ** n) - 1
     return randint(range_start, range_end)
 
-
-# print(cityLocationsList)
-# import algorithms
-# from algorithms.search import linear_search
-# takes in city name and returns coordinates
-
-
 # we want to convert our discount code collection in our db to an array for safe passage
 #the next three views all need some of the same things
 @app.route('/payment-success', methods=['GET', 'POST'])
@@ -589,6 +581,7 @@ def product_view(product):
 def register():
     admin_register_form = forms.AdminRegisterForm()
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
+    #if admin_register_form.admin_code.data == 'code' and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email

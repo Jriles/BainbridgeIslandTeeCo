@@ -17,7 +17,7 @@ $(function() {
   skrollr.init({
     forceHeight: false
   });
-
+  
   //------- Active Nice Select --------//
   //$('select').niceSelect();
 
