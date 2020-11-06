@@ -107,10 +107,10 @@
 <script src="https://www.paypal.com/sdk/js?client-id=AZMi0onEX8aXvuer099_lh0n7sLQIkx4nSVy-rYzRYCsnFYzfI53sXvLX8OxcB4WUbp1B1t4VCgdZOwg&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
     if(String(window.location).includes("/mycart")){
-        //shipping calculated in updatecheckout total
-        var total = "";
+        var totalValue = "";
         var counter = 0;
         var noItemsInCart = false;
+        var shippingValue = 100;
         paypal.Buttons({
           onClick: function(data, actions){
          if(document.getElementById('f-option4').checked === false){
@@ -126,10 +126,11 @@
             return actions.reject();
          }
           console.log("thinks we clicked the paypal buttons");
-          total = document.getElementById("total").innerHTML;
-          total = total.slice(1);
+          totalValue = document.getElementById("total").innerHTML;
+          totalValue = totalValue.slice(1);
+          totalTotal = totalValue + shippingValue;
           //need to check for one in case they selected plant a tree with nothing in their cart
-          if(total <= 0){
+          if(totalValue <= 0){
             document.getElementById("terms-warning").style.color = "red";
             document.getElementById("terms-warning").style.display = "inline";
             document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
@@ -147,7 +148,18 @@
               return actions.order.create({
                   purchase_units: [{
                     amount: {
-                        value: total
+                      currency_code: "USD",
+                      value: "15,000.00",
+                      breakdown: {
+                          item_total: {
+                              currency_code: "USD",
+                              value: totalValue
+                          },
+                          shipping: {
+                              currency_code: "USD",
+                              value: shippingValue
+                          }
+                      }
                     }
                   }]
               });

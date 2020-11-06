@@ -17,7 +17,7 @@ $(function() {
   skrollr.init({
     forceHeight: false
   });
-  
+
   //------- Active Nice Select --------//
   //$('select').niceSelect();
 
@@ -484,7 +484,7 @@ $(function() {
 					}
 				}
 				cart = JSON.stringify(cartArray);
-		    	sessionStorage.setItem("Cart", cart);
+		    sessionStorage.setItem("Cart", cart);
 				updateSubtotal();
   			}
 
@@ -533,9 +533,9 @@ $(function() {
 			$(parent).toggle();
 		});
 
-        function updateCheckoutTotal() {
-            document.getElementById("discount-list-element").style.display = "none";
-            document.getElementById("points-list-element").style.display = "none";
+    function updateCheckoutTotal() {
+      document.getElementById("discount-list-element").style.display = "none";
+      document.getElementById("points-list-element").style.display = "none";
 			var elementToClone = $("#checkout-product-list").children()[0];
 			console.log(elementToClone);
 			var listElementClone = elementToClone.cloneNode(true);
@@ -544,6 +544,7 @@ $(function() {
 			var cartArray = JSON.parse(cart);
 			console.log(cartArray);
 			var total = 0;
+      var total_q_count = 0;
 			//want to make sure were not appending new elements to old list, clear list if there is more than one element
 			var childrenCount = $("#checkout-product-list").children().length;
 			if(childrenCount > 1){
@@ -564,6 +565,7 @@ $(function() {
 				//need to set price of this element
 				var price = Number(cartArray[i].Price.replace(/[^0-9.-]+/g,""));
 				var quantity = Number(cartArray[i].Quantity);
+        total_q_count += Number(quantity);
 				var totalProductPrice = price * quantity;
 				console.log(totalProductPrice);
 				total += totalProductPrice;
@@ -575,7 +577,9 @@ $(function() {
 				listElementClone = elementToClone.cloneNode(true);
 				$(listElementClone).attr("style", "");
 			}
-
+      $('#shipping-total').text("$" + String(total_q_count) + ".00");
+      //add shipping to order total here
+      total += total_q_count;
 			$("#total").text("$" + total);
 		}
 	}
