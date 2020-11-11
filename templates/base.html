@@ -129,28 +129,31 @@ src="https://www.facebook.com/tr?id=2805979209716303&ev=PageView&noscript=1"
         var noItemsInCart = false;
         paypal.Buttons({
           onClick: function(data, actions){
-         if(document.getElementById('f-option4').checked === false){
-            //send error message
-            counter++;
-            if(counter == 1){
-                document.getElementById("terms-label").style.color = "red";
-            } else if(counter > 1){
-                document.getElementById("terms-warning").style.color = "red";
-                document.getElementById("terms-warning").style.display = "inline";
-                document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
+            //let facebook know
+            fbq('track', 'InitiateCheckout', {});
+
+            if(document.getElementById('f-option4').checked === false){
+              //send error message
+              counter++;
+              if(counter == 1){
+                  document.getElementById("terms-label").style.color = "red";
+              } else if(counter > 1){
+                  document.getElementById("terms-warning").style.color = "red";
+                  document.getElementById("terms-warning").style.display = "inline";
+                  document.getElementById("terms-warning").innerHTML = "Please Accept The Terms And Conditions";
+              }
+              return actions.reject();
             }
-            return actions.reject();
-         }
-          console.log("thinks we clicked the paypal buttons");
-          total = document.getElementById("total").innerHTML;
-          total = total.slice(1);
-          //need to check for one in case they selected plant a tree with nothing in their cart
-          if(total <= 0){
-            document.getElementById("terms-warning").style.color = "red";
-            document.getElementById("terms-warning").style.display = "inline";
-            document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
-            return actions.reject();
-          }
+            console.log("thinks we clicked the paypal buttons");
+            total = document.getElementById("total").innerHTML;
+            total = total.slice(1);
+            //need to check for one in case they selected plant a tree with nothing in their cart
+            if(total <= 0){
+              document.getElementById("terms-warning").style.color = "red";
+              document.getElementById("terms-warning").style.display = "inline";
+              document.getElementById("terms-warning").innerHTML = "Must have at least one item in cart.";
+              return actions.reject();
+            }
         },
           style: {
               shape: 'rect',
@@ -170,6 +173,9 @@ src="https://www.facebook.com/tr?id=2805979209716303&ev=PageView&noscript=1"
           },
           onApprove: function(data, actions) {
               return actions.order.capture().then(function(details) {
+                  //let facebook know
+                  fbq('track', 'Purchase', {currency: "USD", value: Number(total)});
+
                   alert('Transaction completed by ' + details.payer.name.given_name + '!');
                   $('<input />').attr('type', 'hidden')
                   .attr('name', "Email")

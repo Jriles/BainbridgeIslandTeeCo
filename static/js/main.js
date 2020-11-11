@@ -334,6 +334,10 @@ $(function() {
             });
             console.log('finished carousel')
             scrollDown();
+            //tell facebook someone accessed our homepage
+            if(window.location.pathname === "/"){
+              fbq('track', 'ViewContent', {content_name: "Homepage"});
+            }
 		});
 
     //check if this is the cart page
@@ -692,6 +696,9 @@ function addToCart(button){
     setTimeout(function(){
         $(button).text("Add to Cart");
     },1500);
+
+    //let facebook know
+    fbq('track', 'AddToCart', {content_name: productName});
 }
 
 
