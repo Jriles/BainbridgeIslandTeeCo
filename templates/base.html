@@ -115,12 +115,11 @@ src="https://www.facebook.com/tr?id=2805979209716303&ev=PageView&noscript=1"
   <script src="{{url_for('static', filename='vendors/skrollr.min.js')}}"></script>
   <script src="{{url_for('static', filename='vendors/mail-script.js')}}"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <!--<script src="https://www.paypal.com/sdk/js?client-id=AXUox9TqClklKrV6WSKs5OvvlkwKaqHE9MJmh9HYHQaoro2SDzZaRH1ioPNwBHbwcO7UJV7JElhawvkc"></script>-->
-  <script src="https://www.paypal.com/sdk/js?client-id=AZMi0onEX8aXvuer099_lh0n7sLQIkx4nSVy-rYzRYCsnFYzfI53sXvLX8OxcB4WUbp1B1t4VCgdZOwg"></script>
-
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
-
-<script src="https://www.paypal.com/sdk/js?client-id=AZMi0onEX8aXvuer099_lh0n7sLQIkx4nSVy-rYzRYCsnFYzfI53sXvLX8OxcB4WUbp1B1t4VCgdZOwg&currency=USD" data-sdk-integration-source="button-factory"></script>
+<!--LIVE-->
+<!--<script src="https://www.paypal.com/sdk/js?client-id=AZMi0onEX8aXvuer099_lh0n7sLQIkx4nSVy-rYzRYCsnFYzfI53sXvLX8OxcB4WUbp1B1t4VCgdZOwg&currency=USD" data-sdk-integration-source="button-factory"></script>-->
+<!--SANDBOX-->
+<script src="https://www.paypal.com/sdk/js?client-id=AXUox9TqClklKrV6WSKs5OvvlkwKaqHE9MJmh9HYHQaoro2SDzZaRH1ioPNwBHbwcO7UJV7JElhawvkc&currency=USD" data-sdk-integration-source="button-factory"></script>
 <script>
     if(String(window.location).includes("/mycart")){
         //shipping calculated in updatecheckout total
@@ -173,9 +172,10 @@ src="https://www.facebook.com/tr?id=2805979209716303&ev=PageView&noscript=1"
           },
           onApprove: function(data, actions) {
               return actions.order.capture().then(function(details) {
+                  console.log('order total: ' + total);
                   //let facebook know
                   fbq('track', 'Purchase', {currency: "USD", value: Number(total)});
-
+                  console.log('got past facebook purchase emiting');
                   alert('Transaction completed by ' + details.payer.name.given_name + '!');
                   $('<input />').attr('type', 'hidden')
                   .attr('name', "Email")

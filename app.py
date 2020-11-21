@@ -42,10 +42,10 @@ from logging.config import dictConfig
 import jwt
 from time import time
 
+
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'mp4', 'ico'}
-#app.config['SECRET_KEY'] = str(os.environ['SECRET_KEY'])
-app.config['SECRET_KEY'] = "My Secret Key better than yours"
+app.config['SECRET_KEY'] = "Bets secret key ever" #str(os.environ['SECRET_KEY'])
 app.config['SESSION_TYPE'] = 'redis'
 app.config['UPLOAD_FOLDER'] = os.path.abspath('static/img')
 app.config["USER_UNAUTHENTICATED_ENDPOINT"] = 'login'
@@ -54,7 +54,7 @@ app.config['USER_APP_NAME'] = 'Alex apparel website'
 app.config['USER_ENABLE_EMAIL'] = True
 app.config['USER_ENABLE_USERNAME'] = False
 app.config['USER_REQUIRE_RETYPE_PASSWORD'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = str(os.environ['PROD_DB_CONN_STR'])
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:843134@localhost:5432/teecotest"
 app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
 
@@ -411,6 +411,13 @@ def random_with_N_digits(n):
     range_end = (10 ** n) - 1
     return randint(range_start, range_end)
 
+
+# print(cityLocationsList)
+# import algorithms
+# from algorithms.search import linear_search
+# takes in city name and returns coordinates
+
+
 # we want to convert our discount code collection in our db to an array for safe passage
 #the next three views all need some of the same things
 @app.route('/payment-success', methods=['GET', 'POST'])
@@ -581,7 +588,6 @@ def product_view(product):
 def register():
     admin_register_form = forms.AdminRegisterForm()
     if admin_register_form.admin_code.data == str(os.environ['ADMIN_CODE']) and admin_register_form.validate():
-    #if admin_register_form.admin_code.data == 'code' and admin_register_form.validate():
         # check that this email doesnt already exist
         if User.query.filter_by(email=admin_register_form.email.data).count() == 0:
             # then there are no users who currently have this email
