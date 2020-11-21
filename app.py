@@ -216,7 +216,8 @@ def get_current_business_email():
 #this ones position doesnt matter
 def get_current_business_email_password():
     main_email_object = BusinessEmail.query.first()
-    return jwt.decode(main_email_object.password, app.config['SECRET_KEY'], algorithms=['HS256'])['email_password']
+    #return jwt.decode(main_email_object.password, app.config['SECRET_KEY'], algorithms=['HS256'])['email_password']
+    return main_email_object.password
 
 #this one's does
 app.config['USER_EMAIL_SENDER_EMAIL'] = "jriley9000@gmail.com"
@@ -1239,9 +1240,7 @@ def change_business_email():
     if email_form.validate_on_submit():
         email = BusinessEmail.query.first()
         email.email = email_form.new_email.data
-        password = email_form.new_password.data
-        email.password = jwt.encode({'email_password': password}, app.config['SECRET_KEY'],
-                   algorithm='HS256').decode('utf-8')
+        email.password = email_form.new_password.data
         db.session.add(email)
         db.session.commit()
         flash("Successfully changed business email.")
