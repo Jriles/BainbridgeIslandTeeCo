@@ -583,7 +583,9 @@ $(function() {
 			}
       $('#shipping-total').text("$" + String(total_q_count) + ".00");
       //add shipping to order total here
-      total += total_q_count;
+      //SHIPPING
+      var shipping_cost = 2;
+      total += total_q_count * shipping_cost;
 			$("#total").text("$" + total);
 		}
 	}
