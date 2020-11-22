@@ -581,11 +581,14 @@ $(function() {
 				listElementClone = elementToClone.cloneNode(true);
 				$(listElementClone).attr("style", "");
 			}
-      $('#shipping-total').text("$" + String(total_q_count) + ".00");
+
+      var shipping_per_shirt = 2;
+      var total_shipping = total_q_count * shipping_cost
+      $('#shipping-total').text("$" + String(total_shipping) + ".00");
       //add shipping to order total here
       //SHIPPING
       var shipping_cost = 2;
-      total += total_q_count * shipping_cost;
+      total += total_shipping;
 			$("#total").text("$" + total);
 		}
 	}
