@@ -583,7 +583,7 @@ $(function() {
 			}
 
       var shipping_per_shirt = 2;
-      var total_shipping = total_q_count * shipping_cost
+      var total_shipping = total_q_count * shipping_per_shirt;
       $('#shipping-total').text("$" + String(total_shipping) + ".00");
       //add shipping to order total here
       //SHIPPING
