@@ -587,7 +587,12 @@ $(function() {
       $('#shipping-total').text("$" + String(total_shipping) + ".00");
       //add shipping to order total here
       //SHIPPING
-      var shipping_cost = 2;
+      if(total_q_count === 1){
+        total_shipping = 3;
+      } else if(total_q_count > 1){
+        var shipping_cost = 2;
+        total_shipping = (shipping_cost * (total_q_count - 1)) + 3
+      }
       total += total_shipping;
 			$("#total").text("$" + total);
 		}
