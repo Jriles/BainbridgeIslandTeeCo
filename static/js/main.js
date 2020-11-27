@@ -581,7 +581,7 @@ $(function() {
 				listElementClone = elementToClone.cloneNode(true);
 				$(listElementClone).attr("style", "");
 			}
-
+      var total_shipping = 0;
       //add shipping to order total here
       //SHIPPING
       if(total_q_count === 1){
