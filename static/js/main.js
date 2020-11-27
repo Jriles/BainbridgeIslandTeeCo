@@ -582,9 +582,6 @@ $(function() {
 				$(listElementClone).attr("style", "");
 			}
 
-      var shipping_per_shirt = 2;
-      var total_shipping = total_q_count * shipping_per_shirt;
-      $('#shipping-total').text("$" + String(total_shipping) + ".00");
       //add shipping to order total here
       //SHIPPING
       if(total_q_count === 1){
@@ -593,6 +590,9 @@ $(function() {
         var shipping_cost = 2;
         total_shipping = (shipping_cost * (total_q_count - 1)) + 3
       }
+      //display shipping cost alone
+      $('#shipping-total').text("$" + String(total_shipping) + ".00");
+      //display total with shipping
       total += total_shipping;
 			$("#total").text("$" + total);
 		}
